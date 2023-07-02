@@ -75,7 +75,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                   MaterialPageRoute(builder: (context) => ProfileApp()),
                 );
               },
-              child: const Text('Update Profile'),
+              child: const Text('Profile'),
             ),
           ],
         ),
