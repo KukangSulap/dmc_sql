@@ -1,3 +1,4 @@
+import 'package:dmc_sql/keuangan.dart';
 import 'package:dmc_sql/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,6 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
   String about =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +44,8 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 schoolName,
-                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
             Padding(
@@ -68,14 +69,27 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                 style: const TextStyle(fontSize: 16),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfileApp()),
-                );
-              },
-              child: const Text('Profile'),
+            Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileApp()),
+                    );
+                  },
+                  child: const Text('Profile'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const KeuanganPage()));
+                  },
+                  child: Text('Keuangan'),
+                ),
+              ],
             ),
           ],
         ),
