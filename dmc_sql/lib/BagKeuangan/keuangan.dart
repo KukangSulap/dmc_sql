@@ -1,3 +1,4 @@
+import 'package:dmc_sql/BagKeuangan/editKeuangan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -98,7 +99,13 @@ class SisiKananKeuangan extends StatelessWidget {
                                 MaterialStateProperty.all(Colors.white),
                           ),
                           onPressed: () {
-                            // Handle button press
+                            print("testes");
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => EditKeuangan(
+                                          status: "Pemasukan",
+                                        )));
                           },
                           child: CustomButton(
                             title: "Edit",
@@ -190,7 +197,11 @@ class SisiKananKeuangan extends StatelessWidget {
                                 MaterialStateProperty.all(Colors.white),
                           ),
                           onPressed: () {
-                            // Handle button press
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        EditKeuangan(status: "Keluaran")));
                           },
                           child: CustomButton(
                             title: "Edit",
@@ -452,6 +463,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                                   ),
                                   onPressed: () {
                                     // Handle button press
+                                    print("hahahaha");
                                   },
                                   child: Container(
                                     height: 40,

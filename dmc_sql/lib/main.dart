@@ -1,4 +1,5 @@
-import 'package:dmc_sql/keuangan.dart';
+import 'package:dmc_sql/BagKeuangan/keuangan.dart';
+import 'package:dmc_sql/BagSiswa/siswa.dart';
 import 'package:dmc_sql/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -85,9 +86,18 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const KeuanganPage()));
+                            builder: (context) =>  KeuanganPage()));
                   },
                   child: Text('Keuangan'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>  SiswaPage()));
+                  },
+                  child: Text('Siswa'),
                 ),
               ],
             ),
