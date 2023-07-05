@@ -3,16 +3,16 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 List<List<String>> pemasukanList = [
-  ['Pembayaran SPP', 'Ahmad Solihun - xxxxxxx013', '12 Juni 2023', '250.000'],
-  ['Pembayaran SPP', 'Agita Maharani - xxxxxxx012', '20 Juli 2023', '250.000'],
-  ['Donasi', 'Salimah', '22 Juni 20233', '750.000'],
-  ['Pembayaran SPP', 'Hilmy Hofifah - xxxxxxx313', '30 Juni 2023', '250.000'],
+  ['Pembayaran SPP Ahmad Solihun - xxxxxxx013', '12 Juni 2023', '250.000'],
+  ['Pembayaran SPP Agita Maharani - xxxxxxx012', '20 Juli 2023', '250.000'],
+  ['Donasi Salimah', '22 Juni 20233', '750.000'],
+  ['Pembayaran SPP Hilmy Hofifah - xxxxxxx313', '30 Juni 2023', '250.000'],
 ];
 List<List<String>> keluaranList = [
-  ['Pembelian', 'Al Quran 12 Buku', '12 Juni 2023', '250.000'],
-  ['Dana Kegiatan', 'Kebersihan Masjid', '20 Juli 2023', '250.000'],
-  ['Kegiatan Study', 'Tour Masjid Kuba', '30 Juni 20233', '750.000'],
-  ['Kerting Untuk Acara', 'Tafsir Al Quran', '30 Juni 2023', '250.000'],
+  ['Pembelian Al Quran 12 Buku', '12 Juni 2023', '250.000'],
+  ['Dana Kegiatan Kebersihan Masjid', '20 Juli 2023', '250.000'],
+  ['Kegiatan Study Tour Masjid Kuba', '30 Juni 20233', '750.000'],
+  ['Kerting Untuk Acara Tafsir Al Quran', '30 Juni 2023', '250.000'],
 ];
 
 class KeuanganPage extends StatefulWidget {
@@ -76,8 +76,8 @@ class SisiKananKeuangan extends StatelessWidget {
                           children: [
                             Text(
                               "Data Pemasukan",
-                              style: TextStyle(
-                                  fontSize: 20, color: Colors.black),
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.black),
                             ),
                             IconButton(
                               onPressed: () {},
@@ -90,8 +90,7 @@ class SisiKananKeuangan extends StatelessWidget {
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(15.0),
+                                borderRadius: BorderRadius.circular(15.0),
                                 side: BorderSide(color: Colors.black),
                               ),
                             ),
@@ -119,8 +118,7 @@ class SisiKananKeuangan extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           String itemName = pemasukanList[index][0];
                           String leftInfo = pemasukanList[index][1];
-                          String middleInfo = pemasukanList[index][2];
-                          String rightInfo = pemasukanList[index][3];
+                          String rightInfo = pemasukanList[index][2];
 
                           return Column(
                             children: [
@@ -129,29 +127,15 @@ class SisiKananKeuangan extends StatelessWidget {
                                   itemName,
                                   style: TextStyle(fontSize: 20),
                                 ),
-                                subtitle: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      leftInfo,
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.black),
-                                    ),
-                                    Text(middleInfo),
-                                  ],
-                                ),
+                                subtitle: Text(leftInfo),
                                 trailing: Text(
                                   "Rp $rightInfo +",
                                   style: TextStyle(
-                                      fontSize: 30,
-                                      color: Colors.black),
+                                      fontSize: 30, color: Colors.black),
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(
-                                    top: 10, bottom: 10),
+                                margin: EdgeInsets.only(top: 10, bottom: 10),
                                 height: 0.5,
                                 width: double.infinity,
                                 color: Colors.black,
@@ -184,8 +168,8 @@ class SisiKananKeuangan extends StatelessWidget {
                           children: [
                             Text(
                               "Data Keluaran",
-                              style: TextStyle(
-                                  fontSize: 20, color: Colors.black),
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.black),
                             ),
                             IconButton(
                               onPressed: () {},
@@ -198,8 +182,7 @@ class SisiKananKeuangan extends StatelessWidget {
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(15.0),
+                                borderRadius: BorderRadius.circular(15.0),
                                 side: BorderSide(color: Colors.black),
                               ),
                             ),
@@ -227,8 +210,7 @@ class SisiKananKeuangan extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           String itemName = pemasukanList[index][0];
                           String leftInfo = pemasukanList[index][1];
-                          String middleInfo = pemasukanList[index][2];
-                          String rightInfo = pemasukanList[index][3];
+                          String rightInfo = pemasukanList[index][2];
 
                           return Column(
                             children: [
@@ -237,29 +219,15 @@ class SisiKananKeuangan extends StatelessWidget {
                                   itemName,
                                   style: TextStyle(fontSize: 20),
                                 ),
-                                subtitle: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      leftInfo,
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.black),
-                                    ),
-                                    Text(middleInfo),
-                                  ],
-                                ),
+                                subtitle: Text(leftInfo),
                                 trailing: Text(
                                   "Rp $rightInfo -",
                                   style: TextStyle(
-                                      fontSize: 30,
-                                      color: Colors.black),
+                                      fontSize: 30, color: Colors.black),
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(
-                                    top: 10, bottom: 10),
+                                margin: EdgeInsets.only(top: 10, bottom: 10),
                                 height: 0.5,
                                 width: double.infinity,
                                 color: Colors.black,
