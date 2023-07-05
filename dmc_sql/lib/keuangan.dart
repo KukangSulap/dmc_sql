@@ -2,6 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+List<List<String>> pemasukanList = [
+  ['Pembayaran SPP', 'Ahmad Solihun - xxxxxxx013', '12 Juni 2023', '250.000'],
+  ['Pembayaran SPP', 'Agita Maharani - xxxxxxx012', '20 Juli 2023', '250.000'],
+  ['Donasi', 'Salimah', '22 Juni 20233', '750.000'],
+  ['Pembayaran SPP', 'Hilmy Hofifah - xxxxxxx313', '30 Juni 2023', '250.000'],
+];
+List<List<String>> keluaranList = [
+  ['Pembelian', 'Al Quran 12 Buku', '12 Juni 2023', '250.000'],
+  ['Dana Kegiatan', 'Kebersihan Masjid', '20 Juli 2023', '250.000'],
+  ['Kegiatan Study', 'Tour Masjid Kuba', '30 Juni 20233', '750.000'],
+  ['Kerting Untuk Acara', 'Tafsir Al Quran', '30 Juni 2023', '250.000'],
+];
+
 class KeuanganPage extends StatefulWidget {
   const KeuanganPage({super.key});
 
@@ -21,39 +34,246 @@ class _KeuanganPageState extends State<KeuanganPage> {
             SisiKiriKeuangan(),
 
             // Sisi Kanan
-            Expanded(
-              flex: 3,
-              child: Padding(
-                padding: EdgeInsets.only(right: 30, left: 10),
+            SisiKananKeuangan()
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SisiKananKeuangan extends StatelessWidget {
+  const SisiKananKeuangan({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 3,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(right: 30, left: 10),
+          child: Column(
+            children: [
+              // ===========================================================  Data Pemasukan  ===================================================================
+              Container(
+                margin: EdgeInsets.only(top: 10),
+                padding: EdgeInsets.all(20),
+                height: 400,
+                decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(width: 1.5),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
                 child: Column(
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 10),
-                      height: 400,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(width: 1.5),
-                          borderRadius: BorderRadius.circular(20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "Data Pemasukan",
+                              style: TextStyle(
+                                  fontSize: 20, color: Colors.black),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.filter),
+                            )
+                          ],
                         ),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(15.0),
+                                side: BorderSide(color: Colors.black),
+                              ),
+                            ),
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.white),
+                          ),
+                          onPressed: () {
+                            // Handle button press
+                          },
+                          child: CustomButton(
+                            title: "Edit",
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 10, bottom: 10),
+                      height: 1,
+                      width: double.infinity,
+                      color: Colors.black,
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: pemasukanList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          String itemName = pemasukanList[index][0];
+                          String leftInfo = pemasukanList[index][1];
+                          String middleInfo = pemasukanList[index][2];
+                          String rightInfo = pemasukanList[index][3];
+
+                          return Column(
                             children: [
-                              Row(
-                                children: [],
+                              ListTile(
+                                title: Text(
+                                  itemName,
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                                subtitle: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      leftInfo,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black),
+                                    ),
+                                    Text(middleInfo),
+                                  ],
+                                ),
+                                trailing: Text(
+                                  "Rp $rightInfo +",
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    top: 10, bottom: 10),
+                                height: 0.5,
+                                width: double.infinity,
+                                color: Colors.black,
                               )
                             ],
-                          )
-                        ],
+                          );
+                        },
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
-            )
-          ],
+              // ======================================================  Data Keluaran  ==================================================================
+              Container(
+                margin: EdgeInsets.only(top: 10, bottom: 10),
+                padding: EdgeInsets.all(20),
+                height: 400,
+                decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(width: 1.5),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "Data Keluaran",
+                              style: TextStyle(
+                                  fontSize: 20, color: Colors.black),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.filter),
+                            )
+                          ],
+                        ),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(15.0),
+                                side: BorderSide(color: Colors.black),
+                              ),
+                            ),
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.white),
+                          ),
+                          onPressed: () {
+                            // Handle button press
+                          },
+                          child: CustomButton(
+                            title: "Edit",
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 10, bottom: 10),
+                      height: 1,
+                      width: double.infinity,
+                      color: Colors.black,
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: pemasukanList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          String itemName = pemasukanList[index][0];
+                          String leftInfo = pemasukanList[index][1];
+                          String middleInfo = pemasukanList[index][2];
+                          String rightInfo = pemasukanList[index][3];
+
+                          return Column(
+                            children: [
+                              ListTile(
+                                title: Text(
+                                  itemName,
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                                subtitle: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      leftInfo,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black),
+                                    ),
+                                    Text(middleInfo),
+                                  ],
+                                ),
+                                trailing: Text(
+                                  "Rp $rightInfo -",
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    top: 10, bottom: 10),
+                                height: 0.5,
+                                width: double.infinity,
+                                color: Colors.black,
+                              )
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -386,38 +606,25 @@ class SisiKiriKeuangan extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ElevatedButton(
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                        side: BorderSide(color: Colors.black),
-                                      ),
-                                    ),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.white),
-                                  ),
-                                  onPressed: () {
-                                    // Handle button press
-                                  },
-                                  child: Container(
-                                    height: 40,
-                                    width: 120,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Bukti Pembayaran',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
+                                    style: ButtonStyle(
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15.0),
+                                          side: BorderSide(color: Colors.black),
                                         ),
-                                      ],
+                                      ),
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Colors.white),
                                     ),
-                                  ),
-                                ),
+                                    onPressed: () {
+                                      // Handle button press
+                                    },
+                                    child: CustomButton(
+                                      title: "Bukti Pembayaran",
+                                    )),
                                 ElevatedButton(
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
@@ -434,21 +641,8 @@ class SisiKiriKeuangan extends StatelessWidget {
                                   onPressed: () {
                                     // Handle button press
                                   },
-                                  child: Container(
-                                    height: 40,
-                                    width: 120,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Masukan',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
+                                  child: CustomButton(
+                                    title: "Masukan",
                                   ),
                                 ),
                               ],
@@ -463,6 +657,32 @@ class SisiKiriKeuangan extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  const CustomButton({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 40,
+      width: 120,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+        ],
       ),
     );
   }
