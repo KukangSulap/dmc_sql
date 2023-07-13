@@ -1,3 +1,4 @@
+import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:dmc_sql/BagKeuangan/editKeuangan.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,117 +33,19 @@ class _KeuanganPageState extends State<KeuanganPage> {
     );
     return Scaffold(
       extendBodyBehindAppBar: true,
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            leading: IconButton(
-              icon: const Icon(CupertinoIcons.burn),
-              color: Colors.black,
-              onPressed: () {
-                // Handle the button press event
-              },
-            ),
-            title: const Text(
-              "<- ntar ganti jadi logo",
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
-            actions: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Row(
-                  children: <Widget>[
-                    DecoratedBox(
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black,
-                            width: 2.0,
-                          ),
-                        ),
-                      ),
-                      child: TextButton(
-                        style: style,
-                        onPressed: () {},
-                        child: const Text(
-                          'Keuangan',
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      style: style,
-                      onPressed: () {},
-                      child: const Text('-'),
-                    ),
-                    TextButton(
-                      style: style,
-                      onPressed: () {},
-                      child: const Text(
-                        'Siswa',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      style: style,
-                      onPressed: () {},
-                      child: const Text('----'),
-                    ),
-                    Container(
-                      height: 35,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(width: 1.5),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      child: TextButton(
-                        style: style,
-                        onPressed: () {},
-                        child: const Text(
-                          'Logout',
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      style: style,
-                      onPressed: () {},
-                      child: const Text('.'),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-            pinned: false,
-            floating: true,
-          ),
-          SliverFillRemaining(
-            child: SafeArea(
-              child: Row(
-                children: const [
-                  // Sisi kiri
-                  SisiKiriKeuangan(),
+      appBar: AppBarAdmin(),
+      body: SafeArea(
+        child: Row(
+          children: const [
+            // Sisi kiri
+            SisiKiriKeuangan(),
 
-                  // Sisi Kanan
-                  SisiKananKeuangan()
-                ],
-              ),
-            ),
-          ),
-        ],
+            // Sisi Kanan
+            SisiKananKeuangan()
+          ],
+        ),
       ),
     );
-
   }
 }
 
@@ -245,7 +148,8 @@ class SisiKananKeuangan extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                margin: const EdgeInsets.only(top: 10, bottom: 10),
+                                margin:
+                                    const EdgeInsets.only(top: 10, bottom: 10),
                                 height: 0.5,
                                 width: double.infinity,
                                 color: Colors.black,
@@ -303,8 +207,8 @@ class SisiKananKeuangan extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        const EditKeuangan(status: "Keluaran")));
+                                    builder: (context) => const EditKeuangan(
+                                        status: "Keluaran")));
                           },
                           child: const CustomButton(
                             title: "Edit",
@@ -341,7 +245,8 @@ class SisiKananKeuangan extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                margin: const EdgeInsets.only(top: 10, bottom: 10),
+                                margin:
+                                    const EdgeInsets.only(top: 10, bottom: 10),
                                 height: 0.5,
                                 width: double.infinity,
                                 color: Colors.black,
@@ -525,7 +430,8 @@ class SisiKiriKeuangan extends StatelessWidget {
                                       RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(15.0),
-                                        side: const BorderSide(color: Colors.black),
+                                        side: const BorderSide(
+                                            color: Colors.black),
                                       ),
                                     ),
                                     backgroundColor:
@@ -558,7 +464,8 @@ class SisiKiriKeuangan extends StatelessWidget {
                                       RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(15.0),
-                                        side: const BorderSide(color: Colors.black),
+                                        side: const BorderSide(
+                                            color: Colors.black),
                                       ),
                                     ),
                                     backgroundColor:
@@ -695,7 +602,8 @@ class SisiKiriKeuangan extends StatelessWidget {
                                         RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(15.0),
-                                          side: const BorderSide(color: Colors.black),
+                                          side: const BorderSide(
+                                              color: Colors.black),
                                         ),
                                       ),
                                       backgroundColor:
@@ -715,7 +623,8 @@ class SisiKiriKeuangan extends StatelessWidget {
                                       RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(15.0),
-                                        side: const BorderSide(color: Colors.black),
+                                        side: const BorderSide(
+                                            color: Colors.black),
                                       ),
                                     ),
                                     backgroundColor:
@@ -763,7 +672,8 @@ class CustomButton extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold),
           ),
         ],
       ),

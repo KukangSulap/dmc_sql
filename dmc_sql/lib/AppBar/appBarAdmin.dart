@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class AppBarAdmin extends StatelessWidget implements PreferredSizeWidget {
+class AppBarAdmin extends StatefulWidget implements PreferredSizeWidget {
   AppBarAdmin({
     super.key,
   });
@@ -12,6 +12,11 @@ class AppBarAdmin extends StatelessWidget implements PreferredSizeWidget {
   // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
+  @override
+  State<AppBarAdmin> createState() => _AppBarAdminState();
+}
+
+class _AppBarAdminState extends State<AppBarAdmin> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style = TextButton.styleFrom(
