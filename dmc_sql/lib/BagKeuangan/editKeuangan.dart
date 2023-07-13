@@ -1,3 +1,4 @@
+import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -15,7 +16,7 @@ class _EditKeuanganState extends State<EditKeuangan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBarAdmin(),
       body: Text(widget.status),
     );
   }
