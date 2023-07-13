@@ -16,7 +16,7 @@ class _EditKeuanganState extends State<EditKeuangan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(),
+      appBar: AppBarAdmin(page: 'k',),
       body: Text(widget.status),
     );
   }

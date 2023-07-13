@@ -147,7 +147,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>  const KeuanganPage()));
+                            builder: (context) => const KeuanganPage()));
                   },
                   child: const Text('Keuangan'),
                 ),
@@ -156,7 +156,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>  const SiswaPage()));
+                            builder: (context) => const SiswaPage()));
                   },
                   child: const Text('Siswa'),
                 ),

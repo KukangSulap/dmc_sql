@@ -33,7 +33,7 @@ class _KeuanganPageState extends State<KeuanganPage> {
     );
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBarAdmin(),
+      appBar: AppBarAdmin(page: 'k',),
       body: SafeArea(
         child: Row(
           children: const [

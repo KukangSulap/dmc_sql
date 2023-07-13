@@ -1,3 +1,4 @@
+import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:dmc_sql/BagSiswa/inputSiswa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -14,7 +15,7 @@ class _SiswaPageState extends State<SiswaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBarAdmin(page: "s"),
       body: Column(
         children: [
           Text("Siswa"),

@@ -1,12 +1,13 @@
+import 'package:dmc_sql/BagKeuangan/keuangan.dart';
+import 'package:dmc_sql/BagSiswa/siswa.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class AppBarAdmin extends StatefulWidget implements PreferredSizeWidget {
-  AppBarAdmin({
-    super.key,
-  });
+  AppBarAdmin({super.key, required this.page});
+  final String page;
 
   @override
   // TODO: implement preferredSize
@@ -22,6 +23,10 @@ class _AppBarAdminState extends State<AppBarAdmin> {
     final ButtonStyle style = TextButton.styleFrom(
       foregroundColor: Theme.of(context).colorScheme.onPrimary,
     );
+
+    const TextDecoration underlineDecoration = TextDecoration.underline;
+    const TextDecoration noDecoration = TextDecoration.none;
+
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -44,17 +49,24 @@ class _AppBarAdminState extends State<AppBarAdmin> {
           child: Row(
             children: <Widget>[
               DecoratedBox(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: Colors.black,
+                      color: widget.page == 'k'
+                          ? Colors.black
+                          : Colors.transparent,
                       width: 2.0,
                     ),
                   ),
                 ),
                 child: TextButton(
                   style: style,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const KeuanganPage()));
+                  },
                   child: const Text(
                     'Keuangan',
                     style: TextStyle(
@@ -68,13 +80,30 @@ class _AppBarAdminState extends State<AppBarAdmin> {
                 onPressed: () {},
                 child: const Text('-'),
               ),
-              TextButton(
-                style: style,
-                onPressed: () {},
-                child: const Text(
-                  'Siswa',
-                  style: TextStyle(
-                    color: Colors.black,
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: widget.page == 's'
+                          ? Colors.black
+                          : Colors.transparent,
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                child: TextButton(
+                  style: style,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SiswaPage()));
+                  },
+                  child: const Text(
+                    'Siswa',
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),
