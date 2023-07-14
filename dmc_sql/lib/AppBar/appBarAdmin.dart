@@ -1,5 +1,6 @@
 import 'package:dmc_sql/BagKeuangan/keuangan.dart';
 import 'package:dmc_sql/BagSiswa/siswa.dart';
+import 'package:dmc_sql/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -122,7 +123,11 @@ class _AppBarAdminState extends State<AppBarAdmin> {
                 ),
                 child: TextButton(
                   style: style,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>  SchoolProfilePage()));},
                   child: const Text(
                     'Logout',
                     style: TextStyle(
