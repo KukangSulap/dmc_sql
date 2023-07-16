@@ -6,12 +6,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 const List<String> listTahun = <String>['2021/2022', '2022/2023', '2023/2024'];
 const List<String> listSemester = <String>[
-  'Semester 1',
-  'Semester 2',
-  'Semester 3',
-  'Semester 4',
-  'Semester 5',
-  'Semester 6'
+  'Ganjil',
+  'Genap'
 ];
 const List<String> listKelas = <String>['Kelas A', 'Kelas B', 'Kelas C'];
 
