@@ -5,10 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 const List<String> listTahun = <String>['2021/2022', '2022/2023', '2023/2024'];
-const List<String> listSemester = <String>[
-  'Ganjil',
-  'Genap'
-];
+const List<String> listSemester = <String>['Ganjil', 'Genap'];
 const List<String> listKelas = <String>['Kelas A', 'Kelas B', 'Kelas C'];
 
 List<List<String>> listSiswa = [
@@ -41,191 +38,223 @@ class _SiswaPageState extends State<SiswaPage> {
         child: Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 600,
-                  margin: const EdgeInsets.only(top: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    border: Border.all(color: Colors.black, width: 1.5),
-                  ),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Pencarian',
-                      border: InputBorder.none,
-                      suffixIcon: Icon(Icons.search),
-                      suffixIconColor: Colors.black,
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: 16.0, vertical: 14.0),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    width: 600,
+                    margin: const EdgeInsets.only(top: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      border: Border.all(color: Colors.black, width: 1.5),
+                    ),
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Pencarian',
+                        border: InputBorder.none,
+                        suffixIcon: Icon(Icons.search),
+                        suffixIconColor: Colors.black,
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 16.0, vertical: 14.0),
+                      ),
                     ),
                   ),
                 ),
-                DropDowns(listTahun, _selectedItemTahun, (String? newValue) {
-                  setState(() {
-                    _selectedItemTahun = newValue!;
-                  });
-                }),
-                DropDowns(listSemester, _selectedItemSemester,
-                    (String? newValue) {
-                  setState(() {
-                    _selectedItemSemester = newValue!;
-                  });
-                }),
-                DropDowns(listKelas, _selectedItemKelas, (String? newValue) {
-                  setState(() {
-                    _selectedItemKelas = newValue!;
-                  });
-                })
+                Expanded(
+                  flex: 1,
+                  child: DropDowns(listTahun, _selectedItemTahun,
+                      (String? newValue) {
+                    setState(() {
+                      _selectedItemTahun = newValue!;
+                    });
+                  }),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: DropDowns(listSemester, _selectedItemSemester,
+                      (String? newValue) {
+                    setState(() {
+                      _selectedItemSemester = newValue!;
+                    });
+                  }),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: DropDowns(listKelas, _selectedItemKelas,
+                      (String? newValue) {
+                    setState(() {
+                      _selectedItemKelas = newValue!;
+                    });
+                  }),
+                )
               ],
             ),
             const SizedBox(height: 10),
 
             // ======================================================================  List Siswa  ============================================================================
-            Container(
-              height: 570,
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                border: Border.all(width: 1.5, color: Colors.black),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(15),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              "Daftar Siswa - $_selectedItemKelas",
-                              style: const TextStyle(
-                                fontSize: 20,
-                                color: Colors.black,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.filter),
-                            )
-                          ],
-                        ),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                side: const BorderSide(color: Colors.black),
-                              ),
-                            ),
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.white),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => InputSiswaPage()));
-                          },
-                          child: Container(
-                            height: 40,
-                            width: 120,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Input Siswa",
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 10, bottom: 10),
-                      height: 1,
-                      width: double.infinity,
-                      color: Colors.black,
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: listSiswa.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          String nama = listSiswa[index][0];
-                          String tahun = listSiswa[index][1];
-                          String semester = listSiswa[index][2];
-                          String kelas = listSiswa[index][3];
-
-                          return Column(
+            Expanded(
+              child: Container(
+                // height: 570,
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1.5, color: Colors.black),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "   ${index + 1}",
-                                        style: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "   $nama",
-                                        style: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "$tahun      ",
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                      Text(
-                                        "$semester      ",
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                      Text(
-                                        "$kelas   ",
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 15,
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
+                              Text(
+                                "Daftar Siswa - $_selectedItemKelas",
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                ),
                               ),
-                              Container(
-                                margin:
-                                    const EdgeInsets.only(top: 10, bottom: 10),
-                                height: 0.5,
-                                width: double.infinity,
-                                color: Colors.black,
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.filter),
                               )
                             ],
-                          );
-                        },
+                          ),
+                          Expanded(
+                            flex: 0,
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    side: const BorderSide(color: Colors.black),
+                                  ),
+                                ),
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.white),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            InputSiswaPage()));
+                              },
+                              child: Container(
+                                height: 40,
+                                // width: 120,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Text(
+                                      "Input Siswa",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                  ],
+                      Container(
+                        margin: const EdgeInsets.only(top: 10, bottom: 10),
+                        height: 1,
+                        width: double.infinity,
+                        color: Colors.black,
+                      ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.92,
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                physics: const ClampingScrollPhysics(),
+                                itemCount: listSiswa.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  String nama = listSiswa[index][0];
+                                  String tahun = listSiswa[index][1];
+                                  String semester = listSiswa[index][2];
+                                  String kelas = listSiswa[index][3];
+
+                                  return Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "   ${index + 1}",
+                                                style: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 17,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                "   $nama",
+                                                style: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 17,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "$tahun      ",
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                              Text(
+                                                "$semester      ",
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                              Text(
+                                                "$kelas   ",
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 15,
+                                                ),
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                            top: 10, bottom: 10),
+                                        height: 0.5,
+                                        width: double.infinity,
+                                        color: Colors.black,
+                                      )
+                                    ],
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             )
@@ -250,6 +279,7 @@ class _SiswaPageState extends State<SiswaPage> {
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
+          isExpanded: true,
           value: _selectedItem,
           icon: Icon(Icons.arrow_drop_down_sharp), // Reversed triangle icon
           iconSize: 24,
