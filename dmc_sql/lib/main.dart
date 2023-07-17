@@ -3,6 +3,7 @@ import 'package:dmc_sql/BagSiswa/siswa.dart';
 import 'package:dmc_sql/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,10 +29,8 @@ class SchoolProfilePage extends StatefulWidget {
 }
 
 class _SchoolProfilePageState extends State<SchoolProfilePage> {
-  String schoolName = 'School Name';
-  String address = '123 Main Street, City, State';
-  String about =
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+  String dummyText =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id sem velit. Quisque fermentum eros non porta bibendum. Praesent pretium libero nec imperdiet semper. Nunc tellus augue, tempor ut laoreet ac, fringilla eu metus. Sed at mi sed augue pretium ullamcorper. Donec ultrices porttitor enim.';
 
   @override
   Widget build(BuildContext context) {
@@ -56,16 +55,6 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
           ),
         ),
         actions: <Widget>[
-          TextButton(
-            style: style,
-            onPressed: () {},
-            child: const Text(
-              'Profil SQL',
-              style: TextStyle(
-                color: Colors.black, // Set the text color to black
-              ),
-            ),
-          ),
           TextButton(
             style: style,
             onPressed: () {},
@@ -100,94 +89,171 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 40,),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.all(16.0),
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Smart Quran Learning',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 64.0,
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: double.infinity),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  if (constraints.maxWidth < 600) {
+                    return Column(
+                      children: [
+                        const SizedBox(height: 5),
+                        FractionallySizedBox(
+                          widthFactor: 0.8,
+                          child: Container(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Smart Quran Learning',
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: GoogleFonts.mPlusRounded1c(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 35.0,
+                                  ),
+                                ),
+                                const SizedBox(height: 10.0),
+                                Text(
+                                  dummyText,
+                                  maxLines: 7,
+                                  style: GoogleFonts.mPlusRounded1c(
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        SizedBox(height: 10.0),
-                        Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id sem velit. Quisque fermentum eros non porta bibendum. Praesent pretium libero nec imperdiet semper. Nunc tellus augue, tempor ut laoreet ac, fringilla eu metus. Sed at mi sed augue pretium ullamcorper. Donec ultrices porttitor enim.',
-                          style: TextStyle(
-                            fontSize: 20.0,
+                        const SizedBox(height: 8.0),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.all(Radius.circular(10)
+                              ),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.all(Radius.circular(10),
+                              ),
+                              child: Image.network(
+                                'https://images.squarespace-cdn.com/content/v1/51cdafc4e4b09eb676a64e68/1618602622635-4LFSCPXPMK8MOR64BC2N/cars_trip.jpg',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                ),
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      bottomLeft: Radius.circular(10),
-                    ),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      bottomLeft: Radius.circular(10),
-                    ),
-                    child: Image.network(
-                      'https://lumiere-a.akamaihd.net/v1/images/open-uri20150608-27674-17ohmzf_d340a6bd.jpeg?width=1136',
-                      width: 700,
-                      height: 400,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ProfileApp()),
                     );
-                  },
-                  child: const Text('Profile'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const KeuanganPage()),
+                  } else {
+                    //---------------------YG GEDE DIBAWAH-------------------
+                    return Column(
+                      children: [
+                        const SizedBox(height: 40),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: FractionallySizedBox(
+                                widthFactor: 0.8,
+                                child: Container(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Smart Quran Learning',
+                                        maxLines: 3,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.mPlusRounded1c(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 42.0,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 10.0),
+                                      Text(
+                                        dummyText,
+                                        maxLines: 7,
+                                        style: GoogleFonts.mPlusRounded1c(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 16.0),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(8.0),
+                                    bottomLeft: Radius.circular(8.0),
+                                  ),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(8.0),
+                                    bottomLeft: Radius.circular(8.0),
+                                  ),
+                                  child: Image.network(
+                                    'https://images.squarespace-cdn.com/content/v1/51cdafc4e4b09eb676a64e68/1618602622635-4LFSCPXPMK8MOR64BC2N/cars_trip.jpg',
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     );
-                  },
-                  child: const Text('Keuangan'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const SiswaPage()),
-                    );
-                  },
-                  child: const Text('Siswa'),
-                ),
-              ],
-            ),
-          ],
+                  }
+                },
+              ),
+              const SizedBox(height: 16.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProfileApp()),
+                      );
+                    },
+                    child: const Text('Profile'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const KeuanganPage()),
+                      );
+                    },
+                    child: const Text('Keuangan'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SiswaPage()),
+                      );
+                    },
+                    child: const Text('Siswa'),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
