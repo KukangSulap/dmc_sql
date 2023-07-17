@@ -87,7 +87,8 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
             child: const Text(
               'Login',
               style: TextStyle(
-                color: Colors.black, // Set the text color to black
+                color: Colors.black,
+                // fontFamily:
               ),
             ),
           ),
@@ -102,36 +103,60 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                schoolName,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Address: $address',
-                style: const TextStyle(fontSize: 18),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                'About',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                about,
-                style: const TextStyle(fontSize: 16),
-              ),
+            const SizedBox(height: 40,),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          'Smart Quran Learning',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 64.0,
+                          ),
+                        ),
+                        SizedBox(height: 10.0),
+                        Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id sem velit. Quisque fermentum eros non porta bibendum. Praesent pretium libero nec imperdiet semper. Nunc tellus augue, tempor ut laoreet ac, fringilla eu metus. Sed at mi sed augue pretium ullamcorper. Donec ultrices porttitor enim.',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      bottomLeft: Radius.circular(10),
+                    ),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      bottomLeft: Radius.circular(10),
+                    ),
+                    child: Image.network(
+                      'https://lumiere-a.akamaihd.net/v1/images/open-uri20150608-27674-17ohmzf_d340a6bd.jpeg?width=1136',
+                      width: 700,
+                      height: 400,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed: () {
@@ -145,18 +170,18 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const KeuanganPage()));
+                      context,
+                      MaterialPageRoute(builder: (context) => const KeuanganPage()),
+                    );
                   },
                   child: const Text('Keuangan'),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SiswaPage()));
+                      context,
+                      MaterialPageRoute(builder: (context) => const SiswaPage()),
+                    );
                   },
                   child: const Text('Siswa'),
                 ),
