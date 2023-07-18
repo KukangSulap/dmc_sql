@@ -1,4 +1,5 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
+import 'package:dmc_sql/BagSiswa/detailSiswa.dart';
 import 'package:dmc_sql/BagSiswa/inputSiswa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -187,56 +188,61 @@ class _SiswaPageState extends State<SiswaPage> {
 
                                   return Column(
                                     children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "   ${index + 1}",
-                                                style: const TextStyle(
+                                      InkWell(
+                                        onTap: () {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailSiswaPage(dataSiswa: listSiswa[index],)));
+                                        },
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  "   ${index + 1}",
+                                                  style: const TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 17,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  "   $nama",
+                                                  style: const TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 17,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                )
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  "$tahun      ",
+                                                  style: const TextStyle(
                                                     color: Colors.black,
-                                                    fontSize: 17,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Text(
-                                                "   $nama",
-                                                style: const TextStyle(
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  "$semester      ",
+                                                  style: const TextStyle(
                                                     color: Colors.black,
-                                                    fontSize: 17,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              )
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "$tahun      ",
-                                                style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 15,
+                                                    fontSize: 15,
+                                                  ),
                                                 ),
-                                              ),
-                                              Text(
-                                                "$semester      ",
-                                                style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                              Text(
-                                                "$kelas   ",
-                                                style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 15,
-                                                ),
-                                              )
-                                            ],
-                                          )
-                                        ],
+                                                Text(
+                                                  "$kelas   ",
+                                                  style: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 15,
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(
