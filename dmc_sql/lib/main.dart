@@ -32,6 +32,14 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
   String dummyText =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id sem velit. Quisque fermentum eros non porta bibendum. Praesent pretium libero nec imperdiet semper. Nunc tellus augue, tempor ut laoreet ac, fringilla eu metus. Sed at mi sed augue pretium ullamcorper. Donec ultrices porttitor enim.';
 
+  final List<String> _placeNames = ['pipo', 'pipo', 'pop','pipo'];
+  final List<String> pathGambarYgy = [
+    'https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg',
+    'https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg',
+    'https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg',
+    'https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg'
+  ];
+
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style = TextButton.styleFrom(
@@ -100,6 +108,25 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                     return Column(
                       children: [
                         const SizedBox(height: 5),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.all(Radius.circular(10)
+                              ),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.all(Radius.circular(10),
+                              ),
+                              child: Image.network(
+                                'https://images.squarespace-cdn.com/content/v1/51cdafc4e4b09eb676a64e68/1618602622635-4LFSCPXPMK8MOR64BC2N/cars_trip.jpg',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 5.0),
                         FractionallySizedBox(
                           widthFactor: 0.8,
                           child: Container(
@@ -129,25 +156,6 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 8.0),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.all(Radius.circular(10)
-                              ),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: const BorderRadius.all(Radius.circular(10),
-                              ),
-                              child: Image.network(
-                                'https://images.squarespace-cdn.com/content/v1/51cdafc4e4b09eb676a64e68/1618602622635-4LFSCPXPMK8MOR64BC2N/cars_trip.jpg',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
                       ],
                     );
                   } else {
@@ -172,7 +180,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                                         overflow: TextOverflow.ellipsis,
                                         style: GoogleFonts.mPlusRounded1c(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 42.0,
+                                          fontSize: 56.0,
                                         ),
                                       ),
                                       const SizedBox(height: 10.0),
@@ -180,7 +188,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                                         dummyText,
                                         maxLines: 7,
                                         style: GoogleFonts.mPlusRounded1c(
-                                          fontSize: 20.0,
+                                          fontSize: 18.0,
                                           fontWeight: FontWeight.normal,
                                         ),
                                       ),
@@ -220,6 +228,84 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                 },
               ),
               const SizedBox(height: 16.0),
+              const Divider(),
+              Center(
+                child: Container(
+                  padding: const EdgeInsets.only(
+                    top: 10
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Foto Kegiatan",
+                        style: GoogleFonts.mPlusRounded1c(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      Text(
+                        'Dokumentasi Kegiatan',
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.mPlusRounded1c(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32.0,
+                        ),
+                      ),
+                      Text(
+                        'SQL',
+                        style: GoogleFonts.mPlusRounded1c(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.all(Radius.circular(10)
+                      ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(10),
+                      ),
+                      child: Image.network(
+                        'https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+              ),
+              Container(
+                child: Center(
+                  child: SizedBox(
+                    height: 220,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: _placeNames.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 10.0, right: 5.0),
+                          child: GestureDetector(
+                            child: PlaceCard(
+                              name: _placeNames[index],
+                              assetPath: pathGambarYgy[index],
+                            ),
+                            onTap: () {},
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -255,6 +341,37 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class PlaceCard extends StatelessWidget {
+  final String name;
+  final String assetPath;
+
+  PlaceCard({required this.name, required this.assetPath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 311.0,
+      height: 212.5,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.network(
+              assetPath,
+              height: 170.0,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+          const SizedBox(height: 8.0),
+          Text(name),
+        ],
       ),
     );
   }
