@@ -104,7 +104,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
             children: [
               LayoutBuilder(
                 builder: (context, constraints) {
-                  if (constraints.maxWidth < 600) {
+                  if (constraints.maxWidth < 950) {
                     return Column(
                       children: [
                         const SizedBox(height: 5),
@@ -139,7 +139,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: GoogleFonts.mPlusRounded1c(
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w800,
                                     fontSize: 35.0,
                                   ),
                                 ),
@@ -168,7 +168,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                           children: [
                             Expanded(
                               child: FractionallySizedBox(
-                                widthFactor: 0.8,
+                                widthFactor: 0.9,
                                 child: Container(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Column(
@@ -179,7 +179,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style: GoogleFonts.mPlusRounded1c(
-                                          fontWeight: FontWeight.bold,
+                                          fontWeight: FontWeight.w800,
                                           fontSize: 56.0,
                                         ),
                                       ),
@@ -248,14 +248,14 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                         'Dokumentasi Kegiatan',
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.mPlusRounded1c(
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w800,
                           fontSize: 32.0,
                         ),
                       ),
                       Text(
                         'SQL',
                         style: GoogleFonts.mPlusRounded1c(
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w800,
                           fontSize: 32.0,
                         ),
                       ),
