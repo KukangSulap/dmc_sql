@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'misc/listedText.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -306,6 +308,65 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                 ),
               ),
               const Divider(),
+              Padding(
+                padding: const EdgeInsets.all(50.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Visi SQL',
+                            style: GoogleFonts.mPlusRounded1c(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 32.0,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          ListedText(
+                            text: "Menjadi penyedia solusi teknologi terdepan yang mengubah cara orang bekerja dan hidup."
+                                "Menjadi pemimpin global dalam inovasi dan keberlanjutan dalam industri energi terbarukan."
+                                "Mengubah dunia melalui teknologi yang memungkinkan konektivitas dan akses informasi global."
+                                "Mewujudkan masa depan yang berkelanjutan dengan menyediakan produk ramah lingkungan dan solusi hijau."
+                                "Menginspirasi dan meningkatkan kualitas hidup melalui produk-produk kesehatan yang inovatif.",
+                            fontSize: 16.0,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const VerticalDivider(
+                      color: Colors.black,
+                      thickness: 5.0,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Misi SQL',
+                            style: GoogleFonts.mPlusRounded1c(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 32.0,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          ListedText(
+                            text: "Menjadi penyedia solusi teknologi terdepan yang mengubah cara orang bekerja dan hidup."
+                                "Menjadi pemimpin global dalam inovasi dan keberlanjutan dalam industri energi terbarukan."
+                                "Mengubah dunia melalui teknologi yang memungkinkan konektivitas dan akses informasi global."
+                                "Mewujudkan masa depan yang berkelanjutan dengan menyediakan produk ramah lingkungan dan solusi hijau."
+                                "Menginspirasi dan meningkatkan kualitas hidup melalui produk-produk kesehatan yang inovatif.",
+                            fontSize: 16.0,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -354,7 +415,7 @@ class PlaceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 311.0,
       height: 212.5,
       child: Column(
@@ -370,7 +431,11 @@ class PlaceCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8.0),
-          Text(name),
+          Text(
+              name,
+            style: GoogleFonts.mPlusRounded1c(
+              fontSize: 18.0,
+            )),
         ],
       ),
     );
