@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'misc/listedText.dart';
+import 'misc/placeCard.dart';
 
 void main() {
   runApp(MyApp());
@@ -231,136 +232,148 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
               ),
               const SizedBox(height: 16.0),
               const Divider(),
-              Center(
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    top: 10
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Foto Kegiatan",
-                        style: GoogleFonts.mPlusRounded1c(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                      Text(
-                        'Dokumentasi Kegiatan',
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.mPlusRounded1c(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 32.0,
-                        ),
-                      ),
-                      Text(
-                        'SQL',
-                        style: GoogleFonts.mPlusRounded1c(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 32.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.all(Radius.circular(10)
-                      ),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(10),
-                      ),
-                      child: Image.network(
-                        'https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-              ),
-              Container(
-                child: Center(
-                  child: SizedBox(
-                    height: 220,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: _placeNames.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 5.0),
-                          child: GestureDetector(
-                            child: PlaceCard(
-                              name: _placeNames[index],
-                              assetPath: pathGambarYgy[index],
-                            ),
-                            onTap: () {},
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              ),
-              const Divider(),
-              Padding(
-                padding: const EdgeInsets.all(50.0),
+                padding: const EdgeInsets.all(30.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Visi SQL',
-                            style: GoogleFonts.mPlusRounded1c(
-                              fontWeight: FontWeight.w800,
-                              fontSize: 32.0,
+                    Flexible(
+                      child: Container(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Visi SQL',
+                              style: GoogleFonts.mPlusRounded1c(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 32.0,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 5),
-                          ListedText(
-                            text: "Menjadi penyedia solusi teknologi terdepan yang mengubah cara orang bekerja dan hidup."
-                                "Menjadi pemimpin global dalam inovasi dan keberlanjutan dalam industri energi terbarukan."
-                                "Mengubah dunia melalui teknologi yang memungkinkan konektivitas dan akses informasi global."
-                                "Mewujudkan masa depan yang berkelanjutan dengan menyediakan produk ramah lingkungan dan solusi hijau."
-                                "Menginspirasi dan meningkatkan kualitas hidup melalui produk-produk kesehatan yang inovatif.",
-                            fontSize: 16.0,
-                          ),
-                        ],
+                            const SizedBox(height: 20),
+                            ListedText(
+                              text: "Menjadi penyedia solusi teknologi terdepan yang mengubah cara orang bekerja dan hidup.\n"
+                                  "Menjadi pemimpin global dalam inovasi dan keberlanjutan dalam industri energi terbarukan.\n"
+                                  "Mengubah dunia melalui teknologi yang memungkinkan konektivitas dan akses informasi global.\n"
+                                  "Mewujudkan masa depan yang berkelanjutan dengan menyediakan produk ramah lingkungan dan solusi hijau.\n"
+                                  "Menginspirasi dan meningkatkan kualitas hidup melalui produk-produk kesehatan yang inovatif.",
+                              fontSize: 16.0,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    const VerticalDivider(
+                    const Divider(
                       color: Colors.black,
-                      thickness: 5.0,
+                      thickness: 50.0,
+                      indent: 20.0,
+                      endIndent: 20.0,
                     ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Misi SQL',
-                            style: GoogleFonts.mPlusRounded1c(
-                              fontWeight: FontWeight.w800,
-                              fontSize: 32.0,
+                    Flexible(
+                      child: Container(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Misi SQL',
+                              style: GoogleFonts.mPlusRounded1c(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 32.0,
+                              ),
                             ),
+                            const SizedBox(height: 20),
+                            ListedText(
+                              text: "Menjadi penyedia solusi teknologi terdepan yang mengubah cara orang bekerja dan hidup.\n"
+                                  "Menjadi pemimpin global dalam inovasi dan keberlanjutan dalam industri energi terbarukan.\n"
+                                  "Mengubah dunia melalui teknologi yang memungkinkan konektivitas dan akses informasi global.\n"
+                                  "Mewujudkan masa depan yang berkelanjutan dengan menyediakan produk ramah lingkungan dan solusi hijau.\n"
+                                  "Menginspirasi dan meningkatkan kualitas hidup melalui produk-produk kesehatan yang inovatif.",
+                              fontSize: 16.0,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              Container(
+                color: const Color(0xFFEDC35F),
+                child: Column(
+                  children: [
+                    Center(
+                      child: Container(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Foto Kegiatan",
+                              style: GoogleFonts.mPlusRounded1c(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white
+                              ),
+                            ),
+                            Text(
+                              'Dokumentasi Kegiatan',
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.mPlusRounded1c(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 32.0, color: Colors.white
+                              ),
+                            ),
+                            Text(
+                              'SQL',
+                              style: GoogleFonts.mPlusRounded1c(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 32.0, color: Colors.white
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.all(Radius.circular(10)),
+                          child: Image.network(
+                            'https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg',
+                            fit: BoxFit.cover,
                           ),
-                          const SizedBox(height: 5),
-                          ListedText(
-                            text: "Menjadi penyedia solusi teknologi terdepan yang mengubah cara orang bekerja dan hidup."
-                                "Menjadi pemimpin global dalam inovasi dan keberlanjutan dalam industri energi terbarukan."
-                                "Mengubah dunia melalui teknologi yang memungkinkan konektivitas dan akses informasi global."
-                                "Mewujudkan masa depan yang berkelanjutan dengan menyediakan produk ramah lingkungan dan solusi hijau."
-                                "Menginspirasi dan meningkatkan kualitas hidup melalui produk-produk kesehatan yang inovatif.",
-                            fontSize: 16.0,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Center(
+                        child: SizedBox(
+                          height: 220,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: _placeNames.map((name) {
+                              final index = _placeNames.indexOf(name);
+                              return Padding(
+                                padding: const EdgeInsets.only(left: 10.0, right: 5.0),
+                                child: GestureDetector(
+                                  child: PlaceCard(
+                                    name: name,
+                                    assetPath: pathGambarYgy[index],
+                                  ),
+                                  onTap: () {},
+                                ),
+                              );
+                            }).toList(),
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ],
@@ -402,41 +415,6 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class PlaceCard extends StatelessWidget {
-  final String name;
-  final String assetPath;
-
-  PlaceCard({required this.name, required this.assetPath});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 311.0,
-      height: 212.5,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.network(
-              assetPath,
-              height: 170.0,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-          ),
-          const SizedBox(height: 8.0),
-          Text(
-              name,
-            style: GoogleFonts.mPlusRounded1c(
-              fontSize: 18.0,
-            )),
-        ],
       ),
     );
   }
