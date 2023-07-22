@@ -249,6 +249,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                               style: GoogleFonts.mPlusRounded1c(
                                 fontWeight: FontWeight.w800,
                                 fontSize: 32.0,
+                                color: const Color.fromARGB(200, 47, 29, 116)
                               ),
                             ),
                             const SizedBox(height: 20),
@@ -281,6 +282,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                               style: GoogleFonts.mPlusRounded1c(
                                 fontWeight: FontWeight.w800,
                                 fontSize: 32.0,
+                                  color: const Color.fromARGB(200, 47, 29, 116)
                               ),
                             ),
                             const SizedBox(height: 20),
