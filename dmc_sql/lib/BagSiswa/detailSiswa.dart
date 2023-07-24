@@ -1,4 +1,13 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
+import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailLomba.dart';
+import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailMurajaah.dart';
+import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailRaport.dart';
+import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailSmart.dart';
+import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailZiyadah.dart';
+import 'package:dmc_sql/BagSiswa/BagInputNilai/inputLomba.dart';
+import 'package:dmc_sql/BagSiswa/BagInputNilai/inputMurajaah.dart';
+import 'package:dmc_sql/BagSiswa/BagInputNilai/inputSmart.dart';
+import 'package:dmc_sql/BagSiswa/BagInputNilai/inputZiyadah.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -205,11 +214,47 @@ class BagianMenuKiri extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w800, fontSize: 26),
                   ),
                 ),
-                CustomButton(text: "Raport", onPressed: () {}),
-                CustomButton(text: "Lomba", onPressed: () {}),
-                CustomButton(text: "Smart", onPressed: () {}),
-                CustomButton(text: "Muraja'ah", onPressed: () {}),
-                CustomButton(text: "Ziyadah", onPressed: () {}),
+                CustomButton(
+                    text: "Raport",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const DetailRaportPage()));
+                    }),
+                CustomButton(
+                    text: "Lomba",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const DetailLombaPage()));
+                    }),
+                CustomButton(
+                    text: "Smart",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const DetailSmartPage()));
+                    }),
+                CustomButton(
+                    text: "Muraja'ah",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const DetailMurajaahPage()));
+                    }),
+                CustomButton(
+                    text: "Ziyadah",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const DetailZiyadahPage()));
+                    }),
               ],
             ),
           ),
@@ -230,11 +275,46 @@ class BagianMenuKiri extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w800, fontSize: 26),
                   ),
                 ),
-                CustomButton(text: "Input Raport", onPressed: () {}),
-                CustomButton(text: "Input Lomba", onPressed: () {}),
-                CustomButton(text: "Input Smart", onPressed: () {}),
-                CustomButton(text: "Input Muraja'ah", onPressed: () {}),
-                CustomButton(text: "Input Ziyadah", onPressed: () {}),
+                CustomButton(
+                    text: "Input Raport",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const InputLombaPage()));
+                    }),
+                CustomButton(
+                    text: "Input Lomba",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const InputLombaPage()));
+                    }),
+                CustomButton(
+                    text: "Input Smart",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const InputSmartPage()));
+                    }),
+                CustomButton(
+                    text: "Input Muraja'ah",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const InputMurajaahPage()));
+                    }),
+                CustomButton(
+                    text: "Input Ziyadah",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const InputZiyadahPage()));
+                    }),
               ],
             ),
           )
