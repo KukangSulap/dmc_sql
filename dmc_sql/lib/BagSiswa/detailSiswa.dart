@@ -36,7 +36,7 @@ class _DetailSiswaPageState extends State<DetailSiswaPage> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(flex: 1, child: BagianNilai()),
+                    Expanded(flex: 1, child: BagianMenuKiri()),
                     Expanded(
                       flex: 3,
                       child: BagianProfil(
@@ -175,105 +175,101 @@ class BagianProfil extends StatelessWidget {
   }
 }
 
-class BagianNilai extends StatelessWidget {
-  const BagianNilai({
+class BagianMenuKiri extends StatelessWidget {
+  const BagianMenuKiri({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Container(
-          padding: EdgeInsets.all(10),
-          width: 336,
-          decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(
-                  side: const BorderSide(width: 1.5),
-                  borderRadius: BorderRadius.circular(8))),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                "Detail Nilai",
-                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Raport",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Lomba",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Smart",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Muraja'ah",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Ziyadah",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-            ],
+    return Container(
+      margin: EdgeInsets.only(right: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            // padding: EdgeInsets.all(10),
+            width: 336,
+            decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                    side: const BorderSide(width: 1.5),
+                    borderRadius: BorderRadius.circular(8))),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: const Text(
+                    "Detail Nilai",
+                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 26),
+                  ),
+                ),
+                CustomButton(text: "Raport", onPressed: () {}),
+                CustomButton(text: "Lomba", onPressed: () {}),
+                CustomButton(text: "Smart", onPressed: () {}),
+                CustomButton(text: "Muraja'ah", onPressed: () {}),
+                CustomButton(text: "Ziyadah", onPressed: () {}),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
+          Container(
+            width: 336,
+            decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                    side: const BorderSide(width: 1.5),
+                    borderRadius: BorderRadius.circular(8))),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: const Text(
+                    "Input Nilai",
+                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 26),
+                  ),
+                ),
+                CustomButton(text: "Input Raport", onPressed: () {}),
+                CustomButton(text: "Input Lomba", onPressed: () {}),
+                CustomButton(text: "Input Smart", onPressed: () {}),
+                CustomButton(text: "Input Muraja'ah", onPressed: () {}),
+                CustomButton(text: "Input Ziyadah", onPressed: () {}),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+
+  const CustomButton({required this.text, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      alignment: Alignment.centerLeft,
+      child: TextButton(
+        onPressed: onPressed,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.transparent),
+          padding: MaterialStateProperty.all(EdgeInsets.zero),
+        ),
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontSize: 26.0,
+            color:
+                Colors.black, // Change the text color as per your requirement
           ),
         ),
-        SizedBox(height: 10),
-        Container(
-          padding: EdgeInsets.all(10),
-          width: 336,
-          decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(
-                  side: const BorderSide(width: 1.5),
-                  borderRadius: BorderRadius.circular(8))),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                "Input Nilai",
-                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Input Raport",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Input Lomba",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Input Smart",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Input Muraja'ah",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-              Text(
-                "Input Ziyadah",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 26),
-              ),
-              SizedBox(height: 10),
-            ],
-          ),
-        )
-      ],
+      ),
     );
   }
 }
