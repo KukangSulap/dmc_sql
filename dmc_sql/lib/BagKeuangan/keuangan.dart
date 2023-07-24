@@ -33,7 +33,9 @@ class _KeuanganPageState extends State<KeuanganPage> {
     );
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBarAdmin(page: 'k',),
+      appBar: AppBarAdmin(
+        page: 'k',
+      ),
       body: SafeArea(
         child: Row(
           children: const [
@@ -71,54 +73,61 @@ class SisiKananKeuangan extends StatelessWidget {
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(width: 1.5),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            const Text(
+                    ListTile(
+                      title: Row(
+                        children: [
+                          const Flexible(
+                            child: Text(
                               "Data Pemasukan",
                               style:
                                   TextStyle(fontSize: 20, color: Colors.black),
                             ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.filter),
-                            )
-                          ],
-                        ),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                                side: const BorderSide(color: Colors.black),
-                              ),
+                          ),
+                          SizedBox(width: 5),
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.filter),
+                          ),
+                        ],
+                      ),
+                      trailing: ElevatedButton(
+                        style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              side: const BorderSide(color: Colors.black),
                             ),
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.white),
                           ),
-                          onPressed: () {
-                            print("testes");
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const EditKeuangan(
-                                          status: "Pemasukan",
-                                        )));
-                          },
-                          child: const CustomButton(
-                            title: "Edit",
-                          ),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
                         ),
-                      ],
+                        onPressed: () {
+                          print("testes");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const EditKeuangan(
+                                        status: "Pemasukan",
+                                      )));
+                        },
+                        child: const CustomButton(
+                          title: "Edit",
+                          widths: 70,
+                        ),
+                      ),
                     ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+
+                    //   ],
+                    // ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
                       height: 1,
@@ -170,51 +179,53 @@ class SisiKananKeuangan extends StatelessWidget {
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(width: 1.5),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            const Text(
+                    ListTile(
+                      title: Row(
+                        children: [
+                          const Flexible(
+                            child: Text(
                               "Data Keluaran",
                               style:
                                   TextStyle(fontSize: 20, color: Colors.black),
                             ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.filter),
-                            )
-                          ],
-                        ),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                                side: const BorderSide(color: Colors.black),
-                              ),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.filter),
+                          )
+                        ],
+                      ),
+                      trailing: ElevatedButton(
+                        style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              side: const BorderSide(color: Colors.black),
                             ),
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.white),
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const EditKeuangan(
-                                        status: "Keluaran")));
-                          },
-                          child: const CustomButton(
-                            title: "Edit",
-                          ),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
                         ),
-                      ],
+                        onPressed: () {
+                          print("testes");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const EditKeuangan(
+                                        status: "Keluaran",
+                                      )));
+                        },
+                        child: const CustomButton(
+                          title: "Edit",
+                          widths: 70,
+                        ),
+                      ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
@@ -285,7 +296,7 @@ class SisiKiriKeuangan extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(8),
                   border: Border.all(color: Colors.black, width: 1.5),
                 ),
                 child: const TextField(
@@ -302,11 +313,12 @@ class SisiKiriKeuangan extends StatelessWidget {
               // Total uang
               Container(
                 margin: const EdgeInsets.only(top: 10),
-                height: 100,
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                // height: 100,
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(width: 1.5),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 child: Column(
@@ -336,7 +348,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(width: 1.5),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 child: Column(
@@ -370,7 +382,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius: BorderRadius.circular(8),
                               border:
                                   Border.all(color: Colors.black, width: 1.5),
                             ),
@@ -386,7 +398,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(top: 10),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius: BorderRadius.circular(8),
                               border:
                                   Border.all(color: Colors.black, width: 1.5),
                             ),
@@ -402,7 +414,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(top: 10),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius: BorderRadius.circular(8),
                               border:
                                   Border.all(color: Colors.black, width: 1.5),
                             ),
@@ -418,81 +430,71 @@ class SisiKiriKeuangan extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          Container(
-                            width: 350,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                ElevatedButton(
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                        side: const BorderSide(
-                                            color: Colors.black),
+                          Expanded(
+                            flex: 0,
+                            child: Container(
+                              // width: 350,
+                              child: Wrap(
+                                // alignment: WrapAlignment.spaceBetween,
+
+                                // direction: Axis.vertical,
+                                children: [
+                                  ElevatedButton(
+                                    style: ButtonStyle(
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          side: const BorderSide(
+                                              color: Colors.black),
+                                        ),
+                                      ),
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Colors.white),
+                                    ),
+                                    onPressed: () {
+                                      // Handle button press
+                                    },
+                                    child: Container(
+                                      height: 40,
+                                      width: 120,
+                                      child: const CustomButton(
+                                        title: "Bukti Pembayaran",
+                                        widths: 120,
                                       ),
                                     ),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.white),
                                   ),
-                                  onPressed: () {
-                                    // Handle button press
-                                  },
-                                  child: Container(
-                                    height: 40,
-                                    width: 120,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: const [
-                                        Text(
-                                          'Bukti Pembayaran',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
+                                  const SizedBox(
+                                      width:
+                                          40), // Tambahkan jarak antara tombol
+                                  ElevatedButton(
+                                    style: ButtonStyle(
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          side: const BorderSide(
+                                              color: Colors.black),
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                ElevatedButton(
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                        side: const BorderSide(
-                                            color: Colors.black),
                                       ),
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Colors.white),
                                     ),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.white),
-                                  ),
-                                  onPressed: () {
-                                    // Handle button press
-                                    print("hahahaha");
-                                  },
-                                  child: Container(
-                                    height: 40,
-                                    width: 120,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: const [
-                                        Text(
-                                          'Masukan',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
+                                    onPressed: () {
+                                      // Handle button press
+                                      print("hahahaha");
+                                    },
+                                    child: const CustomButton(
+                                      title: "Masukan",
+                                      widths: 120,
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           )
                         ],
@@ -508,7 +510,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(width: 1.5),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 child: Column(
@@ -542,7 +544,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius: BorderRadius.circular(8.0),
                               border:
                                   Border.all(color: Colors.black, width: 1.5),
                             ),
@@ -558,7 +560,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(top: 10),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius: BorderRadius.circular(8.0),
                               border:
                                   Border.all(color: Colors.black, width: 1.5),
                             ),
@@ -574,7 +576,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(top: 10),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius: BorderRadius.circular(8.0),
                               border:
                                   Border.all(color: Colors.black, width: 1.5),
                             ),
@@ -591,38 +593,40 @@ class SisiKiriKeuangan extends StatelessWidget {
                             height: 10,
                           ),
                           Container(
-                            width: 350,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            // width: 350,
+                            child: Wrap(
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                ElevatedButton(
-                                    style: ButtonStyle(
-                                      shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15.0),
-                                          side: const BorderSide(
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              Colors.white),
-                                    ),
-                                    onPressed: () {
-                                      // Handle button press
-                                    },
-                                    child: const CustomButton(
-                                      title: "Bukti Pembayaran",
-                                    )),
                                 ElevatedButton(
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
                                         RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
                                         borderRadius:
-                                            BorderRadius.circular(15.0),
+                                            BorderRadius.circular(8.0),
+                                        side: const BorderSide(
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(Colors.white),
+                                  ),
+                                  onPressed: () {
+                                    // Handle button press
+                                  },
+                                  child: const CustomButton(
+                                    title: "Bukti Pembayaran",
+                                    widths: 120,
+                                  ),
+                                ),
+                                const SizedBox(width: 40),
+                                ElevatedButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                         side: const BorderSide(
                                             color: Colors.black),
                                       ),
@@ -635,6 +639,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                                   },
                                   child: const CustomButton(
                                     title: "Masukan",
+                                    widths: 120,
                                   ),
                                 ),
                               ],
@@ -658,15 +663,17 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     required this.title,
+    required this.widths,
   });
 
   final String title;
+  final double widths;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 40,
-      width: 120,
+      width: widths,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
