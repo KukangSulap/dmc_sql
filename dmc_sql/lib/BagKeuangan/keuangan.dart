@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import 'inputPemasukan.dart';
+
 List<List<String>> pemasukanList = [
   ['Pembayaran SPP Ahmad Solihun - xxxxxxx013', '12 Juni 2023', '250.000'],
   ['Pembayaran SPP Agita Maharani - xxxxxxx012', '20 Juli 2023', '250.000'],
@@ -97,30 +99,29 @@ class SisiKananKeuangan extends StatelessWidget {
                       ),
                       trailing: ElevatedButton(
                         style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                               side: const BorderSide(color: Colors.black),
                             ),
                           ),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
+                          backgroundColor: MaterialStateProperty.all(Colors.white),
                         ),
                         onPressed: () {
                           print("testes");
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const EditKeuangan(
-                                        status: "Pemasukan",
-                                      )));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const InputKeuangan(),
+                            ),
+                          );
                         },
                         child: const CustomButton(
-                          title: "Edit",
+                          title: "Input",
                           widths: 70,
                         ),
-                      ),
+                      )
+
                     ),
                     // Row(
                     //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
