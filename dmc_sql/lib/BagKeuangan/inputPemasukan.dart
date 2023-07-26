@@ -1,3 +1,4 @@
+import 'package:dmc_sql/BagKeuangan/keuangan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,7 +13,7 @@ class InputKeuangan extends StatefulWidget {
 }
 
 class _InputKeuanganState extends State<InputKeuangan> {
-  String _selectedCategory = 'Category 1';
+  String _selectedCategory = 'SPP';
   TextEditingController _nameController = TextEditingController();
   TextEditingController _nisController = TextEditingController();
   TextEditingController _quantityController = TextEditingController();
@@ -48,7 +49,7 @@ class _InputKeuanganState extends State<InputKeuangan> {
                     _selectedCategory = value!;
                   });
                 },
-                items: ['Category 1', 'Category 2', 'Category 3']
+                items: ['SPP', 'Donasi']
                     .map((category) => DropdownMenuItem<String>(
                   value: category,
                   child: Text(category),
@@ -140,6 +141,24 @@ class _InputKeuanganState extends State<InputKeuangan> {
                   fit: BoxFit.cover,
                 ),
               ],
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const KeuanganPage()),
+                  );
+                },
+                child: const Text('Back'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const KeuanganPage()),
+                  );
+                },
+                child: const Text('Finish'),
+              ),
             ],
           ),
         ),

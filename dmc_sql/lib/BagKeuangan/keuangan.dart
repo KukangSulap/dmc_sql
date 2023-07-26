@@ -1,9 +1,8 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
-import 'package:dmc_sql/BagKeuangan/editKeuangan.dart';
+import 'package:dmc_sql/BagKeuangan/PemasukanDetailVariants/donasi.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 import 'inputPemasukan.dart';
 
@@ -30,9 +29,6 @@ class KeuanganPage extends StatefulWidget {
 class _KeuanganPageState extends State<KeuanganPage> {
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = TextButton.styleFrom(
-      foregroundColor: Theme.of(context).colorScheme.onPrimary,
-    );
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBarAdmin(
@@ -90,7 +86,7 @@ class SisiKananKeuangan extends StatelessWidget {
                                   TextStyle(fontSize: 20, color: Colors.black),
                             ),
                           ),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           IconButton(
                             onPressed: () {},
                             icon: const Icon(Icons.filter),
@@ -123,12 +119,6 @@ class SisiKananKeuangan extends StatelessWidget {
                       )
 
                     ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   children: [
-
-                    //   ],
-                    // ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
                       height: 1,
@@ -143,28 +133,36 @@ class SisiKananKeuangan extends StatelessWidget {
                           String leftInfo = pemasukanList[index][1];
                           String rightInfo = pemasukanList[index][2];
 
-                          return Column(
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  itemName,
-                                  style: const TextStyle(fontSize: 20),
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.pop(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PemasukanDetailDonasi(),
                                 ),
-                                subtitle: Text(leftInfo),
-                                trailing: Text(
-                                  "Rp $rightInfo +",
-                                  style: const TextStyle(
-                                      fontSize: 30, color: Colors.black),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                ListTile(
+                                  title: Text(
+                                    itemName,
+                                    style: const TextStyle(fontSize: 20),
+                                  ),
+                                  subtitle: Text(leftInfo),
+                                  trailing: Text(
+                                    "Rp $rightInfo -",
+                                    style: const TextStyle(fontSize: 30, color: Colors.black),
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                margin:
-                                    const EdgeInsets.only(top: 10, bottom: 10),
-                                height: 0.5,
-                                width: double.infinity,
-                                color: Colors.black,
-                              )
-                            ],
+                                Container(
+                                  margin: const EdgeInsets.only(top: 10, bottom: 10),
+                                  height: 0.5,
+                                  width: double.infinity,
+                                  color: Colors.black,
+                                )
+                              ],
+                            ),
                           );
                         },
                       ),
@@ -200,32 +198,6 @@ class SisiKananKeuangan extends StatelessWidget {
                             icon: const Icon(Icons.filter),
                           )
                         ],
-                      ),
-                      trailing: ElevatedButton(
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              side: const BorderSide(color: Colors.black),
-                            ),
-                          ),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                        ),
-                        onPressed: () {
-                          print("testes");
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const EditKeuangan(
-                                        status: "Keluaran",
-                                      )));
-                        },
-                        child: const CustomButton(
-                          title: "Edit",
-                          widths: 70,
-                        ),
                       ),
                     ),
                     Container(
@@ -345,6 +317,7 @@ class SisiKiriKeuangan extends StatelessWidget {
               // ==============================================  Pemasukan  ================================================================
               Container(
                 margin: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
                 // height: 100,
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
@@ -369,144 +342,15 @@ class SisiKiriKeuangan extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                             ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "+ 12,1% dari minggu lalu",
-                            ),
                           ],
                         )),
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      child: Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              border:
-                                  Border.all(color: Colors.black, width: 1.5),
-                            ),
-                            child: const TextField(
-                              decoration: InputDecoration(
-                                hintText: 'Input Pemasukan',
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 14.0, vertical: 12.0),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              border:
-                                  Border.all(color: Colors.black, width: 1.5),
-                            ),
-                            child: const TextField(
-                              decoration: InputDecoration(
-                                hintText: 'Input Jumlah Pemasukan',
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 14.0, vertical: 12.0),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              border:
-                                  Border.all(color: Colors.black, width: 1.5),
-                            ),
-                            child: const TextField(
-                              decoration: InputDecoration(
-                                hintText: 'Tanggal',
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 14.0, vertical: 12.0),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Expanded(
-                            flex: 0,
-                            child: Container(
-                              // width: 350,
-                              child: Wrap(
-                                // alignment: WrapAlignment.spaceBetween,
-
-                                // direction: Axis.vertical,
-                                children: [
-                                  ElevatedButton(
-                                    style: ButtonStyle(
-                                      shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          side: const BorderSide(
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              Colors.white),
-                                    ),
-                                    onPressed: () {
-                                      // Handle button press
-                                    },
-                                    child: Container(
-                                      height: 40,
-                                      width: 120,
-                                      child: const CustomButton(
-                                        title: "Bukti Pembayaran",
-                                        widths: 120,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                      width:
-                                          40), // Tambahkan jarak antara tombol
-                                  ElevatedButton(
-                                    style: ButtonStyle(
-                                      shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          side: const BorderSide(
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              Colors.white),
-                                    ),
-                                    onPressed: () {
-                                      // Handle button press
-                                      print("hahahaha");
-                                    },
-                                    child: const CustomButton(
-                                      title: "Masukan",
-                                      widths: 120,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
                   ],
                 ),
               ),
               // ========================================  Keluaran  ==============================================================
               Container(
-                margin: const EdgeInsets.only(top: 10, bottom: 10),
+                margin: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
                 // height: 100,
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
@@ -518,7 +362,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                   children: [
                     ListTile(
                         title: const Text(
-                          'Keluaran',
+                          'Pengeluaran',
                           style: TextStyle(color: Colors.black),
                         ),
                         subtitle: Column(
@@ -531,124 +375,8 @@ class SisiKiriKeuangan extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                             ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "- 10,1% dari minggu lalu",
-                            ),
                           ],
                         )),
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      child: Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0),
-                              border:
-                                  Border.all(color: Colors.black, width: 1.5),
-                            ),
-                            child: const TextField(
-                              decoration: InputDecoration(
-                                hintText: 'Input Keluaran',
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 14.0, vertical: 12.0),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0),
-                              border:
-                                  Border.all(color: Colors.black, width: 1.5),
-                            ),
-                            child: const TextField(
-                              decoration: InputDecoration(
-                                hintText: 'Input Jumlah Keluaran',
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 14.0, vertical: 12.0),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0),
-                              border:
-                                  Border.all(color: Colors.black, width: 1.5),
-                            ),
-                            child: const TextField(
-                              decoration: InputDecoration(
-                                hintText: 'Tanggal',
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 14.0, vertical: 12.0),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            // width: 350,
-                            child: Wrap(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                ElevatedButton(
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        side: const BorderSide(
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.white),
-                                  ),
-                                  onPressed: () {
-                                    // Handle button press
-                                  },
-                                  child: const CustomButton(
-                                    title: "Bukti Pembayaran",
-                                    widths: 120,
-                                  ),
-                                ),
-                                const SizedBox(width: 40),
-                                ElevatedButton(
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        side: const BorderSide(
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(Colors.white),
-                                  ),
-                                  onPressed: () {
-                                    // Handle button press
-                                  },
-                                  child: const CustomButton(
-                                    title: "Masukan",
-                                    widths: 120,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
                   ],
                 ),
               ),
