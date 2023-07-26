@@ -3,10 +3,10 @@ import 'package:dmc_sql/BagKeuangan/pemasukanDetail.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(PemasukanDetailSPP());
+  runApp(PemasukanDetailDonasi());
 }
 
-class PemasukanDetailSPP extends StatelessWidget {
+class PemasukanDetailDonasi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,7 +17,7 @@ class PemasukanDetailSPP extends StatelessWidget {
             texts: const [
               'Title',
               'tanggal',
-              'SPP',
+              'Donasi',
               'jumlah',
               'NIS',
               'notes',
