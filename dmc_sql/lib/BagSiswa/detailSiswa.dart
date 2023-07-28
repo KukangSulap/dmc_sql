@@ -6,8 +6,10 @@ import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailSmart.dart';
 import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailZiyadah.dart';
 import 'package:dmc_sql/BagSiswa/BagInputNilai/inputLomba.dart';
 import 'package:dmc_sql/BagSiswa/BagInputNilai/inputMurajaah.dart';
+import 'package:dmc_sql/BagSiswa/BagInputNilai/inputRapor.dart';
 import 'package:dmc_sql/BagSiswa/BagInputNilai/inputSmart.dart';
 import 'package:dmc_sql/BagSiswa/BagInputNilai/inputZiyadah.dart';
+import 'package:dmc_sql/BagSiswa/inputSiswa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -116,8 +118,8 @@ class BagianProfil extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: Image.network(
-                    'https://www.liveabout.com/thmb/mODlBLF75DTwT3i4zHkXFGrmhNA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/pajama-day-kid-58b8c9345f9b58af5c8c717d.jpg'),
+                // child: Image.network(
+                //     'https://www.liveabout.com/thmb/mODlBLF75DTwT3i4zHkXFGrmhNA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/pajama-day-kid-58b8c9345f9b58af5c8c717d.jpg'),
               ),
               Text(
                 "${nama.trim()}",
@@ -281,7 +283,7 @@ class BagianMenuKiri extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const InputLombaPage()));
+                              builder: (context) => const InputRaporPage()));
                     }),
                 CustomButton(
                     text: "Input Lomba",
@@ -379,7 +381,10 @@ class SubAppBar extends StatelessWidget {
             ),
             backgroundColor: MaterialStateProperty.all(Colors.white),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => InputSiswaPage()));
+          },
           child: Container(
             height: 55,
             padding: const EdgeInsets.symmetric(horizontal: 50),
