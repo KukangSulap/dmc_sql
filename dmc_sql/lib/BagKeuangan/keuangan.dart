@@ -1,5 +1,6 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:dmc_sql/BagKeuangan/PemasukanDetailVariants/donasi.dart';
+import 'package:dmc_sql/BagKeuangan/inputPengeluaran.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -108,7 +109,7 @@ class SisiKananKeuangan extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const InputKeuangan(),
+                              builder: (context) => const InputPemasukan(),
                             ),
                           );
                         },
@@ -117,7 +118,6 @@ class SisiKananKeuangan extends StatelessWidget {
                           widths: 70,
                         ),
                       )
-
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
@@ -199,6 +199,30 @@ class SisiKananKeuangan extends StatelessWidget {
                           )
                         ],
                       ),
+                        trailing: ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                side: const BorderSide(color: Colors.black),
+                              ),
+                            ),
+                            backgroundColor: MaterialStateProperty.all(Colors.white),
+                          ),
+                          onPressed: () {
+                            print("testes");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => InputPengeluaran(),
+                              ),
+                            );
+                          },
+                          child: const CustomButton(
+                            title: "Input",
+                            widths: 70,
+                          ),
+                        )
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
@@ -329,7 +353,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                   children: [
                     ListTile(
                         title: const Text(
-                          'Pemasukan',
+                          'Pemasukan Bulanan',
                           style: TextStyle(color: Colors.black),
                         ),
                         subtitle: Column(
@@ -362,7 +386,7 @@ class SisiKiriKeuangan extends StatelessWidget {
                   children: [
                     ListTile(
                         title: const Text(
-                          'Pengeluaran',
+                          'Pengeluaran Bulanan',
                           style: TextStyle(color: Colors.black),
                         ),
                         subtitle: Column(
@@ -409,7 +433,7 @@ class CustomButton extends StatelessWidget {
           Text(
             title,
             style: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold),
+                color: Colors.grey, fontWeight: FontWeight.bold),
           ),
         ],
       ),

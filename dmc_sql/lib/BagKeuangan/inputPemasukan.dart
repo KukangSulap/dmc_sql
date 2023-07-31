@@ -5,14 +5,14 @@ import 'package:image_picker/image_picker.dart';
 
 import '../AppBar/appBarAdmin.dart';
 
-class InputKeuangan extends StatefulWidget {
-  const InputKeuangan({super.key});
+class InputPemasukan extends StatefulWidget {
+  const InputPemasukan({super.key});
 
   @override
-  _InputKeuanganState createState() => _InputKeuanganState();
+  _InputPemasukanState createState() => _InputPemasukanState();
 }
 
-class _InputKeuanganState extends State<InputKeuangan> {
+class _InputPemasukanState extends State<InputPemasukan> {
   String _selectedCategory = 'SPP';
   TextEditingController _nameController = TextEditingController();
   TextEditingController _nisController = TextEditingController();
@@ -169,6 +169,6 @@ class _InputKeuanganState extends State<InputKeuangan> {
 
 void main() {
   runApp(MaterialApp(
-    home: InputKeuangan(),
+    home: InputPemasukan(),
   ));
 }
