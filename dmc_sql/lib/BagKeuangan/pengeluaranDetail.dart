@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TemplateDetailPengeluaran extends StatelessWidget {
   final List<String> texts;
   final String imageUrl;
 
-  TemplateDetailPengeluaran({required this.texts, required this.imageUrl});
+  const TemplateDetailPengeluaran({super.key, required this.texts, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +13,15 @@ class TemplateDetailPengeluaran extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        Text(
+          'Detail Pengeluaran ${texts[0]}',
+          overflow: TextOverflow.ellipsis,
+          style: GoogleFonts.mPlusRounded1c(
+            fontWeight: FontWeight.w800,
+            fontSize: 20.0,
+          ),
+        ),
+        const SizedBox(height: 16),
         Text(
           texts[0],
           style: const TextStyle(fontWeight: FontWeight.bold),

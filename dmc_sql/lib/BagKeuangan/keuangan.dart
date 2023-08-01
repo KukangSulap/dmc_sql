@@ -1,6 +1,7 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:dmc_sql/BagKeuangan/PemasukanDetailVariants/donasi.dart';
 import 'package:dmc_sql/BagKeuangan/inputPengeluaran.dart';
+import 'package:dmc_sql/BagKeuangan/pengeluaranDetail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -83,8 +84,8 @@ class SisiKananKeuangan extends StatelessWidget {
                           const Flexible(
                             child: Text(
                               "Data Pemasukan",
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.black),
+                              style: TextStyle(
+                                  fontSize: 20, color: Colors.black),
                             ),
                           ),
                           const SizedBox(width: 5),
@@ -96,13 +97,15 @@ class SisiKananKeuangan extends StatelessWidget {
                       ),
                       trailing: ElevatedButton(
                         style: ButtonStyle(
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          shape: MaterialStateProperty.all<
+                              RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                               side: const BorderSide(color: Colors.black),
                             ),
                           ),
-                          backgroundColor: MaterialStateProperty.all(Colors.white),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
                         ),
                         onPressed: () {
                           print("testes");
@@ -152,11 +155,13 @@ class SisiKananKeuangan extends StatelessWidget {
                                   subtitle: Text(leftInfo),
                                   trailing: Text(
                                     "Rp $rightInfo -",
-                                    style: const TextStyle(fontSize: 30, color: Colors.black),
+                                    style: const TextStyle(
+                                        fontSize: 30, color: Colors.black),
                                   ),
                                 ),
                                 Container(
-                                  margin: const EdgeInsets.only(top: 10, bottom: 10),
+                                  margin: const EdgeInsets.only(
+                                      top: 10, bottom: 10),
                                   height: 0.5,
                                   width: double.infinity,
                                   color: Colors.black,
@@ -189,8 +194,8 @@ class SisiKananKeuangan extends StatelessWidget {
                           const Flexible(
                             child: Text(
                               "Data Keluaran",
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.black),
+                              style: TextStyle(
+                                  fontSize: 20, color: Colors.black),
                             ),
                           ),
                           IconButton(
@@ -199,30 +204,32 @@ class SisiKananKeuangan extends StatelessWidget {
                           )
                         ],
                       ),
-                        trailing: ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                side: const BorderSide(color: Colors.black),
-                              ),
+                      trailing: ElevatedButton(
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all<
+                              RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              side: const BorderSide(color: Colors.black),
                             ),
-                            backgroundColor: MaterialStateProperty.all(Colors.white),
                           ),
-                          onPressed: () {
-                            print("testes");
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => InputPengeluaran(),
-                              ),
-                            );
-                          },
-                          child: const CustomButton(
-                            title: "Input",
-                            widths: 70,
-                          ),
-                        )
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
+                        ),
+                        onPressed: () {
+                          print("testes");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => InputPengeluaran(),
+                            ),
+                          );
+                        },
+                        child: const CustomButton(
+                          title: "Input",
+                          widths: 70,
+                        ),
+                      )
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
@@ -232,34 +239,44 @@ class SisiKananKeuangan extends StatelessWidget {
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: pemasukanList.length,
+                        itemCount: keluaranList.length,
                         itemBuilder: (BuildContext context, int index) {
-                          String itemName = pemasukanList[index][0];
-                          String leftInfo = pemasukanList[index][1];
-                          String rightInfo = pemasukanList[index][2];
+                          String itemName = keluaranList[index][0];
+                          String leftInfo = keluaranList[index][1];
+                          String rightInfo = keluaranList[index][2];
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => TemplateDetailPengeluaran(texts: keluaranList[index], imageUrl: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg',),
+                                ),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                ListTile(
+                                  title: Text(
+                                    itemName,
+                                    style: const TextStyle(fontSize: 20),
+                                  ),
+                                  subtitle: Text(leftInfo),
+                                  trailing: Text(
+                                    "Rp $rightInfo -",
+                                    style: const TextStyle(
+                                        fontSize: 30, color: Colors.black),
+                                  ),
 
-                          return Column(
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  itemName,
-                                  style: const TextStyle(fontSize: 20),
                                 ),
-                                subtitle: Text(leftInfo),
-                                trailing: Text(
-                                  "Rp $rightInfo -",
-                                  style: const TextStyle(
-                                      fontSize: 30, color: Colors.black),
-                                ),
-                              ),
-                              Container(
-                                margin:
-                                    const EdgeInsets.only(top: 10, bottom: 10),
-                                height: 0.5,
-                                width: double.infinity,
-                                color: Colors.black,
-                              )
-                            ],
+                                Container(
+                                  margin:
+                                      const EdgeInsets.only(top: 10, bottom: 10),
+                                  height: 0.5,
+                                  width: double.infinity,
+                                  color: Colors.black,
+                                )
+                              ],
+                            ),
                           );
                         },
                       ),
