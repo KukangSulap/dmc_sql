@@ -141,7 +141,7 @@ class SisiKananKeuangan extends StatelessWidget {
                               Navigator.pop(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => PemasukanDetailDonasi(),
+                                  builder: (context) => const PemasukanDetailDonasi(),
                                 ),
                               );
                             },
