@@ -2,6 +2,7 @@ import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:intl/intl.dart';
 
 const List<String> listGrade = <String>['A', 'B', 'C'];
 
@@ -11,14 +12,30 @@ List<List<String>> listNilaiSmart = [
   ['Adaptation', 'A'],
 ];
 
+List<List<dynamic>> listSmart = [];
+
 class InputSmartPage extends StatefulWidget {
-  const InputSmartPage({super.key});
+  const InputSmartPage(
+      {super.key, required this.namaSiswa, required this.nisSiswa});
+
+  final String namaSiswa;
+  final String nisSiswa;
 
   @override
   State<InputSmartPage> createState() => _InputSmartPageState();
 }
 
 class _InputSmartPageState extends State<InputSmartPage> {
+  late final TextEditingController _namaCont =
+      TextEditingController(text: widget.namaSiswa);
+  late final TextEditingController _nisCont =
+      TextEditingController(text: widget.nisSiswa);
+  final TextEditingController _tglCont = TextEditingController();
+
+  final TextEditingController _namaSmartCont = TextEditingController();
+  // final TextEditingController _nilaiSmartCont = TextEditingController();
+  final TextEditingController _scoreSmartCont = TextEditingController();
+
   String _selectedItem = listGrade.first;
 
   @override
@@ -31,13 +48,36 @@ class _InputSmartPageState extends State<InputSmartPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text("Data Siswa"),
-            const TextField(
-              decoration: InputDecoration(hintText: 'Nama Siswa'),
+            TextField(
+              controller: _namaCont,
+              readOnly: true,
+              decoration: const InputDecoration(hintText: 'Nama Siswa'),
             ),
-            const TextField(
-              decoration: InputDecoration(hintText: 'Nomor Induk Siswa'),
+            TextField(
+              controller: _nisCont,
+              readOnly: true,
+              decoration: const InputDecoration(hintText: 'Nomor Induk Siswa'),
             ),
-            const TextField(
+            TextField(
+              onTap: () async {
+                DateTime? selectedDate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2012),
+                  lastDate: DateTime(2026),
+                );
+
+                if (selectedDate != null) {
+                  // Format the selected date and set it as the value of the TextField
+                  final formattedDate =
+                      DateFormat('dd/MMMM/yyyy  ').format(selectedDate);
+                  setState(() {
+                    _tglCont.text = formattedDate;
+                  });
+                }
+              },
+              readOnly: true,
+              controller: _tglCont,
               decoration: InputDecoration(
                   hintText: 'Tanggal Smart',
                   prefixIcon: Icon(Icons.calendar_today)),
@@ -50,7 +90,8 @@ class _InputSmartPageState extends State<InputSmartPage> {
                 children: [
                   Expanded(
                     flex: 6,
-                    child: const TextField(
+                    child: TextField(
+                      controller: _namaSmartCont,
                       decoration: InputDecoration(hintText: 'Nama Smart'),
                     ),
                   ),
@@ -62,7 +103,8 @@ class _InputSmartPageState extends State<InputSmartPage> {
                     }),
                   ),
                   Expanded(
-                    child: const TextField(
+                    child: TextField(
+                      controller: _scoreSmartCont,
                       decoration: InputDecoration(hintText: 'Score'),
                     ),
                   ),
@@ -71,7 +113,13 @@ class _InputSmartPageState extends State<InputSmartPage> {
             ),
             Align(
               alignment: Alignment.centerRight,
-              child: ElevatedButton(onPressed: () {}, child: Text("Save")),
+              child: ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      listNilaiSmart.add([_namaSmartCont.text, _selectedItem]);
+                    });
+                  },
+                  child: Text("Save")),
             ),
             Container(
               height: 150,
@@ -99,7 +147,18 @@ class _InputSmartPageState extends State<InputSmartPage> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    listSmart.add([
+                      _namaCont.text,
+                      _nisCont.text,
+                      _tglCont.text,
+                      listNilaiSmart,
+                      _scoreSmartCont.text
+                    ]);
+
+                    for (var i = 0; i < listSmart.length; i++) {
+                      print(
+                          "nama: ${listSmart[i][0]} dan salah satu nilai ${listSmart[i][3][0][1]}. skor akhir: ${listSmart[i][4]}");
+                    }
                   },
                   child: Text("Finish"),
                 )

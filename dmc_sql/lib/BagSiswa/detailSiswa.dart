@@ -47,7 +47,7 @@ class _DetailSiswaPageState extends State<DetailSiswaPage> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(flex: 1, child: BagianMenuKiri()),
+                    Expanded(flex: 1, child: BagianMenuKiri(nama: nama, nis: nis,)),
                     Expanded(
                       flex: 3,
                       child: BagianProfil(
@@ -188,8 +188,11 @@ class BagianProfil extends StatelessWidget {
 
 class BagianMenuKiri extends StatelessWidget {
   const BagianMenuKiri({
-    super.key,
+    super.key, required this.nama, required this.nis,
   });
+
+  final String nama;
+  final String nis;
 
   @override
   Widget build(BuildContext context) {
@@ -299,7 +302,7 @@ class BagianMenuKiri extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const InputSmartPage()));
+                              builder: (context) => InputSmartPage(namaSiswa: nama.trim(), nisSiswa: nis.trim(),)));
                     }),
                 CustomButton(
                     text: "Input Muraja'ah",
