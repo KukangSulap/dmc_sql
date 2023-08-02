@@ -70,7 +70,7 @@ class _InputSmartPageState extends State<InputSmartPage> {
                 if (selectedDate != null) {
                   // Format the selected date and set it as the value of the TextField
                   final formattedDate =
-                      DateFormat('dd/MMMM/yyyy  ').format(selectedDate);
+                      DateFormat('dd/MMMM/yyyy').format(selectedDate);
                   setState(() {
                     _tglCont.text = formattedDate;
                   });
