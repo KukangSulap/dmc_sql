@@ -5,7 +5,13 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 const List<String> listGrade = <String>['A', 'B', 'C'];
 
-List<List<String>> listNilaiHadits = [
+List<List<String>> listNilaiHadits2 = [
+  ['Amal Tergantung Niat', 'A'],
+  ['Tingkatan Agama Islam', 'A'],
+  ['Penciptaan Manusia', 'A'],
+];
+
+List<List<String>> listNilaiHadits1 = [
   ['Amal Tergantung Niat', 'A'],
   ['Tingkatan Agama Islam', 'A'],
   ['Penciptaan Manusia', 'A'],
@@ -19,6 +25,12 @@ List<List<String>> listNilaiTahfiz = [
   ['Juz 29', '97', "Mumtaz", "Tidak Tersertifikasi", "20 Halaman", "85%"],
 ];
 
+List<List<dynamic>> listKualitatif = [];
+List<List<dynamic>> listIbadah = [];
+List<List<dynamic>> listHadits = [];
+List<List<dynamic>> listQuran = [];
+List<List<dynamic>> listKehadiran = [];
+
 class InputRaporPage extends StatefulWidget {
   const InputRaporPage({super.key});
 
@@ -27,15 +39,19 @@ class InputRaporPage extends StatefulWidget {
 }
 
 class _InputRaporPageState extends State<InputRaporPage> {
-  TextEditingController _contKualitatif1 = TextEditingController();
-  TextEditingController _contKualitatif2 = TextEditingController();
-  TextEditingController _contKualitatif3 = TextEditingController();
-  TextEditingController _contKualitatif4 = TextEditingController();
+  String _selectedItemKualitatif1 = listGrade.first;
+  String _selectedItemKualitatif2 = listGrade.first;
+  String _selectedItemKualitatif3 = listGrade.first;
+  String _selectedItemKualitatif4 = listGrade.first;
 
   TextEditingController _contIbadah1 = TextEditingController();
   TextEditingController _contIbadah2 = TextEditingController();
   TextEditingController _contIbadah3 = TextEditingController();
   TextEditingController _contIbadah4 = TextEditingController();
+  String _selectedItemIbadah1 = listGrade.first;
+  String _selectedItemIbadah2 = listGrade.first;
+  String _selectedItemIbadah3 = listGrade.first;
+  String _selectedItemIbadah4 = listGrade.first;
 
   TextEditingController _contHadits1 = TextEditingController();
   TextEditingController _contHadits2 = TextEditingController();
@@ -58,9 +74,9 @@ class _InputRaporPageState extends State<InputRaporPage> {
   TextEditingController _contTahfiz3 = TextEditingController();
   String _selectedItemTahfiz = listStatus.first;
 
-  TextEditingController _conthifdzun1 = TextEditingController();
-  TextEditingController _conthifdzun2 = TextEditingController();
-  TextEditingController _conthifdzun3 = TextEditingController();
+  TextEditingController _conthifdzun = TextEditingController();
+  String _selectedItemHifdzun1 = listGrade.first;
+  String _selectedItemHifdzun2 = listGrade.first;
 
   TextEditingController _contHadir1 = TextEditingController();
   TextEditingController _contHadir2 = TextEditingController();
@@ -76,23 +92,11 @@ class _InputRaporPageState extends State<InputRaporPage> {
           padding: const EdgeInsets.all(15.0),
           child: Column(
             children: [
-              KualitatifSubPage(
-                  contKualitatif1: _contKualitatif1,
-                  contKualitatif2: _contKualitatif2,
-                  contKualitatif3: _contKualitatif3,
-                  contKualitatif4: _contKualitatif4),
-              IbadahSubPage(
-                  contIbadah1: _contIbadah1,
-                  contIbadah2: _contIbadah2,
-                  contIbadah3: _contIbadah3,
-                  contIbadah4: _contIbadah4),
+              kualitatifSubPage(),
+              ibadahSubPage(),
               haditsSubPage(),
               quranSubPage(),
-              KehadiranSubPage(
-                  contHadir1: _contHadir1,
-                  contHadir2: _contHadir2,
-                  contHadir3: _contHadir3,
-                  contHadir4: _contHadir4),
+              kehadiranSubPage(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -107,6 +111,121 @@ class _InputRaporPageState extends State<InputRaporPage> {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Container kualitatifSubPage() {
+    return Container(
+      height: 200,
+      child: Card(
+        elevation: 5,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [Text("Nilai Kualitatif"), Text("Gerakan")],
+            ),
+            Row(
+              children: [
+                Expanded(
+                    child: DropDowns(listGrade, _selectedItemKualitatif1,
+                        (String? value) {
+                  setState(() {
+                    _selectedItemKualitatif1 = value!;
+                  });
+                })),
+                Expanded(
+                    child: DropDowns(listGrade, _selectedItemKualitatif2,
+                        (String? value) {
+                  setState(() {
+                    _selectedItemKualitatif2 = value!;
+                  });
+                })),
+                Expanded(
+                    child: DropDowns(listGrade, _selectedItemKualitatif3,
+                        (String? value) {
+                  setState(() {
+                    _selectedItemKualitatif3 = value!;
+                  });
+                })),
+                Expanded(
+                    child: DropDowns(listGrade, _selectedItemKualitatif4,
+                        (String? value) {
+                  setState(() {
+                    _selectedItemKualitatif4 = value!;
+                  });
+                })),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container ibadahSubPage() {
+    return Container(
+      height: 200,
+      child: Card(
+        elevation: 5,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  Text("Nilai Ibadah"),
+                  Text("Gerakan"),
+                  Row(
+                    children: [
+                      Expanded(
+                          child: DropDowns(listGrade, _selectedItemIbadah1,
+                              (String? value) {
+                        setState(() {
+                          _selectedItemIbadah1 = value!;
+                        });
+                      })),
+                      Expanded(
+                          child: DropDowns(listGrade, _selectedItemIbadah2,
+                              (String? value) {
+                        setState(() {
+                          _selectedItemIbadah2 = value!;
+                        });
+                      })),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            const VerticalDivider(),
+            Expanded(
+                child: Column(
+              children: [
+                Text(""),
+                Text("Bacaan"),
+                Row(
+                  children: [
+                    Expanded(
+                        child: DropDowns(listGrade, _selectedItemIbadah3,
+                            (String? value) {
+                      setState(() {
+                        _selectedItemIbadah3 = value!;
+                      });
+                    })),
+                    Expanded(
+                        child: DropDowns(listGrade, _selectedItemIbadah4,
+                            (String? value) {
+                      setState(() {
+                        _selectedItemIbadah4 = value!;
+                      });
+                    })),
+                  ],
+                )
+              ],
+            ))
+          ],
         ),
       ),
     );
@@ -270,10 +389,11 @@ class _InputRaporPageState extends State<InputRaporPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text("LISAN"),
-                        TextField(
-                          controller: _conthifdzun1,
-                          decoration: InputDecoration(hintText: "Al-Jazary"),
-                        ),
+                        DropDowns(listGrade, _selectedItemHifdzun1, (value) {
+                          setState(() {
+                            _selectedItemHifdzun1 = value!;
+                          });
+                        })
                       ],
                     )),
                     Expanded(
@@ -282,7 +402,7 @@ class _InputRaporPageState extends State<InputRaporPage> {
                       children: [
                         const Text("JUMLAH"),
                         TextField(
-                          controller: _conthifdzun2,
+                          controller: _conthifdzun,
                           decoration: InputDecoration(hintText: "Al-Jazary"),
                         ),
                       ],
@@ -292,10 +412,11 @@ class _InputRaporPageState extends State<InputRaporPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text("TULIS"),
-                        TextField(
-                          controller: _conthifdzun3,
-                          decoration: InputDecoration(hintText: "Al-Jazary"),
-                        ),
+                        DropDowns(listGrade, _selectedItemHifdzun2, (value) {
+                          setState(() {
+                            _selectedItemHifdzun2 = value!;
+                          });
+                        })
                       ],
                     )),
                   ],
@@ -345,7 +466,12 @@ class _InputRaporPageState extends State<InputRaporPage> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              listNilaiHadits1.add(
+                                  [_contHadits1.text, _selectedItemHadist1]);
+                            });
+                          },
                           child: Text("Save"),
                         ),
                       ),
@@ -353,10 +479,10 @@ class _InputRaporPageState extends State<InputRaporPage> {
                       Container(
                         height: 150,
                         child: ListView.builder(
-                            itemCount: listNilaiHadits.length,
+                            itemCount: listNilaiHadits1.length,
                             itemBuilder: (BuildContext context, int index) {
-                              String namaHadits = listNilaiHadits[index][0];
-                              String grade = listNilaiHadits[index][1];
+                              String namaHadits = listNilaiHadits1[index][0];
+                              String grade = listNilaiHadits1[index][1];
 
                               return Row(
                                 mainAxisAlignment:
@@ -405,10 +531,10 @@ class _InputRaporPageState extends State<InputRaporPage> {
                       Container(
                         height: 150,
                         child: ListView.builder(
-                            itemCount: listNilaiHadits.length,
+                            itemCount: listNilaiHadits2.length,
                             itemBuilder: (BuildContext context, int index) {
-                              String namaHadits = listNilaiHadits[index][0];
-                              String grade = listNilaiHadits[index][1];
+                              String namaHadits = listNilaiHadits2[index][0];
+                              String grade = listNilaiHadits2[index][1];
 
                               return Row(
                                 mainAxisAlignment:
@@ -467,10 +593,10 @@ class _InputRaporPageState extends State<InputRaporPage> {
                       Container(
                         height: 150,
                         child: ListView.builder(
-                            itemCount: listNilaiHadits.length,
+                            itemCount: listNilaiHadits2.length,
                             itemBuilder: (BuildContext context, int index) {
-                              String namaHadits = listNilaiHadits[index][0];
-                              String grade = listNilaiHadits[index][1];
+                              String namaHadits = listNilaiHadits2[index][0];
+                              String grade = listNilaiHadits2[index][1];
 
                               return Row(
                                 mainAxisAlignment:
@@ -519,10 +645,10 @@ class _InputRaporPageState extends State<InputRaporPage> {
                       Container(
                         height: 150,
                         child: ListView.builder(
-                            itemCount: listNilaiHadits.length,
+                            itemCount: listNilaiHadits2.length,
                             itemBuilder: (BuildContext context, int index) {
-                              String namaHadits = listNilaiHadits[index][0];
-                              String grade = listNilaiHadits[index][1];
+                              String namaHadits = listNilaiHadits2[index][0];
+                              String grade = listNilaiHadits2[index][1];
 
                               return Row(
                                 mainAxisAlignment:
@@ -541,27 +667,8 @@ class _InputRaporPageState extends State<InputRaporPage> {
       ],
     );
   }
-}
 
-class KehadiranSubPage extends StatelessWidget {
-  const KehadiranSubPage({
-    super.key,
-    required TextEditingController contHadir1,
-    required TextEditingController contHadir2,
-    required TextEditingController contHadir3,
-    required TextEditingController contHadir4,
-  })  : _contHadir1 = contHadir1,
-        _contHadir2 = contHadir2,
-        _contHadir3 = contHadir3,
-        _contHadir4 = contHadir4;
-
-  final TextEditingController _contHadir1;
-  final TextEditingController _contHadir2;
-  final TextEditingController _contHadir3;
-  final TextEditingController _contHadir4;
-
-  @override
-  Widget build(BuildContext context) {
+  Container kehadiranSubPage() {
     return Container(
       height: 200,
       child: Card(
@@ -594,152 +701,6 @@ class KehadiranSubPage extends StatelessWidget {
                 )),
               ],
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class IbadahSubPage extends StatelessWidget {
-  const IbadahSubPage({
-    super.key,
-    required TextEditingController contIbadah1,
-    required TextEditingController contIbadah2,
-    required TextEditingController contIbadah3,
-    required TextEditingController contIbadah4,
-  })  : _contIbadah1 = contIbadah1,
-        _contIbadah2 = contIbadah2,
-        _contIbadah3 = contIbadah3,
-        _contIbadah4 = contIbadah4;
-
-  final TextEditingController _contIbadah1;
-  final TextEditingController _contIbadah2;
-  final TextEditingController _contIbadah3;
-  final TextEditingController _contIbadah4;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      child: Card(
-        elevation: 5,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  Text("Nilai Ibadah"),
-                  Text("Gerakan"),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: _contIbadah1,
-                          decoration:
-                              InputDecoration(hintText: "Tata Cara Wudhu"),
-                        ),
-                      ),
-                      Expanded(
-                          child: TextField(
-                        controller: _contIbadah2,
-                        decoration:
-                            InputDecoration(hintText: "Tata Cara Shalat"),
-                      )),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            const VerticalDivider(),
-            Expanded(
-                child: Column(
-              children: [
-                Text(""),
-                Text("Bacaan"),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: _contIbadah3,
-                        decoration:
-                            InputDecoration(hintText: "Tata Cara Wudhu"),
-                      ),
-                    ),
-                    Expanded(
-                        child: TextField(
-                      controller: _contIbadah4,
-                      decoration: InputDecoration(hintText: "Tata Cara Shalat"),
-                    )),
-                  ],
-                )
-              ],
-            ))
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class KualitatifSubPage extends StatelessWidget {
-  const KualitatifSubPage({
-    super.key,
-    required TextEditingController contKualitatif1,
-    required TextEditingController contKualitatif2,
-    required TextEditingController contKualitatif3,
-    required TextEditingController contKualitatif4,
-  })  : _contKualitatif1 = contKualitatif1,
-        _contKualitatif2 = contKualitatif2,
-        _contKualitatif3 = contKualitatif3,
-        _contKualitatif4 = contKualitatif4;
-
-  final TextEditingController _contKualitatif1;
-  final TextEditingController _contKualitatif2;
-  final TextEditingController _contKualitatif3;
-  final TextEditingController _contKualitatif4;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      child: Card(
-        elevation: 5,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [Text("Nilai Kualitatif"), Text("Gerakan")],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _contKualitatif1,
-                    decoration:
-                        InputDecoration(hintText: "Pengagungan terhadap ilmi"),
-                  ),
-                ),
-                Expanded(
-                    child: TextField(
-                  controller: _contKualitatif2,
-                  decoration: InputDecoration(
-                      hintText: "Tanggung Jawab dan kemandirian"),
-                )),
-                Expanded(
-                    child: TextField(
-                  controller: _contKualitatif3,
-                  decoration: InputDecoration(hintText: "Kejujuran"),
-                )),
-                Expanded(
-                    child: TextField(
-                  controller: _contKualitatif4,
-                  decoration:
-                      InputDecoration(hintText: "Partisipasi dan manfaat"),
-                )),
-              ],
-            )
           ],
         ),
       ),
