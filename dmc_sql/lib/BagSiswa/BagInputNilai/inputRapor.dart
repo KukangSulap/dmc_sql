@@ -5,13 +5,25 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 const List<String> listGrade = <String>['A', 'B', 'C'];
 
+List<List<String>> listNilaiHadits1 = [
+  ['Hiasi Al-Quran', 'A'],
+  ['Merupakan amal terbaik', 'A'],
+  ['Mendapat derajat yang tinggi', 'A'],
+];
+
 List<List<String>> listNilaiHadits2 = [
+  ['Hiasi Al-Quran', 'A'],
+  ['Merupakan amal terbaik', 'A'],
+  ['Mendapat derajat yang tinggi', 'A'],
+];
+
+List<List<String>> listNilaiHaditsArb1 = [
   ['Amal Tergantung Niat', 'A'],
   ['Tingkatan Agama Islam', 'A'],
   ['Penciptaan Manusia', 'A'],
 ];
 
-List<List<String>> listNilaiHadits1 = [
+List<List<String>> listNilaiHaditsArb2 = [
   ['Amal Tergantung Niat', 'A'],
   ['Tingkatan Agama Islam', 'A'],
   ['Penciptaan Manusia', 'A'],
@@ -32,7 +44,8 @@ List<List<dynamic>> listQuran = [];
 List<List<dynamic>> listKehadiran = [];
 
 class InputRaporPage extends StatefulWidget {
-  const InputRaporPage({super.key});
+  const InputRaporPage({super.key, required this.nisSiswa});
+  final String nisSiswa;
 
   @override
   State<InputRaporPage> createState() => _InputRaporPageState();
@@ -44,10 +57,6 @@ class _InputRaporPageState extends State<InputRaporPage> {
   String _selectedItemKualitatif3 = listGrade.first;
   String _selectedItemKualitatif4 = listGrade.first;
 
-  TextEditingController _contIbadah1 = TextEditingController();
-  TextEditingController _contIbadah2 = TextEditingController();
-  TextEditingController _contIbadah3 = TextEditingController();
-  TextEditingController _contIbadah4 = TextEditingController();
   String _selectedItemIbadah1 = listGrade.first;
   String _selectedItemIbadah2 = listGrade.first;
   String _selectedItemIbadah3 = listGrade.first;
@@ -101,10 +110,62 @@ class _InputRaporPageState extends State<InputRaporPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
-                      onPressed: () {}, child: Icon(Icons.arrow_left)),
-                  ElevatedButton(
                       onPressed: () {
                         Navigator.pop(context);
+                      },
+                      child: Icon(Icons.arrow_left)),
+                  ElevatedButton(
+                      onPressed: () {
+                        //=================== input kualitatif
+                        listKualitatif.add([
+                          _selectedItemKualitatif1,
+                          _selectedItemKualitatif2,
+                          _selectedItemKualitatif3,
+                          _selectedItemKualitatif4
+                        ]);
+                        print(listKualitatif[0][0]);
+
+                        //=================== input ibadah
+                        listIbadah.add([
+                          _selectedItemIbadah1,
+                          _selectedItemIbadah2,
+                          _selectedItemIbadah3,
+                          _selectedItemIbadah4,
+                        ]);
+                        print(listIbadah[0][0]);
+
+                        //=================== input hadits
+                        listHadits.add([
+                          listNilaiHadits1,
+                          listNilaiHadits2,
+                          listNilaiHaditsArb1,
+                          listNilaiHaditsArb2,
+                        ]);
+                        print(listHadits[0][0][0]);
+
+                        //=================== input quran
+                        listQuran.add([
+                          _contQuran1.text,
+                          _contQuran2.text,
+                          _contQuran3.text,
+                          _contQuran4.text,
+                          _contQuran5.text,
+                          _contQuran6.text,
+                          listNilaiTahfiz,
+                          _selectedItemHifdzun1,
+                          _conthifdzun.text,
+                          _selectedItemHadist2
+                        ]);
+                        print(listQuran[0][0]);
+
+                        //=================== input kehadiran
+                        listKehadiran.add([
+                          _contHadir1.text,
+                          _contHadir2.text,
+                          _contHadir3.text,
+                          _contHadir4.text,
+                        ]);
+                        print(listKehadiran[0][0]);
                       },
                       child: Text("Finish"))
                 ],
@@ -228,6 +289,260 @@ class _InputRaporPageState extends State<InputRaporPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Column haditsSubPage() {
+    return Column(
+      children: [
+        Container(
+          height: 400,
+          child: Card(
+            elevation: 5,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Nilai Hadits"),
+                      Text("Lisan"),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: TextField(
+                              controller: _contHadits1,
+                              decoration:
+                                  InputDecoration(hintText: "Nama Hadits"),
+                            ),
+                          ),
+                          Expanded(
+                              child: DropDowns(listGrade, _selectedItemHadist1,
+                                  (String? value) {
+                            setState(() {
+                              _selectedItemHadist1 = value!;
+                            });
+                          }))
+                        ],
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              listNilaiHadits1.add(
+                                  [_contHadits1.text, _selectedItemHadist1]);
+                            });
+                          },
+                          child: Text("Save"),
+                        ),
+                      ),
+                      Text("Nilai Hadits yang Sudah Diinput"),
+                      Container(
+                        height: 150,
+                        child: ListView.builder(
+                            itemCount: listNilaiHadits1.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              String namaHadits = listNilaiHadits1[index][0];
+                              String grade = listNilaiHadits1[index][1];
+
+                              return Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [Text("$namaHadits"), Text("$grade")],
+                              );
+                            }),
+                      ),
+                    ],
+                  ),
+                ),
+                VerticalDivider(),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(""),
+                      Text("Tulis"),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: TextField(
+                              controller: _contHadits2,
+                              decoration:
+                                  InputDecoration(hintText: "Nama Hadits"),
+                            ),
+                          ),
+                          Expanded(
+                              child: DropDowns(listGrade, _selectedItemHadist2,
+                                  (String? value) {
+                            setState(() {
+                              _selectedItemHadist2 = value!;
+                            });
+                          }))
+                        ],
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              listNilaiHadits2.add(
+                                  [_contHadits2.text, _selectedItemHadist2]);
+                            });
+                          },
+                          child: Text("Save"),
+                        ),
+                      ),
+                      Text("Nilai Hadits yang Sudah Diinput"),
+                      Container(
+                        height: 150,
+                        child: ListView.builder(
+                            itemCount: listNilaiHadits2.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              String namaHadits = listNilaiHadits2[index][0];
+                              String grade = listNilaiHadits2[index][1];
+
+                              return Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [Text("$namaHadits"), Text("$grade")],
+                              );
+                            }),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 10),
+        Container(
+          height: 400,
+          child: Card(
+            elevation: 5,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Nilai Hadits Arbain"),
+                      Text("Lisan"),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: TextField(
+                              controller: _contHaditsArb1,
+                              decoration:
+                                  InputDecoration(hintText: "Nama Hadits"),
+                            ),
+                          ),
+                          Expanded(
+                              child: DropDowns(listGrade, _selectedItemArb1,
+                                  (String? value) {
+                            setState(() {
+                              _selectedItemArb1 = value!;
+                            });
+                          }))
+                        ],
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              listNilaiHaditsArb1.add(
+                                  [_contHaditsArb1.text, _selectedItemArb1]);
+                            });
+                          },
+                          child: Text("Save"),
+                        ),
+                      ),
+                      Text("Nilai Hadits yang Sudah Diinput"),
+                      Container(
+                        height: 150,
+                        child: ListView.builder(
+                            itemCount: listNilaiHaditsArb1.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              String namaHadits = listNilaiHaditsArb1[index][0];
+                              String grade = listNilaiHaditsArb1[index][1];
+
+                              return Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [Text("$namaHadits"), Text("$grade")],
+                              );
+                            }),
+                      ),
+                    ],
+                  ),
+                ),
+                VerticalDivider(),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(""),
+                      Text("Tulis"),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: TextField(
+                              controller: _contHaditsArb2,
+                              decoration:
+                                  InputDecoration(hintText: "Nama Hadits"),
+                            ),
+                          ),
+                          Expanded(
+                              child: DropDowns(listGrade, _selectedItemArb2,
+                                  (String? value) {
+                            setState(() {
+                              _selectedItemArb2 = value!;
+                            });
+                          }))
+                        ],
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              listNilaiHaditsArb2.add(
+                                  [_contHaditsArb2.text, _selectedItemArb2]);
+                            });
+                          },
+                          child: Text("Save"),
+                        ),
+                      ),
+                      Text("Nilai Hadits yang Sudah Diinput"),
+                      Container(
+                        height: 150,
+                        child: ListView.builder(
+                            itemCount: listNilaiHaditsArb2.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              String namaHadits = listNilaiHaditsArb2[index][0];
+                              String grade = listNilaiHaditsArb2[index][1];
+
+                              return Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [Text("$namaHadits"), Text("$grade")],
+                              );
+                            }),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -425,245 +740,6 @@ class _InputRaporPageState extends State<InputRaporPage> {
             ),
           ),
         )
-      ],
-    );
-  }
-
-  Column haditsSubPage() {
-    return Column(
-      children: [
-        Container(
-          height: 400,
-          child: Card(
-            elevation: 5,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Nilai Hadits"),
-                      Text("Lisan"),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 3,
-                            child: TextField(
-                              controller: _contHadits1,
-                              decoration:
-                                  InputDecoration(hintText: "Nama Hadits"),
-                            ),
-                          ),
-                          Expanded(
-                              child: DropDowns(listGrade, _selectedItemHadist1,
-                                  (String? value) {
-                            setState(() {
-                              _selectedItemHadist1 = value!;
-                            });
-                          }))
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              listNilaiHadits1.add(
-                                  [_contHadits1.text, _selectedItemHadist1]);
-                            });
-                          },
-                          child: Text("Save"),
-                        ),
-                      ),
-                      Text("Nilai Hadits yang Sudah Diinput"),
-                      Container(
-                        height: 150,
-                        child: ListView.builder(
-                            itemCount: listNilaiHadits1.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              String namaHadits = listNilaiHadits1[index][0];
-                              String grade = listNilaiHadits1[index][1];
-
-                              return Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [Text("$namaHadits"), Text("$grade")],
-                              );
-                            }),
-                      ),
-                    ],
-                  ),
-                ),
-                VerticalDivider(),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(""),
-                      Text("Tulis"),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 3,
-                            child: TextField(
-                              controller: _contHadits2,
-                              decoration:
-                                  InputDecoration(hintText: "Nama Hadits"),
-                            ),
-                          ),
-                          Expanded(
-                              child: DropDowns(listGrade, _selectedItemHadist2,
-                                  (String? value) {
-                            setState(() {
-                              _selectedItemHadist2 = value!;
-                            });
-                          }))
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text("Save"),
-                        ),
-                      ),
-                      Text("Nilai Hadits yang Sudah Diinput"),
-                      Container(
-                        height: 150,
-                        child: ListView.builder(
-                            itemCount: listNilaiHadits2.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              String namaHadits = listNilaiHadits2[index][0];
-                              String grade = listNilaiHadits2[index][1];
-
-                              return Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [Text("$namaHadits"), Text("$grade")],
-                              );
-                            }),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        const SizedBox(height: 10),
-        Container(
-          height: 400,
-          child: Card(
-            elevation: 5,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Nilai Hadits Arbain"),
-                      Text("Lisan"),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 3,
-                            child: TextField(
-                              controller: _contHaditsArb1,
-                              decoration:
-                                  InputDecoration(hintText: "Nama Hadits"),
-                            ),
-                          ),
-                          Expanded(
-                              child: DropDowns(listGrade, _selectedItemArb1,
-                                  (String? value) {
-                            setState(() {
-                              _selectedItemArb1 = value!;
-                            });
-                          }))
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text("Save"),
-                        ),
-                      ),
-                      Text("Nilai Hadits yang Sudah Diinput"),
-                      Container(
-                        height: 150,
-                        child: ListView.builder(
-                            itemCount: listNilaiHadits2.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              String namaHadits = listNilaiHadits2[index][0];
-                              String grade = listNilaiHadits2[index][1];
-
-                              return Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [Text("$namaHadits"), Text("$grade")],
-                              );
-                            }),
-                      ),
-                    ],
-                  ),
-                ),
-                VerticalDivider(),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(""),
-                      Text("Tulis"),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 3,
-                            child: TextField(
-                              controller: _contHaditsArb2,
-                              decoration:
-                                  InputDecoration(hintText: "Nama Hadits"),
-                            ),
-                          ),
-                          Expanded(
-                              child: DropDowns(listGrade, _selectedItemArb2,
-                                  (String? value) {
-                            setState(() {
-                              _selectedItemArb2 = value!;
-                            });
-                          }))
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text("Save"),
-                        ),
-                      ),
-                      Text("Nilai Hadits yang Sudah Diinput"),
-                      Container(
-                        height: 150,
-                        child: ListView.builder(
-                            itemCount: listNilaiHadits2.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              String namaHadits = listNilaiHadits2[index][0];
-                              String grade = listNilaiHadits2[index][1];
-
-                              return Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [Text("$namaHadits"), Text("$grade")],
-                              );
-                            }),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
       ],
     );
   }

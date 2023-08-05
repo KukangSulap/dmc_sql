@@ -286,7 +286,7 @@ class BagianMenuKiri extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const InputRaporPage()));
+                              builder: (context) => InputRaporPage(nisSiswa: nis,)));
                     }),
                 CustomButton(
                     text: "Input Lomba",
