@@ -11,7 +11,6 @@ class AppBarAdmin extends StatefulWidget implements PreferredSizeWidget {
   final String page;
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override

@@ -14,13 +14,6 @@ class InputPengeluaran extends StatefulWidget {
 }
 
 class _InputPengeluaranState extends State<InputPengeluaran> {
-  final List<String> titles = ['Title 1', 'Title 2', 'Title 3'];
-  final List<String> subtitles = ['Subtitle 1', 'Subtitle 2', 'Subtitle 3'];
-  final List<String> descriptions = [
-    'RP. 100.000',
-    'RP. 130.000',
-    'RP. 110.000'
-  ];
 
   String _selectedCategory = 'Reward';
   TextEditingController _judulController = TextEditingController();
@@ -29,6 +22,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
   TextEditingController _notesController = TextEditingController();
   DateTime _selectedDate = DateTime.now();
   String _imagePath = '';
+  List<String> listViewData = [];
 
   Future<void> _pickImage() async {
     final pickedFile =
@@ -39,6 +33,23 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
       });
     }
   }
+  void _saveData() {
+    String title = _judulController.text;
+    String name = _nameController.text;
+    String quantity = _quantityController.text;
+    String notes = _notesController.text;
+    String date = _selectedDate.toLocal().toString();
+
+    // Assuming you have a way to get the selected category, let's call it _selectedCategoryValue
+    String category = _selectedCategory;
+
+    String newData = '$title - $name - $quantity - $notes - $date - $category';
+    setState(() {
+      listViewData.add(newData);
+    });
+    print(listViewData);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +63,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                //Container Atas
                 Container(
                   padding: const EdgeInsets.all(16.0), // Added padding around the column
                   decoration: BoxDecoration(
@@ -108,7 +120,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                // Category Spinner
+                // Container Bawah
                 Container(
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
@@ -248,7 +260,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                           backgroundColor:
                           MaterialStateProperty.all(const Color.fromARGB(255, 237, 195, 95)),
                         ),
-                        onPressed: () {},
+                        onPressed: _saveData,
                         child: const CustomButton(
                           title: "Save",
                           widths: 70,
@@ -268,28 +280,33 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                     fontSize: 20.0,
                   ),
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
+                const SizedBox(height: 16),
+                //Listview yang sudah di input
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: titles.length,
+                  itemCount: listViewData.length,
                   itemBuilder: (context, index) {
+                    String data = listViewData[index];
+                    List<String> parts = data.split(' - ');
+
+                    String name = parts[1];
+                    String quantity = parts[2];
+                    String category = parts[5];
+
                     return Container(
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 16.0),
+                      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.0),
-                        color: Colors.grey,
+                        color: Color.fromARGB(163, 243, 243, 243),
                       ),
                       child: ListTile(
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(titles[index]),
-                            Text(subtitles[index]),
-                            Text(descriptions[index]),
+                            Text('Name: $name'),
+                            Text('Category: $category'),
+                            Text('Quantity: $quantity'),
                           ],
                         ),
                       ),
