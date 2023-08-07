@@ -336,7 +336,10 @@ class BagianMenuKiri extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const InputZiyadahPage()));
+                              builder: (context) => InputZiyadahPage(
+                                    namaSiswa: nama.trim(),
+                                    nisSiswa: nis.trim(),
+                                  )));
                     }),
               ],
             ),
