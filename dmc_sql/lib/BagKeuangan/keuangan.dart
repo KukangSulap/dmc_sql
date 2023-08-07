@@ -40,7 +40,7 @@ class _KeuanganPageState extends State<KeuanganPage> {
         child: Row(
           children: const [
             // Sisi kiri
-            SisiKiriKeuangan(),
+            // SisiKiriKeuangan(),
 
             // Sisi Kanan
             SisiKananKeuangan()
@@ -65,6 +65,139 @@ class SisiKananKeuangan extends StatelessWidget {
           padding: const EdgeInsets.only(right: 30, left: 10),
           child: Column(
             children: [
+              Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  padding: const EdgeInsets.all(20),
+                  height: 120,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Pencarian
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.black, width: 1.5),
+                        ),
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Pencarian',
+                            border: InputBorder.none,
+                            suffixIcon: Icon(Icons.search),
+                            suffixIconColor: Colors.black,
+                            contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8,),
+                    // Total uang
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(width: 1.5),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            ListTile(
+                              title: Text(
+                                'Total Uang',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              subtitle: Text(
+                                'Rp 56.000.000',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8,),
+                    // Pemasukan
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(width: 1.5),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            ListTile(
+                              title: const Text(
+                                'Pemasukan Bulanan',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'Rp 5.200.000',
+                                    style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8,),
+                    // Keluaran
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(width: 1.5),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            ListTile(
+                              title: const Text(
+                                'Pengeluaran Bulanan',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'Rp 2.450.000',
+                                    style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               // ===========================================================  Data Pemasukan  ===================================================================
               Container(
                 margin: const EdgeInsets.only(top: 10),
@@ -281,143 +414,6 @@ class SisiKananKeuangan extends StatelessWidget {
                         },
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class SisiKiriKeuangan extends StatelessWidget {
-  const SisiKiriKeuangan({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 2,
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 30, right: 10),
-          child: Column(
-            children: [
-              // Pencarian
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.black, width: 1.5),
-                ),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Pencarian',
-                    border: InputBorder.none,
-                    suffixIcon: Icon(Icons.search),
-                    suffixIconColor: Colors.black,
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
-                  ),
-                ),
-              ),
-              // Total uang
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
-                // height: 100,
-                decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1.5),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    ListTile(
-                      title: Text(
-                        'Total Uang',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      subtitle: Text(
-                        'Rp 56.000.000',
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              // ==============================================  Pemasukan  ================================================================
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
-                // height: 100,
-                decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1.5),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    ListTile(
-                        title: const Text(
-                          'Pemasukan Bulanan',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'Rp 5.200.000',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
-                            ),
-                          ],
-                        )),
-                  ],
-                ),
-              ),
-              // ========================================  Keluaran  ==============================================================
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
-                // height: 100,
-                decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1.5),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    ListTile(
-                        title: const Text(
-                          'Pengeluaran Bulanan',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'Rp 2.450.000',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
-                            ),
-                          ],
-                        )),
                   ],
                 ),
               ),
