@@ -47,7 +47,12 @@ class _DetailSiswaPageState extends State<DetailSiswaPage> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(flex: 1, child: BagianMenuKiri(nama: nama, nis: nis,)),
+                    Expanded(
+                        flex: 1,
+                        child: BagianMenuKiri(
+                          nama: nama,
+                          nis: nis,
+                        )),
                     Expanded(
                       flex: 3,
                       child: BagianProfil(
@@ -188,7 +193,9 @@ class BagianProfil extends StatelessWidget {
 
 class BagianMenuKiri extends StatelessWidget {
   const BagianMenuKiri({
-    super.key, required this.nama, required this.nis,
+    super.key,
+    required this.nama,
+    required this.nis,
   });
 
   final String nama;
@@ -286,7 +293,9 @@ class BagianMenuKiri extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => InputRaporPage(nisSiswa: nis,)));
+                              builder: (context) => InputRaporPage(
+                                    nisSiswa: nis,
+                                  )));
                     }),
                 CustomButton(
                     text: "Input Lomba",
@@ -294,7 +303,10 @@ class BagianMenuKiri extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => InputLombaPage(namaSiswa: nama, nisSiswa: nis,)));
+                              builder: (context) => InputLombaPage(
+                                    namaSiswa: nama.trim(),
+                                    nisSiswa: nis.trim(),
+                                  )));
                     }),
                 CustomButton(
                     text: "Input Smart",
@@ -302,7 +314,10 @@ class BagianMenuKiri extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => InputSmartPage(namaSiswa: nama.trim(), nisSiswa: nis.trim(),)));
+                              builder: (context) => InputSmartPage(
+                                    namaSiswa: nama.trim(),
+                                    nisSiswa: nis.trim(),
+                                  )));
                     }),
                 CustomButton(
                     text: "Input Muraja'ah",
@@ -310,7 +325,10 @@ class BagianMenuKiri extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const InputMurajaahPage()));
+                              builder: (context) => InputMurajaahPage(
+                                    namaSiswa: nama.trim(),
+                                    nisSiswa: nis.trim(),
+                                  )));
                     }),
                 CustomButton(
                     text: "Input Ziyadah",

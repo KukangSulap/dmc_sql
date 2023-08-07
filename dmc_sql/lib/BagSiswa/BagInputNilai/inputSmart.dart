@@ -33,7 +33,6 @@ class _InputSmartPageState extends State<InputSmartPage> {
   final TextEditingController _tglCont = TextEditingController();
 
   final TextEditingController _namaSmartCont = TextEditingController();
-  // final TextEditingController _nilaiSmartCont = TextEditingController();
   final TextEditingController _scoreSmartCont = TextEditingController();
 
   String _selectedItem = listGrade.first;
