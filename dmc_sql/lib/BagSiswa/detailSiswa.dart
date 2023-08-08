@@ -240,7 +240,10 @@ class BagianMenuKiri extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const DetailLombaPage()));
+                              builder: (context) => DetailLombaPage(
+                                    nama: nama.trim(),
+                                    nis: nis.trim(),
+                                  )));
                     }),
                 CustomButton(
                     text: "Smart",
