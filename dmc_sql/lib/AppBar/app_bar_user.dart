@@ -1,17 +1,18 @@
-import 'package:dmc_sql/BagKeuangan/keuangan.dart';
-import 'package:dmc_sql/BagSiswa/siswa.dart';
-import 'package:dmc_sql/main.dart';
+// import 'package:dmc_sql/BagKeuangan/keuangan.dart';
+// import 'package:dmc_sql/BagSiswa/siswa.dart';
+// import 'package:dmc_sql/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+// import 'package:flutter/src/widgets/framework.dart';
+// import 'package:flutter/src/widgets/placeholder.dart';
+
+enum UserPage { keuangan, siswa }
 
 class AppBarUser extends StatefulWidget implements PreferredSizeWidget {
-  AppBarUser({super.key, required this.page});
-  final String page;
+  final UserPage page;
+  const AppBarUser({super.key, required this.page});
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override

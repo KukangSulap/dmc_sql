@@ -19,9 +19,9 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarUser(page: "k"),
-      body: const Padding(
+    return const Scaffold(
+      appBar: AppBarUser(page: UserPage.siswa),
+      body: Padding(
           padding: EdgeInsets.only(left: 72, top: 0, right: 72),
           child: SingleChildScrollView(
             child: Column(
