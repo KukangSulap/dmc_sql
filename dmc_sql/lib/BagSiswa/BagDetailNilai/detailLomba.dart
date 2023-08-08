@@ -86,6 +86,7 @@ class _DetailLombaPageState extends State<DetailLombaPage> {
                   ),
                 ],
               ),
+              const SizedBox(height: 20),
               Card(
                 elevation: 5,
                 child: Padding(

@@ -251,7 +251,10 @@ class BagianMenuKiri extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const DetailSmartPage()));
+                              builder: (context) => DetailSmartPage(
+                                    nama: nama.trim(),
+                                    nis: nis.trim(),
+                                  )));
                     }),
                 CustomButton(
                     text: "Muraja'ah",

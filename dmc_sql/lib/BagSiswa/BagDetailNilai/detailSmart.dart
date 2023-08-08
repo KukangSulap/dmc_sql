@@ -2,6 +2,9 @@ import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../../Property/app_color.dart';
 
 List<List<String>> listNilaiMabit = [
   ['Manner', 'A'],
@@ -12,7 +15,10 @@ List<List<String>> listNilaiMabit = [
 ];
 
 class DetailSmartPage extends StatefulWidget {
-  const DetailSmartPage({super.key});
+  const DetailSmartPage({super.key, required this.nama, required this.nis});
+
+  final String nama;
+  final String nis;
 
   @override
   State<DetailSmartPage> createState() => _DetailSmartPageState();
@@ -30,39 +36,116 @@ class _DetailSmartPageState extends State<DetailSmartPage> {
               children: [
                 Row(
                   children: [
-                    const Expanded(flex: 8, child: Text("Detail SMART Mabit")),
+                    Expanded(
+                        flex: 8,
+                        child: Text(
+                          "Detail SMART Mabit",
+                          style: GoogleFonts.mPlusRounded1c(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 36,
+                              color: AppColor.blue),
+                        )),
                     Expanded(
                         flex: 2,
                         child: ElevatedButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text("Back to Siswa"))),
+                            style: ButtonStyle(
+                              shape: MaterialStatePropertyAll(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8))),
+                              backgroundColor: const MaterialStatePropertyAll(
+                                  AppColor.orange),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "Back to Siswa",
+                                style: GoogleFonts.mPlusRounded1c(
+                                    fontWeight: FontWeight.w800, fontSize: 24),
+                              ),
+                            ))),
                     SizedBox(width: 10),
                     Expanded(
                         child: ElevatedButton(
-                            onPressed: () {}, child: Text("Edit"))),
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
+                        backgroundColor:
+                            const MaterialStatePropertyAll(AppColor.yellow),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("Edit",
+                            style: GoogleFonts.mPlusRounded1c(
+                                fontWeight: FontWeight.w800, fontSize: 24)),
+                      ),
+                    )),
                   ],
                 ),
-                SmartMabit(),
-                SizedBox(height: 10),
+                const SizedBox(height: 20),
+                SmartMabit(
+                  nama: widget.nama,
+                  nis: widget.nis,
+                ),
+                const SizedBox(height: 20),
                 Row(
                   children: [
-                    const Expanded(flex: 8, child: Text("Detail SMART Camp")),
+                    Expanded(
+                        flex: 8,
+                        child: Text(
+                          "Detail SMART Mabit",
+                          style: GoogleFonts.mPlusRounded1c(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 36,
+                              color: AppColor.blue),
+                        )),
                     Expanded(
                         flex: 2,
                         child: ElevatedButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text("Back to Siswa"))),
+                            style: ButtonStyle(
+                              shape: MaterialStatePropertyAll(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8))),
+                              backgroundColor: const MaterialStatePropertyAll(
+                                  AppColor.orange),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "Back to Siswa",
+                                style: GoogleFonts.mPlusRounded1c(
+                                    fontWeight: FontWeight.w800, fontSize: 24),
+                              ),
+                            ))),
                     SizedBox(width: 10),
                     Expanded(
                         child: ElevatedButton(
-                            onPressed: () {}, child: Text("Edit"))),
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
+                        backgroundColor:
+                            const MaterialStatePropertyAll(AppColor.yellow),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("Edit",
+                            style: GoogleFonts.mPlusRounded1c(
+                                fontWeight: FontWeight.w800, fontSize: 24)),
+                      ),
+                    )),
                   ],
                 ),
-                SmartCamp()
+                SmartCamp(
+                  nama: widget.nama,
+                  nis: widget.nis,
+                )
               ],
             ),
           ),
@@ -73,18 +156,25 @@ class _DetailSmartPageState extends State<DetailSmartPage> {
 class SmartMabit extends StatelessWidget {
   const SmartMabit({
     super.key,
+    required this.nama,
+    required this.nis,
   });
+
+  final String nama;
+  final String nis;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // height: 300,
-      child: Card(
-        elevation: 5,
+    return Card(
+      elevation: 5,
+      child: Padding(
+        padding: const EdgeInsets.all(30.0),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
                 child: Container(
+              padding: const EdgeInsets.all(16),
               decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                       side: const BorderSide(width: 1.5),
@@ -94,28 +184,49 @@ class SmartMabit extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Data Siswa"),
-                    Text("nama siswa"),
-                    Container(
-                        height: 270,
-                        width: 239,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.0),
-                          color: Colors.green.shade200,
-                        )),
+                    Text("Data Siswa",
+                        style: GoogleFonts.mPlusRounded1c(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 24,
+                            color: AppColor.blue)),
+                    Text(nama,
+                        style: GoogleFonts.mPlusRounded1c(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                            color: AppColor.black)),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                          height: 270,
+                          width: 239,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            color: Colors.green.shade200,
+                          )),
+                    ),
                     const SizedBox(height: 10),
-                    Text("nis"),
-                    Text("tgl Smart")
+                    Text(nis,
+                        style: GoogleFonts.mPlusRounded1c(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                            color: AppColor.black)),
+                    Text("tgl lomba",
+                        style: GoogleFonts.mPlusRounded1c(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                            color: AppColor.black))
                   ],
                 ),
               ),
             )),
+            const SizedBox(width: 20),
             Expanded(
                 flex: 3,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
+                      padding: const EdgeInsets.all(16),
                       decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 1.5),
@@ -125,9 +236,18 @@ class SmartMabit extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
-                            children: const [
-                              Text("Nilai Smart"),
-                              Text("Nama SMART Mabit")
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Nilai Smart",
+                                  style: GoogleFonts.mPlusRounded1c(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 24,
+                                      color: AppColor.blue)),
+                              Text("Nama SMART Mabit",
+                                  style: GoogleFonts.mPlusRounded1c(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 32,
+                                      color: AppColor.black))
                             ],
                           ),
                           Column(
@@ -142,17 +262,42 @@ class SmartMabit extends StatelessWidget {
                                       String nama = listNilaiMabit[index][0];
                                       String nilai = listNilaiMabit[index][1];
 
-                                      return ListTile(
-                                        title: Text(nama),
-                                        trailing: Text(nilai),
+                                      return Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(nama,
+                                              style: GoogleFonts.mPlusRounded1c(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 20,
+                                                  color: AppColor.black)),
+                                          Text(nilai,
+                                              style: GoogleFonts.mPlusRounded1c(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 20,
+                                                  color: AppColor.black)),
+                                        ],
                                       );
                                     }),
                               ),
                               Container(
                                 width: 200,
-                                child: ListTile(
-                                  title: Text("SCORE"),
-                                  trailing: Text("89"),
+                                margin: const EdgeInsets.only(top: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Score",
+                                        style: GoogleFonts.mPlusRounded1c(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 20,
+                                            color: AppColor.black)),
+                                    Text("89",
+                                        style: GoogleFonts.mPlusRounded1c(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 20,
+                                            color: AppColor.black)),
+                                  ],
                                 ),
                               )
                             ],
@@ -160,7 +305,9 @@ class SmartMabit extends StatelessWidget {
                         ],
                       ),
                     ),
+                    const SizedBox(height: 20),
                     Container(
+                      padding: const EdgeInsets.all(16),
                       height: 150,
                       decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
@@ -172,8 +319,16 @@ class SmartMabit extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text("Notes Smart"),
-                              Text("lorem ipsum")
+                              Text("Notes SMART",
+                                  style: GoogleFonts.mPlusRounded1c(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 24,
+                                      color: AppColor.blue)),
+                              Text("lorem ipsum",
+                                  style: GoogleFonts.mPlusRounded1c(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 20,
+                                      color: AppColor.black))
                             ],
                           ),
                         ],
@@ -191,49 +346,75 @@ class SmartMabit extends StatelessWidget {
 class SmartCamp extends StatelessWidget {
   const SmartCamp({
     super.key,
+    required this.nama,
+    required this.nis,
   });
+
+  final String nama;
+  final String nis;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // height: 300,
-      child: Card(
-        elevation: 5,
+    return Card(
+      elevation: 5,
+      child: Padding(
+        padding: const EdgeInsets.all(30.0),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-                child: Container(
-              decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                      side: const BorderSide(width: 1.5),
-                      borderRadius: BorderRadius.circular(8.0))),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                        side: const BorderSide(width: 1.5),
+                        borderRadius: BorderRadius.circular(8.0))),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Data Siswa"),
-                    Text("nama siswa"),
-                    Container(
-                        height: 270,
-                        width: 239,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.0),
-                          color: Colors.green.shade200,
-                        )),
+                    Text("Data Siswa",
+                        style: GoogleFonts.mPlusRounded1c(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 24,
+                            color: AppColor.blue)),
+                    Text(nama,
+                        style: GoogleFonts.mPlusRounded1c(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                            color: AppColor.black)),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                          height: 270,
+                          width: 239,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            color: Colors.green.shade200,
+                          )),
+                    ),
                     const SizedBox(height: 10),
-                    Text("nis"),
-                    Text("tgl Smart")
+                    Text(nis,
+                        style: GoogleFonts.mPlusRounded1c(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                            color: AppColor.black)),
+                    Text("tgl lomba",
+                        style: GoogleFonts.mPlusRounded1c(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                            color: AppColor.black))
                   ],
                 ),
               ),
-            )),
+            ),
+            const SizedBox(width: 20),
             Expanded(
                 flex: 3,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
+                      padding: const EdgeInsets.all(16),
                       decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 1.5),
@@ -243,9 +424,18 @@ class SmartCamp extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
-                            children: const [
-                              Text("Nilai Smart"),
-                              Text("Nama SMART Camp")
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Nilai SMART",
+                                  style: GoogleFonts.mPlusRounded1c(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 24,
+                                      color: AppColor.blue)),
+                              Text("Nama SMART Camp",
+                                  style: GoogleFonts.mPlusRounded1c(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 32,
+                                      color: AppColor.black))
                             ],
                           ),
                           Column(
@@ -260,25 +450,52 @@ class SmartCamp extends StatelessWidget {
                                       String nama = listNilaiMabit[index][0];
                                       String nilai = listNilaiMabit[index][1];
 
-                                      return ListTile(
-                                        title: Text(nama),
-                                        trailing: Text(nilai),
+                                      return Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(nama,
+                                              style: GoogleFonts.mPlusRounded1c(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 20,
+                                                  color: AppColor.black)),
+                                          Text(nilai,
+                                              style: GoogleFonts.mPlusRounded1c(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 20,
+                                                  color: AppColor.black)),
+                                        ],
                                       );
                                     }),
                               ),
                               Container(
                                 width: 200,
-                                child: ListTile(
-                                  title: Text("SCORE"),
-                                  trailing: Text("89"),
+                                margin: const EdgeInsets.only(top: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Score",
+                                        style: GoogleFonts.mPlusRounded1c(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 20,
+                                            color: AppColor.black)),
+                                    Text("89",
+                                        style: GoogleFonts.mPlusRounded1c(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 20,
+                                            color: AppColor.black)),
+                                  ],
                                 ),
                               )
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
+                    const SizedBox(height: 20),
                     Container(
+                      padding: const EdgeInsets.all(16),
                       height: 150,
                       decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
@@ -290,8 +507,16 @@ class SmartCamp extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text("Notes Smart"),
-                              Text("lorem ipsum")
+                              Text("Notes SMART",
+                                  style: GoogleFonts.mPlusRounded1c(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 24,
+                                      color: AppColor.blue)),
+                              Text("lorem ipsum",
+                                  style: GoogleFonts.mPlusRounded1c(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 20,
+                                      color: AppColor.black))
                             ],
                           ),
                         ],
