@@ -1,12 +1,8 @@
-// import 'package:dmc_sql/BagKeuangan/keuangan.dart';
-// import 'package:dmc_sql/BagSiswa/siswa.dart';
-// import 'package:dmc_sql/main.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/src/widgets/framework.dart';
-// import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:dmc_sql/Property/app_color.dart';
 
-enum UserPage { keuangan, siswa }
+enum UserPage { profileSiswa, pendidikan }
 
 class AppBarUser extends StatefulWidget implements PreferredSizeWidget {
   final UserPage page;
@@ -20,134 +16,136 @@ class AppBarUser extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _AppBarUserState extends State<AppBarUser> {
+  Color activeItemColor = Colors.black;
+  Color idleItemColor = const Color.fromARGB(255, 102, 175, 153);
+
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = TextButton.styleFrom(
-      foregroundColor: Theme.of(context).colorScheme.onPrimary,
-    );
-
-    const TextDecoration underlineDecoration = TextDecoration.underline;
-    const TextDecoration noDecoration = TextDecoration.none;
-
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      leading: IconButton(
-        icon: const Icon(CupertinoIcons.burn),
-        color: Colors.black,
-        onPressed: () {
-          // Handle the button press event
-        },
-      ),
-      title: const Text(
-        "<- ntar ganti jadi logo",
-        style: TextStyle(
-          color: Colors.black,
+      title: Container(
+        alignment: Alignment.centerLeft,
+        child: Row(
+          children: [
+            // Icon(Icons.arrow_back)
+            // SizedBox(width: 8),
+            Text("Logo",
+                style: GoogleFonts.mPlusRounded1c(
+                    color: AppColor.blue,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 36)),
+          ],
         ),
       ),
       actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 8.0),
-          child: Row(
-            children: <Widget>[
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: widget.page == 'k'
-                          ? Colors.black
-                          : Colors.transparent,
-                      width: 2.0,
-                    ),
-                  ),
-                ),
-                child: TextButton(
-                  style: style,
-                  onPressed: () {
-                    // TODO: Add Navigation to Profile Siswa Page.
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => const KeuanganPage()));
-                  },
-                  child: const Text(
-                    'Profile Siswa',
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
+        Row(
+          children: <Widget>[
+            Stack(alignment: Alignment.center, children: [
+              Visibility(
+                visible: widget.page == UserPage.profileSiswa,
+                child: Container(
+                    // TODO: Change Width to Follow Figma (61)
+                    width: 35,
+                    // TODO: Change Height to Follow Figma (61)
+                    height: 35,
+                    decoration: const BoxDecoration(
+                      color: AppColor.yellow,
+                      shape: BoxShape.circle,
+                    )),
               ),
               TextButton(
-                style: style,
-                onPressed: () {},
-                child: const Text('-'),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.transparent),
+                  padding: MaterialStateProperty.all(EdgeInsets.zero),
+                ),
+                onPressed: () {
+                  // TODO: implement Navigator to Profile Siswa Page.
+                  // Navigator.push(context,
+                  // MaterialPageRoute(builder: (context) => const KeuanganPage()));
+                },
+                child: Text('Profile Siswa',
+                    style: GoogleFonts.mPlusRounded1c(
+                        color: widget.page == UserPage.profileSiswa
+                            ? activeItemColor
+                            : idleItemColor,
+                        fontWeight: FontWeight.w800,
+                        // TODO: set the font to follow figma (24)
+                        fontSize: 18)),
               ),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: widget.page == 's'
-                          ? Colors.black
-                          : Colors.transparent,
-                      width: 2.0,
-                    ),
-                  ),
-                ),
-                child: TextButton(
-                  style: style,
-                  onPressed: () {
-                    // TODO: Add Navigation to Pendidikan Page.
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => const SiswaPage()));
-                  },
-                  child: const Text(
-                    'Pendidikan',
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
+            ]),
+            const SizedBox(
+              width: 116,
+            ),
+            Stack(alignment: Alignment.center, children: [
+              Visibility(
+                visible: widget.page == UserPage.pendidikan,
+                child: Container(
+                    // TODO: Change Width to Follow Figma (61)
+                    width: 35,
+                    // TODO: Change Height to Follow Figma (61)
+                    height: 35,
+                    decoration: const BoxDecoration(
+                      color: AppColor.yellow,
+                      shape: BoxShape.circle,
+                    )),
               ),
               TextButton(
-                style: style,
-                onPressed: () {},
-                child: const Text('----'),
-              ),
-              Container(
-                height: 35,
-                decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1.5),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.transparent),
+                  padding: MaterialStateProperty.all(EdgeInsets.zero),
                 ),
-                child: TextButton(
-                  style: style,
+                onPressed: () {
+                  // TODO: implement Navigator to Pendidikan Page.
+                  // Navigator.push(context,
+                  // MaterialPageRoute(builder: (context) => const KeuanganPage()));
+                },
+                child: Text('Pendidikan',
+                    style: GoogleFonts.mPlusRounded1c(
+                        color: widget.page == UserPage.pendidikan
+                            ? activeItemColor
+                            : idleItemColor,
+                        fontWeight: FontWeight.w800,
+                        // TODO: set the font to follow figma (24)
+                        fontSize: 18)),
+              ),
+            ]),
+            const SizedBox(
+              width: 95,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              // TODO: set the height to follow figma (50)
+              height: 35,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: AppColor.blue),
+              child: TextButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.transparent),
+                    padding: MaterialStateProperty.all(EdgeInsets.zero),
+                  ),
                   onPressed: () {
-                    // TODO: Add Log Out Function.
+                    // TODO: implement Log Out Function.
                     // Navigator.push(
                     //   context,
                     //   MaterialPageRoute(
                     //       builder: (context) =>  SchoolProfilePage()));
                   },
-                  child: const Text(
-                    'Logout',
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-              TextButton(
-                style: style,
-                onPressed: () {},
-                child: const Text('.'),
-              ),
-            ],
-          ),
+                  child: Text('Log Out',
+                      style: GoogleFonts.mPlusRounded1c(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                          // TODO: set the font to follow figma (24)
+                          fontSize: 18))),
+            ),
+            const SizedBox(
+              width: 70,
+            ),
+          ],
         ),
       ],
     );
