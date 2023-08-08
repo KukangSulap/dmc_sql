@@ -1,6 +1,6 @@
 import 'package:dmc_sql/BagKeuangan/keuangan.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,7 +14,6 @@ class InputPengeluaran extends StatefulWidget {
 }
 
 class _InputPengeluaranState extends State<InputPengeluaran> {
-
   String _selectedCategory = 'Reward';
   TextEditingController _judulController = TextEditingController();
   TextEditingController _nameController = TextEditingController();
@@ -33,6 +32,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
       });
     }
   }
+
   void _saveData() {
     String title = _judulController.text;
     String name = _nameController.text;
@@ -50,7 +50,6 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
     print(listViewData);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,16 +64,20 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
               children: [
                 //Container Atas
                 Container(
-                  padding: const EdgeInsets.all(16.0), // Added padding around the column
+                  padding: const EdgeInsets.all(
+                      16.0), // Added padding around the column
                   decoration: BoxDecoration(
-                    color: Colors.grey[200], // Added background color for the container
-                    borderRadius: BorderRadius.circular(8), // Rounded corners for the container
+                    color: Colors
+                        .grey[200], // Added background color for the container
+                    borderRadius: BorderRadius.circular(
+                        8), // Rounded corners for the container
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: const Offset(0, 3), // Added a slight shadow effect
+                        offset:
+                            const Offset(0, 3), // Added a slight shadow effect
                       ),
                     ],
                   ),
@@ -94,21 +97,25 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                         decoration: InputDecoration(
                           labelText: 'Judul Pengeluaran',
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), // Rounded corners for the text field
+                            borderRadius: BorderRadius.circular(
+                                8), // Rounded corners for the text field
                           ),
                           filled: true, // Filled background for the text field
-                          fillColor: Colors.white, // White background for the text field
+                          fillColor: Colors
+                              .white, // White background for the text field
                         ),
                       ),
                       const SizedBox(height: 16),
                       ElevatedButton(
                         style: ButtonStyle(
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
-                          backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 237, 195, 95)),
+                          backgroundColor: MaterialStateProperty.all(
+                              const Color.fromARGB(255, 237, 195, 95)),
                         ),
                         onPressed: () {},
                         child: const CustomButton(
@@ -152,17 +159,19 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                           'Fasilitas'
                         ]
                             .map((category) => DropdownMenuItem<String>(
-                          value: category,
-                          child: Text(category),
-                        ))
+                                  value: category,
+                                  child: Text(category),
+                                ))
                             .toList(),
                         decoration: InputDecoration(
                           labelText: 'Kategori',
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), // Rounded corners for the dropdown
+                            borderRadius: BorderRadius.circular(
+                                8), // Rounded corners for the dropdown
                           ),
                           filled: true, // Filled background for the dropdown
-                          fillColor: Colors.white, // White background for the dropdown
+                          fillColor:
+                              Colors.white, // White background for the dropdown
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -171,10 +180,12 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                         decoration: InputDecoration(
                           labelText: 'Nama Pengeluaran',
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), // Rounded corners for the text field
+                            borderRadius: BorderRadius.circular(
+                                8), // Rounded corners for the text field
                           ),
                           filled: true, // Filled background for the text field
-                          fillColor: Colors.white, // White background for the text field
+                          fillColor: Colors
+                              .white, // White background for the text field
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -184,10 +195,12 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                         decoration: InputDecoration(
                           labelText: 'Jumlah',
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), // Rounded corners for the text field
+                            borderRadius: BorderRadius.circular(
+                                8), // Rounded corners for the text field
                           ),
                           filled: true, // Filled background for the text field
-                          fillColor: Colors.white, // White background for the text field
+                          fillColor: Colors
+                              .white, // White background for the text field
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -197,32 +210,36 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                         decoration: InputDecoration(
                           labelText: 'Note',
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), // Rounded corners for the text field
+                            borderRadius: BorderRadius.circular(
+                                8), // Rounded corners for the text field
                           ),
                           filled: true, // Filled background for the text field
-                          fillColor: Colors.white, // White background for the text field
+                          fillColor: Colors
+                              .white, // White background for the text field
                         ),
                       ),
                       const SizedBox(height: 16),
                       InkWell(
                         onTap: () {
-                          DatePicker.showDatePicker(
-                            context,
-                            showTitleActions: true,
-                            onConfirm: (date) {
-                              setState(() {
-                                _selectedDate = date;
-                              });
-                            },
-                            currentTime: DateTime.now(),
-                            locale: LocaleType.en,
-                          );
+                          // DatePicker.showDatePicker(
+                          //   context,
+                          //   showTitleActions: true,
+                          //   onConfirm: (date) {
+                          //     setState(() {
+                          //       _selectedDate = date;
+                          //     });
+                          //   },
+                          //   currentTime: DateTime.now(),
+                          //   // locale: LocaleType.en,
+                          // );
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.grey[400]!), // Added border for the InkWell
+                            border: Border.all(
+                                color: Colors.grey[
+                                    400]!), // Added border for the InkWell
                           ),
                           child: Text(
                             _selectedDate != null
@@ -240,7 +257,8 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                       if (_imagePath.isNotEmpty) ...[
                         const SizedBox(height: 16),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(8), // Rounded corners for the image
+                          borderRadius: BorderRadius.circular(
+                              8), // Rounded corners for the image
                           child: Image.network(
                             _imagePath,
                             height: 200,
@@ -252,13 +270,14 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                       const SizedBox(height: 16),
                       ElevatedButton(
                         style: ButtonStyle(
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
-                          backgroundColor:
-                          MaterialStateProperty.all(const Color.fromARGB(255, 237, 195, 95)),
+                          backgroundColor: MaterialStateProperty.all(
+                              const Color.fromARGB(255, 237, 195, 95)),
                         ),
                         onPressed: _saveData,
                         child: const CustomButton(
@@ -295,7 +314,8 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                     String category = parts[5];
 
                     return Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 16.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.0),
                         color: Color.fromARGB(163, 243, 243, 243),

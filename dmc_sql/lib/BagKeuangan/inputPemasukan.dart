@@ -1,6 +1,6 @@
 import 'package:dmc_sql/BagKeuangan/keuangan.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -24,7 +24,8 @@ class _InputPemasukanState extends State<InputPemasukan> {
   String _imagePath = '';
 
   Future<void> _pickImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
         _imagePath = pickedFile.path;
@@ -61,8 +62,7 @@ class _InputPemasukanState extends State<InputPemasukan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: "k"
-      ),
+      appBar: AppBarAdmin(page: "k"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(50.0),
@@ -104,9 +104,9 @@ class _InputPemasukanState extends State<InputPemasukan> {
                         },
                         items: ['SPP', 'Donasi']
                             .map((category) => DropdownMenuItem<String>(
-                          value: category,
-                          child: Text(category),
-                        ))
+                                  value: category,
+                                  child: Text(category),
+                                ))
                             .toList(),
                         decoration: const InputDecoration(
                           labelText: 'Kategori',
@@ -143,17 +143,30 @@ class _InputPemasukanState extends State<InputPemasukan> {
                       flex: 2,
                       child: InkWell(
                         onTap: () {
-                          DatePicker.showDatePicker(
-                            context,
-                            showTitleActions: true,
-                            onConfirm: (date) {
-                              setState(() {
-                                _selectedDate = date;
-                              });
-                            },
-                            currentTime: DateTime.now(),
-                            locale: LocaleType.en,
-                          );
+                          // DatePicker.showDatePicker(
+                          //   context,
+                          //   showTitleActions: true,
+                          //   minTime: DateTime(2022, 1, 1),
+                          //   maxTime: DateTime(2023, 12, 31),
+                          //   onChanged: (date) {
+                          //     print('Selected date: $date');
+                          //   },
+                          //   onConfirm: (date) {
+                          //     print('Confirmed date: $date');
+                          //   },
+                          // );
+
+                          // DatePicker.showDatePicker(
+                          //   context,
+                          //   showTitleActions: true,
+                          //   onConfirm: (date) {
+                          //     setState(() {
+                          //       _selectedDate = date;
+                          //     });
+                          //   },
+                          //   currentTime: DateTime.now(),
+                          // locale: LocaleType.en,
+                          // );
                         },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -206,7 +219,6 @@ class _InputPemasukanState extends State<InputPemasukan> {
                     ],
                   ],
                 ),
-
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
@@ -215,7 +227,8 @@ class _InputPemasukanState extends State<InputPemasukan> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const KeuanganPage()),
+                            MaterialPageRoute(
+                                builder: (context) => const KeuanganPage()),
                           );
                         },
                         child: const Text('Back'),
@@ -225,7 +238,8 @@ class _InputPemasukanState extends State<InputPemasukan> {
                           _saveAndPrintData();
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const KeuanganPage()),
+                            MaterialPageRoute(
+                                builder: (context) => const KeuanganPage()),
                           );
                         },
                         child: const Text('Finish'),

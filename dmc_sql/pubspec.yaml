@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^4.0.4
   animated_toggle_switch: ^0.7.0
-  flutter_datetime_picker: ^1.5.1
+#  flutter_datetime_picker: ^1.5.1
   image_picker: ^1.0.1
   intl: ^0.18.1
 
