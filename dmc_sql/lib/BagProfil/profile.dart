@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:dmc_sql/AppBar/appBarAdmin.dart';
+import 'package:dmc_sql/AppBar/app_bar_user.dart';
 import 'package:dmc_sql/Property/app_color.dart';
 
 import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailLomba.dart';
@@ -20,7 +20,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: "s"),
+      appBar: AppBarUser(page: "k"),
       body: const Padding(
           padding: EdgeInsets.only(left: 72, top: 70, right: 72),
           child: SingleChildScrollView(

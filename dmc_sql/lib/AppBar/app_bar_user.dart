@@ -1,7 +1,5 @@
 import 'package:dmc_sql/BagKeuangan/keuangan.dart';
-import 'package:dmc_sql/BagProfil/profile.dart';
 import 'package:dmc_sql/BagSiswa/siswa.dart';
-import 'package:dmc_sql/login.dart';
 import 'package:dmc_sql/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +11,7 @@ class AppBarUser extends StatefulWidget implements PreferredSizeWidget {
   final String page;
 
   @override
+  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
@@ -40,7 +39,7 @@ class _AppBarUserState extends State<AppBarUser> {
         },
       ),
       title: const Text(
-        "Logo",
+        "<- ntar ganti jadi logo",
         style: TextStyle(
           color: Colors.black,
         ),
@@ -54,7 +53,7 @@ class _AppBarUserState extends State<AppBarUser> {
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: widget.page == 'p'
+                      color: widget.page == 'k'
                           ? Colors.black
                           : Colors.transparent,
                       width: 2.0,
@@ -64,13 +63,14 @@ class _AppBarUserState extends State<AppBarUser> {
                 child: TextButton(
                   style: style,
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProfilePage()));
+                    // TODO: Add Navigation to Profile Siswa Page.
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const KeuanganPage()));
                   },
                   child: const Text(
-                    'Profil Siswa',
+                    'Profile Siswa',
                     style: TextStyle(
                       color: Colors.black,
                     ),
@@ -96,13 +96,14 @@ class _AppBarUserState extends State<AppBarUser> {
                 child: TextButton(
                   style: style,
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SiswaPage()));
+                    // TODO: Add Navigation to Pendidikan Page.
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const SiswaPage()));
                   },
                   child: const Text(
-                    'Siswa',
+                    'Pendidikan',
                     style: TextStyle(
                       color: Colors.black,
                     ),
@@ -125,12 +126,12 @@ class _AppBarUserState extends State<AppBarUser> {
                 child: TextButton(
                   style: style,
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>  Login())
-                    );
-                    },
+                    // TODO: Add Log Out Function.
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //       builder: (context) =>  SchoolProfilePage()));
+                  },
                   child: const Text(
                     'Logout',
                     style: TextStyle(
