@@ -2,6 +2,9 @@ import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../../Property/app_color.dart';
 
 List<List<String>> listNilaiMurajaah = [
   ['Nilai', '1.00'],
@@ -10,7 +13,10 @@ List<List<String>> listNilaiMurajaah = [
 ];
 
 class DetailMurajaahPage extends StatefulWidget {
-  const DetailMurajaahPage({super.key});
+  const DetailMurajaahPage({super.key, required this.nama, required this.nis});
+
+  final String nama;
+  final String nis;
 
   @override
   State<DetailMurajaahPage> createState() => _DetailMurajaahPageState();
@@ -27,59 +33,118 @@ class _DetailMurajaahPageState extends State<DetailMurajaahPage> {
             children: [
               Row(
                 children: [
-                  const Expanded(flex: 8, child: Text("Detail Muraha'ah")),
+                  Expanded(
+                    flex: 8,
+                    child: Text(
+                      "Detail Lomba",
+                      style: GoogleFonts.mPlusRounded1c(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 36,
+                          color: AppColor.blue),
+                    ),
+                  ),
                   Expanded(
                       flex: 2,
                       child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text("Back to Siswa"))),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ButtonStyle(
+                          shape: MaterialStatePropertyAll(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8))),
+                          backgroundColor:
+                              const MaterialStatePropertyAll(AppColor.orange),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Back to Siswa",
+                            style: GoogleFonts.mPlusRounded1c(
+                                fontWeight: FontWeight.w800, fontSize: 24),
+                          ),
+                        ),
+                      )),
                   SizedBox(width: 10),
                   Expanded(
-                      child: ElevatedButton(
-                          onPressed: () {}, child: Text("Edit"))),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
+                        backgroundColor:
+                            const MaterialStatePropertyAll(AppColor.yellow),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("Edit",
+                            style: GoogleFonts.mPlusRounded1c(
+                                fontWeight: FontWeight.w800, fontSize: 24)),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-              Container(
-                // height: 300,
-                child: Card(
-                  elevation: 5,
+              const SizedBox(height: 20),
+              Card(
+                elevation: 5,
+                child: Padding(
+                  padding: const EdgeInsets.all(30.0),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                           child: Container(
+                        padding: const EdgeInsets.all(16),
                         decoration: ShapeDecoration(
                             shape: RoundedRectangleBorder(
                                 side: const BorderSide(width: 1.5),
                                 borderRadius: BorderRadius.circular(8.0))),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text("Data Siswa"),
-                              Text("nama siswa"),
-                              Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Data Siswa",
+                                style: GoogleFonts.mPlusRounded1c(
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 24,
+                                    color: AppColor.blue)),
+                            Text(widget.nama,
+                                style: GoogleFonts.mPlusRounded1c(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 20,
+                                    color: AppColor.black)),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
                                   height: 270,
                                   width: 239,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8.0),
                                     color: Colors.green.shade200,
                                   )),
-                              const SizedBox(height: 10),
-                              Text("nis"),
-                              Text("tgl Muraha'ah")
-                            ],
-                          ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(widget.nis,
+                                style: GoogleFonts.mPlusRounded1c(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 20,
+                                    color: AppColor.black)),
+                            Text("tgl lomba",
+                                style: GoogleFonts.mPlusRounded1c(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 20,
+                                    color: AppColor.black))
+                          ],
                         ),
                       )),
+                      const SizedBox(width: 20),
                       Expanded(
                           flex: 3,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(
+                                padding: const EdgeInsets.all(16),
                                 decoration: ShapeDecoration(
                                     shape: RoundedRectangleBorder(
                                         side: BorderSide(width: 1.5),
@@ -91,9 +156,19 @@ class _DetailMurajaahPageState extends State<DetailMurajaahPage> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
-                                      children: const [
-                                        Text("Nilai Muraha'ah"),
-                                        Text("RANK")
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Nilai Muraja'ah",
+                                            style: GoogleFonts.mPlusRounded1c(
+                                                fontWeight: FontWeight.w800,
+                                                fontSize: 24,
+                                                color: AppColor.blue)),
+                                        Text("Rank",
+                                            style: GoogleFonts.mPlusRounded1c(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 32,
+                                                color: AppColor.black))
                                       ],
                                     ),
                                     Container(
@@ -108,16 +183,37 @@ class _DetailMurajaahPageState extends State<DetailMurajaahPage> {
                                             String nilai =
                                                 listNilaiMurajaah[index][1];
 
-                                            return ListTile(
-                                              title: Text(nama),
-                                              trailing: Text(nilai),
+                                            return Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(nama,
+                                                    style: GoogleFonts
+                                                        .mPlusRounded1c(
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            fontSize: 20,
+                                                            color: AppColor
+                                                                .black)),
+                                                Text(nilai,
+                                                    style: GoogleFonts
+                                                        .mPlusRounded1c(
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            fontSize: 20,
+                                                            color: AppColor
+                                                                .black)),
+                                              ],
                                             );
                                           }),
                                     )
                                   ],
                                 ),
                               ),
+                              const SizedBox(height: 20),
                               Container(
+                                padding: const EdgeInsets.all(16),
                                 height: 150,
                                 decoration: ShapeDecoration(
                                     shape: RoundedRectangleBorder(
@@ -132,8 +228,16 @@ class _DetailMurajaahPageState extends State<DetailMurajaahPage> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        Text("Notes Muraha'ah"),
-                                        Text("lorem ipsum")
+                                        Text("Notes Muraja'ah",
+                                            style: GoogleFonts.mPlusRounded1c(
+                                                fontWeight: FontWeight.w800,
+                                                fontSize: 24,
+                                                color: AppColor.blue)),
+                                        Text("lorem ipsum",
+                                            style: GoogleFonts.mPlusRounded1c(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 20,
+                                                color: AppColor.black))
                                       ],
                                     ),
                                   ],

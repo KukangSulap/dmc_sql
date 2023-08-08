@@ -263,7 +263,8 @@ class BagianMenuKiri extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  const DetailMurajaahPage()));
+                                  DetailMurajaahPage(nama: nama.trim(),
+                                    nis: nis.trim(),)));
                     }),
                 CustomButton(
                     text: "Ziyadah",
