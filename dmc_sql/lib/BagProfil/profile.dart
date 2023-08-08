@@ -1,14 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import 'package:dmc_sql/AppBar/app_bar_user.dart';
-import 'package:dmc_sql/Property/app_color.dart';
-
 import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailLomba.dart';
 import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailMurajaah.dart';
 import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailRaport.dart';
 import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailSmart.dart';
 import 'package:dmc_sql/BagSiswa/BagDetailNilai/detailZiyadah.dart';
+import 'package:dmc_sql/Property/app_color.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const ProfilePage());
@@ -21,17 +20,17 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarUser(page: "k"),
-      body: const Padding(
-          padding: EdgeInsets.only(left: 72, top: 70, right: 72),
+      body: Padding(
+          padding: const EdgeInsets.only(left: 72, top: 70, right: 72),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SubAppBar(),
+                const SubAppBar(),
                 Padding(
-                  padding: EdgeInsets.only(top: 27),
+                  padding: const EdgeInsets.only(top: 27),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Expanded(
                         flex: 1,
                         child: Padding(
