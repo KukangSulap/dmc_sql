@@ -62,12 +62,12 @@ class SisiKananKeuangan extends StatelessWidget {
       flex: 3,
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(right: 30, left: 10),
+          padding: const EdgeInsets.only(right: 30, left: 30),
           child: Column(
             children: [
               Container(
                   margin: const EdgeInsets.only(top: 10),
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(15),
                   height: 120,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -200,7 +200,7 @@ class SisiKananKeuangan extends StatelessWidget {
               ),
               // ===========================================================  Data Pemasukan  ===================================================================
               Container(
-                margin: const EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 8),
                 padding: const EdgeInsets.all(20),
                 height: 400,
                 decoration: ShapeDecoration(
