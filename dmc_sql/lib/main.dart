@@ -1,6 +1,7 @@
 import 'package:dmc_sql/BagKeuangan/keuangan.dart';
 import 'package:dmc_sql/BagSiswa/siswa.dart';
-import 'package:dmc_sql/profile.dart';
+import 'package:dmc_sql/BagProfil/profile.dart';
+import 'package:dmc_sql/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,10 +10,10 @@ import 'misc/listedText.dart';
 import 'misc/placeCard.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Main());
 }
 
-class MyApp extends StatelessWidget {
+class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -83,7 +84,13 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
           ),
           TextButton(
             style: style,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Login())
+              );
+            },
             child: const Text(
               'Login',
               style: TextStyle(
@@ -389,7 +396,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ProfileApp()),
+                        MaterialPageRoute(builder: (context) => ProfilePage()),
                       );
                     },
                     child: const Text('Profile'),
