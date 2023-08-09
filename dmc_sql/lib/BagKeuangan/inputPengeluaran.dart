@@ -1,8 +1,8 @@
 import 'package:dmc_sql/BagKeuangan/keuangan.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 
 import '../AppBar/appBarAdmin.dart';
 
@@ -16,11 +16,11 @@ class InputPengeluaran extends StatefulWidget {
 class _InputPengeluaranState extends State<InputPengeluaran> {
 
   String _selectedCategory = 'Reward';
-  TextEditingController _judulController = TextEditingController();
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _quantityController = TextEditingController();
-  TextEditingController _notesController = TextEditingController();
-  DateTime _selectedDate = DateTime.now();
+  final TextEditingController _judulController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _quantityController = TextEditingController();
+  final TextEditingController _notesController = TextEditingController();
+  final TextEditingController _selectedDate = TextEditingController();
   String _imagePath = '';
   List<String> listViewData = [];
 
@@ -38,7 +38,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
     String name = _nameController.text;
     String quantity = _quantityController.text;
     String notes = _notesController.text;
-    String date = _selectedDate.toLocal().toString();
+    String date = _selectedDate.text;
 
     // Assuming you have a way to get the selected category, let's call it _selectedCategoryValue
     String category = _selectedCategory;
@@ -204,33 +204,29 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      InkWell(
-                        onTap: () {
-                          DatePicker.showDatePicker(
-                            context,
-                            showTitleActions: true,
-                            onConfirm: (date) {
-                              setState(() {
-                                _selectedDate = date;
-                              });
-                            },
-                            currentTime: DateTime.now(),
-                            locale: LocaleType.en,
+                      TextField(
+                        onTap: () async {
+                          DateTime? selectedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(2012),
+                            lastDate: DateTime(2026),
                           );
+
+                          if (selectedDate != null) {
+                            // Format the selected date and set it as the value of the TextField
+                            final formattedDate =
+                            DateFormat('dd/MMMM/yyyy').format(selectedDate);
+                            setState(() {
+                              _selectedDate.text = formattedDate;
+                            });
+                          }
                         },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.grey[400]!), // Added border for the InkWell
-                          ),
-                          child: Text(
-                            _selectedDate != null
-                                ? 'Selected Date: ${_selectedDate.toLocal()}'
-                                : 'Select Date',
-                            style: const TextStyle(fontSize: 16),
-                          ),
-                        ),
+                        readOnly: true,
+                        controller: _selectedDate,
+                        decoration: const InputDecoration(
+                            hintText: "Tanggal",
+                            prefixIcon: Icon(Icons.calendar_today)),
                       ),
                       const SizedBox(height: 16),
                       ElevatedButton(

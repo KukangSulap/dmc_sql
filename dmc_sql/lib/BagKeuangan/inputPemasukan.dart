@@ -1,8 +1,8 @@
 import 'package:dmc_sql/BagKeuangan/keuangan.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 
 import '../AppBar/appBarAdmin.dart';
 
@@ -16,11 +16,11 @@ class InputPemasukan extends StatefulWidget {
 class _InputPemasukanState extends State<InputPemasukan> {
   List<Map<String, dynamic>> inputListPemasukan = [];
   String _selectedCategory = 'SPP';
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _nisController = TextEditingController();
-  TextEditingController _quantityController = TextEditingController();
-  TextEditingController _notesController = TextEditingController();
-  DateTime _selectedDate = DateTime.now();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _nisController = TextEditingController();
+  final TextEditingController _quantityController = TextEditingController();
+  final TextEditingController _notesController = TextEditingController();
+  final TextEditingController _selectedDate = TextEditingController();
   String _imagePath = '';
 
   Future<void> _pickImage() async {
@@ -37,7 +37,7 @@ class _InputPemasukanState extends State<InputPemasukan> {
       'Category': _selectedCategory,
       'Name': _nameController.text,
       'NIS': _nisController.text,
-      'Date': _selectedDate.toLocal(),
+      'Date': _selectedDate.text,
       'Jumlah': _quantityController.text,
       'Notes': _notesController.text,
       'ImagePath': _imagePath,
@@ -141,29 +141,29 @@ class _InputPemasukanState extends State<InputPemasukan> {
                     const SizedBox(width: 16),
                     Expanded(
                       flex: 2,
-                      child: InkWell(
-                        onTap: () {
-                          DatePicker.showDatePicker(
-                            context,
-                            showTitleActions: true,
-                            onConfirm: (date) {
-                              setState(() {
-                                _selectedDate = date;
-                              });
-                            },
-                            currentTime: DateTime.now(),
-                            locale: LocaleType.en,
+                      child: TextField(
+                        onTap: () async {
+                          DateTime? selectedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(2012),
+                            lastDate: DateTime(2026),
                           );
+
+                          if (selectedDate != null) {
+                            // Format the selected date and set it as the value of the TextField
+                            final formattedDate =
+                            DateFormat('dd/MMMM/yyyy').format(selectedDate);
+                            setState(() {
+                              _selectedDate.text = formattedDate;
+                            });
+                          }
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: Text(
-                            _selectedDate != null
-                                ? 'Tanggal: ${_selectedDate.toLocal()}'
-                                : 'Select Date',
-                            style: const TextStyle(fontSize: 16),
-                          ),
-                        ),
+                        readOnly: true,
+                        controller: _selectedDate,
+                        decoration: const InputDecoration(
+                            hintText: "Tanggal",
+                            prefixIcon: Icon(Icons.calendar_today)),
                       ),
                     ),
                   ],
@@ -243,7 +243,7 @@ class _InputPemasukanState extends State<InputPemasukan> {
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: InputPemasukan(),
   ));
 }
