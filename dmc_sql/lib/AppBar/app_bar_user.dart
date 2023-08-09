@@ -1,7 +1,9 @@
-import 'package:dmc_sql/BagProfil/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:dmc_sql/Property/app_color.dart';
+
+import 'package:dmc_sql/BagProfil/profile.dart';
+import 'BagPendidikan/pendidikan_main.dart';
 
 enum UserPage { profileSiswa, pendidikan }
 
@@ -100,9 +102,10 @@ class _AppBarUserState extends State<AppBarUser> {
                   padding: MaterialStateProperty.all(EdgeInsets.zero),
                 ),
                 onPressed: () {
-                  // TODO: implement Navigator to Pendidikan Page.
-                  // Navigator.push(context,
-                  // MaterialPageRoute(builder: (context) => const KeuanganPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PendidikanScreen()));
                 },
                 child: Text('Pendidikan',
                     style: GoogleFonts.mPlusRounded1c(
