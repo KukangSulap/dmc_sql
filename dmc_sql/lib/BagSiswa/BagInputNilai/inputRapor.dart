@@ -98,86 +98,64 @@ class _InputRaporPageState extends State<InputRaporPage> {
   TextEditingController _contHadir3 = TextEditingController();
   TextEditingController _contHadir4 = TextEditingController();
 
+  final List<Widget Function()> _subPageBuilders = [
+    () => SubPageKualitatif(),
+    () => SubPageIbadah(),
+    () => SubPageHadits(),
+    () => SubPageQuran(),
+    () => SubPageKehadiran(),
+  ];
+
+  int _currentPageIndex = 0;
+
+  void _nextPage() {
+    if (_currentPageIndex < _subPageBuilders.length - 1) {
+      setState(() {
+        _currentPageIndex++;
+      });
+    } else {
+      Navigator.pop(context);
+    }
+  }
+
+  void _prevPage() {
+    if (_currentPageIndex > 0) {
+      setState(() {
+        _currentPageIndex--;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarAdmin(page: "s"),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            children: [
-              SubPageKualitatif(),
-              SubPageIbadah(),
-              SubPageHadits(),
-              SubPageQuran(),
-              SubPageKehadiran(),
-              Row(
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Stack(
+          children: [
+            SizedBox(
+                child: SingleChildScrollView(
+                    child: _subPageBuilders[_currentPageIndex]())),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        _prevPage();
                       },
                       child: Icon(Icons.arrow_left)),
                   ElevatedButton(
                       onPressed: () {
-                        //=================== input kualitatif
-                        listKualitatif.add([
-                          _selectedItemKualitatif1,
-                          _selectedItemKualitatif2,
-                          _selectedItemKualitatif3,
-                          _selectedItemKualitatif4
-                        ]);
-                        print(listKualitatif[0][0]);
-
-                        //=================== input ibadah
-                        listIbadah.add([
-                          _selectedItemIbadah1,
-                          _selectedItemIbadah2,
-                          _selectedItemIbadah3,
-                          _selectedItemIbadah4,
-                        ]);
-                        print(listIbadah[0][0]);
-
-                        //=================== input hadits
-                        listHadits.add([
-                          listNilaiHadits1,
-                          listNilaiHadits2,
-                          listNilaiHaditsArb1,
-                          listNilaiHaditsArb2,
-                        ]);
-                        print(listHadits[0][0][0]);
-
-                        //=================== input quran
-                        listQuran.add([
-                          _contQuran1.text,
-                          _contQuran2.text,
-                          _contQuran3.text,
-                          _contQuran4.text,
-                          _contQuran5.text,
-                          _contQuran6.text,
-                          listNilaiTahfiz,
-                          _selectedItemHifdzun1,
-                          _conthifdzun.text,
-                          _selectedItemHadist2
-                        ]);
-                        print(listQuran[0][0]);
-
-                        //=================== input kehadiran
-                        listKehadiran.add([
-                          _contHadir1.text,
-                          _contHadir2.text,
-                          _contHadir3.text,
-                          _contHadir4.text,
-                        ]);
-                        print(listKehadiran[0][0]);
+                        _nextPage();
                       },
                       child: Text("Finish"))
                 ],
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

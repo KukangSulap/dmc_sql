@@ -296,6 +296,7 @@ class _SubPageHaditsState extends State<SubPageHadits> {
             ),
           ),
         ),
+        const SizedBox(height: 50)
       ],
     );
   }

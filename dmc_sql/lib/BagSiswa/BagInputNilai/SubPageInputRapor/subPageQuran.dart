@@ -35,7 +35,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
   TextEditingController _conthifdzun = TextEditingController();
   String _selectedItemHifdzun1 = listGrade.first;
   String _selectedItemHifdzun2 = listGrade.first;
-  
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -230,7 +230,8 @@ class _SubPageQuranState extends State<SubPageQuran> {
               ],
             ),
           ),
-        )
+        ),
+        const SizedBox(height: 50)
       ],
     );
   }
