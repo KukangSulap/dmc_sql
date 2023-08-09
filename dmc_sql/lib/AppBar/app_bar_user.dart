@@ -1,3 +1,4 @@
+import 'package:dmc_sql/BagProfil/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:dmc_sql/Property/app_color.dart';
@@ -61,9 +62,10 @@ class _AppBarUserState extends State<AppBarUser> {
                   padding: MaterialStateProperty.all(EdgeInsets.zero),
                 ),
                 onPressed: () {
-                  // TODO: implement Navigator to Profile Siswa Page.
-                  // Navigator.push(context,
-                  // MaterialPageRoute(builder: (context) => const KeuanganPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProfilePage()));
                 },
                 child: Text('Profile Siswa',
                     style: GoogleFonts.mPlusRounded1c(
