@@ -5,6 +5,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 import '../AppBar/appBarAdmin.dart';
+import '../Property/app_color.dart';
+import '../Property/project_font.dart';
 
 class InputPemasukan extends StatefulWidget {
   const InputPemasukan({super.key});
@@ -63,179 +65,180 @@ class _InputPemasukanState extends State<InputPemasukan> {
     return Scaffold(
       appBar: AppBarAdmin(page: "k"
       ),
+      backgroundColor: AppColor.bg,
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(50.0),
-          child: Container(
-            padding: const EdgeInsets.all(30.0),
-            decoration: BoxDecoration(
-              color: Colors.grey[50],
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: const Offset(0, 3),
-                ),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Data Pemasukan',
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.mPlusRounded1c(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 20.0,
-                  ),
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: DropdownButtonFormField<String>(
-                        value: _selectedCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            _selectedCategory = value!;
-                          });
-                        },
-                        items: ['SPP', 'Donasi']
-                            .map((category) => DropdownMenuItem<String>(
-                          value: category,
-                          child: Text(category),
-                        ))
-                            .toList(),
-                        decoration: const InputDecoration(
-                          labelText: 'Kategori',
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      flex: 2,
-                      child: TextFormField(
-                        controller: _nameController,
-                        decoration: const InputDecoration(
-                          labelText: 'Name',
-                        ),
-                      ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 50.0, right: 200, left: 200),
+              child: Container(
+                padding: const EdgeInsets.all(30.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey[50],
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color.fromRGBO(138, 149, 158, 0.20),
+                      offset: Offset(0, 30),
+                      blurRadius: 60,
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: TextFormField(
-                        controller: _nisController,
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                          labelText: 'NIS',
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      flex: 2,
-                      child: TextField(
-                        onTap: () async {
-                          DateTime? selectedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2012),
-                            lastDate: DateTime(2026),
-                          );
-
-                          if (selectedDate != null) {
-                            // Format the selected date and set it as the value of the TextField
-                            final formattedDate =
-                            DateFormat('dd/MMMM/yyyy').format(selectedDate);
-                            setState(() {
-                              _selectedDate.text = formattedDate;
-                            });
-                          }
-                        },
-                        readOnly: true,
-                        controller: _selectedDate,
-                        decoration: const InputDecoration(
-                            hintText: "Tanggal",
-                            prefixIcon: Icon(Icons.calendar_today)),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                TextFormField(
-                  controller: _quantityController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    labelText: 'Jumlah',
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Row(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      flex: 2,
-                      child: TextFormField(
-                        controller: _notesController,
-                        maxLines: 3,
-                        decoration: const InputDecoration(
-                          labelText: 'Notes',
+                    const GlobalProjectFont(
+                      text: 'Data Pemasukan',
+                      fontWeight: FontWeight.w800,
+                      fontSize: 20.0,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: DropdownButtonFormField<String>(
+                            value: _selectedCategory,
+                            onChanged: (value) {
+                              setState(() {
+                                _selectedCategory = value!;
+                              });
+                            },
+                            items: ['SPP', 'Donasi']
+                                .map((category) => DropdownMenuItem<String>(
+                              value: category,
+                              child: Text(category),
+                            ))
+                                .toList(),
+                            decoration: const InputDecoration(
+                              labelText: 'Kategori',
+                            ),
+                          ),
                         ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          flex: 2,
+                          child: TextFormField(
+                            controller: _nameController,
+                            decoration: const InputDecoration(
+                              labelText: 'Name',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: TextFormField(
+                            controller: _nisController,
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
+                              labelText: 'NIS',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          flex: 2,
+                          child: TextField(
+                            onTap: () async {
+                              DateTime? selectedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2012),
+                                lastDate: DateTime(2026),
+                              );
+
+                              if (selectedDate != null) {
+                                // Format the selected date and set it as the value of the TextField
+                                final formattedDate =
+                                DateFormat('dd/MMMM/yyyy').format(selectedDate);
+                                setState(() {
+                                  _selectedDate.text = formattedDate;
+                                });
+                              }
+                            },
+                            readOnly: true,
+                            controller: _selectedDate,
+                            decoration: const InputDecoration(
+                                hintText: "Tanggal",
+                                prefixIcon: Icon(Icons.calendar_today)),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _quantityController,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        labelText: 'Jumlah',
                       ),
                     ),
-                    const SizedBox(width: 16),
-                    ElevatedButton(
-                      onPressed: _pickImage,
-                      child: const Text('Pick an Image'),
+                    const SizedBox(height: 16),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: TextFormField(
+                            controller: _notesController,
+                            maxLines: 3,
+                            decoration: const InputDecoration(
+                              labelText: 'Notes',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        ElevatedButton(
+                          onPressed: _pickImage,
+                          child: const Text('Pick an Image'),
+                        ),
+                        if (_imagePath.isNotEmpty) ...[
+                          const SizedBox(width: 16),
+                          Image.network(
+                            _imagePath,
+                            height: 200,
+                            width: 200,
+                            fit: BoxFit.cover,
+                          ),
+                        ],
+                      ],
                     ),
-                    if (_imagePath.isNotEmpty) ...[
-                      const SizedBox(width: 16),
-                      Image.network(
-                        _imagePath,
-                        height: 200,
-                        width: 200,
-                        fit: BoxFit.cover,
-                      ),
-                    ],
                   ],
                 ),
-
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const KeuanganPage()),
-                          );
-                        },
-                        child: const Text('Back'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          _saveAndPrintData();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const KeuanganPage()),
-                          );
-                        },
-                        child: const Text('Finish'),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0, right: 200, left: 200),
+              child: Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const KeuanganPage()),
+                      );
+                    },
+                    child: const Text('Back'),
+                  ),
+                  SizedBox(width: 200,),
+                  ElevatedButton(
+                    onPressed: () {
+                      _saveAndPrintData();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const KeuanganPage()),
+                      );
+                    },
+                    child: const Text('Finish'),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

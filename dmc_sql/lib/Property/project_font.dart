@@ -14,7 +14,7 @@ class GlobalProjectFont extends StatelessWidget{
     required this.text,
     this.fontSize = 16.0,
     this.color = Colors.black,
-    this.fontWeight = FontWeight.normal,
+    this.fontWeight = FontWeight.w800,
     this.textAlign = TextAlign.start,
   }) : super(key: key);
 

@@ -7,4 +7,5 @@ class AppColor {
   static const Color yellow = Color.fromARGB(255, 237, 195, 95);
 
   static const Color shadow = Color.fromARGB(51, 138, 149, 158);
+  static const Color bg = Color.fromARGB(255, 244, 244, 245);
 }

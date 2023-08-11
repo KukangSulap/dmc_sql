@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 import '../AppBar/appBarAdmin.dart';
+import '../Property/project_font.dart';
 
 class InputPengeluaran extends StatefulWidget {
   InputPengeluaran({Key? key}) : super(key: key);
@@ -80,13 +81,10 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                   ),
                   child: Column(
                     children: [
-                      Text(
-                        'Data Pengeluaran',
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.mPlusRounded1c(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 20.0,
-                        ),
+                      const GlobalProjectFont(
+                        text: 'Data Pengeluaran',
+                        fontWeight: FontWeight.w800,
+                        fontSize: 20.0,
                       ),
                       const SizedBox(height: 16),
                       TextFormField(
@@ -268,13 +266,10 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                 const SizedBox(
                   height: 30,
                 ),
-                Text(
-                  'Data Pengeluaran',
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.mPlusRounded1c(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 20.0,
-                  ),
+                const GlobalProjectFont(
+                  text: 'Data Pengeluaran',
+                  fontWeight: FontWeight.w800,
+                  fontSize: 20.0,
                 ),
                 const SizedBox(height: 16),
                 //Listview yang sudah di input
@@ -300,9 +295,15 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Name: $name'),
-                            Text('Category: $category'),
-                            Text('Quantity: $quantity'),
+                            GlobalProjectFont(
+                              text: 'Name: $name'
+                            ),
+                            GlobalProjectFont(
+                              text: 'Category: $category'
+                            ),
+                            GlobalProjectFont(
+                              text: 'Quantity: $quantity'
+                            ),
                           ],
                         ),
                       ),
@@ -320,7 +321,9 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                           ),
                         );
                       },
-                      child: const Text('Back'),
+                      child: const GlobalProjectFont(
+                          text: 'Back'
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -331,7 +334,9 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                           ),
                         );
                       },
-                      child: const Text('Finish'),
+                      child: const GlobalProjectFont(
+                        text: 'Finish'
+                      ),
                     ),
                   ],
                 ),
