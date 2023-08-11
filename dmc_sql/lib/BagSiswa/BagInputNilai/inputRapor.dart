@@ -43,11 +43,11 @@ List<List<String>> listNilaiTahfiz = [
   ['Juz 29', '97', "Mumtaz", "Tidak Tersertifikasi", "20 Halaman", "85%"],
 ];
 
-List<List<dynamic>> listKualitatif = [];
-List<List<dynamic>> listIbadah = [];
-List<List<dynamic>> listHadits = [];
-List<List<dynamic>> listQuran = [];
-List<List<dynamic>> listKehadiran = [];
+List<dynamic> listKualitatif = [];
+List<dynamic> listIbadah = [];
+List<dynamic> listHadits = [];
+List<dynamic> listQuran = [];
+List<dynamic> listKehadiran = [];
 
 class InputRaporPage extends StatefulWidget {
   const InputRaporPage({super.key, required this.nisSiswa});
@@ -58,52 +58,13 @@ class InputRaporPage extends StatefulWidget {
 }
 
 class _InputRaporPageState extends State<InputRaporPage> {
-  String _selectedItemKualitatif1 = listGrade.first;
-  String _selectedItemKualitatif2 = listGrade.first;
-  String _selectedItemKualitatif3 = listGrade.first;
-  String _selectedItemKualitatif4 = listGrade.first;
 
-  String _selectedItemIbadah1 = listGrade.first;
-  String _selectedItemIbadah2 = listGrade.first;
-  String _selectedItemIbadah3 = listGrade.first;
-  String _selectedItemIbadah4 = listGrade.first;
-
-  TextEditingController _contHadits1 = TextEditingController();
-  TextEditingController _contHadits2 = TextEditingController();
-  TextEditingController _contHaditsArb1 = TextEditingController();
-  TextEditingController _contHaditsArb2 = TextEditingController();
-  String _selectedItemHadist1 = listGrade.first;
-  String _selectedItemHadist2 = listGrade.first;
-  String _selectedItemArb1 = listGrade.first;
-  String _selectedItemArb2 = listGrade.first;
-
-  TextEditingController _contQuran1 = TextEditingController();
-  TextEditingController _contQuran2 = TextEditingController();
-  TextEditingController _contQuran3 = TextEditingController();
-  TextEditingController _contQuran4 = TextEditingController();
-  TextEditingController _contQuran5 = TextEditingController();
-  TextEditingController _contQuran6 = TextEditingController();
-
-  TextEditingController _contTahfiz1 = TextEditingController();
-  TextEditingController _contTahfiz2 = TextEditingController();
-  TextEditingController _contTahfiz3 = TextEditingController();
-  String _selectedItemTahfiz = listStatus.first;
-
-  TextEditingController _conthifdzun = TextEditingController();
-  String _selectedItemHifdzun1 = listGrade.first;
-  String _selectedItemHifdzun2 = listGrade.first;
-
-  TextEditingController _contHadir1 = TextEditingController();
-  TextEditingController _contHadir2 = TextEditingController();
-  TextEditingController _contHadir3 = TextEditingController();
-  TextEditingController _contHadir4 = TextEditingController();
-
-  final List<Widget Function()> _subPageBuilders = [
-    () => SubPageKualitatif(),
-    () => SubPageIbadah(),
-    () => SubPageHadits(),
-    () => SubPageQuran(),
-    () => SubPageKehadiran(),
+  final List<Widget Function(VoidCallback, VoidCallback)> _subPageBuilders = [
+    (next, prev) => SubPageKualitatif(nextPage: next, prevPage: prev),
+    (next, prev) => SubPageIbadah(nextPage: next, prevPage: prev),
+    (next, prev) => SubPageHadits(nextPage: next, prevPage: prev),
+    (next, prev) => SubPageQuran(nextPage: next, prevPage: prev),
+    (next, prev) => SubPageKehadiran(nextPage: next, prevPage: prev),
   ];
 
   int _currentPageIndex = 0;
@@ -123,6 +84,23 @@ class _InputRaporPageState extends State<InputRaporPage> {
       setState(() {
         _currentPageIndex--;
       });
+    } else {
+      Navigator.pop(context);
+    }
+  }
+
+  void _insertDataKual(String a, String b, String c, String d) {
+    if (listKualitatif.length < 3) {
+      listKualitatif.add(a);
+      listKualitatif.add(b);
+      listKualitatif.add(c);
+      listKualitatif.add(d);
+    } else {
+      listKualitatif.removeRange(0, 3);
+      listKualitatif.add(a);
+      listKualitatif.add(b);
+      listKualitatif.add(c);
+      listKualitatif.add(d);
     }
   }
 
@@ -130,32 +108,11 @@ class _InputRaporPageState extends State<InputRaporPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarAdmin(page: "s"),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Stack(
-          children: [
-            SizedBox(
-                child: SingleChildScrollView(
-                    child: _subPageBuilders[_currentPageIndex]())),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        _prevPage();
-                      },
-                      child: Icon(Icons.arrow_left)),
-                  ElevatedButton(
-                      onPressed: () {
-                        _nextPage();
-                      },
-                      child: Text("Finish"))
-                ],
-              ),
-            )
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 150),
+          child: SizedBox(
+              child: _subPageBuilders[_currentPageIndex](_nextPage, _prevPage)),
         ),
       ),
     );

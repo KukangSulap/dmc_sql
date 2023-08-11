@@ -13,7 +13,10 @@ List<List<String>> listNilaiTahfiz = [
 ];
 
 class SubPageQuran extends StatefulWidget {
-  const SubPageQuran({super.key});
+  const SubPageQuran({super.key, required this.nextPage, required this.prevPage});
+
+  final VoidCallback nextPage;
+  final VoidCallback prevPage;
 
   @override
   State<SubPageQuran> createState() => _SubPageQuranState();
@@ -230,6 +233,21 @@ class _SubPageQuranState extends State<SubPageQuran> {
               ],
             ),
           ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  widget.prevPage();
+                },
+                child: Icon(Icons.arrow_back)),
+            ElevatedButton(
+                onPressed: () {
+                  widget.nextPage();
+                },
+                child: Text("Finish"))
+          ],
         ),
         const SizedBox(height: 50)
       ],

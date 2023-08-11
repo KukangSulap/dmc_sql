@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 const List<String> listGrade = <String>['A', 'B', 'C'];
 
 class SubPageKualitatif extends StatefulWidget {
-  const SubPageKualitatif({super.key});
+  const SubPageKualitatif(
+      {super.key, required this.nextPage, required this.prevPage});
+
+  final VoidCallback nextPage;
+  final VoidCallback prevPage;
 
   @override
   State<SubPageKualitatif> createState() => _SubPageKualitatifState();
@@ -17,51 +21,70 @@ class _SubPageKualitatifState extends State<SubPageKualitatif> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      child: Card(
-        elevation: 5,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [Text("Nilai Kualitatif"), Text("Gerakan")],
-            ),
-            Row(
+    return Column(
+      children: [
+        Card(
+          elevation: 5,
+          child: SizedBox(
+            height: 200,
+            child: Column(
               children: [
-                Expanded(
-                    child: DropDowns(listGrade, _selectedItemKualitatif1,
-                        (String? value) {
-                  setState(() {
-                    _selectedItemKualitatif1 = value!;
-                  });
-                })),
-                Expanded(
-                    child: DropDowns(listGrade, _selectedItemKualitatif2,
-                        (String? value) {
-                  setState(() {
-                    _selectedItemKualitatif2 = value!;
-                  });
-                })),
-                Expanded(
-                    child: DropDowns(listGrade, _selectedItemKualitatif3,
-                        (String? value) {
-                  setState(() {
-                    _selectedItemKualitatif3 = value!;
-                  });
-                })),
-                Expanded(
-                    child: DropDowns(listGrade, _selectedItemKualitatif4,
-                        (String? value) {
-                  setState(() {
-                    _selectedItemKualitatif4 = value!;
-                  });
-                })),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [Text("Nilai Kualitatif"), Text("Gerakan")],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: DropDowns(listGrade, _selectedItemKualitatif1,
+                            (String? value) {
+                      setState(() {
+                        _selectedItemKualitatif1 = value!;
+                      });
+                    })),
+                    Expanded(
+                        child: DropDowns(listGrade, _selectedItemKualitatif2,
+                            (String? value) {
+                      setState(() {
+                        _selectedItemKualitatif2 = value!;
+                      });
+                    })),
+                    Expanded(
+                        child: DropDowns(listGrade, _selectedItemKualitatif3,
+                            (String? value) {
+                      setState(() {
+                        _selectedItemKualitatif3 = value!;
+                      });
+                    })),
+                    Expanded(
+                        child: DropDowns(listGrade, _selectedItemKualitatif4,
+                            (String? value) {
+                      setState(() {
+                        _selectedItemKualitatif4 = value!;
+                      });
+                    })),
+                  ],
+                )
               ],
-            )
-          ],
+            ),
+          ),
         ),
-      ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  widget.prevPage();
+                },
+                child: Icon(Icons.arrow_left)),
+            ElevatedButton(
+                onPressed: () {
+                  widget.nextPage();
+                },
+                child: Text("Finish"))
+          ],
+        )
+      ],
     );
   }
 }

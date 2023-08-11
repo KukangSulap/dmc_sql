@@ -29,7 +29,10 @@ List<List<String>> listNilaiHaditsArb2 = [
 ];
 
 class SubPageHadits extends StatefulWidget {
-  const SubPageHadits({super.key});
+  const SubPageHadits({super.key, required this.nextPage, required this.prevPage});
+
+  final VoidCallback nextPage;
+  final VoidCallback prevPage;
 
   @override
   State<SubPageHadits> createState() => _SubPageHaditsState();
@@ -295,6 +298,21 @@ class _SubPageHaditsState extends State<SubPageHadits> {
               ],
             ),
           ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  widget.prevPage();
+                },
+                child: Icon(Icons.arrow_back)),
+            ElevatedButton(
+                onPressed: () {
+                  widget.nextPage();
+                },
+                child: Text("Finish"))
+          ],
         ),
         const SizedBox(height: 50)
       ],
