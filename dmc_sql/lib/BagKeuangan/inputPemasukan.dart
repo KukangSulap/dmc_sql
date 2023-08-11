@@ -1,6 +1,6 @@
 import 'package:dmc_sql/BagKeuangan/keuangan.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
@@ -91,90 +91,129 @@ class _InputPemasukanState extends State<InputPemasukan> {
                       text: 'Data Pemasukan',
                       fontWeight: FontWeight.w800,
                       fontSize: 20.0,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: DropdownButtonFormField<String>(
-                            value: _selectedCategory,
-                            onChanged: (value) {
-                              setState(() {
-                                _selectedCategory = value!;
-                              });
-                            },
-                            items: ['SPP', 'Donasi']
-                                .map((category) => DropdownMenuItem<String>(
-                              value: category,
-                              child: Text(category),
-                            ))
-                                .toList(),
-                            decoration: const InputDecoration(
-                              labelText: 'Kategori',
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          flex: 2,
-                          child: TextFormField(
-                            controller: _nameController,
-                            decoration: const InputDecoration(
-                              labelText: 'Name',
-                            ),
-                          ),
-                        ),
-                      ],
+                      color: AppColor.blue,
                     ),
                     const SizedBox(height: 16),
                     Row(
                       children: [
                         Expanded(
                           flex: 2,
-                          child: TextFormField(
-                            controller: _nisController,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              labelText: 'NIS',
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
                             ),
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          flex: 2,
-                          child: TextField(
-                            onTap: () async {
-                              DateTime? selectedDate = await showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime(2012),
-                                lastDate: DateTime(2026),
-                              );
-
-                              if (selectedDate != null) {
-                                // Format the selected date and set it as the value of the TextField
-                                final formattedDate =
-                                DateFormat('dd/MMMM/yyyy').format(selectedDate);
+                            child: DropdownButtonFormField<String>(
+                              value: _selectedCategory,
+                              onChanged: (value) {
                                 setState(() {
-                                  _selectedDate.text = formattedDate;
+                                  _selectedCategory = value!;
                                 });
-                              }
-                            },
-                            readOnly: true,
-                            controller: _selectedDate,
-                            decoration: const InputDecoration(
-                                hintText: "Tanggal",
-                                prefixIcon: Icon(Icons.calendar_today)),
+                              },
+                              items: ['SPP', 'Donasi']
+                                  .map((category) => DropdownMenuItem<String>(
+                                value: category,
+                                child: Text(category),
+                              ))
+                                  .toList(),
+                              decoration: const InputDecoration(
+                                labelText: 'Kategori',
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            padding: const EdgeInsets.only(top: 3, left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextField(
+                              controller: _nameController,
+                              decoration: const InputDecoration(
+                                labelText: 'Nama',
+                              ),
+                            ),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _quantityController,
-                      keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        labelText: 'Jumlah',
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextFormField(
+                              controller: _nisController,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                labelText: 'NIS',
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextField(
+                              onTap: () async {
+                                DateTime? selectedDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2012),
+                                  lastDate: DateTime(2026),
+                                );
+
+                                if (selectedDate != null) {
+                                  final formattedDate =
+                                  DateFormat('dd/MMMM/yyyy').format(selectedDate);
+                                  setState(() {
+                                    _selectedDate.text = formattedDate;
+                                  });
+                                }
+                              },
+                              readOnly: true,
+                              controller: _selectedDate,
+                              decoration: const InputDecoration(
+                                  hintText: "Tanggal",
+                                  prefixIcon: Icon(Icons.calendar_today)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Container(
+                      padding: const EdgeInsets.only(left: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: AppColor.blue, width: 1.5),
+                      ),
+                      child: TextFormField(
+                        controller: _quantityController,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        decoration: const InputDecoration(
+                          labelText: 'Jumlah',
+                        ),
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -183,28 +222,40 @@ class _InputPemasukanState extends State<InputPemasukan> {
                       children: [
                         Expanded(
                           flex: 2,
-                          child: TextFormField(
-                            controller: _notesController,
-                            maxLines: 3,
-                            decoration: const InputDecoration(
-                              labelText: 'Notes',
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextFormField(
+                              controller: _notesController,
+                              maxLines: 3,
+                              decoration: const InputDecoration(
+                                labelText: 'Notes',
+                              ),
                             ),
                           ),
                         ),
                         const SizedBox(width: 16),
-                        ElevatedButton(
-                          onPressed: _pickImage,
-                          child: const Text('Pick an Image'),
-                        ),
-                        if (_imagePath.isNotEmpty) ...[
-                          const SizedBox(width: 16),
-                          Image.network(
-                            _imagePath,
-                            height: 200,
-                            width: 200,
-                            fit: BoxFit.cover,
-                          ),
-                        ],
+                        Column(
+                          children: [
+                            if (_imagePath.isNotEmpty) ...[
+                              Image.network(
+                                _imagePath,
+                                height: 200,
+                                width: 200,
+                                fit: BoxFit.cover,
+                              ),
+                              const SizedBox(height: 16),
+                            ],
+                            ElevatedButton(
+                              onPressed: _pickImage,
+                              child: const Text('Pick an Image'),
+                            ),
+                          ],
+                        )
+
                       ],
                     ),
                   ],
@@ -216,16 +267,31 @@ class _InputPemasukanState extends State<InputPemasukan> {
               child: Row(
                 children: [
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom( // Set button style
+                      backgroundColor: Colors.transparent, // Set the button color to transparent
+                      elevation: 0, // Remove button elevation
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => const KeuanganPage()),
                       );
                     },
-                    child: const Text('Back'),
+                    child: const CustomButton(
+                      title: 'Back',
+                      widths: 140,
+                      textColor: Colors.white,
+                      fontWeight: FontWeight.normal,
+                      backgroundColor: Color(0xffd66a3d),
+                      height: 50,
+                    ),
                   ),
-                  SizedBox(width: 200,),
+                  const Spacer(), // Add a spacer to push the next button to the end
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom( // Set button style
+                      backgroundColor: Colors.transparent, // Set the button color to transparent
+                      elevation: 0, // Remove button elevation
+                    ),
                     onPressed: () {
                       _saveAndPrintData();
                       Navigator.push(
@@ -233,11 +299,19 @@ class _InputPemasukanState extends State<InputPemasukan> {
                         MaterialPageRoute(builder: (context) => const KeuanganPage()),
                       );
                     },
-                    child: const Text('Finish'),
+                    child: const CustomButton(
+                      title: 'Finish',
+                      widths: 140,
+                      textColor: Colors.white,
+                      fontWeight: FontWeight.normal,
+                      backgroundColor: Color(0xffedc35f),
+                      height: 50,
+                    ),
                   ),
                 ],
               ),
-            )
+            ),
+            const SizedBox(height: 20,)
           ],
         ),
       ),

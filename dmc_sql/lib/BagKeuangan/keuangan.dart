@@ -427,28 +427,40 @@ class SisiKananKeuangan extends StatelessWidget {
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
-    super.key,
+    Key? key,
     required this.title,
     required this.widths,
-  });
+    this.textColor = Colors.grey,
+    this.fontWeight = FontWeight.bold,
+    this.backgroundColor = Colors.transparent,
+    this.height = 40.0,
+  }) : super(key: key);
 
   final String title;
   final double widths;
+  final Color textColor;
+  final FontWeight fontWeight;
+  final Color backgroundColor;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
+      height: height,
       width: widths,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-                color: Colors.grey, fontWeight: FontWeight.bold),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: TextButton(
+        onPressed: null, // No onPressed callback
+        child: Text(
+          title,
+          style: TextStyle(
+            color: textColor,
+            fontWeight: fontWeight,
           ),
-        ],
+        ),
       ),
     );
   }

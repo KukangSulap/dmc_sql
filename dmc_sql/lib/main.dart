@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'Property/app_color.dart';
 import 'misc/listedText.dart';
 import 'misc/placeCard.dart';
 
@@ -151,6 +152,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                                   style: GoogleFonts.mPlusRounded1c(
                                     fontWeight: FontWeight.w800,
                                     fontSize: 35.0,
+                                    color: AppColor.blue,
                                   ),
                                 ),
                                 const SizedBox(height: 10.0),
@@ -191,6 +193,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                                         style: GoogleFonts.mPlusRounded1c(
                                           fontWeight: FontWeight.w800,
                                           fontSize: 56.0,
+                                          color: AppColor.blue
                                         ),
                                       ),
                                       const SizedBox(height: 10.0),
