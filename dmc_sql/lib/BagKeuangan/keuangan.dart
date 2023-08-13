@@ -431,7 +431,7 @@ class CustomButton extends StatelessWidget {
     required this.title,
     required this.widths,
     this.textColor = Colors.grey,
-    this.fontWeight = FontWeight.bold,
+    this.fontWeight = FontWeight.w800,
     this.backgroundColor = Colors.transparent,
     this.height = 40.0,
   }) : super(key: key);
