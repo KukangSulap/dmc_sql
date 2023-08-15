@@ -4,10 +4,14 @@ const List<String> listGrade = <String>['A', 'B', 'C'];
 
 class SubPageKualitatif extends StatefulWidget {
   const SubPageKualitatif(
-      {super.key, required this.nextPage, required this.prevPage});
+      {super.key,
+      required this.nextPage,
+      required this.prevPage,
+      required this.insertData});
 
   final VoidCallback nextPage;
   final VoidCallback prevPage;
+  final List<dynamic> insertData;
 
   @override
   State<SubPageKualitatif> createState() => _SubPageKualitatifState();
@@ -79,6 +83,12 @@ class _SubPageKualitatifState extends State<SubPageKualitatif> {
                 child: Icon(Icons.arrow_left)),
             ElevatedButton(
                 onPressed: () {
+                  widget.insertData[0].addAll([
+                    _selectedItemKualitatif1,
+                    _selectedItemKualitatif2,
+                    _selectedItemKualitatif3,
+                    _selectedItemKualitatif4,
+                  ]);
                   widget.nextPage();
                 },
                 child: Text("Finish"))

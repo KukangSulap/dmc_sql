@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 
 class SubPageKehadiran extends StatefulWidget {
   const SubPageKehadiran(
-      {super.key, required this.nextPage, required this.prevPage});
+      {super.key,
+      required this.nextPage,
+      required this.prevPage,
+      required this.insertData});
 
   final VoidCallback nextPage;
   final VoidCallback prevPage;
+  final List<dynamic> insertData;
 
   @override
   State<SubPageKehadiran> createState() => _SubPageKehadiranState();
@@ -69,6 +73,28 @@ class _SubPageKehadiranState extends State<SubPageKehadiran> {
                 child: Icon(Icons.arrow_back)),
             ElevatedButton(
                 onPressed: () {
+                  widget.insertData[4].addAll([
+                    _contHadir1.text,
+                    _contHadir2.text,
+                    _contHadir3.text,
+                    _contHadir4.text,
+                  ]);
+
+                  // nilai pertama dari kualitatif
+                  print(widget.insertData[0][0]);
+
+                  // nilai kedua dari ibadah
+                  print(widget.insertData[1][1]);
+
+                  // nilai salah satu dari list nilai hadits pertama
+                  print(widget.insertData[2][0][0]);
+
+                  // nilai jumlah di bagian hifdzun
+                  print(widget.insertData[3][8]);
+
+                  // nilai total kehadiran
+                  print(widget.insertData[4][3]);
+
                   widget.nextPage();
                 },
                 child: Text("Finish"))

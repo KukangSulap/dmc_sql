@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 const List<String> listGrade = <String>['A', 'B', 'C'];
 
 class SubPageIbadah extends StatefulWidget {
-  const SubPageIbadah({super.key, required this.nextPage, required this.prevPage});
+  const SubPageIbadah({super.key, required this.nextPage, required this.prevPage, required this.insertData});
 
   final VoidCallback nextPage;
   final VoidCallback prevPage;
+  final List<dynamic> insertData;
+
 
   @override
   State<SubPageIbadah> createState() => _SubPageIbadahState();
@@ -97,6 +99,12 @@ class _SubPageIbadahState extends State<SubPageIbadah> {
                 child: Icon(Icons.arrow_back)),
             ElevatedButton(
                 onPressed: () {
+                  widget.insertData[1].addAll([
+                    _selectedItemIbadah1,
+                    _selectedItemIbadah2,
+                    _selectedItemIbadah3,
+                    _selectedItemIbadah4,
+                  ]);
                   widget.nextPage();
                 },
                 child: Text("Finish"))
