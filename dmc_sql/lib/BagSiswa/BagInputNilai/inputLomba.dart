@@ -40,7 +40,7 @@ class _InputLombaPageState extends State<InputLombaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: "s"),
+      appBar: AppBarAdmin(page: CurrentPage.siswa),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(

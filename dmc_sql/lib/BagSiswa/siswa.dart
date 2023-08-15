@@ -33,7 +33,7 @@ class _SiswaPageState extends State<SiswaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: "s"),
+      appBar: AppBarAdmin(page: CurrentPage.siswa),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(

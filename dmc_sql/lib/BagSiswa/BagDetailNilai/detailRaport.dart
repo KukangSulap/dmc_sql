@@ -93,7 +93,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: "s"),
+      appBar: AppBarAdmin(page: CurrentPage.siswa),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(20.0),

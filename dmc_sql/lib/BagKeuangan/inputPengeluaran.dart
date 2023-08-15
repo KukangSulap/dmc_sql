@@ -53,7 +53,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: "k"),
+      appBar: const AppBarAdmin(page: CurrentPage.keuangan),
       body: SingleChildScrollView(
         child: Container(
           constraints: const BoxConstraints(maxWidth: double.infinity),

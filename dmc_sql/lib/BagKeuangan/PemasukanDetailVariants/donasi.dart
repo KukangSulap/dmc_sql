@@ -11,10 +11,10 @@ class PemasukanDetailDonasi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
-        appBar: AppBarAdmin(page: 'k'),
-        body: const Center(
+        appBar: AppBarAdmin(page: CurrentPage.keuangan),
+        body: Center(
           child: TemplateDetailPemasukan(
             texts: [
               'Title',

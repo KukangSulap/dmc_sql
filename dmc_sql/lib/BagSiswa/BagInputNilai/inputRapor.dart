@@ -95,7 +95,7 @@ class _InputRaporPageState extends State<InputRaporPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: "s"),
+      appBar: AppBarAdmin(page: CurrentPage.siswa),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(15.0),

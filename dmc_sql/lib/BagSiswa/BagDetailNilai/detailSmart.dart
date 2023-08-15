@@ -28,7 +28,7 @@ class _DetailSmartPageState extends State<DetailSmartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarAdmin(page: "s"),
+        appBar: AppBarAdmin(page: CurrentPage.siswa),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20.0),

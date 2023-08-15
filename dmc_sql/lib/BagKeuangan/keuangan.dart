@@ -35,9 +35,7 @@ class _KeuanganPageState extends State<KeuanganPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBarAdmin(
-        page: 'k',
-      ),
+      appBar: const AppBarAdmin(page: CurrentPage.keuangan),
       body: SafeArea(
         child: Row(
           children: const [

@@ -63,8 +63,7 @@ class _InputPemasukanState extends State<InputPemasukan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: "k"
-      ),
+      appBar: const AppBarAdmin(page: CurrentPage.keuangan),
       backgroundColor: AppColor.bg,
       body: SingleChildScrollView(
         child: Column(
