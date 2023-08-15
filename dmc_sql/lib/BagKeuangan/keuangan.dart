@@ -2,6 +2,8 @@ import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:dmc_sql/BagKeuangan/PemasukanDetailVariants/donasi.dart';
 import 'package:dmc_sql/BagKeuangan/inputPengeluaran.dart';
 import 'package:dmc_sql/BagKeuangan/pengeluaranDetail.dart';
+import 'package:dmc_sql/Property/app_color.dart';
+import 'package:dmc_sql/Property/project_font.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -33,9 +35,7 @@ class _KeuanganPageState extends State<KeuanganPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBarAdmin(
-        page: 'k',
-      ),
+      appBar: const AppBarAdmin(page: CurrentPage.keuangan),
       body: SafeArea(
         child: Row(
           children: const [
@@ -67,135 +67,128 @@ class SisiKananKeuangan extends StatelessWidget {
             children: [
               Container(
                   margin: const EdgeInsets.only(top: 10),
-                  padding: const EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(10),
                   height: 120,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Pencarian
-                    Expanded(
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.black, width: 1.5),
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Pencarian',
-                            border: InputBorder.none,
-                            suffixIcon: Icon(Icons.search),
-                            suffixIconColor: Colors.black,
-                            contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
+                child: Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Total uang
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          decoration: ShapeDecoration(
+                            color: AppColor.yellow,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8,),
-                    // Total uang
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 10, bottom: 10),
-                        decoration: ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(width: 1.5),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            ListTile(
-                              title: Text(
-                                'Total Uang',
-                                style: TextStyle(color: Colors.black),
-                              ),
-                              subtitle: Text(
-                                'Rp 56.000.000',
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              ListTile(
+                                title: Text(
+                                  'Total Uang',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                subtitle: Text(
+                                  'Rp 56.000.000',
+                                  style: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8,),
-                    // Pemasukan
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 10, bottom: 10),
-                        decoration: ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(width: 1.5),
-                            borderRadius: BorderRadius.circular(8),
+                            ],
                           ),
                         ),
-                        child: Column(
-                          children: [
-                            ListTile(
-                              title: const Text(
-                                'Pemasukan Bulanan',
-                                style: TextStyle(color: Colors.black),
-                              ),
-                              subtitle: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    'Rp 5.200.000',
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
                       ),
-                    ),
-                    const SizedBox(width: 8,),
-                    // Keluaran
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 10, bottom: 10),
-                        decoration: ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(width: 1.5),
-                            borderRadius: BorderRadius.circular(8),
+                      const SizedBox(width: 8,),
+                      // Pemasukan
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          decoration: ShapeDecoration(
+                            color: AppColor.orange,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child:  Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              ListTile(
+                                title: Text(
+                                  'Pemasukan Bulanan',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                subtitle: Text(
+                                  'Rp 50.000.000',
+                                  style: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        child: Column(
-                          children: [
-                            ListTile(
-                              title: const Text(
-                                'Pengeluaran Bulanan',
-                                style: TextStyle(color: Colors.black),
-                              ),
-                              subtitle: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    'Rp 2.450.000',
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                      ),
+                      const SizedBox(width: 8,),
+                      // Keluaran
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          decoration: ShapeDecoration(
+                            color: AppColor.yellow,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                          ],
+                          ),
+                          child:  Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              ListTile(
+                                title: Text(
+                                  'Pengeluaran Bulanan',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                subtitle: Text(
+                                  'Rp 6.000.000',
+                                  style: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 8,),
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black, width: 1.5),
+                          ),
+                          child: TextFormField(
+                            decoration: const InputDecoration(
+                              hintText: 'Pencarian',
+                              border: InputBorder.none,
+                              suffixIcon: Icon(Icons.search),
+                              suffixIconColor: Colors.black,
+                              contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               // ===========================================================  Data Pemasukan  ===================================================================
@@ -205,56 +198,45 @@ class SisiKananKeuangan extends StatelessWidget {
                 height: 400,
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1.5),
+                    side: const BorderSide(width: 2,  color: AppColor.blue),
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 child: Column(
                   children: [
-                    ListTile(
-                      title: Row(
+                    Row(
                         children: [
-                          const Flexible(
-                            child: Text(
-                              "Data Pemasukan",
-                              style: TextStyle(
-                                  fontSize: 20, color: Colors.black),
-                            ),
+                          const GlobalProjectFont(
+                            text: 'Data Pemasukan',
+                            fontWeight: FontWeight.w800,
+                            fontSize: 22.0,
+                            color: AppColor.blue,
                           ),
-                          const SizedBox(width: 5),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.filter),
+                          const Spacer(),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom( // Set button style
+                              backgroundColor: Colors.transparent, // Set the button color to transparent
+                              elevation: 0, // Remove button elevation
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const InputPemasukan(),
+                                ),
+                              );
+                            },
+                            child: const CustomButton(
+                              title: 'Input',
+                              widths: 160,
+                              textColor: Colors.white,
+                              fontWeight: FontWeight.normal,
+                              backgroundColor: AppColor.orange,
+                              height: 40,
+                            ),
                           ),
                         ],
                       ),
-                      trailing: ElevatedButton(
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all<
-                              RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              side: const BorderSide(color: Colors.black),
-                            ),
-                          ),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                        ),
-                        onPressed: () {
-                          print("testes");
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const InputPemasukan(),
-                            ),
-                          );
-                        },
-                        child: const CustomButton(
-                          title: "Input",
-                          widths: 70,
-                        ),
-                      )
-                    ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
                       height: 1,
@@ -315,54 +297,44 @@ class SisiKananKeuangan extends StatelessWidget {
                 height: 400,
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1.5),
+                    side: const BorderSide(width: 2,  color: AppColor.blue),
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 child: Column(
                   children: [
-                    ListTile(
-                      title: Row(
-                        children: [
-                          const Flexible(
-                            child: Text(
-                              "Data Keluaran",
-                              style: TextStyle(
-                                  fontSize: 20, color: Colors.black),
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.filter),
-                          )
-                        ],
-                      ),
-                      trailing: ElevatedButton(
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all<
-                              RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              side: const BorderSide(color: Colors.black),
-                            ),
-                          ),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
+                    Row(
+                      children: [
+                        const GlobalProjectFont(
+                          text: 'Data Keluaran',
+                          fontWeight: FontWeight.w800,
+                          fontSize: 22.0,
+                          color: AppColor.blue,
                         ),
-                        onPressed: () {
-                          print("testes");
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => InputPengeluaran(),
-                            ),
-                          );
-                        },
-                        child: const CustomButton(
-                          title: "Input",
-                          widths: 70,
-                        ),
-                      )
+                        const Spacer(),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom( // Set button style
+                            backgroundColor: Colors.transparent, // Set the button color to transparent
+                            elevation: 0, // Remove button elevation
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => InputPengeluaran(),
+                              ),
+                            );
+                          },
+                          child: const CustomButton(
+                            title: 'Input',
+                            widths: 160,
+                            textColor: Colors.white,
+                            fontWeight: FontWeight.normal,
+                            backgroundColor: AppColor.orange,
+                            height: 40,
+                          ),
+                        )
+                      ],
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
@@ -427,28 +399,40 @@ class SisiKananKeuangan extends StatelessWidget {
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
-    super.key,
+    Key? key,
     required this.title,
     required this.widths,
-  });
+    this.textColor = Colors.grey,
+    this.fontWeight = FontWeight.w800,
+    this.backgroundColor = Colors.transparent,
+    this.height = 40.0,
+  }) : super(key: key);
 
   final String title;
   final double widths;
+  final Color textColor;
+  final FontWeight fontWeight;
+  final Color backgroundColor;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
+      height: height,
       width: widths,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-                color: Colors.grey, fontWeight: FontWeight.bold),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: TextButton(
+        onPressed: null, // No onPressed callback
+        child: Text(
+          title,
+          style: TextStyle(
+            color: textColor,
+            fontWeight: fontWeight,
           ),
-        ],
+        ),
       ),
     );
   }

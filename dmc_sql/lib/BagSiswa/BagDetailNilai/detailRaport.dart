@@ -1,7 +1,6 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 List<List<String>> listNilaiKualitatif = [
   ['Pengagungan terhadap ilmu', 'A'],
@@ -93,7 +92,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: "s"),
+      appBar: AppBarAdmin(page: CurrentPage.siswa),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(20.0),

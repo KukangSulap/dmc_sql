@@ -1,7 +1,6 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../Property/app_color.dart';
@@ -26,7 +25,7 @@ class _DetailMurajaahPageState extends State<DetailMurajaahPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarAdmin(page: "s"),
+        appBar: AppBarAdmin(page: CurrentPage.siswa),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
