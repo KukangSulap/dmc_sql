@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'Property/app_color.dart';
 import 'misc/listedText.dart';
 import 'misc/placeCard.dart';
 
@@ -151,6 +152,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                                   style: GoogleFonts.mPlusRounded1c(
                                     fontWeight: FontWeight.w800,
                                     fontSize: 35.0,
+                                    color: AppColor.blue,
                                   ),
                                 ),
                                 const SizedBox(height: 10.0),
@@ -191,6 +193,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                                         style: GoogleFonts.mPlusRounded1c(
                                           fontWeight: FontWeight.w800,
                                           fontSize: 56.0,
+                                          color: AppColor.blue
                                         ),
                                       ),
                                       const SizedBox(height: 10.0),
@@ -362,64 +365,64 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                         ),
                       ),
                     ),
-                    Container(
-                      child: Center(
-                        child: SizedBox(
-                          height: 220,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: _placeNames.map((name) {
-                              final index = _placeNames.indexOf(name);
-                              return Padding(
-                                padding: const EdgeInsets.only(left: 10.0, right: 5.0),
-                                child: GestureDetector(
-                                  child: PlaceCard(
-                                    name: name,
-                                    assetPath: pathGambarYgy[index],
-                                  ),
-                                  onTap: () {},
+                    Center(
+                      child: SizedBox(
+                        height: 220,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: _placeNames.map((name) {
+                            final index = _placeNames.indexOf(name);
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 10.0, right: 5.0, bottom: 10),
+                              child: GestureDetector(
+                                child: PlaceCard(
+                                  name: name,
+                                  assetPath: pathGambarYgy[index],
                                 ),
-                              );
-                            }).toList(),
-                          ),
+                                onTap: () {},
+                              ),
+                            );
+                          }).toList(),
                         ),
                       ),
                     ),
                   ],
                 ),
               ),
-              const Divider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ProfilePage()),
-                      );
-                    },
-                    child: const Text('Profile'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const KeuanganPage()),
-                      );
-                    },
-                    child: const Text('Keuangan'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const SiswaPage()),
-                      );
-                    },
-                    child: const Text('Siswa'),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ProfilePage()),
+                        );
+                      },
+                      child: const Text('Profile'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const KeuanganPage()),
+                        );
+                      },
+                      child: const Text('Keuangan'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SiswaPage()),
+                        );
+                      },
+                      child: const Text('Siswa'),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

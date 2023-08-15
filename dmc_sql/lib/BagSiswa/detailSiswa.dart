@@ -12,7 +12,6 @@ import 'package:dmc_sql/BagSiswa/BagInputNilai/inputZiyadah.dart';
 import 'package:dmc_sql/BagSiswa/inputSiswa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class DetailSiswaPage extends StatefulWidget {
   const DetailSiswaPage({super.key, required this.dataSiswa});
@@ -34,7 +33,7 @@ class _DetailSiswaPageState extends State<DetailSiswaPage> {
     String kelasSiswa = widget.dataSiswa[3];
 
     return Scaffold(
-      appBar: AppBarAdmin(page: "s"),
+      appBar: AppBarAdmin(page: CurrentPage.siswa),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
