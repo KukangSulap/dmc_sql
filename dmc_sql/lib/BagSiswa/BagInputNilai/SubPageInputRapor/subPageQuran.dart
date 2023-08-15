@@ -13,7 +13,15 @@ List<List<String>> listNilaiTahfiz = [
 ];
 
 class SubPageQuran extends StatefulWidget {
-  const SubPageQuran({super.key});
+  const SubPageQuran(
+      {super.key,
+      required this.nextPage,
+      required this.prevPage,
+      required this.insertData});
+
+  final VoidCallback nextPage;
+  final VoidCallback prevPage;
+  final List<dynamic> insertData;
 
   @override
   State<SubPageQuran> createState() => _SubPageQuranState();
@@ -230,6 +238,49 @@ class _SubPageQuranState extends State<SubPageQuran> {
               ],
             ),
           ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  widget.prevPage();
+                },
+                child: Icon(Icons.arrow_back)),
+            ElevatedButton(
+                onPressed: () {
+                  if (widget.insertData[3].length < 9) {
+                    widget.insertData[3].addAll([
+                      _contQuran1.text,
+                      _contQuran2.text,
+                      _contQuran3.text,
+                      _contQuran4.text,
+                      _contQuran5.text,
+                      _contQuran6.text,
+                      listNilaiTahfiz,
+                      _selectedItemHifdzun1,
+                      _conthifdzun.text,
+                      _selectedItemHifdzun2
+                    ]);
+                  } else {
+                    widget.insertData[3].removeRange(0, 10);
+                    widget.insertData[3].addAll([
+                      _contQuran1.text,
+                      _contQuran2.text,
+                      _contQuran3.text,
+                      _contQuran4.text,
+                      _contQuran5.text,
+                      _contQuran6.text,
+                      listNilaiTahfiz,
+                      _selectedItemHifdzun1,
+                      _conthifdzun.text,
+                      _selectedItemHifdzun2
+                    ]);
+                  }
+                  widget.nextPage();
+                },
+                child: Text("Finish"))
+          ],
         ),
         const SizedBox(height: 50)
       ],

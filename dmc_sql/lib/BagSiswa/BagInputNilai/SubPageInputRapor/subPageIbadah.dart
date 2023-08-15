@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 const List<String> listGrade = <String>['A', 'B', 'C'];
 
 class SubPageIbadah extends StatefulWidget {
-  const SubPageIbadah({super.key});
+  const SubPageIbadah({super.key, required this.nextPage, required this.prevPage, required this.insertData});
+
+  final VoidCallback nextPage;
+  final VoidCallback prevPage;
+  final List<dynamic> insertData;
+
 
   @override
   State<SubPageIbadah> createState() => _SubPageIbadahState();
@@ -19,68 +24,103 @@ class _SubPageIbadahState extends State<SubPageIbadah> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      child: Card(
-        elevation: 5,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  Text("Nilai Ibadah"),
-                  Text("Gerakan"),
-                  Row(
-                    children: [
-                      Expanded(
-                          child: DropDowns(listGrade, _selectedItemIbadah1,
-                              (String? value) {
-                        setState(() {
-                          _selectedItemIbadah1 = value!;
-                        });
-                      })),
-                      Expanded(
-                          child: DropDowns(listGrade, _selectedItemIbadah2,
-                              (String? value) {
-                        setState(() {
-                          _selectedItemIbadah2 = value!;
-                        });
-                      })),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            const VerticalDivider(),
-            Expanded(
-                child: Column(
+    return Column(
+      children: [
+        Card(
+          elevation: 5,
+          child: SizedBox(
+            height: 200,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(""),
-                Text("Bacaan"),
-                Row(
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text("Nilai Ibadah"),
+                      Text("Gerakan"),
+                      Row(
+                        children: [
+                          Expanded(
+                              child: DropDowns(listGrade, _selectedItemIbadah1,
+                                  (String? value) {
+                            setState(() {
+                              _selectedItemIbadah1 = value!;
+                            });
+                          })),
+                          Expanded(
+                              child: DropDowns(listGrade, _selectedItemIbadah2,
+                                  (String? value) {
+                            setState(() {
+                              _selectedItemIbadah2 = value!;
+                            });
+                          })),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                const VerticalDivider(),
+                Expanded(
+                    child: Column(
                   children: [
-                    Expanded(
-                        child: DropDowns(listGrade, _selectedItemIbadah3,
-                            (String? value) {
-                      setState(() {
-                        _selectedItemIbadah3 = value!;
-                      });
-                    })),
-                    Expanded(
-                        child: DropDowns(listGrade, _selectedItemIbadah4,
-                            (String? value) {
-                      setState(() {
-                        _selectedItemIbadah4 = value!;
-                      });
-                    })),
+                    Text(""),
+                    Text("Bacaan"),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: DropDowns(listGrade, _selectedItemIbadah3,
+                                (String? value) {
+                          setState(() {
+                            _selectedItemIbadah3 = value!;
+                          });
+                        })),
+                        Expanded(
+                            child: DropDowns(listGrade, _selectedItemIbadah4,
+                                (String? value) {
+                          setState(() {
+                            _selectedItemIbadah4 = value!;
+                          });
+                        })),
+                      ],
+                    )
                   ],
-                )
+                ))
               ],
-            ))
-          ],
+            ),
+          ),
         ),
-      ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  widget.prevPage();
+                },
+                child: Icon(Icons.arrow_back)),
+            ElevatedButton(
+                onPressed: () {
+                  if (widget.insertData[1].length < 3) {
+                    widget.insertData[1].addAll([
+                      _selectedItemIbadah1,
+                      _selectedItemIbadah2,
+                      _selectedItemIbadah3,
+                      _selectedItemIbadah4,
+                    ]);
+                  } else {
+                    widget.insertData[1].removeRange(0, 4);
+                    widget.insertData[1].addAll([
+                      _selectedItemIbadah1,
+                      _selectedItemIbadah2,
+                      _selectedItemIbadah3,
+                      _selectedItemIbadah4,
+                    ]);
+                  }
+                  widget.nextPage();
+                },
+                child: Text("Finish"))
+          ],
+        )
+      ],
     );
   }
 }
