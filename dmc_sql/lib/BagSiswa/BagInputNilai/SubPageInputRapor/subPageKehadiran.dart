@@ -73,27 +73,37 @@ class _SubPageKehadiranState extends State<SubPageKehadiran> {
                 child: Icon(Icons.arrow_back)),
             ElevatedButton(
                 onPressed: () {
-                  widget.insertData[4].addAll([
-                    _contHadir1.text,
-                    _contHadir2.text,
-                    _contHadir3.text,
-                    _contHadir4.text,
-                  ]);
+                  if (widget.insertData[4].length < 3) {
+                    widget.insertData[4].addAll([
+                      _contHadir1.text,
+                      _contHadir2.text,
+                      _contHadir3.text,
+                      _contHadir4.text,
+                    ]);
+                  } else {
+                    widget.insertData[4].removeRange(0, 4);
+                    widget.insertData[4].addAll([
+                      _contHadir1.text,
+                      _contHadir2.text,
+                      _contHadir3.text,
+                      _contHadir4.text,
+                    ]);
+                  }
 
                   // nilai pertama dari kualitatif
-                  print(widget.insertData[0][0]);
+                  print("kualitatif " + widget.insertData[0][0]);
 
                   // nilai kedua dari ibadah
-                  print(widget.insertData[1][1]);
+                  print("ibadah " + widget.insertData[1][1]);
 
                   // nilai salah satu dari list nilai hadits pertama
                   print(widget.insertData[2][0][0]);
 
                   // nilai jumlah di bagian hifdzun
-                  print(widget.insertData[3][8]);
+                  print("quran " + widget.insertData[3][8]);
 
                   // nilai total kehadiran
-                  print(widget.insertData[4][3]);
+                  print("hadir " + widget.insertData[4][3]);
 
                   widget.nextPage();
                 },

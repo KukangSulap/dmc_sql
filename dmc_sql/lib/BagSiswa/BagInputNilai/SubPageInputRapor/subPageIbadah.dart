@@ -99,12 +99,22 @@ class _SubPageIbadahState extends State<SubPageIbadah> {
                 child: Icon(Icons.arrow_back)),
             ElevatedButton(
                 onPressed: () {
-                  widget.insertData[1].addAll([
-                    _selectedItemIbadah1,
-                    _selectedItemIbadah2,
-                    _selectedItemIbadah3,
-                    _selectedItemIbadah4,
-                  ]);
+                  if (widget.insertData[1].length < 3) {
+                    widget.insertData[1].addAll([
+                      _selectedItemIbadah1,
+                      _selectedItemIbadah2,
+                      _selectedItemIbadah3,
+                      _selectedItemIbadah4,
+                    ]);
+                  } else {
+                    widget.insertData[1].removeRange(0, 4);
+                    widget.insertData[1].addAll([
+                      _selectedItemIbadah1,
+                      _selectedItemIbadah2,
+                      _selectedItemIbadah3,
+                      _selectedItemIbadah4,
+                    ]);
+                  }
                   widget.nextPage();
                 },
                 child: Text("Finish"))

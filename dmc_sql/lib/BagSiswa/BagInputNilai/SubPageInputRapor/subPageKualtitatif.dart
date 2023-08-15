@@ -83,12 +83,22 @@ class _SubPageKualitatifState extends State<SubPageKualitatif> {
                 child: Icon(Icons.arrow_left)),
             ElevatedButton(
                 onPressed: () {
-                  widget.insertData[0].addAll([
-                    _selectedItemKualitatif1,
-                    _selectedItemKualitatif2,
-                    _selectedItemKualitatif3,
-                    _selectedItemKualitatif4,
-                  ]);
+                  if (widget.insertData[0].length < 3) {
+                    widget.insertData[0].addAll([
+                      _selectedItemKualitatif1,
+                      _selectedItemKualitatif2,
+                      _selectedItemKualitatif3,
+                      _selectedItemKualitatif4,
+                    ]);
+                  } else {
+                    widget.insertData[0].removeRange(0, 4);
+                    widget.insertData[0].addAll([
+                      _selectedItemKualitatif1,
+                      _selectedItemKualitatif2,
+                      _selectedItemKualitatif3,
+                      _selectedItemKualitatif4,
+                    ]);
+                  }
                   widget.nextPage();
                 },
                 child: Text("Finish"))

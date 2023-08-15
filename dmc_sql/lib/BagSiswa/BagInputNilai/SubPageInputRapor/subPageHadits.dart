@@ -314,12 +314,22 @@ class _SubPageHaditsState extends State<SubPageHadits> {
                 child: Icon(Icons.arrow_back)),
             ElevatedButton(
                 onPressed: () {
-                  widget.insertData[2].addAll([
-                    listNilaiHadits1,
-                    listNilaiHadits2,
-                    listNilaiHaditsArb1,
-                    listNilaiHaditsArb2,
-                  ]);
+                  if (widget.insertData[2].length < 3) {
+                    widget.insertData[2].addAll([
+                      listNilaiHadits1,
+                      listNilaiHadits2,
+                      listNilaiHaditsArb1,
+                      listNilaiHaditsArb2,
+                    ]);
+                  } else {
+                    widget.insertData[2].removeRange(0, 4);
+                    widget.insertData[2].addAll([
+                      listNilaiHadits1,
+                      listNilaiHadits2,
+                      listNilaiHaditsArb1,
+                      listNilaiHaditsArb2,
+                    ]);
+                  }
                   widget.nextPage();
                 },
                 child: Text("Finish"))
