@@ -33,19 +33,11 @@ class KeuanganPage extends StatefulWidget {
 class _KeuanganPageState extends State<KeuanganPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const AppBarAdmin(page: CurrentPage.keuangan),
+      appBar: AppBarAdmin(page: CurrentPage.keuangan),
       body: SafeArea(
-        child: Row(
-          children: const [
-            // Sisi kiri
-            // SisiKiriKeuangan(),
-
-            // Sisi Kanan
-            SisiKananKeuangan()
-          ],
-        ),
+        child: SisiKananKeuangan(),
       ),
     );
   }
@@ -216,7 +208,7 @@ class SisiKananKeuangan extends StatelessWidget {
                           ElevatedButton(
                             style: ElevatedButton.styleFrom( // Set button style
                               backgroundColor: Colors.transparent, // Set the button color to transparent
-                              elevation: 0, // Remove button elevation
+                              elevation: 0,shadowColor: Colors. transparent, // Remove button elevation
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -315,7 +307,7 @@ class SisiKananKeuangan extends StatelessWidget {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom( // Set button style
                             backgroundColor: Colors.transparent, // Set the button color to transparent
-                            elevation: 0, // Remove button elevation
+                            elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
                           ),
                           onPressed: () {
                             Navigator.push(

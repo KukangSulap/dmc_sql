@@ -121,33 +121,35 @@ class _AppBarAdminState extends State<AppBarAdmin> {
             const SizedBox(
               width: 95,
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
-              // TODO: set the height to follow figma (50)
-              height: 35,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: AppColor.blue),
-              child: TextButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                    MaterialStateProperty.all(Colors.transparent),
-                    padding: MaterialStateProperty.all(EdgeInsets.zero),
-                  ),
-                  onPressed: () {
-                    // TODO: implement Log Out Function.
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>  Login()));
-                  },
+            ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                  MaterialStateProperty.all(Colors.transparent),
+                  padding: MaterialStateProperty.all(EdgeInsets.zero),
+                  // elevation: MaterialStateProperty.all(0),
+                  shadowColor: MaterialStateProperty.all(Colors.transparent)
+                ),
+                onPressed: () {
+                  // TODO: implement Log Out Function.
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>  Login()));
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  // TODO: set the height to follow figma (50)
+                  height: 35,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColor.blue),
                   child: Text('Log Out',
                       style: GoogleFonts.mPlusRounded1c(
                           color: Colors.white,
                           fontWeight: FontWeight.w800,
                           // TODO: set the font to follow figma (24)
-                          fontSize: 18))),
-            ),
+                          fontSize: 18)),
+                )),
             const SizedBox(
               width: 70,
             ),
