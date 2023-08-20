@@ -8,6 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../model/dummy.dart';
+import '../service/connect.dart';
 import 'inputPemasukan.dart';
 
 List<List<String>> pemasukanList = [
@@ -43,10 +45,40 @@ class _KeuanganPageState extends State<KeuanganPage> {
   }
 }
 
-class SisiKananKeuangan extends StatelessWidget {
+class SisiKananKeuangan extends StatefulWidget {
+
   const SisiKananKeuangan({
     super.key,
   });
+
+  @override
+  State<SisiKananKeuangan> createState() => _SisiKananKeuanganState();
+}
+
+class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
+
+  List<Dummy>? dataDummy;
+  var isLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+    // getDataV2();
+  }
+
+  getData() async {
+    dataDummy = await RemoteService().getPosts();
+    if (dataDummy != null) {
+      print("datany woi:");
+      print(dataDummy);
+      setState(() {
+        isLoaded = true;
+      });
+    }else{
+      print("asu tenan");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -237,11 +269,11 @@ class SisiKananKeuangan extends StatelessWidget {
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: pemasukanList.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          String itemName = pemasukanList[index][0];
-                          String leftInfo = pemasukanList[index][1];
-                          String rightInfo = pemasukanList[index][2];
+                        itemCount: dataDummy?.length,
+                        itemBuilder: (context, index) {
+                          // String itemName = pemasukanList[index][0];
+                          // String leftInfo = pemasukanList[index][1];
+                          // String rightInfo = pemasukanList[index][2];
 
                           return GestureDetector(
                             onTap: () {
@@ -256,12 +288,12 @@ class SisiKananKeuangan extends StatelessWidget {
                               children: [
                                 ListTile(
                                   title: Text(
-                                    itemName,
+                                    dataDummy![index].title,
                                     style: const TextStyle(fontSize: 20),
                                   ),
-                                  subtitle: Text(leftInfo),
+                                  subtitle: Text(dataDummy![index].title),
                                   trailing: Text(
-                                    "Rp $rightInfo -",
+                                    dataDummy![index].title,
                                     style: const TextStyle(
                                         fontSize: 30, color: Colors.black),
                                   ),
