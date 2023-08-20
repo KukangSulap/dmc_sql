@@ -1,4 +1,6 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
+import 'package:dmc_sql/BagSiswa/ModelSiswa/siswa.dart';
+import 'package:dmc_sql/BagSiswa/ServiceSiswa/remoteService.dart';
 import 'package:dmc_sql/BagSiswa/detailSiswa.dart';
 import 'package:dmc_sql/BagSiswa/inputSiswa.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +30,25 @@ class _SiswaPageState extends State<SiswaPage> {
   String _selectedItemTahun = listTahun.first;
   String _selectedItemSemester = listSemester.first;
   String _selectedItemKelas = listKelas.first;
+
+  List<Siswa>? listSiswa2;
+  var isLoaded = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    listSiswa2 = await RemoteService().getPost();
+    if (listSiswa2 != null) {
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -175,11 +196,19 @@ class _SiswaPageState extends State<SiswaPage> {
                             scrollDirection: Axis.horizontal,
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width * 0.92,
-                              child: ListView.builder(
+                              child:
+                                  // ============================================== list ============================================================
+                                  ListView.builder(
                                 shrinkWrap: true,
                                 physics: const ClampingScrollPhysics(),
+                                // itemCount: listSiswa2?.length,
                                 itemCount: listSiswa.length,
                                 itemBuilder: (BuildContext context, int index) {
+                                  // String nama = listSiswa2![index].nama;
+                                  // String tahun = listSiswa2![index].tahunPend;
+                                  // String semester = listSiswa2![index].semester;
+                                  // int kelas = listSiswa2![index].kelas;
+
                                   String nama = listSiswa[index][0];
                                   String tahun = listSiswa[index][1];
                                   String semester = listSiswa[index][2];
@@ -189,7 +218,14 @@ class _SiswaPageState extends State<SiswaPage> {
                                     children: [
                                       InkWell(
                                         onTap: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailSiswaPage(dataSiswa: listSiswa[index],)));
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      DetailSiswaPage(
+                                                        dataSiswa:
+                                                            listSiswa[index],
+                                                      )));
                                         },
                                         child: Row(
                                           mainAxisAlignment:
