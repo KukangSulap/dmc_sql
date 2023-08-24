@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
 
+import '../../BagKeuangan/keuangan.dart';
+import '../../Property/app_color.dart';
+import '../../Property/project_font.dart';
+
 const List<String> listGrade = <String>['A', 'B', 'C'];
 
 List<List<String>> listNilaiLomba = [
@@ -26,139 +30,253 @@ class InputLombaPage extends StatefulWidget {
 
 class _InputLombaPageState extends State<InputLombaPage> {
   late final TextEditingController _namaCont =
-      TextEditingController(text: widget.namaSiswa);
+  TextEditingController(text: widget.namaSiswa);
   late final TextEditingController _nisCont =
-      TextEditingController(text: widget.nisSiswa);
+  TextEditingController(text: widget.nisSiswa);
   final TextEditingController _tglCont = TextEditingController();
-
   final TextEditingController _namaLombaCont = TextEditingController();
   final TextEditingController _notesLombaCont = TextEditingController();
-
   String _selectedItem = listGrade.first;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: CurrentPage.siswa),
+      appBar: const AppBarAdmin(page: CurrentPage.siswa),
+      backgroundColor: AppColor.bg,
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text("Data Siswa"),
-            TextField(
-              controller: _namaCont,
-              readOnly: true,
-              decoration: InputDecoration(hintText: 'Nama Siswa'),
-            ),
-            TextField(
-              controller: _nisCont,
-              readOnly: true,
-              decoration: InputDecoration(hintText: 'Nomor Induk Siswa'),
-            ),
-            TextField(
-              onTap: () async {
-                DateTime? selectedDate = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(2012),
-                  lastDate: DateTime(2026),
-                );
-
-                if (selectedDate != null) {
-                  // Format the selected date and set it as the value of the TextField
-                  final formattedDate =
-                      DateFormat('dd/MMMM/yyyy').format(selectedDate);
-                  setState(() {
-                    _tglCont.text = formattedDate;
-                  });
-                }
-              },
-              controller: _tglCont,
-              readOnly: true,
-              decoration: const InputDecoration(
-                  hintText: 'Tanggal Lomba',
-                  prefixIcon: Icon(Icons.calendar_today)),
-            ),
-            const Text("Nilai Lomba"),
-            Container(
-              width: double.infinity,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 250,
-                    child: TextField(
-                      controller: _namaLombaCont,
-                      decoration: const InputDecoration(hintText: 'Nama Lomba'),
-                    ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 50.0, right: 200, left: 200),
+                child: Container(
+                  padding: const EdgeInsets.all(30.0),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[50],
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color.fromRGBO(138, 149, 158, 0.20),
+                        offset: Offset(0, 30),
+                        blurRadius: 60,
+                      ),
+                    ],
                   ),
-                  DropDowns(listGrade, _selectedItem, (String? value) {
-                    setState(() {
-                      _selectedItem = value!;
-                    });
-                  })
-                ],
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      listNilaiLomba.add([_namaLombaCont.text, _selectedItem]);
-                    });
-                  },
-                  child: Text("Save")),
-            ),
-            Container(
-              height: 150,
-              child: ListView.builder(
-                  itemCount: listNilaiLomba.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    String namaLomba = listNilaiLomba[index][0];
-                    String grade = listNilaiLomba[index][1];
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const GlobalProjectFont(
+                        text: 'Data Siswa',
+                        fontWeight: FontWeight.w800,
+                        fontSize: 20.0,
+                        color: AppColor.blue,
+                      ),
+                      const SizedBox(height: 8),
+                      const GlobalProjectFont(
+                        text: 'ISI DATA SISWA',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18.0,
+                      ),
+                      const SizedBox(height: 8),
 
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text("$namaLomba"), Text("$grade")],
-                    );
-                  }),
-            ),
-            TextField(
-              controller: _notesLombaCont,
-              decoration: const InputDecoration(hintText: 'Notes lomba'),
-              maxLines: 5,
-            ),
-            Divider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text("Back"),
+                      // Styled TextField
+                      Container(
+                        padding: const EdgeInsets.only(top: 3, left: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColor.blue, width: 1.5),
+                        ),
+                        child: TextField(
+                          controller: _namaCont,
+                          readOnly: true,
+                          decoration: const InputDecoration(
+                            hintText: 'Nama Siswa',
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 8),
+
+                      // Styled TextField
+                      Container(
+                        padding: const EdgeInsets.only(top: 3, left: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColor.blue, width: 1.5),
+                        ),
+                        child: TextField(
+                          controller: _nisCont,
+                          readOnly: true,
+                          decoration: const InputDecoration(
+                            hintText: 'Nomor Induk Siswa',
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 8),
+
+                      // Styled TextField
+                      Container(
+                        padding: const EdgeInsets.only(top: 3, left: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColor.blue, width: 1.5),
+                        ),
+                        child: TextField(
+                          onTap: () async {
+                            DateTime? selectedDate = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2012),
+                              lastDate: DateTime(2026),
+                            );
+
+                            if (selectedDate != null) {
+                              final formattedDate =
+                              DateFormat('dd/MMMM/yyyy').format(selectedDate);
+                              setState(() {
+                                _tglCont.text = formattedDate;
+                              });
+                            }
+                          },
+                          controller: _tglCont,
+                          readOnly: true,
+                          decoration: const InputDecoration(
+                            hintText: 'Tanggal Lomba',
+                            prefixIcon: Icon(Icons.calendar_today),
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      const Text("Nilai Lomba",
+                          style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      const SizedBox(height: 8),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: 250,
+                            child: TextField(
+                              controller: _namaLombaCont,
+                              decoration: const InputDecoration(
+                                hintText: 'Nama Lomba',
+                              ),
+                            ),
+                          ),
+                          DropDowns(listGrade, _selectedItem, (String? value) {
+                            setState(() {
+                              _selectedItem = value!;
+                            });
+                          }),
+                        ],
+                      ),
+
+                      const SizedBox(height: 8),
+
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              listNilaiLomba
+                                  .add([_namaLombaCont.text, _selectedItem]);
+                            });
+                          },
+                          child: const Text("Save"),
+                        ),
+                      ),
+
+                      Container(
+                        height: 150,
+                        child: ListView.builder(
+                          itemCount: listNilaiLomba.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            String namaLomba = listNilaiLomba[index][0];
+                            String grade = listNilaiLomba[index][1];
+
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("$namaLomba"),
+                                Text("$grade"),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      // Styled TextField
+                      Container(
+                        padding: const EdgeInsets.only(top: 3, left: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColor.blue, width: 1.5),
+                        ),
+                        child: TextField(
+                          controller: _notesLombaCont,
+                          decoration: const InputDecoration(
+                            hintText: 'Notes lomba',
+                          ),
+                          maxLines: 5,
+                        ),
+                      ),
+
+                      const SizedBox(height: 16),
+                    ],
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    listLomba.add([
-                      _namaCont.text,
-                      _nisCont.text,
-                      _tglCont.text,
-                      listNilaiLomba,
-                      _notesLombaCont.text
-                    ]);
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0, right: 200, left: 200),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom( // Set button style
+                        backgroundColor: Colors.transparent, // Set the button color to transparent
+                        elevation: 0, // Remove button elevation
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const CustomButton(
+                        title: 'Back',
+                        widths: 140,
+                        textColor: Colors.white,
+                        fontWeight: FontWeight.normal,
+                        backgroundColor: Color(0xffd66a3d),
+                        height: 50,
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        listLomba.add([
+                          _namaCont.text,
+                          _nisCont.text,
+                          _tglCont.text,
+                          listNilaiLomba,
+                          _notesLombaCont.text,
+                        ]);
 
-                    for (var i = 0; i < listLomba.length; i++) {
-                      print("nama ${listLomba[i][0]} notes ${listLomba[i][4]}");
-                    }
-                  },
-                  child: Text("Finish"),
-                )
-              ],
-            )
-          ],
+                        for (var i = 0; i < listLomba.length; i++) {
+                          print(
+                              "nama ${listLomba[i][0]} notes ${listLomba[i][4]}");
+                        }
+                      },
+                      child: const Text("Finish"),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -170,7 +288,7 @@ Container DropDowns(
   return Container(
     width: 100,
     margin: const EdgeInsets.only(top: 10, left: 10),
-    padding: EdgeInsets.symmetric(horizontal: 16),
+    padding: const EdgeInsets.symmetric(horizontal: 16),
     decoration: BoxDecoration(
       border: Border.all(
         color: Colors.black,
@@ -182,10 +300,10 @@ Container DropDowns(
       child: DropdownButton<String>(
         isExpanded: true,
         value: _selectedItem,
-        icon: Icon(Icons.arrow_drop_down_sharp), // Reversed triangle icon
+        icon: const Icon(Icons.arrow_drop_down_sharp), // Reversed triangle icon
         iconSize: 24,
         elevation: 16,
-        style: TextStyle(color: Colors.black, fontSize: 16),
+        style: const TextStyle(color: Colors.black, fontSize: 16),
         onChanged: onChanged,
         items: list.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
