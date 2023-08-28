@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:dmc_sql/Property/app_color.dart';
 
 import 'package:dmc_sql/BagProfil/profile.dart';
-import 'BagPendidikan/pendidikan_main.dart';
+
+import '../BagPendidikan/pendidikan_main.dart';
 
 enum UserPage { profileSiswa, pendidikan }
 

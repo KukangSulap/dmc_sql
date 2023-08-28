@@ -1,8 +1,10 @@
+import 'package:dmc_sql/BagPendidikan/kurikulum.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:dmc_sql/Property/app_color.dart';
-import '../app_bar_user.dart';
+
+import '../AppBar/app_bar_user.dart';
 
 class PendidikanScreen extends StatefulWidget {
   const PendidikanScreen({super.key});
@@ -141,6 +143,10 @@ class _PendidikanScreenState extends State<PendidikanScreen> {
                                   const Color.fromRGBO(102, 175, 153, 1)),
                           onPressed: () {
                             // TODO: Add Kurikulum On Pressed.
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const KurikulumScreen()),
+                            );
                           },
                           child: Text(
                             'Kurikulum',
