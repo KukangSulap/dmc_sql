@@ -1,4 +1,5 @@
 import 'package:dmc_sql/BagKeuangan/keuangan.dart';
+import 'package:dmc_sql/BagPendidikan/pendidikan_main.dart';
 import 'package:dmc_sql/BagProfil/profile.dart';
 import 'package:dmc_sql/BagSiswa/siswa.dart';
 import 'package:dmc_sql/main.dart';
@@ -113,7 +114,10 @@ class _AppBarUserState extends State<AppBarUser> {
                   padding: MaterialStateProperty.all(EdgeInsets.zero),
                 ),
                 onPressed: () {
-                  // belum ada page pendidikan
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PendidikanScreen()));
                 },
                 child: Text('Pendidikan',
                     style: GoogleFonts.mPlusRounded1c(
