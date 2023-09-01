@@ -1,3 +1,4 @@
+import 'package:dmc_sql/AppBar/app_bar_user.dart';
 import 'package:dmc_sql/BagKeuangan/keuangan.dart';
 import 'package:dmc_sql/BagSiswa/siswa.dart';
 import 'package:dmc_sql/BagProfil/profile.dart';
@@ -37,7 +38,7 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
   String dummyText =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id sem velit. Quisque fermentum eros non porta bibendum. Praesent pretium libero nec imperdiet semper. Nunc tellus augue, tempor ut laoreet ac, fringilla eu metus. Sed at mi sed augue pretium ullamcorper. Donec ultrices porttitor enim.';
 
-  final List<String> _placeNames = ['pipo', 'pipo', 'pop','pipo'];
+  final List<String> _placeNames = ['pipo', 'pipo', 'pop', 'pipo'];
   final List<String> pathGambarYgy = [
     'https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg',
     'https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg',
@@ -51,62 +52,63 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
       foregroundColor: Theme.of(context).colorScheme.onPrimary,
     );
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(CupertinoIcons.burn),
-          color: Colors.black, // Set the icon color to black
-          onPressed: () {
-            // Handle the button press event
-          },
-        ),
-        title: const Text(
-          "<- ntar ganti jadi logo",
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
-        actions: <Widget>[
-          TextButton(
-            style: style,
-            onPressed: () {},
-            child: const Text(
-              'Pendidikan',
-              style: TextStyle(
-                color: Colors.black, // Set the text color to black
-              ),
-            ),
-          ),
-          TextButton(
-            style: style,
-            onPressed: () {},
-            child: const Text('----'),
-          ),
-          TextButton(
-            style: style,
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Login())
-              );
-            },
-            child: const Text(
-              'Login',
-              style: TextStyle(
-                color: Colors.black,
-                // fontFamily:
-              ),
-            ),
-          ),
-          TextButton(
-            style: style,
-            onPressed: () {},
-            child: const Text('.'),
-          ),
-        ],
-      ),
+      appBar: AppBarUser(page: CurrentPage.home),
+      // AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   leading: IconButton(
+      //     icon: const Icon(CupertinoIcons.burn),
+      //     color: Colors.black, // Set the icon color to black
+      //     onPressed: () {
+      //       // Handle the button press event
+      //     },
+      //   ),
+      //   title: const Text(
+      //     "<- ntar ganti jadi logo",
+      //     style: TextStyle(
+      //       color: Colors.black,
+      //     ),
+      //   ),
+      //   actions: <Widget>[
+      //     TextButton(
+      //       style: style,
+      //       onPressed: () {},
+      //       child: const Text(
+      //         'Pendidikan',
+      //         style: TextStyle(
+      //           color: Colors.black, // Set the text color to black
+      //         ),
+      //       ),
+      //     ),
+      //     TextButton(
+      //       style: style,
+      //       onPressed: () {},
+      //       child: const Text('----'),
+      //     ),
+      //     TextButton(
+      //       style: style,
+      //       onPressed: () {
+      //         Navigator.push(
+      //             context,
+      //             MaterialPageRoute(
+      //                 builder: (context) => Login())
+      //         );
+      //       },
+      //       child: const Text(
+      //         'Login',
+      //         style: TextStyle(
+      //           color: Colors.black,
+      //           // fontFamily:
+      //         ),
+      //       ),
+      //     ),
+      //     TextButton(
+      //       style: style,
+      //       onPressed: () {},
+      //       child: const Text('.'),
+      //     ),
+      //   ],
+      // ),
       body: SingleChildScrollView(
         child: Container(
           constraints: const BoxConstraints(maxWidth: double.infinity),
@@ -124,11 +126,12 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                           child: Container(
                             decoration: const BoxDecoration(
                               color: Colors.blue,
-                              borderRadius: BorderRadius.all(Radius.circular(10)
-                              ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
                             ),
                             child: ClipRRect(
-                              borderRadius: const BorderRadius.all(Radius.circular(10),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(10),
                               ),
                               child: Image.network(
                                 'https://images.squarespace-cdn.com/content/v1/51cdafc4e4b09eb676a64e68/1618602622635-4LFSCPXPMK8MOR64BC2N/cars_trip.jpg',
@@ -184,17 +187,17 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                                 child: Container(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Smart Quran Learning',
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style: GoogleFonts.mPlusRounded1c(
-                                          fontWeight: FontWeight.w800,
-                                          fontSize: 56.0,
-                                          color: AppColor.blue
-                                        ),
+                                            fontWeight: FontWeight.w800,
+                                            fontSize: 56.0,
+                                            color: AppColor.blue),
                                       ),
                                       const SizedBox(height: 10.0),
                                       Text(
@@ -257,14 +260,15 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                             Text(
                               'Visi SQL',
                               style: GoogleFonts.mPlusRounded1c(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 32.0,
-                                color: const Color.fromARGB(200, 47, 29, 116)
-                              ),
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 32.0,
+                                  color:
+                                      const Color.fromARGB(200, 47, 29, 116)),
                             ),
                             const SizedBox(height: 20),
                             ListedText(
-                              text: "Menjadi penyedia solusi teknologi terdepan yang mengubah cara orang bekerja dan hidup.\n"
+                              text:
+                                  "Menjadi penyedia solusi teknologi terdepan yang mengubah cara orang bekerja dan hidup.\n"
                                   "Menjadi pemimpin global dalam inovasi dan keberlanjutan dalam industri energi terbarukan.\n"
                                   "Mengubah dunia melalui teknologi yang memungkinkan konektivitas dan akses informasi global.\n"
                                   "Mewujudkan masa depan yang berkelanjutan dengan menyediakan produk ramah lingkungan dan solusi hijau.\n"
@@ -290,14 +294,15 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                             Text(
                               'Misi SQL',
                               style: GoogleFonts.mPlusRounded1c(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 32.0,
-                                  color: const Color.fromARGB(200, 47, 29, 116)
-                              ),
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 32.0,
+                                  color:
+                                      const Color.fromARGB(200, 47, 29, 116)),
                             ),
                             const SizedBox(height: 20),
                             ListedText(
-                              text: "Menjadi penyedia solusi teknologi terdepan yang mengubah cara orang bekerja dan hidup.\n"
+                              text:
+                                  "Menjadi penyedia solusi teknologi terdepan yang mengubah cara orang bekerja dan hidup.\n"
                                   "Menjadi pemimpin global dalam inovasi dan keberlanjutan dalam industri energi terbarukan.\n"
                                   "Mengubah dunia melalui teknologi yang memungkinkan konektivitas dan akses informasi global.\n"
                                   "Mewujudkan masa depan yang berkelanjutan dengan menyediakan produk ramah lingkungan dan solusi hijau.\n"
@@ -325,25 +330,24 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                             Text(
                               "Foto Kegiatan",
                               style: GoogleFonts.mPlusRounded1c(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white
-                              ),
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
                             ),
                             Text(
                               'Dokumentasi Kegiatan',
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.mPlusRounded1c(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 32.0, color: Colors.white
-                              ),
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 32.0,
+                                  color: Colors.white),
                             ),
                             Text(
                               'SQL',
                               style: GoogleFonts.mPlusRounded1c(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 32.0, color: Colors.white
-                              ),
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 32.0,
+                                  color: Colors.white),
                             ),
                           ],
                         ),
@@ -357,7 +361,8 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
                         child: ClipRRect(
-                          borderRadius: const BorderRadius.all(Radius.circular(10)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
                           child: Image.network(
                             'https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg',
                             fit: BoxFit.cover,
@@ -373,7 +378,8 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                           children: _placeNames.map((name) {
                             final index = _placeNames.indexOf(name);
                             return Padding(
-                              padding: const EdgeInsets.only(left: 10.0, right: 5.0, bottom: 10),
+                              padding: const EdgeInsets.only(
+                                  left: 10.0, right: 5.0, bottom: 10),
                               child: GestureDetector(
                                 child: PlaceCard(
                                   name: name,
@@ -398,7 +404,8 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ProfilePage()),
+                          MaterialPageRoute(
+                              builder: (context) => ProfilePage()),
                         );
                       },
                       child: const Text('Profile'),
@@ -407,7 +414,8 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const KeuanganPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const KeuanganPage()),
                         );
                       },
                       child: const Text('Keuangan'),
@@ -416,7 +424,8 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const SiswaPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const SiswaPage()),
                         );
                       },
                       child: const Text('Siswa'),
