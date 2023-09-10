@@ -190,7 +190,7 @@ class _InputLombaPageState extends State<InputLombaPage> {
                           child: const Text("Save"),
                         ),
                       ),
-
+                      const SizedBox(height: 8),
                       Container(
                         height: 150,
                         child: ListView.builder(
@@ -199,15 +199,30 @@ class _InputLombaPageState extends State<InputLombaPage> {
                             String namaLomba = listNilaiLomba[index][0];
                             String grade = listNilaiLomba[index][1];
 
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("$namaLomba"),
-                                Text("$grade"),
-                              ],
+                            return Container(
+                              margin: EdgeInsets.symmetric(vertical: 3),
+                              padding: EdgeInsets.all( 5),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(color: Colors.blueAccent, width: 1.5),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "$namaLomba",
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColor.blue),
+                                  ),
+                                  Text(
+                                    "$grade",
+                                    style: TextStyle(fontSize: 16, color: AppColor.blue),
+                                  ),
+                                ],
+                              ),
                             );
                           },
-                        ),
+                        )
                       ),
 
                       const SizedBox(height: 16),
@@ -241,6 +256,7 @@ class _InputLombaPageState extends State<InputLombaPage> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom( // Set button style
                         backgroundColor: Colors.transparent, // Set the button color to transparent
+                        shadowColor: Colors.transparent,
                         elevation: 0, // Remove button elevation
                       ),
                       onPressed: () {
@@ -256,6 +272,11 @@ class _InputLombaPageState extends State<InputLombaPage> {
                       ),
                     ),
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom( // Set button style
+                        backgroundColor: Colors.transparent, // Set the button color to transparent
+                        elevation: 0, // Remove button elevation
+                        shadowColor: Colors.transparent,
+                      ),
                       onPressed: () {
                         listLomba.add([
                           _namaCont.text,
@@ -270,7 +291,14 @@ class _InputLombaPageState extends State<InputLombaPage> {
                               "nama ${listLomba[i][0]} notes ${listLomba[i][4]}");
                         }
                       },
-                      child: const Text("Finish"),
+                        child: const CustomButton(
+                          title: 'Finish',
+                          widths: 140,
+                          textColor: Colors.white,
+                          fontWeight: FontWeight.normal,
+                          backgroundColor: Color(0xff1e6ad0),
+                          height: 50,
+                        ),
                     ),
                   ],
                 ),

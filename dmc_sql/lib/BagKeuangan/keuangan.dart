@@ -447,6 +447,11 @@ class CustomButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(8.0),
+        boxShadow:  const [
+          BoxShadow(
+            color: Colors.transparent
+          ),
+        ],
       ),
       child: TextButton(
         onPressed: null, // No onPressed callback
