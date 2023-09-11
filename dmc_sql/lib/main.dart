@@ -53,62 +53,6 @@ class _SchoolProfilePageState extends State<SchoolProfilePage> {
     );
     return Scaffold(
       appBar: AppBarUser(page: CurrentPage.home),
-      // AppBar(
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      //   leading: IconButton(
-      //     icon: const Icon(CupertinoIcons.burn),
-      //     color: Colors.black, // Set the icon color to black
-      //     onPressed: () {
-      //       // Handle the button press event
-      //     },
-      //   ),
-      //   title: const Text(
-      //     "<- ntar ganti jadi logo",
-      //     style: TextStyle(
-      //       color: Colors.black,
-      //     ),
-      //   ),
-      //   actions: <Widget>[
-      //     TextButton(
-      //       style: style,
-      //       onPressed: () {},
-      //       child: const Text(
-      //         'Pendidikan',
-      //         style: TextStyle(
-      //           color: Colors.black, // Set the text color to black
-      //         ),
-      //       ),
-      //     ),
-      //     TextButton(
-      //       style: style,
-      //       onPressed: () {},
-      //       child: const Text('----'),
-      //     ),
-      //     TextButton(
-      //       style: style,
-      //       onPressed: () {
-      //         Navigator.push(
-      //             context,
-      //             MaterialPageRoute(
-      //                 builder: (context) => Login())
-      //         );
-      //       },
-      //       child: const Text(
-      //         'Login',
-      //         style: TextStyle(
-      //           color: Colors.black,
-      //           // fontFamily:
-      //         ),
-      //       ),
-      //     ),
-      //     TextButton(
-      //       style: style,
-      //       onPressed: () {},
-      //       child: const Text('.'),
-      //     ),
-      //   ],
-      // ),
       body: SingleChildScrollView(
         child: Container(
           constraints: const BoxConstraints(maxWidth: double.infinity),
