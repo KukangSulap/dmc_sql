@@ -9,6 +9,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../BagPendidikan/pendidikan_main.dart';
 import '../Property/app_color.dart';
 import '../login.dart';
 
@@ -114,10 +115,10 @@ class _AppBarUserState extends State<AppBarUser> {
                   padding: MaterialStateProperty.all(EdgeInsets.zero),
                 ),
                 onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const PendidikanScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PendidikanScreen()));
                 },
                 child: Text('Pendidikan',
                     style: GoogleFonts.mPlusRounded1c(
