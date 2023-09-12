@@ -1,7 +1,7 @@
-import 'package:dmc_sql/BagSiswa/ModelSiswa/siswa.dart';
+import 'package:dmc_sql/BagSiswa/ModelSiswa/mSiswa.dart';
 import 'package:http/http.dart' as http;
 
-class RemoteService {
+class RemoteServiceSiswa {
   Future<List<Siswa>?> getPost() async{
     var client = http.Client();
 

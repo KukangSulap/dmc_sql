@@ -1,5 +1,5 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
-import 'package:dmc_sql/BagSiswa/ModelSiswa/siswa.dart';
+import 'package:dmc_sql/BagSiswa/ModelSiswa/mSiswa.dart';
 import 'package:dmc_sql/BagSiswa/ServiceSiswa/remoteService.dart';
 import 'package:dmc_sql/BagSiswa/detailSiswa.dart';
 import 'package:dmc_sql/BagSiswa/inputSiswa.dart';
@@ -31,7 +31,7 @@ class _SiswaPageState extends State<SiswaPage> {
   String _selectedItemSemester = listSemester.first;
   String _selectedItemKelas = listKelas.first;
 
-  List<Siswa>? listSiswa2;
+  List<Siswa>? listSiswa2 = [];
   var isLoaded = false;
 
   @override
@@ -42,7 +42,7 @@ class _SiswaPageState extends State<SiswaPage> {
   }
 
   getData() async {
-    listSiswa2 = await RemoteService().getPost();
+    listSiswa2 = await RemoteServiceSiswa().getPost();
     if (listSiswa2 != null) {
       setState(() {
         isLoaded = true;
@@ -201,18 +201,18 @@ class _SiswaPageState extends State<SiswaPage> {
                                   ListView.builder(
                                 shrinkWrap: true,
                                 physics: const ClampingScrollPhysics(),
-                                // itemCount: listSiswa2?.length,
-                                itemCount: listSiswa.length,
+                                itemCount: listSiswa2?.length,
+                                // itemCount: listSiswa.length,
                                 itemBuilder: (BuildContext context, int index) {
-                                  // String nama = listSiswa2![index].nama;
-                                  // String tahun = listSiswa2![index].tahunPend;
-                                  // String semester = listSiswa2![index].semester;
-                                  // int kelas = listSiswa2![index].kelas;
+                                  String nama = listSiswa2![index].nama;
+                                  String tahun = listSiswa2![index].tahunPend;
+                                  String semester = listSiswa2![index].semester;
+                                  int kelas = listSiswa2![index].kelas;
 
-                                  String nama = listSiswa[index][0];
-                                  String tahun = listSiswa[index][1];
-                                  String semester = listSiswa[index][2];
-                                  String kelas = listSiswa[index][3];
+                                  // String nama = listSiswa[index][0];
+                                  // String tahun = listSiswa[index][1];
+                                  // String semester = listSiswa[index][2];
+                                  // String kelas = listSiswa[index][3];
 
                                   return Column(
                                     children: [
