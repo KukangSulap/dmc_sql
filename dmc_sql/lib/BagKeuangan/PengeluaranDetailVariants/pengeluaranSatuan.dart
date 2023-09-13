@@ -1,50 +1,36 @@
 import 'package:flutter/material.dart';
 
-class ContainerPengeluaran extends StatelessWidget {
-  const ContainerPengeluaran({super.key, required this.title, required this.defaultTexts, required this.imageUrl, required this.onPressed});
+import '../pengeluaranDetail.dart';
 
-  final String title;
-  final List<String> defaultTexts;
-  final String imageUrl;
-  final VoidCallback onPressed;
+class ContainerPengeluaran extends StatelessWidget {
+  final TemplateDetailPengeluaranData data;
+  const ContainerPengeluaran(this.data);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(
-            color: Colors.grey, // Add your preferred border color here
-            width: 1.0,
-          ),
-        ),
-        padding: EdgeInsets.all(16.0),
+    return Card(
+      elevation: 4,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const SizedBox(height: 16),
             Text(
-              title,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              data.texts[0] ?? "",
+              style: const TextStyle(fontWeight: FontWeight.bold),
+              key: const Key('text_0'),
             ),
-            SizedBox(height: 10),
-            for (String text in defaultTexts)
+            for (int i = 1; i < data.texts.length; i++)
               Text(
-                text,
-                style: TextStyle(
-                  fontSize: 16,
-                ),
+                data.texts[i] ?? "",
+                key: Key('text_$i'),
               ),
-            SizedBox(height: 10),
+            const SizedBox(height: 20),
             Image.network(
-              imageUrl,
-              width: double.infinity,
+              data.imageUrl ?? "",
+              width: 150,
               height: 150,
-              fit: BoxFit.cover,
             ),
           ],
         ),
