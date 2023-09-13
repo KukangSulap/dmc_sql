@@ -271,9 +271,9 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                       child: ListView.builder(
                         itemCount: dataDummy?.length,
                         itemBuilder: (context, index) {
-                          // String itemName = pemasukanList[index][0];
-                          // String leftInfo = pemasukanList[index][1];
-                          // String rightInfo = pemasukanList[index][2];
+                          String itemName = dataDummy![index].title;
+                          String leftInfo = dataDummy![index].title;
+                          String rightInfo = dataDummy![index].title;
 
                           return GestureDetector(
                             onTap: () {
@@ -288,12 +288,12 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                               children: [
                                 ListTile(
                                   title: Text(
-                                    dataDummy![index].title,
+                                    itemName,
                                     style: const TextStyle(fontSize: 20),
                                   ),
-                                  subtitle: Text(dataDummy![index].title),
+                                  subtitle: Text(itemName),
                                   trailing: Text(
-                                    dataDummy![index].title,
+                                    "Rp $rightInfo -",
                                     style: const TextStyle(
                                         fontSize: 30, color: Colors.black),
                                   ),
@@ -368,11 +368,11 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: keluaranList.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          String itemName = keluaranList[index][0];
-                          String leftInfo = keluaranList[index][1];
-                          String rightInfo = keluaranList[index][2];
+                        itemCount: dataDummy?.length,
+                        itemBuilder: (context, index) {
+                          String itemName = dataDummy![index].title;
+                          String leftInfo = dataDummy![index].title;
+                          String? rightInfo = dataDummy![index].url;
                           return GestureDetector(
                             onTap: () {
                               Navigator.push(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:dmc_sql/Property/app_color.dart';
 import '../AppBar/app_bar_user.dart';
+import '../Property/project_font.dart';
 
 class KurikulumScreen extends StatefulWidget {
   @override
@@ -12,32 +13,43 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.bg,
       appBar:AppBarUser(page: CurrentPage.pendidikan),
       body: SingleChildScrollView(
         child: Column(
           children: [
             upperRow("title1"),
             _buildBox(
-              'Box 1',
-              'Text in Box 1',
-              Colors.blue,
-              FontWeight.bold,
+              'Kurikulum SQL',
+              'Tujuan Pembelajaran Umum',
+              'Mengajarkan siswa membaca, memahami, dan mengamalkan Alquran dengan benar dan berbudi pekerti luhur.',
+              300.0,
+            ),
+            _buildBox2(
+              'Mata Pelajaran Utama',
+              "Tilawah (Pengajaran membaca Alquran) \nTafsir (Pengajaran pemahaman Alquran) \nHafalan (Hifz) \nAlquran Akhlaqul Karimah (Budi pekerti)",
               200.0,
             ),
-            _buildBox(
-              'Box 2',
-              'Text in Box 2',
-              Colors.green,
-              FontWeight.normal,
-              150.0,
-            ),
-            _buildBox(
-              'Box 3',
-              'Text in Box 3',
-              Colors.red,
-              FontWeight.bold,
-              250.0,
-            ),
+            //rest of the box
+            const SizedBox(height: 16),
+            kelas(
+              colors: [
+                Colors.blue,
+                Colors.green,
+                Colors.red,
+                Colors.orange,
+                Colors.purple,
+                Colors.yellow,
+              ],
+              texts: [
+                'Card 1',
+                'Card 2',
+                'Card 3',
+                'Card 4',
+                'Card 5',
+                'Card 6',
+              ],
+            )
           ],
         ),
       ),
@@ -46,52 +58,133 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
 
   Widget _buildBox(
       String title,
+      String sub,
       String stackedText,
-      Color boxColor,
-      FontWeight textWeight,
       double boxHeight,
       ) {
     return Container(
-      margin: const EdgeInsets.all(16.0),
+      margin: const EdgeInsets.only(top: 16.0,left: 30, right: 30),
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: boxColor.withOpacity(0.8),
         border: Border.all(color: Colors.white, width: 2.0),
         borderRadius: BorderRadius.circular(10.0),
         image: const DecorationImage(
-          image: AssetImage('misc/c2.png'), // Replace with your image path
+          image: NetworkImage('https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg'), // Replace with your image path
           fit: BoxFit.cover, // Adjust the fit as needed
         ),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+          const SizedBox(height: 160.0),
+          GlobalProjectFont(
+            fontSize: 60.0,
+            fontWeight: FontWeight.w800,
+            color: Colors.white,
+            text: title,
           ),
           const SizedBox(height: 10.0),
+          GlobalProjectFont(
+            fontSize: 42.0,
+            fontWeight: FontWeight.normal,
+            color: Colors.white,
+            text: sub,
+          ),
+          const SizedBox(height: 20.0),
           Stack(
-            alignment: Alignment.center,
             children: [
               Container(
                 color: Colors.transparent, // Make the container transparent
                 height: boxHeight,
               ),
-              Text(
-                stackedText,
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: textWeight,
-                  color: Colors.white,
-                ),
+              GlobalProjectFont(
+                fontSize: 32.0,
+                fontWeight: FontWeight.normal,
+                color: Colors.white,
+                text: stackedText,
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildBox2(
+      String title,
+      String stackedText,
+      double boxHeight,
+      ) {
+    return Container(
+      margin: const EdgeInsets.only(top: 16.0,left: 30, right: 30),
+      padding: const EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.white, width: 2.0),
+        borderRadius: BorderRadius.circular(10.0),
+        color: Colors.white
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 30.0),
+          GlobalProjectFont(
+            fontSize: 44.0,
+            fontWeight: FontWeight.w800,
+            color: AppColor.blue,
+            text: title,
+          ),
+          const SizedBox(height: 20.0),
+          Stack(
+            children: [
+              Container(
+                color: Colors.transparent, // Make the container transparent
+                height: boxHeight,
+              ),
+              GlobalProjectFont(
+                fontSize: 32.0,
+                fontWeight: FontWeight.normal,
+                color: Colors.black,
+                text: stackedText,
+              ),
+            ],
+          ),
+          const SizedBox(height: 30.0),
+        ],
+      ),
+    );
+  }
+
+  Widget kelas(
+      {
+        required List<Color> colors,
+        required List<String> texts,
+      }
+      ) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16.0,left: 30, right: 30),
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3, // Number of columns
+          mainAxisSpacing: 16.0, // Vertical spacing
+          crossAxisSpacing: 8.0, // Horizontal spacing
+        ),
+        itemCount: 6, // Total number of cards (2x3)
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          return Card(
+            color: colors[index],
+            child: Center(
+              child: Text(
+                texts[index],
+                style: const TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
