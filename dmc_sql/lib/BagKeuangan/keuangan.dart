@@ -375,12 +375,12 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                           String? rightInfo = dataDummy![index].url;
                           return GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => TemplateDetailPengeluaran(texts: keluaranList[index], imageUrl: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg',),
-                                ),
-                              );
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => TemplateDetailPengeluaran(texts: keluaranList[index], imageUrl: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg',),
+                              //   ),
+                              // );
                             },
                             child: Column(
                               children: [
