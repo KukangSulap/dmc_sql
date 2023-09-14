@@ -27,6 +27,7 @@ class GlobalProjectFont extends StatelessWidget{
         color: color,
         fontWeight: fontWeight,
       ),
+      overflow: TextOverflow.ellipsis,
       textAlign: textAlign,
     );
   }
