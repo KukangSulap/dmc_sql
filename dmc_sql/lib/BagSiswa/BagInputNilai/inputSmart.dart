@@ -21,7 +21,7 @@ class InputSmartPage extends StatefulWidget {
       {super.key, required this.namaSiswa, required this.nisSiswa});
 
   final String namaSiswa;
-  final String nisSiswa;
+  final int nisSiswa;
 
   @override
   State<InputSmartPage> createState() => _InputSmartPageState();
@@ -31,7 +31,7 @@ class _InputSmartPageState extends State<InputSmartPage> {
   late final TextEditingController _namaCont =
       TextEditingController(text: widget.namaSiswa);
   late final TextEditingController _nisCont =
-      TextEditingController(text: widget.nisSiswa);
+      TextEditingController(text: "${widget.nisSiswa}");
   final TextEditingController _tglCont = TextEditingController();
 
   final TextEditingController _namaSmartCont = TextEditingController();

@@ -13,10 +13,13 @@ import 'package:dmc_sql/BagSiswa/inputSiswa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import 'ModelSiswa/mSiswa.dart';
+
 class DetailSiswaPage extends StatefulWidget {
   const DetailSiswaPage({super.key, required this.dataSiswa});
 
-  final List<String> dataSiswa;
+  // final List<String> dataSiswa;
+  final Siswa dataSiswa;
 
   @override
   State<DetailSiswaPage> createState() => _DetailSiswaPageState();
@@ -25,12 +28,18 @@ class DetailSiswaPage extends StatefulWidget {
 class _DetailSiswaPageState extends State<DetailSiswaPage> {
   @override
   Widget build(BuildContext context) {
-    String namaSiswa = widget.dataSiswa[0];
-    String nama = namaSiswa.split("-")[0];
-    String nis = namaSiswa.split("-")[1];
-    String tahunSiswa = widget.dataSiswa[1];
-    String semesterSiswa = widget.dataSiswa[2];
-    String kelasSiswa = widget.dataSiswa[3];
+    // String namaSiswa = widget.dataSiswa[0];
+    // String nama = namaSiswa.split("-")[0];
+    // String nis = namaSiswa.split("-")[1];
+    // String tahunSiswa = widget.dataSiswa[1];
+    // String semesterSiswa = widget.dataSiswa[2];
+    // String kelasSiswa = widget.dataSiswa[3];
+
+    String nama = widget.dataSiswa.nama;
+    int nis = widget.dataSiswa.nis;
+    String tahunSiswa = widget.dataSiswa.tahunPend;
+    String semesterSiswa = widget.dataSiswa.semester;
+    int kelasSiswa = widget.dataSiswa.kelas;
 
     return Scaffold(
       appBar: AppBarAdmin(page: CurrentPage.siswa),
@@ -83,10 +92,10 @@ class BagianProfil extends StatelessWidget {
   });
 
   final String nama;
-  final String nis;
+  final dynamic nis;
   final String tahunSiswa;
   final String semesterSiswa;
-  final String kelasSiswa;
+  final dynamic kelasSiswa;
 
   @override
   Widget build(BuildContext context) {
@@ -126,12 +135,12 @@ class BagianProfil extends StatelessWidget {
                 //     'https://www.liveabout.com/thmb/mODlBLF75DTwT3i4zHkXFGrmhNA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/pajama-day-kid-58b8c9345f9b58af5c8c717d.jpg'),
               ),
               Text(
-                "${nama.trim()}",
+                "${nama}",
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 68),
               ),
               SizedBox(height: 10),
               Text(
-                "${nis.trim()}   Rank 1",
+                "${nis}   Rank 1",
                 style: TextStyle(fontWeight: FontWeight.w400, fontSize: 34),
               ),
               SizedBox(height: 20),
@@ -198,7 +207,7 @@ class BagianMenuKiri extends StatelessWidget {
   });
 
   final String nama;
-  final String nis;
+  final int nis;
 
   @override
   Widget build(BuildContext context) {
@@ -240,8 +249,8 @@ class BagianMenuKiri extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => DetailLombaPage(
-                                    nama: nama.trim(),
-                                    nis: nis.trim(),
+                                    nama: nama,
+                                    nis: nis,
                                   )));
                     }),
                 CustomButton(
@@ -251,8 +260,8 @@ class BagianMenuKiri extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => DetailSmartPage(
-                                    nama: nama.trim(),
-                                    nis: nis.trim(),
+                                    nama: nama,
+                                    nis: nis,
                                   )));
                     }),
                 CustomButton(
@@ -262,8 +271,8 @@ class BagianMenuKiri extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  DetailMurajaahPage(nama: nama.trim(),
-                                    nis: nis.trim(),)));
+                                  DetailMurajaahPage(nama: nama,
+                                    nis: nis,)));
                     }),
                 CustomButton(
                     text: "Ziyadah",
@@ -272,8 +281,8 @@ class BagianMenuKiri extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => DetailZiyadahPage(
-                                    nama: nama.trim(),
-                                    nis: nis.trim(),
+                                    nama: nama,
+                                    nis: nis,
                                   )));
                     }),
               ],
@@ -313,8 +322,8 @@ class BagianMenuKiri extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => InputLombaPage(
-                                    namaSiswa: nama.trim(),
-                                    nisSiswa: nis.trim(),
+                                    namaSiswa: nama,
+                                    nisSiswa: nis,
                                   )));
                     }),
                 CustomButton(
@@ -324,8 +333,8 @@ class BagianMenuKiri extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => InputSmartPage(
-                                    namaSiswa: nama.trim(),
-                                    nisSiswa: nis.trim(),
+                                    namaSiswa: nama,
+                                    nisSiswa: nis,
                                   )));
                     }),
                 CustomButton(
@@ -335,8 +344,8 @@ class BagianMenuKiri extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => InputMurajaahPage(
-                                    namaSiswa: nama.trim(),
-                                    nisSiswa: nis.trim(),
+                                    namaSiswa: nama,
+                                    nisSiswa: nis,
                                   )));
                     }),
                 CustomButton(
@@ -346,8 +355,8 @@ class BagianMenuKiri extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => InputZiyadahPage(
-                                    namaSiswa: nama.trim(),
-                                    nisSiswa: nis.trim(),
+                                    namaSiswa: nama,
+                                    nisSiswa: nis,
                                   )));
                     }),
               ],

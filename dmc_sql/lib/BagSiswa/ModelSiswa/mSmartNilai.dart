@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dmc_sql/BagSiswa/ModelSiswa/mLombaNilai.dart';
 
-List<SmartNilai> postFromJson(String str) => List<SmartNilai>.from(json.decode(str).map((x) => SmartNilai.fromJson(x)));
+List<SmartNilai> postFromSmartNilJson(String str) => List<SmartNilai>.from(json.decode(str).map((x) => SmartNilai.fromJson(x)));
 
 class SmartNilai {
   SmartNilai({

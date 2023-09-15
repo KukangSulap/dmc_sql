@@ -24,7 +24,7 @@ List<dynamic> listRapor = [
 
 class InputRaporPage extends StatefulWidget {
   const InputRaporPage({super.key, required this.nisSiswa});
-  final String nisSiswa;
+  final int nisSiswa;
 
   @override
   State<InputRaporPage> createState() => _InputRaporPageState();

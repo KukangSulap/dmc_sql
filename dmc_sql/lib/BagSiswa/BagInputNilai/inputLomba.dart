@@ -22,7 +22,7 @@ class InputLombaPage extends StatefulWidget {
       {super.key, required this.namaSiswa, required this.nisSiswa});
 
   final String namaSiswa;
-  final String nisSiswa;
+  final int nisSiswa;
 
   @override
   State<InputLombaPage> createState() => _InputLombaPageState();
@@ -32,7 +32,7 @@ class _InputLombaPageState extends State<InputLombaPage> {
   late final TextEditingController _namaCont =
   TextEditingController(text: widget.namaSiswa);
   late final TextEditingController _nisCont =
-  TextEditingController(text: widget.nisSiswa);
+  TextEditingController(text: "${widget.nisSiswa}");
   final TextEditingController _tglCont = TextEditingController();
   final TextEditingController _namaLombaCont = TextEditingController();
   final TextEditingController _notesLombaCont = TextEditingController();

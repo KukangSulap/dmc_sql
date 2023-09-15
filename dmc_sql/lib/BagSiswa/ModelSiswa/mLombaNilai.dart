@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-List<LombaNilai> postFromJson(String str) => List<LombaNilai>.from(json.decode(str).map((x) => LombaNilai.fromJson(x)));
+List<LombaNilai> postFromLombaNilJson(String str) => List<LombaNilai>.from(json.decode(str).map((x) => LombaNilai.fromJson(x)));
 
 class LombaNilai {
   LombaNilai({

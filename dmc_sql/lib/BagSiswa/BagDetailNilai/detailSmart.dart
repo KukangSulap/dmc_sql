@@ -17,7 +17,7 @@ class DetailSmartPage extends StatefulWidget {
   const DetailSmartPage({super.key, required this.nama, required this.nis});
 
   final String nama;
-  final String nis;
+  final int nis;
 
   @override
   State<DetailSmartPage> createState() => _DetailSmartPageState();
@@ -160,7 +160,7 @@ class SmartMabit extends StatelessWidget {
   });
 
   final String nama;
-  final String nis;
+  final int nis;
 
   @override
   Widget build(BuildContext context) {
@@ -204,7 +204,7 @@ class SmartMabit extends StatelessWidget {
                           )),
                     ),
                     const SizedBox(height: 10),
-                    Text(nis,
+                    Text("$nis}",
                         style: GoogleFonts.mPlusRounded1c(
                             fontWeight: FontWeight.w500,
                             fontSize: 20,
@@ -350,7 +350,7 @@ class SmartCamp extends StatelessWidget {
   });
 
   final String nama;
-  final String nis;
+  final int nis;
 
   @override
   Widget build(BuildContext context) {
@@ -392,7 +392,7 @@ class SmartCamp extends StatelessWidget {
                           )),
                     ),
                     const SizedBox(height: 10),
-                    Text(nis,
+                    Text("$nis",
                         style: GoogleFonts.mPlusRounded1c(
                             fontWeight: FontWeight.w500,
                             fontSize: 20,

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-List<Murajaah> postFromJson(String str) => List<Murajaah>.from(json.decode(str).map((x) => Murajaah.fromJson(x)));
+List<Murajaah> postFromMurajaahJson(String str) => List<Murajaah>.from(json.decode(str).map((x) => Murajaah.fromJson(x)));
 
 class Murajaah {
   Murajaah({

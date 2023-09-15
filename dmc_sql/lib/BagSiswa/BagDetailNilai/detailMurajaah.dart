@@ -15,7 +15,7 @@ class DetailMurajaahPage extends StatefulWidget {
   const DetailMurajaahPage({super.key, required this.nama, required this.nis});
 
   final String nama;
-  final String nis;
+  final int nis;
 
   @override
   State<DetailMurajaahPage> createState() => _DetailMurajaahPageState();
@@ -123,7 +123,7 @@ class _DetailMurajaahPageState extends State<DetailMurajaahPage> {
                                   )),
                             ),
                             const SizedBox(height: 10),
-                            Text(widget.nis,
+                            Text("${widget.nis}",
                                 style: GoogleFonts.mPlusRounded1c(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 20,
