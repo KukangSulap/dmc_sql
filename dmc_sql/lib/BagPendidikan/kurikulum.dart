@@ -1,3 +1,4 @@
+import 'package:dmc_sql/BagPendidikan/update_materi.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:dmc_sql/Property/app_color.dart';
@@ -22,7 +23,7 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
             _buildBox(
               'Kurikulum SQL',
               'Tujuan Pembelajaran Umum',
-              'Mengajarkan siswa membaca, memahami, dan mengamalkan Alquran dengan benar dan berbudi pekerti luhur.',
+              'Mengajarkan siswa membaca, memahami, \ndan mengamalkan Alquran dengan benar \ndan berbudi pekerti luhur.',
               300.0,
             ),
             _buildBox2(
@@ -63,7 +64,7 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
       double boxHeight,
       ) {
     return Container(
-      margin: const EdgeInsets.only(top: 16.0,left: 30, right: 30),
+      margin: const EdgeInsets.symmetric(horizontal: 16.0),
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white, width: 2.0),
@@ -76,21 +77,24 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 160.0),
+          SizedBox(height: 16.0), // Adjust the spacing as needed
           GlobalProjectFont(
-            fontSize: 60.0,
+            fontSize: 36.0, // Adjust for smaller screens
             fontWeight: FontWeight.w800,
             color: Colors.white,
             text: title,
           ),
-          const SizedBox(height: 10.0),
-          GlobalProjectFont(
-            fontSize: 42.0,
-            fontWeight: FontWeight.normal,
-            color: Colors.white,
-            text: sub,
+          SizedBox(height: 8.0), // Adjust the spacing as needed
+          Container(
+            alignment: Alignment.topLeft,
+            child: GlobalProjectFont(
+              fontSize: 24.0, // Adjust for smaller screens
+              fontWeight: FontWeight.normal,
+              color: Colors.white,
+              text: sub,
+            ),
           ),
-          const SizedBox(height: 20.0),
+          SizedBox(height: 12.0), // Adjust the spacing as needed
           Stack(
             children: [
               Container(
@@ -98,7 +102,7 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
                 height: boxHeight,
               ),
               GlobalProjectFont(
-                fontSize: 32.0,
+                fontSize: 20.0, // Adjust for smaller screens
                 fontWeight: FontWeight.normal,
                 color: Colors.white,
                 text: stackedText,
@@ -109,6 +113,7 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
       ),
     );
   }
+
 
   Widget _buildBox2(
       String title,
@@ -161,7 +166,7 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
       }
       ) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16.0,left: 30, right: 30),
+      margin: const EdgeInsets.symmetric(horizontal: 16.0),
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3, // Number of columns
@@ -198,34 +203,6 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            flex: 3,
-            child: Container(
-                height: 72,
-                decoration: BoxDecoration(
-                  border: Border.all(color: AppColor.blue, width: 2.0),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 29),
-                child: Center(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      suffixIcon: const Icon(
-                        Icons.search,
-                        size: 36,
-                      ),
-                      suffixIconColor: AppColor.blue,
-                      hintText: 'Pencarian',
-                      hintStyle: GoogleFonts.mPlusRounded1c(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18.0,
-                          color: AppColor.blue),
-                      border: InputBorder.none,
-                    ),
-                  ),
-                )),
-          ),
-          const SizedBox(width: 12.0),
-          Expanded(
             flex: 2,
             child: SizedBox(
                 height: 72,
@@ -237,7 +214,11 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
                       const Color.fromRGBO(214, 106, 61, 1),
                     ),
                     onPressed: () {
-                      // TODO: Add Update Materi On Pressed.
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MateriPage()),
+                      );
                     },
                     child: Text(
                       'Update Materi',
