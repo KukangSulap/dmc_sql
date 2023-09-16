@@ -1,4 +1,5 @@
 import 'package:dmc_sql/BagPendidikan/kurikulum.dart';
+import 'package:dmc_sql/BagPendidikan/update_materi.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -119,6 +120,11 @@ class _PendidikanScreenState extends State<PendidikanScreen> {
                           ),
                           onPressed: () {
                             // TODO: Add Update Materi On Pressed.
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MateriPage()),
+                            );
                           },
                           child: Text(
                             'Update Materi',
