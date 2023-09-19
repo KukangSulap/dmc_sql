@@ -7,14 +7,14 @@ class Dummy {
   int albumId;
   int id;
   String title;
-  String? url;
+  String url;
   String? thumbnailUrl;
 
   Dummy({
     required this.albumId,
     required this.id,
     required this.title,
-    this.url,
+    required this.url,
     this.thumbnailUrl
   });
 

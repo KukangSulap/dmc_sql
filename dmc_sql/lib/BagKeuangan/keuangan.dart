@@ -1,5 +1,4 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
-import 'package:dmc_sql/BagKeuangan/PemasukanDetailVariants/donasi.dart';
 import 'package:dmc_sql/BagKeuangan/inputPengeluaran.dart';
 import 'package:dmc_sql/BagKeuangan/pengeluaranDetail.dart';
 import 'package:dmc_sql/Property/app_color.dart';
@@ -11,6 +10,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../model/dummy.dart';
 import '../service/connect.dart';
 import 'inputPemasukan.dart';
+import 'pemasukanDetail.dart';
 
 List<List<String>> pemasukanList = [
   ['Pembayaran SPP Ahmad Solihun - xxxxxxx013', '12 Juni 2023', '250.000'],
@@ -24,6 +24,12 @@ List<List<String>> keluaranList = [
   ['Kegiatan Study Tour Masjid Kuba', '30 Juni 20233', '750.000'],
   ['Kerting Untuk Acara Tafsir Al Quran', '30 Juni 2023', '250.000'],
 ];
+
+void main() {
+  runApp(const MaterialApp(
+    home: KeuanganPage(),
+  ));
+}
 
 class KeuanganPage extends StatefulWidget {
   const KeuanganPage({super.key});
@@ -70,8 +76,6 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
   getData() async {
     dataDummy = await RemoteService().getPosts();
     if (dataDummy != null) {
-      print("datany woi:");
-      print(dataDummy);
       setState(() {
         isLoaded = true;
       });
@@ -92,7 +96,7 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
               Container(
                   margin: const EdgeInsets.only(top: 10),
                   padding: const EdgeInsets.all(10),
-                  height: 120,
+                  height: 110,
                 child: Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,7 +104,7 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                       // Total uang
                       Expanded(
                         child: Container(
-                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          padding: const EdgeInsets.only(top: 5, bottom: 5),
                           decoration: ShapeDecoration(
                             color: AppColor.yellow,
                             shape: RoundedRectangleBorder(
@@ -132,7 +136,7 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                       // Pemasukan
                       Expanded(
                         child: Container(
-                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          padding: const EdgeInsets.only(top: 5, bottom: 5),
                           decoration: ShapeDecoration(
                             color: AppColor.orange,
                             shape: RoundedRectangleBorder(
@@ -144,7 +148,7 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                             children: const [
                               ListTile(
                                 title: Text(
-                                  'Pemasukan Bulanan',
+                                  'Pemasukan',
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 subtitle: Text(
@@ -176,7 +180,7 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                             children: const [
                               ListTile(
                                 title: Text(
-                                  'Pengeluaran Bulanan',
+                                  'Pengeluaran',
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 subtitle: Text(
@@ -279,9 +283,9 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                             onTap: () {
                               Navigator.pop(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => const PemasukanDetailDonasi(),
-                                ),
+                                // MaterialPageRoute(
+                                //   builder: (context) =>  DetailPemasukan(dataPemasukan: dataDummy![index],),
+                                // ),
                               );
                             },
                             child: Column(

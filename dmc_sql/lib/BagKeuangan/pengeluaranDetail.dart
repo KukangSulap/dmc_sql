@@ -7,7 +7,7 @@ import '../Property/project_font.dart';
 import 'PengeluaranDetailVariants/pengeluaranSatuan.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(TemplateDetailPengeluaran());
 }
 
 List<TemplateDetailPengeluaranData> data = [
@@ -30,7 +30,7 @@ List<TemplateDetailPengeluaranData> data = [
   // Add more data objects as needed
 ];
 
-class MyApp extends StatelessWidget {
+class TemplateDetailPengeluaran extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

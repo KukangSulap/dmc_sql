@@ -1,61 +1,199 @@
 import 'package:dmc_sql/BagKeuangan/inputPemasukan.dart';
+import 'package:dmc_sql/model/dummy.dart';
 import 'package:flutter/material.dart';
 
-class TemplateDetailPemasukan extends StatelessWidget {
-  final List<String> texts;
+import '../AppBar/appBarAdmin.dart';
+import '../Property/app_color.dart';
+import '../Property/project_font.dart';
+
+void main() {
+  runApp(const MaterialApp(
+    home: DetailPemasukan(imageUrl: "7uyt"),
+  ));
+}
+
+class DetailPemasukan extends StatelessWidget {
   final String imageUrl;
 
-  const TemplateDetailPemasukan({super.key, required this.texts, required this.imageUrl});
+  const DetailPemasukan({
+    Key? key,
+    required this.imageUrl,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 3,
-            blurRadius: 5,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            texts[0],
-            style: const TextStyle(fontWeight: FontWeight.bold),
-            key: const Key('text_0'),
-          ),
-          for (int i = 1; i < texts.length; i++)
-            Text(
-              texts[i],
-              key: Key('text_$i'),
+    final isSmallScreen = MediaQuery.of(context).size.width < 400;
+
+    return Scaffold(
+      appBar: const AppBarAdmin(page: CurrentPage.keuangan),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      GlobalProjectFont(
+                        text: 'Lomba Muharam 1445 H',
+                        fontWeight: FontWeight.w800,
+                        fontSize: isSmallScreen ? 36 : 48,
+                        color: AppColor.blue,
+                      ),
+                      Spacer(),
+                      Container(
+                        alignment: Alignment.center,
+                        height: isSmallScreen ? 45 : 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color(0xffedc35f),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0, right: 8),
+                          child: GlobalProjectFont(
+                            text: 'Edit',
+                            fontWeight: FontWeight.w800,
+                            fontSize: isSmallScreen ? 18 : 24,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GlobalProjectFont(
+                        text: 'Reward',
+                        fontWeight: FontWeight.w800,
+                        fontSize: isSmallScreen ? 18 : 24,
+                      ),
+                      SizedBox(width: isSmallScreen ? 10 : 20),
+                      GlobalProjectFont(
+                        text: '16 Agustus 2023',
+                        fontWeight: FontWeight.w800,
+                        fontSize: isSmallScreen ? 18 : 24,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          const SizedBox(height: 20),
-          Image.network(
-            imageUrl,
-            width: 150,
-            height: 150,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const InputPemasukan(),
+            Expanded(
+              child: Card(
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: LayoutBuilder(
+                    builder: (BuildContext context, BoxConstraints constraints) {
+                      final screenWidth = constraints.maxWidth;
+
+                      // Adjust the layout based on screen width
+                      if (screenWidth < 400) {
+                        return buildMobileLayout();
+                      } else {
+                        return buildTabletLayout();
+                      }
+                    },
+                  ),
                 ),
-              );
-            },
-            child: const Text('Edit'),
-          ),
-        ],
+              ),
+            ),
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget buildMobileLayout() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        buildTitleSection(),
+        const SizedBox(height: 20),
+        buildImageSection(),
+      ],
+    );
+  }
+
+  Widget buildTabletLayout() {
+    return Column(
+      children: [
+        Expanded(
+          flex: 2,
+          child: buildTitleSection(),
+        ),
+        Expanded(
+          flex: 1,
+          child: buildImageSection(),
+        ),
+      ],
+    );
+  }
+
+  Widget buildTitleSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text(
+              "Pemasukan Title", // Replace with actual title
+              style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 32,
+                color: Colors.blue, // Adjust the color as needed
+              ),
+            ),
+            Spacer(),
+            Container(
+              alignment: Alignment.center,
+              width: 193,
+              height: 43,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: const Color(0xffd66a3d),
+              ),
+              child: Text(
+                "Button Text",
+                style: TextStyle(
+                  fontWeight: FontWeight.w800,
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 20),
+        Text(
+          "Additional Text Inside Card",
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 20,
+          ),
+        ),
+        const SizedBox(height: 20),
+        const TextField(
+          readOnly: true,
+          decoration: InputDecoration(
+            labelText: "Read-Only Text",
+            border: OutlineInputBorder(),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget buildImageSection() {
+    return Image.network(
+      imageUrl,
+      width: 150,
+      height: 150,
     );
   }
 }
