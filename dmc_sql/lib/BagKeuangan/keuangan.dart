@@ -1,6 +1,5 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
 import 'package:dmc_sql/BagKeuangan/inputPengeluaran.dart';
-import 'package:dmc_sql/BagKeuangan/pengeluaranDetail.dart';
 import 'package:dmc_sql/Property/app_color.dart';
 import 'package:dmc_sql/Property/project_font.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,18 +11,6 @@ import '../service/connect.dart';
 import 'inputPemasukan.dart';
 import 'pemasukanDetail.dart';
 
-List<List<String>> pemasukanList = [
-  ['Pembayaran SPP Ahmad Solihun - xxxxxxx013', '12 Juni 2023', '250.000'],
-  ['Pembayaran SPP Agita Maharani - xxxxxxx012', '20 Juli 2023', '250.000'],
-  ['Donasi Salimah', '22 Juni 20233', '750.000'],
-  ['Pembayaran SPP Hilmy Hofifah - xxxxxxx313', '30 Juni 2023', '250.000'],
-];
-List<List<String>> keluaranList = [
-  ['Pembelian Al Quran 12 Buku', '12 Juni 2023', '250.000'],
-  ['Dana Kegiatan Kebersihan Masjid', '20 Juli 2023', '250.000'],
-  ['Kegiatan Study Tour Masjid Kuba', '30 Juni 20233', '750.000'],
-  ['Kerting Untuk Acara Tafsir Al Quran', '30 Juni 2023', '250.000'],
-];
 
 void main() {
   runApp(const MaterialApp(
@@ -70,7 +57,6 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
   void initState() {
     super.initState();
     getData();
-    // getDataV2();
   }
 
   getData() async {
@@ -196,25 +182,6 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 8,),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.only(top: 10, bottom: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.black, width: 1.5),
-                          ),
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              hintText: 'Pencarian',
-                              border: InputBorder.none,
-                              suffixIcon: Icon(Icons.search),
-                              suffixIconColor: Colors.black,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                            ),
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -276,16 +243,16 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                         itemCount: dataDummy?.length,
                         itemBuilder: (context, index) {
                           String itemName = dataDummy![index].title;
-                          String leftInfo = dataDummy![index].title;
+                          // String leftInfo = dataDummy![index].title;
                           String rightInfo = dataDummy![index].title;
 
                           return GestureDetector(
                             onTap: () {
-                              Navigator.pop(
+                              Navigator.push(
                                 context,
-                                // MaterialPageRoute(
-                                //   builder: (context) =>  DetailPemasukan(dataPemasukan: dataDummy![index],),
-                                // ),
+                                MaterialPageRoute(
+                                  builder: (context) =>  DetailPemasukan(dataPemasukan: dataDummy![index],),
+                                ),
                               );
                             },
                             child: Column(

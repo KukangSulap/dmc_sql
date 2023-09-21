@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../AppBar/appBarAdmin.dart';
 import '../Property/app_color.dart';
 import '../Property/project_font.dart';
 import 'PengeluaranDetailVariants/pengeluaranSatuan.dart';
-
-void main() {
-  runApp(TemplateDetailPengeluaran());
-}
 
 List<TemplateDetailPengeluaranData> data = [
   TemplateDetailPengeluaranData(
@@ -27,7 +22,6 @@ List<TemplateDetailPengeluaranData> data = [
     texts: ["Text 4", "Text 5", "Text 6"],
     imageUrl: "https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg",
   ),
-  // Add more data objects as needed
 ];
 
 class TemplateDetailPengeluaran extends StatelessWidget {
@@ -64,7 +58,7 @@ class TemplateDetailPengeluaran extends StatelessWidget {
                               height: isSmallScreen ? 45 : 50,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Color(0xffedc35f),
+                                color: AppColor.orange,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 8.0, right: 8),
