@@ -1,4 +1,3 @@
-import 'package:dmc_sql/BagKeuangan/inputPemasukan.dart';
 import 'package:dmc_sql/model/dummy.dart';
 import 'package:flutter/material.dart';
 
@@ -6,19 +5,15 @@ import '../AppBar/appBarAdmin.dart';
 import '../Property/app_color.dart';
 import '../Property/project_font.dart';
 
-void main() {
-  runApp(const MaterialApp(
-    home: DetailPemasukan(imageUrl: "7uyt"),
-  ));
-}
-
 class DetailPemasukan extends StatelessWidget {
-  final String imageUrl;
+  // final String imageUrl;
+  final Dummy dataPemasukan;
 
   const DetailPemasukan({
     Key? key,
-    required this.imageUrl,
+    required this.dataPemasukan,
   }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +34,7 @@ class DetailPemasukan extends StatelessWidget {
                   Row(
                     children: [
                       GlobalProjectFont(
-                        text: 'Lomba Muharam 1445 H',
+                        text: dataPemasukan.title,
                         fontWeight: FontWeight.w800,
                         fontSize: isSmallScreen ? 36 : 48,
                         color: AppColor.blue,
@@ -92,7 +87,6 @@ class DetailPemasukan extends StatelessWidget {
                     builder: (BuildContext context, BoxConstraints constraints) {
                       final screenWidth = constraints.maxWidth;
 
-                      // Adjust the layout based on screen width
                       if (screenWidth < 400) {
                         return buildMobileLayout();
                       } else {
@@ -191,7 +185,7 @@ class DetailPemasukan extends StatelessWidget {
 
   Widget buildImageSection() {
     return Image.network(
-      imageUrl,
+      "https://cdn.mos.cms.futurecdn.net/4aWYcB9tGoGe5gHo4tiffU.jpg",
       width: 150,
       height: 150,
     );
