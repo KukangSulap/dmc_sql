@@ -77,7 +77,6 @@ class _AppBarAdminState extends State<AppBarAdmin> {
                             ? activeItemColor
                             : idleItemColor,
                         fontWeight: FontWeight.w800,
-                        // TODO: set the font to follow figma (24)
                         fontSize: screenWidth >= 600 ? 18 : 14)),
               ),
             ]),
@@ -88,9 +87,7 @@ class _AppBarAdminState extends State<AppBarAdmin> {
               Visibility(
                 visible: widget.page == CurrentPage.siswa,
                 child: Container(
-                  // TODO: Change Width to Follow Figma (61)
                     width: screenWidth >= 600 ? 35 : 24,
-                    // TODO: Change Height to Follow Figma (61)
                     height: screenWidth >= 600 ? 35 : 24,
                     decoration: const BoxDecoration(
                       color: AppColor.yellow,
@@ -115,7 +112,6 @@ class _AppBarAdminState extends State<AppBarAdmin> {
                             ? activeItemColor
                             : idleItemColor,
                         fontWeight: FontWeight.w800,
-                        // TODO: set the font to follow figma (24)
                         fontSize: screenWidth >= 600 ? 18 : 14)),
               ),
             ]),
