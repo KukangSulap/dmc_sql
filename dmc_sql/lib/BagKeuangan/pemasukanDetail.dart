@@ -17,7 +17,7 @@ class DetailPemasukan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSmallScreen = MediaQuery.of(context).size.width < 400;
+    final isSmallScreen = MediaQuery.of(context).size.width < 500;
 
     return Scaffold(
       appBar: const AppBarAdmin(page: CurrentPage.keuangan),
@@ -33,11 +33,14 @@ class DetailPemasukan extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      GlobalProjectFont(
-                        text: dataPemasukan.title,
-                        fontWeight: FontWeight.w800,
-                        fontSize: isSmallScreen ? 36 : 48,
-                        color: AppColor.blue,
+                      SizedBox(
+                        width: isSmallScreen ? 200 : 700, // Set the width to your desired value
+                        child: GlobalProjectFont(
+                          text: dataPemasukan.title,
+                          fontWeight: FontWeight.w800,
+                          fontSize: isSmallScreen ? 30 : 48,
+                          color: AppColor.blue,
+                        ),
                       ),
                       Spacer(),
                       Container(
