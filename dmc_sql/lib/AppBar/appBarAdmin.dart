@@ -27,6 +27,9 @@ class _AppBarAdminState extends State<AppBarAdmin> {
 
   @override
   Widget build(BuildContext context) {
+
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -38,7 +41,7 @@ class _AppBarAdminState extends State<AppBarAdmin> {
                 style: GoogleFonts.mPlusRounded1c(
                     color: AppColor.blue,
                     fontWeight: FontWeight.w800,
-                    fontSize: 36)),
+                    fontSize: screenWidth >= 600 ? 36 : 30)),
           ],
         ),
       ),
@@ -49,10 +52,8 @@ class _AppBarAdminState extends State<AppBarAdmin> {
               Visibility(
                 visible: widget.page == CurrentPage.keuangan,
                 child: Container(
-                  // TODO: Change Width to Follow Figma (61)
-                    width: 35,
-                    // TODO: Change Height to Follow Figma (61)
-                    height: 35,
+                    width: screenWidth >= 600 ? 35 : 24,
+                    height: screenWidth >= 600 ? 35 : 24,
                     decoration: const BoxDecoration(
                       color: AppColor.yellow,
                       shape: BoxShape.circle,
@@ -77,20 +78,20 @@ class _AppBarAdminState extends State<AppBarAdmin> {
                             : idleItemColor,
                         fontWeight: FontWeight.w800,
                         // TODO: set the font to follow figma (24)
-                        fontSize: 18)),
+                        fontSize: screenWidth >= 600 ? 18 : 14)),
               ),
             ]),
-            const SizedBox(
-              width: 116,
+             SizedBox(
+              width: screenWidth >= 600 ? 40 : 30,
             ),
             Stack(alignment: Alignment.center, children: [
               Visibility(
                 visible: widget.page == CurrentPage.siswa,
                 child: Container(
                   // TODO: Change Width to Follow Figma (61)
-                    width: 35,
+                    width: screenWidth >= 600 ? 35 : 24,
                     // TODO: Change Height to Follow Figma (61)
-                    height: 35,
+                    height: screenWidth >= 600 ? 35 : 24,
                     decoration: const BoxDecoration(
                       color: AppColor.yellow,
                       shape: BoxShape.circle,
@@ -115,11 +116,11 @@ class _AppBarAdminState extends State<AppBarAdmin> {
                             : idleItemColor,
                         fontWeight: FontWeight.w800,
                         // TODO: set the font to follow figma (24)
-                        fontSize: 18)),
+                        fontSize: screenWidth >= 600 ? 18 : 14)),
               ),
             ]),
-            const SizedBox(
-              width: 95,
+            SizedBox(
+              width: screenWidth >= 600 ? 50 : 30,
             ),
             ElevatedButton(
                 style: ButtonStyle(
@@ -130,28 +131,28 @@ class _AppBarAdminState extends State<AppBarAdmin> {
                   shadowColor: MaterialStateProperty.all(Colors.transparent)
                 ),
                 onPressed: () {
-                  // TODO: implement Log Out Function.
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) =>  Login()));
                 },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  // TODO: set the height to follow figma (50)
-                  height: 35,
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth >= 600 ? 40 : 24),
+                  height: screenWidth >= 600 ? 35 : 25,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: AppColor.blue),
-                  child: Text('Log Out',
-                      style: GoogleFonts.mPlusRounded1c(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800,
-                          // TODO: set the font to follow figma (24)
-                          fontSize: 18)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(3.0),
+                    child: Text('Log Out',
+                        style: GoogleFonts.mPlusRounded1c(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                            fontSize: screenWidth >= 600 ? 18 : 14)),
+                  ),
                 )),
-            const SizedBox(
-              width: 70,
+            SizedBox(
+              width: screenWidth >= 600 ? 35 : 16,
             ),
           ],
         ),
