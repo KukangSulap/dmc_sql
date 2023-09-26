@@ -41,7 +41,7 @@ class _AppBarAdminState extends State<AppBarAdmin> {
                 style: GoogleFonts.mPlusRounded1c(
                     color: AppColor.blue,
                     fontWeight: FontWeight.w800,
-                    fontSize: screenWidth >= 600 ? 36 : 30)),
+                    fontSize: screenWidth >= 600 ? 36 : 26)),
           ],
         ),
       ),

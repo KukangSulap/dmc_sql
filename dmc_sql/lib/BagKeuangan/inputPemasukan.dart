@@ -268,7 +268,8 @@ class _InputPemasukanState extends State<InputPemasukan> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom( // Set button style
                       backgroundColor: Colors.transparent, // Set the button color to transparent
-                      elevation: 0, // Remove button elevation
+                      elevation: 0,
+                      shadowColor: Colors. transparent,
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -289,7 +290,8 @@ class _InputPemasukanState extends State<InputPemasukan> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom( // Set button style
                       backgroundColor: Colors.transparent, // Set the button color to transparent
-                      elevation: 0, // Remove button elevation
+                      elevation: 0,
+                      shadowColor: Colors. transparent, // Remove button elevation
                     ),
                     onPressed: () {
                       _saveAndPrintData();
