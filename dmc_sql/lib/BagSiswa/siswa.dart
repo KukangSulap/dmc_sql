@@ -42,7 +42,7 @@ class _SiswaPageState extends State<SiswaPage> {
   }
 
   getData() async {
-    listSiswa2 = await RemoteServiceSiswa().getPost();
+    listSiswa2 = await RemoteServiceSiswa().getSiswa();
     if (listSiswa2 != null) {
       setState(() {
         isLoaded = true;
@@ -224,7 +224,7 @@ class _SiswaPageState extends State<SiswaPage> {
                                                   builder: (context) =>
                                                       DetailSiswaPage(
                                                         dataSiswa:
-                                                            listSiswa[index],
+                                                            listSiswa2![index],
                                                       )));
                                         },
                                         child: Row(

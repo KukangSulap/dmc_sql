@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-List<Smart> postFromJson(String str) => List<Smart>.from(json.decode(str).map((x) => Smart.fromJson(x)));
+List<Smart> postFromSmartJson(String str) => List<Smart>.from(json.decode(str).map((x) => Smart.fromJson(x)));
 
 class Smart {
   Smart({

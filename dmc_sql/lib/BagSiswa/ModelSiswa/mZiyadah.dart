@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-List<Ziyadah> postFromJson(String str) => List<Ziyadah>.from(json.decode(str).map((x) => Ziyadah.fromJson(x)));
+List<Ziyadah> postFromZiyadahJson(String str) => List<Ziyadah>.from(json.decode(str).map((x) => Ziyadah.fromJson(x)));
 
 class Ziyadah {
   Ziyadah({

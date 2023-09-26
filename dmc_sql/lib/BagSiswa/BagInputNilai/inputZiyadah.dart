@@ -9,7 +9,7 @@ class InputZiyadahPage extends StatefulWidget {
   const InputZiyadahPage({super.key, required this.namaSiswa, required this.nisSiswa});
 
   final String namaSiswa;
-  final String nisSiswa;
+  final int nisSiswa;
 
   @override
   State<InputZiyadahPage> createState() => _InputZiyadahPageState();
@@ -20,7 +20,7 @@ class _InputZiyadahPageState extends State<InputZiyadahPage> {
   late final TextEditingController _namaCont =
       TextEditingController(text: widget.namaSiswa);
   late final TextEditingController _nisCont =
-      TextEditingController(text: widget.nisSiswa);
+      TextEditingController(text: "${widget.nisSiswa}");
   final TextEditingController _tglCont = TextEditingController();
 
   final TextEditingController _contNilai = TextEditingController();

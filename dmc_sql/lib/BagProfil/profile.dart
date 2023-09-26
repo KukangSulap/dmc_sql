@@ -36,7 +36,7 @@ class ProfilePage extends StatelessWidget {
                         child: Padding(
                             padding: EdgeInsets.only(right: 37),
                             child: LeftMenuProfile(
-                                nama: "Nama Siswa", nis: "NIS SISWA")),
+                                nama: "Nama Siswa", nis: 1)),
                       ),
                       Expanded(
                         flex: 3,
@@ -85,7 +85,7 @@ class LeftMenuProfile extends StatelessWidget {
   });
 
   final String nama;
-  final String nis;
+  final int nis;
 
   @override
   Widget build(BuildContext context) {
