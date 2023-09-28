@@ -10,15 +10,6 @@ const List<String> listTahun = <String>['2021/2022', '2022/2023', '2023/2024'];
 const List<String> listSemester = <String>['Ganjil', 'Genap'];
 const List<String> listKelas = <String>['Kelas A', 'Kelas B', 'Kelas C'];
 
-List<List<String>> listSiswa = [
-  ['Ahmad Solihun - xxxxxxx013', '2022/2023', 'Semester 1', 'Kelas A'],
-  ['Agita Maharani - xxxxxxx012', '2022/2023', 'Semester 1', 'Kelas C'],
-  ['Ahmad Solihun - xxxxxxx013', '2022/2023', 'Semester 1', 'Kelas A'],
-  ['Hilmy Hofifah - xxxxxxx313', '2021/2022', 'Semester 3', 'Kelas B'],
-  ['Agita Maharani - xxxxxxx012', '2022/2023', 'Semester 1', 'Kelas C'],
-  ['Hilmy Hofifah - xxxxxxx313', '2021/2022', 'Semester 3', 'Kelas B'],
-];
-
 class SiswaPage extends StatefulWidget {
   const SiswaPage({super.key});
 
@@ -36,7 +27,6 @@ class _SiswaPageState extends State<SiswaPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getData();
   }
@@ -53,7 +43,7 @@ class _SiswaPageState extends State<SiswaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: CurrentPage.siswa),
+      appBar: const AppBarAdmin(page: CurrentPage.siswa),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -84,29 +74,29 @@ class _SiswaPageState extends State<SiswaPage> {
                 Expanded(
                   flex: 1,
                   child: DropDowns(listTahun, _selectedItemTahun,
-                      (String? newValue) {
-                    setState(() {
-                      _selectedItemTahun = newValue!;
-                    });
-                  }),
+                          (String? newValue) {
+                        setState(() {
+                          _selectedItemTahun = newValue!;
+                        });
+                      }),
                 ),
                 Expanded(
                   flex: 1,
                   child: DropDowns(listSemester, _selectedItemSemester,
-                      (String? newValue) {
-                    setState(() {
-                      _selectedItemSemester = newValue!;
-                    });
-                  }),
+                          (String? newValue) {
+                        setState(() {
+                          _selectedItemSemester = newValue!;
+                        });
+                      }),
                 ),
                 Expanded(
                   flex: 1,
                   child: DropDowns(listKelas, _selectedItemKelas,
-                      (String? newValue) {
-                    setState(() {
-                      _selectedItemKelas = newValue!;
-                    });
-                  }),
+                          (String? newValue) {
+                        setState(() {
+                          _selectedItemKelas = newValue!;
+                        });
+                      }),
                 )
               ],
             ),
@@ -115,7 +105,6 @@ class _SiswaPageState extends State<SiswaPage> {
             // ======================================================================  List Siswa  ============================================================================
             Expanded(
               child: Container(
-                // height: 570,
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   border: Border.all(width: 1.5, color: Colors.black),
@@ -128,20 +117,12 @@ class _SiswaPageState extends State<SiswaPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Daftar Siswa - $_selectedItemKelas",
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.filter),
-                              )
-                            ],
+                          Text(
+                            "Daftar Siswa - $_selectedItemKelas",
+                            style: const TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                            ),
                           ),
                           Expanded(
                             flex: 0,
@@ -155,7 +136,7 @@ class _SiswaPageState extends State<SiswaPage> {
                                   ),
                                 ),
                                 backgroundColor:
-                                    MaterialStateProperty.all(Colors.white),
+                                MaterialStateProperty.all(Colors.white),
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -191,105 +172,79 @@ class _SiswaPageState extends State<SiswaPage> {
                       ),
                       Expanded(
                         child: SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.92,
-                              child:
-                                  // ============================================== list ============================================================
-                                  ListView.builder(
-                                shrinkWrap: true,
-                                physics: const ClampingScrollPhysics(),
-                                itemCount: listSiswa2?.length,
-                                // itemCount: listSiswa.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  String nama = listSiswa2![index].nama;
-                                  String tahun = listSiswa2![index].tahunPend;
-                                  String semester = listSiswa2![index].semester;
-                                  int kelas = listSiswa2![index].kelas;
+                          scrollDirection: Axis.horizontal,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.92,
+                            child:
+                            // ============================================== list ============================================================
+                            ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: listSiswa2?.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                String nama = listSiswa2![index].nama;
+                                String tahun = listSiswa2![index].tahunPend;
+                                String semester = listSiswa2![index].semester;
+                                int kelas = listSiswa2![index].kelas;
 
-                                  // String nama = listSiswa[index][0];
-                                  // String tahun = listSiswa[index][1];
-                                  // String semester = listSiswa[index][2];
-                                  // String kelas = listSiswa[index][3];
-
-                                  return Column(
-                                    children: [
-                                      InkWell(
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      DetailSiswaPage(
-                                                        dataSiswa:
-                                                            listSiswa2![index],
-                                                      )));
-                                        },
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  "   ${index + 1}",
+                                return Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    DetailSiswaPage(
+                                                      dataSiswa:
+                                                      listSiswa2![index],
+                                                    )));
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: MediaQuery.of(context).size.width * 0.25,
+                                                child: Text(
+                                                  nama,
                                                   style: const TextStyle(
                                                       color: Colors.black,
                                                       fontSize: 17,
                                                       fontWeight:
-                                                          FontWeight.bold),
+                                                      FontWeight.bold),
                                                 ),
-                                                Text(
-                                                  "   $nama",
-                                                  style: const TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 17,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                )
-                                              ],
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: MediaQuery.of(context).size.width * 0.1,
+                                            child: Text(
+                                              tahun,
+                                              style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 15,
+                                              ),
                                             ),
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  "$tahun      ",
-                                                  style: const TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 15,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "$semester      ",
-                                                  style: const TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 15,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "$kelas   ",
-                                                  style: const TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 15,
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                          ),
+                                          SizedBox(
+                                            width: MediaQuery.of(context).size.width * 0.1,
+                                            child: Text(
+                                              semester,
+                                              style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                          )
+                                        ],
                                       ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                            top: 10, bottom: 10),
-                                        height: 0.5,
-                                        width: double.infinity,
-                                        color: Colors.black,
-                                      )
-                                    ],
-                                  );
-                                },
-                              ),
+                                    ),
+                                    const Divider()
+                                  ],
+                                );
+                              },
                             ),
                           ),
                         ),
@@ -322,7 +277,8 @@ class _SiswaPageState extends State<SiswaPage> {
         child: DropdownButton<String>(
           isExpanded: true,
           value: _selectedItem,
-          icon: Icon(Icons.arrow_drop_down_sharp), // Reversed triangle icon
+          icon: Icon(Icons.arrow_drop_down_sharp),
+          // Reversed triangle icon
           iconSize: 24,
           elevation: 16,
           style: TextStyle(color: Colors.black, fontSize: 16),
