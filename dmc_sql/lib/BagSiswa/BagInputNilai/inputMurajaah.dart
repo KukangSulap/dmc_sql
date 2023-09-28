@@ -33,6 +33,8 @@ class _InputMurajaahPageState extends State<InputMurajaahPage> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: const AppBarAdmin(page: CurrentPage.siswa),
       backgroundColor: AppColor.bg,
@@ -40,12 +42,15 @@ class _InputMurajaahPageState extends State<InputMurajaahPage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 20.0, right: 200, left: 200),
+              padding: EdgeInsets.only(top: screenWidth >= 600 ? 50 : 5,
+                  right: screenWidth >= 600 ? 200 : 5,
+                  left: screenWidth >= 600 ? 200 : 5,
+                  bottom: screenWidth >= 600 ? 50 : 5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(30.0),
+                    padding: EdgeInsets.all(screenWidth >= 600 ? 20 : 5),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8),
@@ -72,7 +77,7 @@ class _InputMurajaahPageState extends State<InputMurajaahPage> {
                             decoration: const InputDecoration(hintText: 'Nama Siswa'),
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: screenWidth >= 600 ? 10 : 5),
                         Container(
                           padding: const EdgeInsets.only(top: 3, left: 10),
                           decoration: BoxDecoration(
@@ -85,7 +90,7 @@ class _InputMurajaahPageState extends State<InputMurajaahPage> {
                             decoration: const InputDecoration(hintText: 'Nomor Induk Siswa'),
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: screenWidth >= 600 ? 10 : 5),
                         Container(
                           padding: const EdgeInsets.only(top: 3, left: 10),
                           decoration: BoxDecoration(
@@ -117,14 +122,14 @@ class _InputMurajaahPageState extends State<InputMurajaahPage> {
                                 prefixIcon: Icon(Icons.calendar_today)),
                           ),
                         ),
-                        const SizedBox(height: 16,),
+                         SizedBox(height: screenWidth >= 600 ? 16 : 10,),
                         const GlobalProjectFont(
                           text: "Nilai Muraja'ah",
                           fontWeight: FontWeight.w800,
                           fontSize: 20.0,
                           color: AppColor.blue,
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: screenWidth >= 600 ? 10 : 5),
                         Container(
                           width: double.infinity,
                           child: Row(
@@ -143,7 +148,7 @@ class _InputMurajaahPageState extends State<InputMurajaahPage> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(width: 8,),
+                              SizedBox(width: screenWidth >= 600 ? 10 : 5,),
                               Expanded(
                                 child: Container(
                                   padding: const EdgeInsets.only(top: 3, left: 10),
@@ -160,7 +165,7 @@ class _InputMurajaahPageState extends State<InputMurajaahPage> {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 8,),
+                        SizedBox(height: screenWidth >= 600 ? 10 : 5,),
                         Container(
                           padding: const EdgeInsets.only(top: 3, left: 10),
                           decoration: BoxDecoration(
@@ -176,7 +181,7 @@ class _InputMurajaahPageState extends State<InputMurajaahPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20,),
+                  SizedBox(height: screenWidth >= 600 ? 20 : 14,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
