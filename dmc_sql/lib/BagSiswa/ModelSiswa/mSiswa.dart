@@ -24,7 +24,7 @@ class Siswa {
     nama: json["title"],
     semester: json["url"],
     kelas: json["albumId"],
-    tahunPend: json["thumbnailUrl"],
+    tahunPend: json["url"],
     body: json["body"]
   );
 
