@@ -219,6 +219,7 @@ class _InputMurajaahPageState extends State<InputMurajaahPage> {
 
                           print(
                               "nama: ${listMurajaah[0]}\ntgl: ${listMurajaah[2]}\notes: ${listMurajaah[5]}");
+                          Navigator.pop(context);
                         },
                         child: const CustomButton(
                           title: 'Finish',

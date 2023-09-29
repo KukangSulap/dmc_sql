@@ -273,6 +273,7 @@ class _InputSmartPageState extends State<InputSmartPage> {
                           print(
                               "nama: ${listSmart[i][0]} dan salah satu nilai ${listSmart[i][3][0][1]}. skor akhir: ${listSmart[i][4]}");
                         }
+                        Navigator.pop(context);
                       },
                       child: const CustomButton(
                         title: 'Finish',
