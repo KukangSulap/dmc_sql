@@ -290,6 +290,7 @@ class _InputLombaPageState extends State<InputLombaPage> {
                           print(
                               "nama ${listLomba[i][0]} notes ${listLomba[i][4]}");
                         }
+                        Navigator.pop(context);
                       },
                         child: const CustomButton(
                           title: 'Finish',
