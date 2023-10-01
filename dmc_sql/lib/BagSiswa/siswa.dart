@@ -1,10 +1,16 @@
-import 'package:dmc_sql/AppBar/appBarAdmin.dart';
-import 'package:dmc_sql/BagSiswa/ModelSiswa/mSiswa.dart';
-import 'package:dmc_sql/BagSiswa/ServiceSiswa/remoteService.dart';
+
+
+import 'package:dmc_sql/BagKeuangan/keuangan.dart';
 import 'package:dmc_sql/BagSiswa/detailSiswa.dart';
-import 'package:dmc_sql/BagSiswa/inputSiswa.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../AppBar/appBarAdmin.dart';
+import '../Property/app_color.dart';
+import '../Property/project_font.dart';
+import 'ModelSiswa/mSiswa.dart';
+import 'ServiceSiswa/remoteService.dart';
+import 'inputSiswa.dart';
 
 const List<String> listTahun = <String>['2021/2022', '2022/2023', '2023/2024'];
 const List<String> listSemester = <String>['Ganjil', 'Genap'];
@@ -44,6 +50,7 @@ class _SiswaPageState extends State<SiswaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBarAdmin(page: CurrentPage.siswa),
+      backgroundColor: AppColor.bg,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -56,8 +63,9 @@ class _SiswaPageState extends State<SiswaPage> {
                     width: 600,
                     margin: const EdgeInsets.only(top: 10),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.0),
-                      border: Border.all(color: Colors.black, width: 1.5),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: AppColor.blue, width: 1.5),
                     ),
                     child: const TextField(
                       decoration: InputDecoration(
@@ -105,61 +113,46 @@ class _SiswaPageState extends State<SiswaPage> {
             // ======================================================================  List Siswa  ============================================================================
             Expanded(
               child: Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1.5, color: Colors.black),
+                  color: Colors.white,
+                  border: Border.all(width: 1.5, color: Colors.white),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   child: Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "Daftar Siswa - $_selectedItemKelas",
-                            style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.black,
-                            ),
+                          GlobalProjectFont(
+                            text: "Daftar Siswa - $_selectedItemKelas",
+                            fontWeight: FontWeight.w800,
+                            fontSize: 20.0,
+                            color: AppColor.blue,
                           ),
-                          Expanded(
-                            flex: 0,
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    side: const BorderSide(color: Colors.black),
-                                  ),
-                                ),
-                                backgroundColor:
-                                MaterialStateProperty.all(Colors.white),
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            InputSiswaPage()));
-                              },
-                              child: Container(
-                                height: 40,
-                                // width: 120,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Text(
-                                      "Input Siswa",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              elevation: 0,shadowColor: Colors. transparent,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const InputSiswaPage()
+                                  )
+                              );
+                            },
+                            child: const CustomButtonril(
+                              title: "Input",
+                              widths: 160,
+                              textColor: Colors.white,
+                              fontWeight: FontWeight.normal,
+                              backgroundColor: AppColor.yellow,
+                              height: 40,
                             ),
                           )
                         ],
@@ -265,23 +258,23 @@ class _SiswaPageState extends State<SiswaPage> {
     return Container(
       width: 250,
       margin: const EdgeInsets.only(top: 10, left: 10),
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black,
-          width: 1.5,
-        ),
+        color: AppColor.yellow,
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           isExpanded: true,
           value: _selectedItem,
-          icon: Icon(Icons.arrow_drop_down_sharp),
+          icon: const Icon(Icons.arrow_drop_down_sharp),
           // Reversed triangle icon
           iconSize: 24,
           elevation: 16,
-          style: TextStyle(color: Colors.black, fontSize: 16),
+          style: GoogleFonts.mPlusRounded1c(
+            fontSize: 16,
+            fontWeight: FontWeight.w800,
+          ),
           onChanged: onChanged,
           items: list.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(

@@ -207,7 +207,7 @@ class _InputZiyadahPageState extends State<InputZiyadahPage> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: const CustomButton(
+                      child: const CustomButtonril(
                         title: 'Back',
                         widths: 140,
                         textColor: Colors.white,
@@ -236,7 +236,7 @@ class _InputZiyadahPageState extends State<InputZiyadahPage> {
                             "nama: ${listZiyadah[0]}\ntgl: ${listZiyadah[2]}\notes: ${listZiyadah[6]}");
                         Navigator.pop(context);
                       },
-                      child: const CustomButton(
+                      child: const CustomButtonril(
                         title: 'Finish',
                         widths: 140,
                         textColor: Colors.white,

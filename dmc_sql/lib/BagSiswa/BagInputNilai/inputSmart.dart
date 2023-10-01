@@ -245,7 +245,7 @@ class _InputSmartPageState extends State<InputSmartPage> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: const CustomButton(
+                      child: const CustomButtonril(
                         title: 'Back',
                         widths: 140,
                         textColor: Colors.white,
@@ -275,7 +275,7 @@ class _InputSmartPageState extends State<InputSmartPage> {
                         }
                         Navigator.pop(context);
                       },
-                      child: const CustomButton(
+                      child: const CustomButtonril(
                         title: 'Finish',
                         widths: 140,
                         textColor: Colors.white,

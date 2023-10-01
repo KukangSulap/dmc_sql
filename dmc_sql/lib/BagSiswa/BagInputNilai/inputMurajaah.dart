@@ -194,7 +194,7 @@ class _InputMurajaahPageState extends State<InputMurajaahPage> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: const CustomButton(
+                        child: const CustomButtonril(
                           title: 'Back',
                           widths: 140,
                           textColor: Colors.white,
@@ -221,7 +221,7 @@ class _InputMurajaahPageState extends State<InputMurajaahPage> {
                               "nama: ${listMurajaah[0]}\ntgl: ${listMurajaah[2]}\notes: ${listMurajaah[5]}");
                           Navigator.pop(context);
                         },
-                        child: const CustomButton(
+                        child: const CustomButtonril(
                           title: 'Finish',
                           widths: 140,
                           textColor: Colors.white,

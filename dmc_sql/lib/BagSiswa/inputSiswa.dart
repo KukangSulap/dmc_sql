@@ -197,7 +197,7 @@ class _InputSiswaPageState extends State<InputSiswaPage> {
                                 MaterialPageRoute(builder: (context) => const SiswaPage()),
                               );
                             },
-                            child: const CustomButton(
+                            child: const CustomButtonril(
                               title: 'Finish',
                               widths: 140,
                               textColor: Colors.white,
