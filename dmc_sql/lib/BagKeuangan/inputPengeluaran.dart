@@ -107,7 +107,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                               backgroundColor: Colors.transparent, // Set the button color to transparent
                             ),
                             onPressed: () {},
-                            child: const CustomButton(
+                            child: const CustomButtonril(
                               title: 'Save',
                               widths: 140,
                               textColor: Colors.white,
@@ -280,7 +280,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                               elevation: 0, // Remove button elevation
                             ),
                             onPressed: _saveData,
-                            child: const CustomButton(
+                            child: const CustomButtonril(
                               title: 'Save',
                               widths: 140,
                               textColor: Colors.white,
@@ -356,7 +356,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                           ),
                         );
                       },
-                      child: const CustomButton(
+                      child: const CustomButtonril(
                         title: 'Back',
                         widths: 140,
                         textColor: Colors.white,
@@ -379,7 +379,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                           ),
                         );
                       },
-                      child: const CustomButton(
+                      child: const CustomButtonril(
                         title: 'Finish',
                         widths: 140,
                         textColor: Colors.white,

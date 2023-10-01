@@ -221,7 +221,7 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                                 ),
                               );
                             },
-                            child: const CustomButton(
+                            child: const CustomButtonril(
                               title: 'Input',
                               widths: 160,
                               textColor: Colors.white,
@@ -320,7 +320,7 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                               ),
                             );
                           },
-                          child: const CustomButton(
+                          child: const CustomButtonril(
                             title: 'Input',
                             widths: 160,
                             textColor: Colors.white,
@@ -392,8 +392,8 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
   }
 }
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({
+class CustomButtonril extends StatelessWidget {
+  const CustomButtonril({
     Key? key,
     required this.title,
     required this.widths,
@@ -426,12 +426,10 @@ class CustomButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: null, // No onPressed callback
-        child: Text(
-          title,
-          style: TextStyle(
-            color: textColor,
-            fontWeight: fontWeight,
-          ),
+        child: GlobalProjectFont(
+          text: title,
+          fontWeight: fontWeight,
+          color: textColor,
         ),
       ),
     );
