@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2023 at 10:36 AM
+-- Generation Time: Oct 04, 2023 at 08:19 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -20,6 +20,23 @@ SET time_zone = "+00:00";
 --
 -- Database: `dmc_sql`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `isi_pengeluaran`
+--
+
+CREATE TABLE `isi_pengeluaran` (
+  `id_isi` varchar(10) NOT NULL,
+  `id_pengeluaran` varchar(10) NOT NULL,
+  `kategori` varchar(15) NOT NULL,
+  `nama_pengeluaran` int(20) NOT NULL,
+  `tgl` varchar(10) NOT NULL,
+  `jumlah` int(20) NOT NULL,
+  `note` text NOT NULL,
+  `bukti_pic` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -242,6 +259,17 @@ CREATE TABLE `tbl_pemasukan` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_pengeluaran`
+--
+
+CREATE TABLE `tbl_pengeluaran` (
+  `id_pengeluaran` varchar(10) NOT NULL,
+  `judul_pengeluaran` varchar(44) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_siswa`
 --
 
@@ -272,6 +300,12 @@ CREATE TABLE `ziyadah` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `isi_pengeluaran`
+--
+ALTER TABLE `isi_pengeluaran`
+  ADD PRIMARY KEY (`id_isi`);
 
 --
 -- Indexes for table `lomba`
@@ -362,6 +396,12 @@ ALTER TABLE `tbl_berita`
 --
 ALTER TABLE `tbl_pemasukan`
   ADD PRIMARY KEY (`id_pemasukan`);
+
+--
+-- Indexes for table `tbl_pengeluaran`
+--
+ALTER TABLE `tbl_pengeluaran`
+  ADD PRIMARY KEY (`id_pengeluaran`);
 
 --
 -- Indexes for table `tbl_siswa`

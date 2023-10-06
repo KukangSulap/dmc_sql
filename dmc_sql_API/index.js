@@ -32,6 +32,27 @@ app.post('/addSiswa', (req, res) => {
     })
 })
 
+// create Isi Pengeluaran
+app.post('/addIsiPengeluaran', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    const id_isi = null
+    const id_pengeluaran = req.body.id_pengeluaran
+    const kategori = req.body.kategori
+    const nama_pengeluaran = req.body.nama_pengeluaran
+    const tgl = req.body.tgl
+    const jumlah = req.body.jumlah
+    const note = req.body.note
+    const bukti_pic = req.body.bukti_pic
+
+    con.query("INSERT INTO isi_pengeluaran (id_isi, id_pengeluaran, kategori, nama_pengeluaran, tgl, jumlah, note, bukti_pic) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", [id_isi, id_pengeluaran, kategori, nama_pengeluaran, tgl, jumlah, note, bukti_pic], (err, row, fields) => {
+        if (err) {
+            console.log("gagal menambah siswa dengan error: ", err);
+        } else {
+            res.send(row)
+        }
+    })
+})
+
 // create lomba
 app.post('/addLomba', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -158,10 +179,124 @@ app.post('/addMurajaah', (req, res) => {
     })
 })
 
+// ===================================  Read  =====================================
+
 // read siswa
 app.get('/getAllSiswa', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     con.query("SELECT * FROM tbl_siswa", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read isi pengeluaran
+app.get('/getAllPengeluaran', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM isi_pengeluaran", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read lomba
+app.get('/getAllLomba', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM lomba", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read nilai lomba
+app.get('/getAllLombaNil', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM lomba_nilai", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read smart
+app.get('/getAllSmart', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM smart", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read nilai smart
+app.get('/getAllSmartNil', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM smart_nilai", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read score smart
+app.get('/getAllSmartScore', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM smart_score", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read ziyadah
+app.get('/getAllZiyadah', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM ziyadah", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read murajaah
+app.get('/getAllMurajaah', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM murajaah", (err, row, fields) => {
         if (err) {
             console.log("gagal mendapatkan data dengan error: ", err);
         } else {
