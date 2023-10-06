@@ -13,6 +13,9 @@ import 'package:dmc_sql/BagSiswa/inputSiswa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../BagKeuangan/keuangan.dart';
+import '../Property/app_color.dart';
+import '../Property/project_font.dart';
 import 'ModelSiswa/mSiswa.dart';
 
 class DetailSiswaPage extends StatefulWidget {
@@ -28,12 +31,6 @@ class DetailSiswaPage extends StatefulWidget {
 class _DetailSiswaPageState extends State<DetailSiswaPage> {
   @override
   Widget build(BuildContext context) {
-    // String namaSiswa = widget.dataSiswa[0];
-    // String nama = namaSiswa.split("-")[0];
-    // String nis = namaSiswa.split("-")[1];
-    // String tahunSiswa = widget.dataSiswa[1];
-    // String semesterSiswa = widget.dataSiswa[2];
-    // String kelasSiswa = widget.dataSiswa[3];
 
     String nama = widget.dataSiswa.nama;
     int nis = widget.dataSiswa.nis;
@@ -42,13 +39,14 @@ class _DetailSiswaPageState extends State<DetailSiswaPage> {
     int kelasSiswa = widget.dataSiswa.kelas;
 
     return Scaffold(
-      appBar: AppBarAdmin(page: CurrentPage.siswa),
+      appBar: const AppBarAdmin(page: CurrentPage.siswa),
+      backgroundColor: AppColor.bg,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SubAppBar(),
+              const SubAppBar(),
               // Text("$namaSiswa $tahunSiswa $semesterSiswa $kelasSiswa"),
               Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -101,10 +99,9 @@ class BagianProfil extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // height: MediaQuery.of(context).size.height,
-      decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.5),
-            borderRadius: BorderRadius.circular(8)),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Stack(
         alignment: Alignment.topCenter,
@@ -113,49 +110,79 @@ class BagianProfil extends StatelessWidget {
             height: 150,
             // color: Colors.blue,
             decoration: ShapeDecoration(
-              color: Colors.blue,
+              color: AppColor.blue,
               shape: RoundedRectangleBorder(
-                  side: BorderSide(width: 1.5),
                   borderRadius: BorderRadius.circular(8)),
             ),
           ),
           Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 30),
+                margin: const EdgeInsets.only(top: 30),
                 height: 160,
                 width: 140,
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 1.5),
+                    side: const BorderSide(width: 1.5),
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                // child: Image.network(
-                //     'https://www.liveabout.com/thmb/mODlBLF75DTwT3i4zHkXFGrmhNA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/pajama-day-kid-58b8c9345f9b58af5c8c717d.jpg'),
+                child: Image.network(
+                  'https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg',
+                  fit: BoxFit.fitHeight,
+                ),
               ),
-              Text(
-                "${nama}",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 68),
+              Container(
+                alignment: Alignment.center,
+                width: 500,
+                child: GlobalProjectFont(
+                  text: "${nama}",
+                  fontWeight: FontWeight.w800,
+                  fontSize: 40,
+                  color: AppColor.blue,
+                ),
               ),
-              SizedBox(height: 10),
-              Text(
-                "${nis}   Rank 1",
-                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 34),
+              const SizedBox(height: 10),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const GlobalProjectFont(
+                          text: "NIS",
+                          fontWeight: FontWeight.w800,
+                          fontSize: 40,
+                          color: AppColor.black,
+                        ),
+                        const SizedBox(width: 20),
+                        GlobalProjectFont(
+                          text: "${nis}",
+                          fontWeight: FontWeight.w800,
+                          fontSize: 40,
+                          color: AppColor.yellow,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(
                 "$tahunSiswa   $semesterSiswa   $kelasSiswa",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 21),
+                style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 21),
               ),
+              const SizedBox(height: 18),
               Container(
                 margin: const EdgeInsets.only(top: 20, left: 30, right: 30),
                 padding: const EdgeInsets.only(
                     top: 15, left: 15, right: 15, bottom: 10),
-                decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                        side: BorderSide(width: 1.5),
-                        borderRadius: BorderRadius.circular(8))),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: AppColor.blue, width: 1.5),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -183,14 +210,15 @@ class BagianProfil extends StatelessWidget {
                         )
                       ],
                     ),
-                    Text(
+                    const Text(
                       "Nilai\nLorem ipsum dolor sit amet. Qui provident aliquam quo quidem ratione a molestias consequuntur sit doloremque nisi! Est magnam fuga quo omnis nostrum et enim impedit ad architecto asperiores ad velit perferendis. Et obcaecati voluptatem et itaque omnis ex quis quia rem temporibus temporibus sed quos magnam non natus unde. Et quod adipisci eos galisum aliquam aut reiciendis possimus et tempore perferendis.",
                       style:
                           TextStyle(fontWeight: FontWeight.w400, fontSize: 21),
                     )
                   ],
                 ),
-              )
+              ),
+              const SizedBox(height: 20,)
             ],
           )
         ],
@@ -212,7 +240,7 @@ class BagianMenuKiri extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10),
+      margin: const EdgeInsets.only(right: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -220,18 +248,20 @@ class BagianMenuKiri extends StatelessWidget {
           Container(
             // padding: EdgeInsets.all(10),
             width: 336,
-            decoration: ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1.5),
-                    borderRadius: BorderRadius.circular(8))),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: const Text(
-                    "Detail Nilai",
-                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 26),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: const GlobalProjectFont(
+                    text: "Detail Nilai",
+                    fontWeight: FontWeight.w800,
+                    fontSize: 26,
+                    color: AppColor.blue,
                   ),
                 ),
                 CustomButton(
@@ -288,21 +318,23 @@ class BagianMenuKiri extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Container(
             width: 336,
-            decoration: ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1.5),
-                    borderRadius: BorderRadius.circular(8))),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: const Text(
-                    "Input Nilai",
-                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 26),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: const GlobalProjectFont(
+                    text: "Input Nilai",
+                    fontWeight: FontWeight.w800,
+                    fontSize: 26,
+                    color: AppColor.blue,
                   ),
                 ),
                 CustomButton(
@@ -377,7 +409,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       alignment: Alignment.centerLeft,
       child: TextButton(
         onPressed: onPressed,
@@ -385,13 +417,11 @@ class CustomButton extends StatelessWidget {
           backgroundColor: MaterialStateProperty.all(Colors.transparent),
           padding: MaterialStateProperty.all(EdgeInsets.zero),
         ),
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 26.0,
-            color:
-                Colors.black, // Change the text color as per your requirement
-          ),
+        child:
+        GlobalProjectFont(
+          text: text,
+          fontSize: 26,
+          color: AppColor.black,
         ),
       ),
     );
@@ -408,43 +438,35 @@ class SubAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
-          "Data Siswa",
-          style: TextStyle(
-              fontWeight: FontWeight.w800, color: Colors.black, fontSize: 40),
+        const GlobalProjectFont(
+          text: "Data Siswa",
+          fontWeight: FontWeight.w800,
+          fontSize: 40,
+          color: AppColor.blue,
         ),
         ElevatedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                side: const BorderSide(color: Colors.black),
-              ),
-            ),
-            backgroundColor: MaterialStateProperty.all(Colors.white),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            elevation: 0,shadowColor: Colors. transparent,
           ),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => InputSiswaPage()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                    const InputSiswaPage()
+                )
+            );
           },
-          child: Container(
-            height: 55,
-            padding: const EdgeInsets.symmetric(horizontal: 50),
-            // width: 120,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  "Edit",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 26),
-                ),
-              ],
-            ),
+          child: const CustomButtonril(
+            title: "Edit",
+            widths: 160,
+            textColor: Colors.white,
+            fontWeight: FontWeight.normal,
+            backgroundColor: AppColor.yellow,
+            height: 40,
           ),
-        ),
+        )
       ],
     );
   }

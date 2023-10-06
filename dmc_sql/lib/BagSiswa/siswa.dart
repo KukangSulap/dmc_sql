@@ -151,7 +151,7 @@ class _SiswaPageState extends State<SiswaPage> {
                               widths: 160,
                               textColor: Colors.white,
                               fontWeight: FontWeight.normal,
-                              backgroundColor: AppColor.yellow,
+                              backgroundColor: AppColor.orange,
                               height: 40,
                             ),
                           )
