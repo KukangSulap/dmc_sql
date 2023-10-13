@@ -26,32 +26,8 @@ class KeuanganPage extends StatefulWidget {
 }
 
 class _KeuanganPageState extends State<KeuanganPage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColor.bg,
-      extendBodyBehindAppBar: true,
-      appBar: AppBarAdmin(page: CurrentPage.keuangan),
-      body: SafeArea(
-        child: SisiKananKeuangan(),
-      ),
-    );
-  }
-}
 
-class SisiKananKeuangan extends StatefulWidget {
-
-  const SisiKananKeuangan({
-    super.key,
-  });
-
-  @override
-  State<SisiKananKeuangan> createState() => _SisiKananKeuanganState();
-}
-
-class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
-
-  List<Dummy>? dataDummy;
+  List<Dummy>? dataDummy = [];
   var isLoaded = false;
 
   @override
@@ -75,18 +51,20 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    return Expanded(
-      flex: 3,
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(right: 15, left: 15),
-          child: Column(
-            children: [
-              Container(
+    return Scaffold(
+      backgroundColor: AppColor.bg,
+      extendBodyBehindAppBar: true,
+      appBar: AppBarAdmin(page: CurrentPage.keuangan),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(right: 15, left: 15),
+            child: Column(
+              children: [
+                Container(
                   margin: const EdgeInsets.only(top: 10),
                   padding: const EdgeInsets.only(right: 5, left: 5),
                   height: 122,
-                child: Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -188,30 +166,29 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                     ],
                   ),
                 ),
-              ),
-              // ===========================================================  Data Pemasukan  ===================================================================
-              Container(
-                margin: const EdgeInsets.only(top: 8),
-                padding: const EdgeInsets.all(17),
-                height: 400,
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Container(
-                  padding: const EdgeInsets.all(10),
+                // ===========================================================  Data Pemasukan  ===================================================================
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.all(17),
                   height: 400,
                   decoration: ShapeDecoration(
+                    color: Colors.white,
                     shape: RoundedRectangleBorder(
-                      side: const BorderSide(width: 2,  color: AppColor.blue),
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Column(
-                    children: [
-                      Row(
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    height: 400,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(width: 2,  color: AppColor.blue),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
                           children: [
                             GlobalProjectFont(
                               text: 'Data Pemasukan',
@@ -244,187 +221,188 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                             ),
                           ],
                         ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 10, bottom: 10),
-                        height: 1,
-                        width: double.infinity,
-                        color: Colors.black,
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: dataDummy?.length,
-                          itemBuilder: (context, index) {
-                            String itemName = dataDummy![index].title;
-                            // String leftInfo = dataDummy![index].title;
-                            String rightInfo = dataDummy![index].title;
-
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>  DetailPemasukan(dataPemasukan: dataDummy![index],),
-                                  ),
-                                );
-                              },
-                              child: Column(
-                                children: [
-                                  ListTile(
-                                    title: SizedBox(
-                                      width: screenWidth >= 600 ? 300 : 200,
-                                      child:
-                                      GlobalProjectFont(
-                                        text: itemName,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    subtitle: GlobalProjectFont(
-                                      text: itemName,
-                                    ),
-                                    trailing: SizedBox(
-                                      width: screenWidth >= 600 ? 330 : 120,
-                                      child: GlobalProjectFont(
-                                        text: "Rp $rightInfo -",
-                                        fontSize: screenWidth >= 600 ? 30 : 18,
-                                      ),
-                                    ),
-                                  ),
-                                  // Container(
-                                  //   margin: const EdgeInsets.only(
-                                  //       top: 10, bottom: 10),
-                                  //   height: 0.5,
-                                  //   width: double.infinity,
-                                  //   color: Colors.black,
-                                  // )
-                                ],
-                              ),
-                            );
-                          },
+                        Container(
+                          margin: const EdgeInsets.only(top: 10, bottom: 10),
+                          height: 1,
+                          width: double.infinity,
+                          color: Colors.black,
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              // ======================================================  Data Keluaran  ==================================================================
-              Container(
-                margin: const EdgeInsets.only(top: 8),
-                padding: const EdgeInsets.all(17),
-                height: 400,
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  height: 400,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(width: 2,  color: AppColor.blue),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          const GlobalProjectFont(
-                            text: 'Data Keluaran',
-                            fontWeight: FontWeight.w800,
-                            fontSize: 22.0,
-                            color: AppColor.blue,
-                          ),
-                          const Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom( // Set button style
-                              backgroundColor: Colors.transparent, // Set the button color to transparent
-                              elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => InputPengeluaran(),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: dataDummy?.length,
+                            itemBuilder: (context, index) {
+                              String itemName = dataDummy![index].title;
+                              // String leftInfo = dataDummy![index].title;
+                              String rightInfo = dataDummy![index].title;
+
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>  DetailPemasukan(dataPemasukan: dataDummy![index],),
+                                    ),
+                                  );
+                                },
+                                child: Column(
+                                  children: [
+                                    ListTile(
+                                      title: SizedBox(
+                                        width: screenWidth >= 600 ? 300 : 200,
+                                        child:
+                                        GlobalProjectFont(
+                                          text: itemName,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      subtitle: GlobalProjectFont(
+                                        text: itemName,
+                                      ),
+                                      trailing: SizedBox(
+                                        width: screenWidth >= 600 ? 330 : 120,
+                                        child: GlobalProjectFont(
+                                          text: "Rp $rightInfo -",
+                                          fontSize: screenWidth >= 600 ? 30 : 18,
+                                        ),
+                                      ),
+                                    ),
+                                    // Container(
+                                    //   margin: const EdgeInsets.only(
+                                    //       top: 10, bottom: 10),
+                                    //   height: 0.5,
+                                    //   width: double.infinity,
+                                    //   color: Colors.black,
+                                    // )
+                                  ],
                                 ),
                               );
                             },
-                            child: CustomButtonril(
-                              title: 'Input',
-                              widths: screenWidth >= 600 ? 160 : 73,
-                              textColor: Colors.white,
-                              fontWeight: FontWeight.normal,
-                              backgroundColor: AppColor.orange,
-                              height: 40,
-                            ),
-                          )
-                        ],
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 10, bottom: 10),
-                        height: 1,
-                        width: double.infinity,
-                        color: Colors.black,
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: dataDummy?.length,
-                          itemBuilder: (context, index) {
-                            String itemName = dataDummy![index].title;
-                            String leftInfo = dataDummy![index].title;
-                            String? rightInfo = dataDummy![index].url;
-                            return GestureDetector(
-                              onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) => TemplateDetailPengeluaran(texts: keluaranList[index], imageUrl: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg',),
-                                //   ),
-                                // );
-                              },
-                              child: Column(
-                                children: [
-                                  ListTile(
-                                    title: SizedBox(
-                                      width: screenWidth >= 600 ? 300 : 200,
-                                      child:
-                                      GlobalProjectFont(
-                                        text: itemName,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    subtitle: GlobalProjectFont(
-                                      text: leftInfo,
-                                    ),
-                                    trailing: SizedBox(
-                                      width: screenWidth >= 600 ? 330 : 180,
-                                      child: GlobalProjectFont(
-                                        text: "Rp $rightInfo -",
-                                        fontSize: screenWidth >= 600 ? 30 : 18,
-                                      ),
-                                    ),
-                                  ),
-                                  // Container(
-                                  //   margin:
-                                  //       const EdgeInsets.only(top: 10, bottom: 10),
-                                  //   height: 0.5,
-                                  //   width: double.infinity,
-                                  //   color: Colors.black,
-                                  // )
-                                ],
-                              ),
-                            );
-                          },
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+                // ======================================================  Data Keluaran  ==================================================================
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.all(17),
+                  height: 400,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    height: 400,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(width: 2,  color: AppColor.blue),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            const GlobalProjectFont(
+                              text: 'Data Keluaran',
+                              fontWeight: FontWeight.w800,
+                              fontSize: 22.0,
+                              color: AppColor.blue,
+                            ),
+                            const Spacer(),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom( // Set button style
+                                backgroundColor: Colors.transparent, // Set the button color to transparent
+                                elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => InputPengeluaran(),
+                                  ),
+                                );
+                              },
+                              child: CustomButtonril(
+                                title: 'Input',
+                                widths: screenWidth >= 600 ? 160 : 73,
+                                textColor: Colors.white,
+                                fontWeight: FontWeight.normal,
+                                backgroundColor: AppColor.orange,
+                                height: 40,
+                              ),
+                            )
+                          ],
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10, bottom: 10),
+                          height: 1,
+                          width: double.infinity,
+                          color: Colors.black,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: dataDummy?.length,
+                            itemBuilder: (context, index) {
+                              String itemName = dataDummy![index].title;
+                              String leftInfo = dataDummy![index].title;
+                              String? rightInfo = dataDummy![index].url;
+                              return GestureDetector(
+                                onTap: () {
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => TemplateDetailPengeluaran(texts: keluaranList[index], imageUrl: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg',),
+                                  //   ),
+                                  // );
+                                },
+                                child: Column(
+                                  children: [
+                                    ListTile(
+                                      title: SizedBox(
+                                        width: screenWidth >= 600 ? 300 : 200,
+                                        child:
+                                        GlobalProjectFont(
+                                          text: itemName,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      subtitle: GlobalProjectFont(
+                                        text: leftInfo,
+                                      ),
+                                      trailing: SizedBox(
+                                        width: screenWidth >= 600 ? 330 : 180,
+                                        child: GlobalProjectFont(
+                                          text: "Rp $rightInfo -",
+                                          fontSize: screenWidth >= 600 ? 30 : 18,
+                                        ),
+                                      ),
+                                    ),
+                                    // Container(
+                                    //   margin:
+                                    //       const EdgeInsets.only(top: 10, bottom: 10),
+                                    //   height: 0.5,
+                                    //   width: double.infinity,
+                                    //   color: Colors.black,
+                                    // )
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
