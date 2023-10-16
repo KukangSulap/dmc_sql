@@ -59,7 +59,7 @@ class _SubPageKualitatifState extends State<SubPageKualitatif> {
                             child: Column(
                               children: [
                                 const GlobalProjectFont(
-                                  text: 'Pengagungan Terhadap\n Ilmi',
+                                  text: 'Pengagungan \nTerhadap Ilmi',
                                   fontSize: 16.0,
                                 ),
                                 DropDowns(listGrade, _selectedItemKualitatif1,
@@ -113,7 +113,7 @@ class _SubPageKualitatifState extends State<SubPageKualitatif> {
                             child: Column(
                               children: [
                                 const GlobalProjectFont(
-                                  text: 'Partisipasi dan\n manfaat',
+                                  text: '\nPartisipasi dan manfaat',
                                   fontSize: 16.0,
                                 ),
                                 DropDowns(listGrade, _selectedItemKualitatif1,
@@ -133,14 +133,27 @@ class _SubPageKualitatifState extends State<SubPageKualitatif> {
             ),
           ),
         ),
+        SizedBox(height: 10,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton(
+              style: ElevatedButton.styleFrom( // Set button style
+                backgroundColor: Colors.transparent, // Set the button color to transparent
+                elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
+              ),
                 onPressed: () {
                   widget.prevPage();
                 },
-                child: const Icon(Icons.arrow_left)),
+              child: const CustomButtonril(
+                title: 'Cancel',
+                widths: 73,
+                textColor: Colors.white,
+                fontWeight: FontWeight.normal,
+                backgroundColor: AppColor.orange,
+                height: 40,
+              ),
+            ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom( // Set button style
                   backgroundColor: Colors.transparent, // Set the button color to transparent
@@ -172,7 +185,8 @@ class _SubPageKualitatifState extends State<SubPageKualitatif> {
                   fontWeight: FontWeight.normal,
                   backgroundColor: AppColor.yellow,
                   height: 40,
-                ),)
+                ),
+            )
           ],
         )
       ],
