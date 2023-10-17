@@ -33,11 +33,11 @@ class _SubPageIbadahState extends State<SubPageIbadah> {
           elevation: 5,
           child: SizedBox(
             height: 205,
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Row(
-                children: [
-                  Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
                     child: Column(
                       children: [
                         const GlobalProjectFont(
@@ -94,8 +94,11 @@ class _SubPageIbadahState extends State<SubPageIbadah> {
                       ],
                     ),
                   ),
-                  const VerticalDivider(),
-                  Expanded(
+                ),
+                const VerticalDivider(),
+                Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
                       child: Column(
                         children: [
                           const GlobalProjectFont(
@@ -150,10 +153,10 @@ class _SubPageIbadahState extends State<SubPageIbadah> {
                             ],
                           )
                         ],
-                      )
-                  )
-                ],
-              ),
+                      ),
+                    )
+                )
+              ],
             ),
           ),
         ),
