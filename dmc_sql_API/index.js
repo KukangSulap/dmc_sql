@@ -12,7 +12,7 @@ app.listen(PORT, () => {
     console.log(`Server is up on http://localhost:${PORT}`);
 })
 
-// ===================================  Create =====================================
+// ===================================  Create  =====================================
 
 // create siswa
 app.post('/addSiswa', (req, res) => {
@@ -179,6 +179,140 @@ app.post('/addMurajaah', (req, res) => {
     })
 })
 
+// create Rapor 'Kualitatif'
+app.post('/addSisKualitatif', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    const id_kualitatif = null
+    const nis = req.body.nis
+    const pengagungan_ilmi = req.body.pengagungan_ilmi
+    const tanggung_jawab = req.body.tanggung_jawab
+    const kejujuran = req.body.kejujuran
+    const manfaat = req.body.manfaat
+
+    con.query("INSERT INTO sis_kualitatif (id_kualitatif, nis, pengagungan_ilmi, tanggung_jawab, kejujuran, manfaat) VALUES(?, ?, ?, ?, ?, ?)", [id_kualitatif, nis, pengagungan_ilmi, tanggung_jawab, kejujuran, manfaat], (err, row, fields) => {
+        if (err) {
+            console.log("gagal menambah kualitatif dengan error: ", err);
+        } else {
+            res.send(row)
+        }
+    })
+})
+
+// create Rapor 'Ibadah'
+app.post('/addSisIbadah', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    const id_ibadah = null
+    const nis = req.body.nis
+    const ger_wudhu = req.body.ger_wudhu
+    const ger_shalat = req.body.ger_shalat
+    const baca_wudhu = req.body.baca_wudhu
+    const baca_shalat = req.body.baca_shalat
+
+    con.query("INSERT INTO sis_ibadah (id_ibadah, nis, ger_wudhu, ger_shalat, baca_wudhu, baca_shalat) VALUES(?, ?, ?, ?, ?, ?)", [id_ibadah, nis, ger_wudhu, ger_shalat, baca_wudhu, baca_shalat], (err, row, fields) => {
+        if (err) {
+            console.log("gagal menambah ibadah dengan error: ", err);
+        } else {
+            res.send(row)
+        }
+    })
+})
+
+// create Rapor 'Hadits'
+app.post('/addSisHadits', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    const id_hadits = null
+    const nis = req.body.nis
+    const nama_hadits = req.body.nama_hadits
+    const nilai_hadits = req.body.nilai_hadits
+    const penilaian = req.body.penilaian
+    const kategori = req.body.kategori
+
+    con.query("INSERT INTO sis_hadits (id_hadits, nis, nama_hadits, nilai_hadits, penilaian, kategori) VALUES(?, ?, ?, ?, ?, ?)", [id_hadits, nis, nama_hadits, nilai_hadits, penilaian, kategori], (err, row, fields) => {
+        if (err) {
+            console.log("gagal menambah hadits dengan error: ", err);
+        } else {
+            res.send(row)
+        }
+    })
+})
+
+// create Rapor 'quran'
+app.post('/addSisQuran', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    const id_quran = null
+    const nis = req.body.nis
+    const tul_istiadzah = req.body.tul_istiadzah
+    const tul_makharij = req.body.tul_makharij
+    const tul_shifatul = req.body.tul_shifatul
+    const lis_istiadzah = req.body.lis_istiadzah
+    const lis_makharij = req.body.lis_makharij
+    const lis_shifatul = req.body.lis_shifatul
+
+    con.query("INSERT INTO sis_quran (id_quran, nis, tul_istiadzah, tul_makharij, tul_shifatul, lis_istiadzah, lis_makharij, lis_shifatul) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", [id_quran, nis, tul_istiadzah, tul_makharij, tul_shifatul, lis_istiadzah, lis_makharij, lis_shifatul], (err, row, fields) => {
+        if (err) {
+            console.log("gagal menambah quran dengan error: ", err);
+        } else {
+            res.send(row)
+        }
+    })
+})
+
+// create Rapor 'tahfiz'
+app.post('/addSisTahfiz', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    const id_tahfiz = null
+    const nis = req.body.nis
+    const juz = req.body.juz
+    const kelancaran = req.body.kelancaran
+    const status = req.body.status
+    const teruji = req.body.teruji
+    const persentase = req.body.persentase
+
+    con.query("INSERT INTO sis_tahfiz (id_tahfiz, nis, juz, kelancaran, status, teruji, persentase) VALUES(?, ?, ?, ?, ?, ?, ?)", [id_tahfiz, nis, juz, kelancaran, status, teruji, persentase], (err, row, fields) => {
+        if (err) {
+            console.log("gagal menambah tahfiz dengan error: ", err);
+        } else {
+            res.send(row)
+        }
+    })
+})
+
+// create Rapor 'hifdzun'
+app.post('/addSishifdzun', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    const id_hifdzun = null
+    const nis = req.body.nis
+    const tulis = req.body.tulis
+    const lisan = req.body.lisan
+    const jumlah = req.body.jumlah
+
+    con.query("INSERT INTO sis_hifdzun (id_hifdzun, nis, tulis, lisan, jumlah) VALUES(?, ?, ?, ?, ?)", [id_hifdzun, nis, tulis, lisan, jumlah], (err, row, fields) => {
+        if (err) {
+            console.log("gagal menambah hifdzun dengan error: ", err);
+        } else {
+            res.send(row)
+        }
+    })
+})
+
+// create Rapor 'kehadiran'
+app.post('/addSisKehadiran', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    const id_hadir = null
+    const nis = req.body.nis
+    const sakit = req.body.sakit
+    const izin = req.body.izin
+    const alpha = req.body.alpha
+
+    con.query("INSERT INTO sis_hadir (id_hadir, nis, sakit, izin, alpha) VALUES(?, ?, ?, ?, ?)", [id_hadir, nis, sakit, izin, alpha], (err, row, fields) => {
+        if (err) {
+            console.log("gagal menambah kehadiran dengan error: ", err);
+        } else {
+            res.send(row)
+        }
+    })
+})
+
 // ===================================  Read  =====================================
 
 // read siswa
@@ -297,6 +431,104 @@ app.get('/getAllZiyadah', (req, res) => {
 app.get('/getAllMurajaah', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     con.query("SELECT * FROM murajaah", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read Rapor 'kualitatif'
+app.get('/getAllKualitatif', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM sis_kualitatif", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read Rapor 'ibadah'
+app.get('/getAllIbadah', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM sis_ibadah", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read Rapor 'hadits'
+app.get('/getAllHadits', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM sis_ibadah", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read Rapor 'quran'
+app.get('/getAllQuran', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM sis_quran", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read Rapor 'tahfiz'
+app.get('/getAllTahfiz', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM sis_tahfiz", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read Rapor 'hifdzun'
+app.get('/getAllHifdzun', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM sis_hifdzun", (err, row, fields) => {
+        if (err) {
+            console.log("gagal mendapatkan data dengan error: ", err);
+        } else {
+            console.log("berhasil mendapatkan data: ", row);
+            response.statusCode = 200
+            res.send(row)
+        }
+    })
+})
+
+// read Rapor 'kehadiran'
+app.get('/getAllKehadiran', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    con.query("SELECT * FROM sis_hadir", (err, row, fields) => {
         if (err) {
             console.log("gagal mendapatkan data dengan error: ", err);
         } else {

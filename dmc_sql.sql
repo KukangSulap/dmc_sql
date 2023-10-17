@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2023 at 08:19 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: Oct 17, 2023 at 07:57 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,15 +28,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `isi_pengeluaran` (
-  `id_isi` varchar(10) NOT NULL,
-  `id_pengeluaran` varchar(10) NOT NULL,
+  `id_isi` int(11) NOT NULL,
+  `id_pengeluaran` int(11) NOT NULL,
   `kategori` varchar(15) NOT NULL,
   `nama_pengeluaran` int(20) NOT NULL,
   `tgl` varchar(10) NOT NULL,
   `jumlah` int(20) NOT NULL,
   `note` text NOT NULL,
   `bukti_pic` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `isi_pengeluaran`
+--
+
+INSERT INTO `isi_pengeluaran` (`id_isi`, `id_pengeluaran`, `kategori`, `nama_pengeluaran`, `tgl`, `jumlah`, `note`, `bukti_pic`) VALUES
+(1, 2, 'blabla', 2, '2022-2-1', 20, 'tetap semangat', 'tetap semangat yay');
 
 -- --------------------------------------------------------
 
@@ -45,11 +52,19 @@ CREATE TABLE `isi_pengeluaran` (
 --
 
 CREATE TABLE `lomba` (
-  `id_lomba` varchar(36) NOT NULL,
-  `nis` varchar(36) NOT NULL,
+  `id_lomba` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `tgl` date NOT NULL,
   `notes` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lomba`
+--
+
+INSERT INTO `lomba` (`id_lomba`, `nis`, `tgl`, `notes`) VALUES
+(1, 1, '2022-07-07', 'tetap semangat'),
+(2, 4, '2022-07-07', 'tetap semangat');
 
 -- --------------------------------------------------------
 
@@ -58,11 +73,18 @@ CREATE TABLE `lomba` (
 --
 
 CREATE TABLE `lomba_nilai` (
-  `id_nil_lomba` varchar(36) NOT NULL,
-  `id_lomba` varchar(36) NOT NULL,
+  `id_nil_lomba` int(11) NOT NULL,
+  `id_lomba` int(11) NOT NULL,
   `penilaian` varchar(20) NOT NULL,
   `nilai` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lomba_nilai`
+--
+
+INSERT INTO `lomba_nilai` (`id_nil_lomba`, `id_lomba`, `penilaian`, `nilai`) VALUES
+(1, 1, 'Notes', 'A');
 
 -- --------------------------------------------------------
 
@@ -71,14 +93,21 @@ CREATE TABLE `lomba_nilai` (
 --
 
 CREATE TABLE `murajaah` (
-  `id_murajaah` varchar(36) NOT NULL,
-  `nis` varchar(36) NOT NULL,
+  `id_murajaah` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `tgl` date NOT NULL,
   `nilai` int(11) NOT NULL,
   `halaman` double NOT NULL,
   `persentase` int(11) NOT NULL,
   `notes` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `murajaah`
+--
+
+INSERT INTO `murajaah` (`id_murajaah`, `nis`, `tgl`, `nilai`, `halaman`, `persentase`, `notes`) VALUES
+(1, 1, '2022-07-07', 1, 16.5, 100, 'tetap semangat');
 
 -- --------------------------------------------------------
 
@@ -87,12 +116,19 @@ CREATE TABLE `murajaah` (
 --
 
 CREATE TABLE `sis_hadir` (
-  `id_hadir` varchar(36) NOT NULL,
-  `nis` varchar(36) NOT NULL,
+  `id_hadir` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `sakit` int(11) NOT NULL,
   `izin` int(11) NOT NULL,
   `alpha` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sis_hadir`
+--
+
+INSERT INTO `sis_hadir` (`id_hadir`, `nis`, `sakit`, `izin`, `alpha`) VALUES
+(1, 1, 3, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -101,12 +137,21 @@ CREATE TABLE `sis_hadir` (
 --
 
 CREATE TABLE `sis_hadits` (
-  `id_hadits` varchar(36) NOT NULL,
-  `nis` varchar(36) NOT NULL,
+  `id_hadits` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `nama_hadits` varchar(50) NOT NULL,
   `nilai_hadits` varchar(1) NOT NULL,
+  `penilaian` varchar(10) NOT NULL,
   `kategori` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sis_hadits`
+--
+
+INSERT INTO `sis_hadits` (`id_hadits`, `nis`, `nama_hadits`, `nilai_hadits`, `penilaian`, `kategori`) VALUES
+(1, 1, 'Hiasi Al-Quran', 'A', 'Lisan', 'Biasa'),
+(2, 1, 'Amal tergantung niat', 'A', 'Lisan', 'Arbain');
 
 -- --------------------------------------------------------
 
@@ -115,12 +160,19 @@ CREATE TABLE `sis_hadits` (
 --
 
 CREATE TABLE `sis_hifdzun` (
-  `id_hifdzun` varchar(36) NOT NULL,
-  `nis` varchar(36) NOT NULL,
+  `id_hifdzun` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `tulis` varchar(1) NOT NULL,
   `lisan` varchar(1) NOT NULL,
   `jumlah` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sis_hifdzun`
+--
+
+INSERT INTO `sis_hifdzun` (`id_hifdzun`, `nis`, `tulis`, `lisan`, `jumlah`) VALUES
+(1, 1, 'A', '-', 100);
 
 -- --------------------------------------------------------
 
@@ -129,13 +181,21 @@ CREATE TABLE `sis_hifdzun` (
 --
 
 CREATE TABLE `sis_ibadah` (
-  `id_ibadah` varchar(36) NOT NULL,
-  `nis` varchar(36) NOT NULL,
+  `id_ibadah` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `ger_wudhu` varchar(1) NOT NULL,
   `ger_shalat` varchar(1) NOT NULL,
   `baca_wudhu` varchar(1) NOT NULL,
   `baca_shalat` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sis_ibadah`
+--
+
+INSERT INTO `sis_ibadah` (`id_ibadah`, `nis`, `ger_wudhu`, `ger_shalat`, `baca_wudhu`, `baca_shalat`) VALUES
+(1, 2, 'A', 'A', 'A', 'A'),
+(2, 2, 'A', 'A', 'A', 'A');
 
 -- --------------------------------------------------------
 
@@ -144,13 +204,21 @@ CREATE TABLE `sis_ibadah` (
 --
 
 CREATE TABLE `sis_kualitatif` (
-  `id_kualitatif` varchar(36) NOT NULL,
-  `nis` varchar(36) NOT NULL,
+  `id_kualitatif` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `pengagungan_ilmi` varchar(1) NOT NULL,
   `tanggung_jawab` varchar(1) NOT NULL,
   `kejujuran` varchar(1) NOT NULL,
   `manfaat` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sis_kualitatif`
+--
+
+INSERT INTO `sis_kualitatif` (`id_kualitatif`, `nis`, `pengagungan_ilmi`, `tanggung_jawab`, `kejujuran`, `manfaat`) VALUES
+(1, 2, 'A', 'A', 'A', 'A'),
+(2, 2, 'A', 'A', 'A', 'A');
 
 -- --------------------------------------------------------
 
@@ -159,15 +227,23 @@ CREATE TABLE `sis_kualitatif` (
 --
 
 CREATE TABLE `sis_quran` (
-  `id_quran` varchar(36) NOT NULL,
-  `nis` varchar(36) NOT NULL,
+  `id_quran` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `tul_istiadzah` int(11) NOT NULL,
   `tul_makharij` int(11) NOT NULL,
   `tul_shifatul` int(11) NOT NULL,
   `lis_istiadzah` int(11) NOT NULL,
   `lis_makharij` int(11) NOT NULL,
   `lis_shifatul` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sis_quran`
+--
+
+INSERT INTO `sis_quran` (`id_quran`, `nis`, `tul_istiadzah`, `tul_makharij`, `tul_shifatul`, `lis_istiadzah`, `lis_makharij`, `lis_shifatul`) VALUES
+(1, 2, 0, 0, 0, 0, 0, 0),
+(2, 1, 96, 96, 96, 100, 100, 100);
 
 -- --------------------------------------------------------
 
@@ -176,14 +252,21 @@ CREATE TABLE `sis_quran` (
 --
 
 CREATE TABLE `sis_tahfiz` (
-  `id_tahfiz` varchar(36) NOT NULL,
-  `nis` varchar(36) NOT NULL,
+  `id_tahfiz` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `juz` int(11) NOT NULL,
   `kelancaran` varchar(15) NOT NULL,
   `status` varchar(20) NOT NULL,
   `teruji` int(11) NOT NULL,
   `persentase` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sis_tahfiz`
+--
+
+INSERT INTO `sis_tahfiz` (`id_tahfiz`, `nis`, `juz`, `kelancaran`, `status`, `teruji`, `persentase`) VALUES
+(1, 1, 17, 'Mumtaz', 'Tersetifikasi', 17, 85);
 
 -- --------------------------------------------------------
 
@@ -192,11 +275,18 @@ CREATE TABLE `sis_tahfiz` (
 --
 
 CREATE TABLE `smart` (
-  `id_smart` varchar(36) NOT NULL,
-  `nis` varchar(36) NOT NULL,
+  `id_smart` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `tgl` date NOT NULL,
   `notes` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `smart`
+--
+
+INSERT INTO `smart` (`id_smart`, `nis`, `tgl`, `notes`) VALUES
+(1, 3, '2022-07-07', 'tetap semangat');
 
 -- --------------------------------------------------------
 
@@ -205,12 +295,19 @@ CREATE TABLE `smart` (
 --
 
 CREATE TABLE `smart_nilai` (
-  `id_nil_smart` varchar(36) NOT NULL,
-  `id_smart` varchar(36) NOT NULL,
+  `id_nil_smart` int(11) NOT NULL,
+  `id_smart` int(11) NOT NULL,
   `penilaian` varchar(20) NOT NULL,
   `nilai` varchar(1) NOT NULL,
   `kategori` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `smart_nilai`
+--
+
+INSERT INTO `smart_nilai` (`id_nil_smart`, `id_smart`, `penilaian`, `nilai`, `kategori`) VALUES
+(1, 1, 'Manner', 'A', 'Mabit');
 
 -- --------------------------------------------------------
 
@@ -219,11 +316,18 @@ CREATE TABLE `smart_nilai` (
 --
 
 CREATE TABLE `smart_score` (
-  `id_sc_smart` varchar(36) NOT NULL,
-  `id_smart` varchar(36) NOT NULL,
+  `id_sc_smart` int(11) NOT NULL,
+  `id_smart` int(11) NOT NULL,
   `score` int(11) NOT NULL,
   `kategori` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `smart_score`
+--
+
+INSERT INTO `smart_score` (`id_sc_smart`, `id_smart`, `score`, `kategori`) VALUES
+(1, 1, 100, 'Mabit');
 
 -- --------------------------------------------------------
 
@@ -232,40 +336,12 @@ CREATE TABLE `smart_score` (
 --
 
 CREATE TABLE `tbl_berita` (
-  `id_berita` varchar(36) NOT NULL,
+  `id_berita` int(11) NOT NULL,
   `title_berita` varchar(50) NOT NULL,
   `date_berita` date NOT NULL,
   `isi_berita` text NOT NULL,
   `author` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_pemasukan`
---
-
-CREATE TABLE `tbl_pemasukan` (
-  `id_pemasukan` int(11) NOT NULL,
-  `kategori` varchar(6) NOT NULL,
-  `nm_siswa` text NOT NULL,
-  `nis` varchar(5) NOT NULL,
-  `tanggal` text NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `note` text DEFAULT NULL,
-  `pic_bukti` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_pengeluaran`
---
-
-CREATE TABLE `tbl_pengeluaran` (
-  `id_pengeluaran` varchar(10) NOT NULL,
-  `judul_pengeluaran` varchar(44) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -274,12 +350,21 @@ CREATE TABLE `tbl_pengeluaran` (
 --
 
 CREATE TABLE `tbl_siswa` (
-  `nis` varchar(36) NOT NULL,
+  `nis` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `semester` varchar(10) NOT NULL,
   `kelas` int(11) NOT NULL,
   `tahun_pend` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_siswa`
+--
+
+INSERT INTO `tbl_siswa` (`nis`, `nama`, `semester`, `kelas`, `tahun_pend`) VALUES
+(1, 'Zahrandi', 'Genap', 2, '2023/2024'),
+(2, 'Saliim', 'Ganjil', 3, '2023/2024'),
+(3, 'Rafi', 'Genap', 2, '2023/2024');
 
 -- --------------------------------------------------------
 
@@ -288,14 +373,21 @@ CREATE TABLE `tbl_siswa` (
 --
 
 CREATE TABLE `ziyadah` (
-  `id_ziyadah` varchar(36) NOT NULL,
-  `nis` varchar(36) NOT NULL,
+  `id_ziyadah` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
   `tgl` date NOT NULL,
   `nilai` double NOT NULL,
   `juz` int(11) NOT NULL,
   `halaman` double NOT NULL,
   `notes` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ziyadah`
+--
+
+INSERT INTO `ziyadah` (`id_ziyadah`, `nis`, `tgl`, `nilai`, `juz`, `halaman`, `notes`) VALUES
+(1, 3, '2022-07-07', 1, 30, 16.5, 'tetap semangat');
 
 --
 -- Indexes for dumped tables
@@ -392,18 +484,6 @@ ALTER TABLE `tbl_berita`
   ADD PRIMARY KEY (`id_berita`);
 
 --
--- Indexes for table `tbl_pemasukan`
---
-ALTER TABLE `tbl_pemasukan`
-  ADD PRIMARY KEY (`id_pemasukan`);
-
---
--- Indexes for table `tbl_pengeluaran`
---
-ALTER TABLE `tbl_pengeluaran`
-  ADD PRIMARY KEY (`id_pengeluaran`);
-
---
 -- Indexes for table `tbl_siswa`
 --
 ALTER TABLE `tbl_siswa`
@@ -414,6 +494,112 @@ ALTER TABLE `tbl_siswa`
 --
 ALTER TABLE `ziyadah`
   ADD PRIMARY KEY (`id_ziyadah`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `isi_pengeluaran`
+--
+ALTER TABLE `isi_pengeluaran`
+  MODIFY `id_isi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `lomba`
+--
+ALTER TABLE `lomba`
+  MODIFY `id_lomba` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `lomba_nilai`
+--
+ALTER TABLE `lomba_nilai`
+  MODIFY `id_nil_lomba` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `murajaah`
+--
+ALTER TABLE `murajaah`
+  MODIFY `id_murajaah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `sis_hadir`
+--
+ALTER TABLE `sis_hadir`
+  MODIFY `id_hadir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `sis_hadits`
+--
+ALTER TABLE `sis_hadits`
+  MODIFY `id_hadits` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sis_hifdzun`
+--
+ALTER TABLE `sis_hifdzun`
+  MODIFY `id_hifdzun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `sis_ibadah`
+--
+ALTER TABLE `sis_ibadah`
+  MODIFY `id_ibadah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sis_kualitatif`
+--
+ALTER TABLE `sis_kualitatif`
+  MODIFY `id_kualitatif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sis_quran`
+--
+ALTER TABLE `sis_quran`
+  MODIFY `id_quran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sis_tahfiz`
+--
+ALTER TABLE `sis_tahfiz`
+  MODIFY `id_tahfiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `smart`
+--
+ALTER TABLE `smart`
+  MODIFY `id_smart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `smart_nilai`
+--
+ALTER TABLE `smart_nilai`
+  MODIFY `id_nil_smart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `smart_score`
+--
+ALTER TABLE `smart_score`
+  MODIFY `id_sc_smart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_berita`
+--
+ALTER TABLE `tbl_berita`
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_siswa`
+--
+ALTER TABLE `tbl_siswa`
+  MODIFY `nis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `ziyadah`
+--
+ALTER TABLE `ziyadah`
+  MODIFY `id_ziyadah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
