@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2023 at 07:57 AM
+-- Generation Time: Oct 17, 2023 at 08:40 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -31,8 +31,8 @@ CREATE TABLE `isi_pengeluaran` (
   `id_isi` int(11) NOT NULL,
   `id_pengeluaran` int(11) NOT NULL,
   `kategori` varchar(15) NOT NULL,
-  `nama_pengeluaran` int(20) NOT NULL,
-  `tgl` varchar(10) NOT NULL,
+  `nama_pengeluaran` varchar(20) NOT NULL,
+  `tgl` date NOT NULL,
   `jumlah` int(20) NOT NULL,
   `note` text NOT NULL,
   `bukti_pic` text NOT NULL
@@ -43,7 +43,7 @@ CREATE TABLE `isi_pengeluaran` (
 --
 
 INSERT INTO `isi_pengeluaran` (`id_isi`, `id_pengeluaran`, `kategori`, `nama_pengeluaran`, `tgl`, `jumlah`, `note`, `bukti_pic`) VALUES
-(1, 2, 'blabla', 2, '2022-2-1', 20, 'tetap semangat', 'tetap semangat yay');
+(1, 2, 'blabla', '2', '2022-02-01', 20, 'tetap semangat', 'tetap semangat yay');
 
 -- --------------------------------------------------------
 
