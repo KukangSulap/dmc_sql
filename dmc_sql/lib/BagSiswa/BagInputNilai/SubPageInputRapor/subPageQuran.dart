@@ -86,7 +86,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
                                   child: TextField(
                                     controller: _contQuran1,
                                     decoration: const InputDecoration(
-                                      hintText: 'Nama Hadits',
+                                      hintText: 'Isti’adzah dan Basmalah',
                                     ),
                                   ),
                                 ),
@@ -103,7 +103,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
                                   child: TextField(
                                     controller: _contQuran2,
                                     decoration: const InputDecoration(
-                                      hintText: 'Nama Hadits',
+                                      hintText: 'Makharijul Huruf',
                                     ),
                                   ),
                                 ),
@@ -184,20 +184,20 @@ class _SubPageQuranState extends State<SubPageQuran> {
                             ],
                           ),
                           Expanded(
-                              child: Container(
-                                margin: const EdgeInsets.only(top: 10),
-                                padding: const EdgeInsets.only(top: 5, left: 10),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: AppColor.blue, width: 1.5),
-                                ),
-                                child: TextField(
-                                  controller: _contQuran6,
-                                  decoration: const InputDecoration(
-                                    hintText: 'Shifatul Huruf',
-                                  ),
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 10),
+                              padding: const EdgeInsets.only(top: 5, left: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: AppColor.blue, width: 1.5),
+                              ),
+                              child: TextField(
+                                controller: _contQuran6,
+                                decoration: const InputDecoration(
+                                  hintText: 'Shifatul Huruf',
                                 ),
                               ),
+                            ),
                           )
                         ],
                       ),
@@ -208,7 +208,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
         ),
         const SizedBox(height: 10),
         Container(
-          height: 350,
+          height: 400,
           child: Card(
             elevation: 5,
             child: Padding(
@@ -222,23 +222,57 @@ class _SubPageQuranState extends State<SubPageQuran> {
                     fontSize: 22.0,
                     color: AppColor.blue,
                   ),
+                  Spacer(),
                   Row(
                     children: [
                       Expanded(
-                          child: TextField(
-                            controller: _contTahfiz1,
-                            decoration: const InputDecoration(hintText: "JUZ"),
-                          )),
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 10),
+                            padding: const EdgeInsets.only(top: 5, left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextField(
+                              controller: _contTahfiz1,
+                              decoration: const InputDecoration(
+                                hintText: 'JUZ',
+                              ),
+                            ),
+                          ),
+                      ),
                       Expanded(
-                          child: TextField(
-                            controller: _contTahfiz2,
-                            decoration: const InputDecoration(hintText: "Nilai"),
-                          )),
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 10),
+                            padding: const EdgeInsets.only(top: 5, left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextField(
+                              controller: _contTahfiz2,
+                              decoration: const InputDecoration(
+                                hintText: 'Nilai',
+                              ),
+                            ),
+                          ),
+                      ),
                       Expanded(
-                          child: TextField(
-                            controller: _contTahfiz3,
-                            decoration: const InputDecoration(hintText: "Juz yang Teruji"),
-                          )),
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 10),
+                            padding: const EdgeInsets.only(top: 5, left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextField(
+                              controller: _contTahfiz3,
+                              decoration: const InputDecoration(
+                                hintText: 'Juz yang Teruji',
+                              ),
+                            ),
+                          ),
+                      ),
                       Expanded(
                           child: DropDowns(listStatus, _selectedItemTahfiz,
                                   (String? value) {
@@ -250,7 +284,17 @@ class _SubPageQuranState extends State<SubPageQuran> {
                   ),
                   Align(
                     alignment: Alignment.centerRight,
-                    child: ElevatedButton(onPressed: () {}, child: const Text("Save")),
+                    child: ElevatedButton(
+                        onPressed: () {},
+                        child: const CustomButtonril(
+                          title: 'Save',
+                          widths: 73,
+                          textColor: Colors.white,
+                          fontWeight: FontWeight.normal,
+                          backgroundColor: AppColor.yellow,
+                          height: 40,
+                        ),
+                    ),
                   ),
                   const Text("Nilai Al-Quran yang Sudah di Input"),
                   Container(
@@ -312,18 +356,25 @@ class _SubPageQuranState extends State<SubPageQuran> {
                                 });
                               })
                             ],
-                          )),
+                          )
+                      ),
                       Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text("JUMLAH"),
-                              TextField(
-                                controller: _conthifdzun,
-                                decoration: const InputDecoration(hintText: "Al-Jazary"),
+                          child:
+                          Container(
+                            margin: const EdgeInsets.only(top: 10),
+                            padding: const EdgeInsets.only(top: 5, left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextField(
+                              controller: _conthifdzun,
+                              decoration: const InputDecoration(
+                                hintText: 'Al-Jazary',
                               ),
-                            ],
-                          )),
+                            ),
+                          ),
+                      ),
                       Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -335,7 +386,8 @@ class _SubPageQuranState extends State<SubPageQuran> {
                                 });
                               })
                             ],
-                          )),
+                          )
+                      ),
                     ],
                   )
                 ],

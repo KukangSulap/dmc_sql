@@ -95,7 +95,6 @@ class _SubPageHaditsState extends State<SubPageHadits> {
                                 ),
                                 child: TextField(
                                   controller: _contHadits1,
-                                  readOnly: true,
                                   decoration: const InputDecoration(
                                     hintText: 'Nama Hadits',
                                   ),
@@ -111,16 +110,28 @@ class _SubPageHaditsState extends State<SubPageHadits> {
                             }))
                           ],
                         ),
+                        SizedBox(height: 10,),
                         Align(
                           alignment: Alignment.centerRight,
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom( // Set button style
+                              backgroundColor: Colors.transparent, // Set the button color to transparent
+                              elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
+                            ),
                             onPressed: () {
                               setState(() {
                                 listNilaiHadits1.add(
                                     [_contHadits1.text, _selectedItemHadist1]);
                               });
                             },
-                            child: const Text("Save"),
+                            child: const CustomButtonril(
+                              title: 'Save',
+                              widths: 73,
+                              textColor: Colors.white,
+                              fontWeight: FontWeight.normal,
+                              backgroundColor: AppColor.yellow,
+                              height: 40,
+                            ),
                           ),
                         ),
                         const Text("Nilai Hadits yang Sudah Diinput"),
@@ -173,7 +184,6 @@ class _SubPageHaditsState extends State<SubPageHadits> {
                                 ),
                                 child: TextField(
                                   controller: _contHadits2,
-                                  readOnly: true,
                                   decoration: const InputDecoration(
                                     hintText: 'Nama Hadits',
                                   ),
@@ -189,16 +199,28 @@ class _SubPageHaditsState extends State<SubPageHadits> {
                             }))
                           ],
                         ),
+                        SizedBox(height: 10,),
                         Align(
                           alignment: Alignment.centerRight,
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom( // Set button style
+                              backgroundColor: Colors.transparent, // Set the button color to transparent
+                              elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
+                            ),
                             onPressed: () {
                               setState(() {
                                 listNilaiHadits2.add(
                                     [_contHadits2.text, _selectedItemHadist2]);
                               });
                             },
-                            child: const Text("Save"),
+                            child: const CustomButtonril(
+                              title: 'Save',
+                              widths: 73,
+                              textColor: Colors.white,
+                              fontWeight: FontWeight.normal,
+                              backgroundColor: AppColor.yellow,
+                              height: 40,
+                            ),
                           ),
                         ),
                         const Text("Nilai Hadits yang Sudah Diinput"),
@@ -261,7 +283,6 @@ class _SubPageHaditsState extends State<SubPageHadits> {
                                 ),
                                 child: TextField(
                                   controller: _contHaditsArb1,
-                                  readOnly: true,
                                   decoration: const InputDecoration(
                                     hintText: 'Nama Hadits',
                                   ),
@@ -278,16 +299,28 @@ class _SubPageHaditsState extends State<SubPageHadits> {
                             }))
                           ],
                         ),
+                        SizedBox(height: 10,),
                         Align(
                           alignment: Alignment.centerRight,
                           child: ElevatedButton(
+                              style: ElevatedButton.styleFrom( // Set button style
+                                backgroundColor: Colors.transparent, // Set the button color to transparent
+                                elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
+                              ),
                             onPressed: () {
                               setState(() {
                                 listNilaiHaditsArb1.add(
                                     [_contHaditsArb1.text, _selectedItemArb1]);
                               });
                             },
-                            child: const Text("Save"),
+                            child: const CustomButtonril(
+                              title: 'Save',
+                              widths: 73,
+                              textColor: Colors.white,
+                              fontWeight: FontWeight.normal,
+                              backgroundColor: AppColor.yellow,
+                              height: 40,
+                            ),
                           ),
                         ),
                         const Text("Nilai Hadits yang Sudah Diinput"),
@@ -340,7 +373,6 @@ class _SubPageHaditsState extends State<SubPageHadits> {
                                 ),
                                 child: TextField(
                                   controller: _contHaditsArb2,
-                                  readOnly: true,
                                   decoration: const InputDecoration(
                                     hintText: 'Nama Hadits',
                                   ),
@@ -356,16 +388,28 @@ class _SubPageHaditsState extends State<SubPageHadits> {
                             }))
                           ],
                         ),
+                        SizedBox(height: 10,),
                         Align(
                           alignment: Alignment.centerRight,
                           child: ElevatedButton(
+                              style: ElevatedButton.styleFrom( // Set button style
+                                backgroundColor: Colors.transparent, // Set the button color to transparent
+                                elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
+                              ),
                             onPressed: () {
                               setState(() {
                                 listNilaiHaditsArb2.add(
                                     [_contHaditsArb2.text, _selectedItemArb2]);
                               });
                             },
-                            child: const Text("Save"),
+                            child: const CustomButtonril(
+                              title: 'Save',
+                              widths: 73,
+                              textColor: Colors.white,
+                              fontWeight: FontWeight.normal,
+                              backgroundColor: AppColor.yellow,
+                              height: 40,
+                            ),
                           ),
                         ),
                         const Text("Nilai Hadits yang Sudah Diinput"),

@@ -1,6 +1,8 @@
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
+
+import '../../../Property/app_color.dart';
+import '../../../Property/project_font.dart';
 
 class SubPageKehadiran extends StatefulWidget {
   const SubPageKehadiran(
@@ -31,35 +33,86 @@ class _SubPageKehadiranState extends State<SubPageKehadiran> {
           elevation: 5,
           child: SizedBox(
             height: 200,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Kehadiran"),
-                Row(
-                  children: [
-                    Expanded(
-                        child: TextField(
-                      controller: _contHadir1,
-                      decoration: InputDecoration(hintText: "Sakit"),
-                    )),
-                    Expanded(
-                        child: TextField(
-                      controller: _contHadir2,
-                      decoration: InputDecoration(hintText: "Izin"),
-                    )),
-                    Expanded(
-                        child: TextField(
-                      controller: _contHadir3,
-                      decoration: InputDecoration(hintText: "Aplha"),
-                    )),
-                    Expanded(
-                        child: TextField(
-                      controller: _contHadir4,
-                      decoration: InputDecoration(hintText: "Total"),
-                    )),
-                  ],
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const GlobalProjectFont(
+                    text: 'Kehadiran',
+                    fontWeight: FontWeight.w800,
+                    fontSize: 22.0,
+                    color: AppColor.blue,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 10, left: 10),
+                            padding: const EdgeInsets.only(top: 3, left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextField(
+                              controller: _contHadir1,
+                              decoration: const InputDecoration(
+                                hintText: 'Sakit',
+                              ),
+                            ),
+                          ),
+                      ),
+                      Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 10, left: 10),
+                            padding: const EdgeInsets.only(top: 3, left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextField(
+                              controller: _contHadir2,
+                              decoration: const InputDecoration(
+                                hintText: 'Izin',
+                              ),
+                            ),
+                          ),
+                      ),
+                      Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 10, left: 10),
+                            padding: const EdgeInsets.only(top: 3, left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextField(
+                              controller: _contHadir3,
+                              decoration: const InputDecoration(
+                                hintText: 'Aplha',
+                              ),
+                            ),
+                          ),
+                      ),
+                      Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 10, left: 10),
+                            padding: const EdgeInsets.only(top: 3, left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColor.blue, width: 1.5),
+                            ),
+                            child: TextField(
+                              controller: _contHadir4,
+                              decoration: const InputDecoration(
+                                hintText: 'Total',
+                              ),
+                            ),
+                          ),),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -67,10 +120,19 @@ class _SubPageKehadiranState extends State<SubPageKehadiran> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton(
+                style: ElevatedButton.styleFrom( // Set button style
+                  backgroundColor: Colors.transparent, // Set the button color to transparent
+                  elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
+                ),
                 onPressed: () {
                   widget.prevPage();
                 },
-                child: Icon(Icons.arrow_back)),
+                child: const Icon(
+                  Icons.arrow_back,
+                  size: 20,
+                  color: AppColor.orange,
+                )
+            ),
             ElevatedButton(
                 onPressed: () {
                   if (widget.insertData[4].length < 3) {
