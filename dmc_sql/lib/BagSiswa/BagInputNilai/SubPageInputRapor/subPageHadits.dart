@@ -164,10 +164,20 @@ class _SubPageHaditsState extends State<SubPageHadits> {
                           children: [
                             Expanded(
                               flex: 3,
-                              child: TextField(
-                                controller: _contHadits2,
-                                decoration:
-                                    const InputDecoration(hintText: "Nama Hadits"),
+                              child: Container(
+                                margin: const EdgeInsets.only(top: 10, left: 10),
+                                padding: const EdgeInsets.only(top: 3, left: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: AppColor.blue, width: 1.5),
+                                ),
+                                child: TextField(
+                                  controller: _contHadits2,
+                                  readOnly: true,
+                                  decoration: const InputDecoration(
+                                    hintText: 'Nama Hadits',
+                                  ),
+                                ),
                               ),
                             ),
                             Expanded(
@@ -255,6 +265,7 @@ class _SubPageHaditsState extends State<SubPageHadits> {
                                   decoration: const InputDecoration(
                                     hintText: 'Nama Hadits',
                                   ),
+
                                 ),
                               ),
                             ),
@@ -381,6 +392,7 @@ class _SubPageHaditsState extends State<SubPageHadits> {
             ),
           ),
         ),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

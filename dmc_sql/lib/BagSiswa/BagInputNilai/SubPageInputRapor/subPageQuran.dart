@@ -52,7 +52,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
     return Column(
       children: [
         Container(
-          height: 270,
+          height: 235,
           child: Card(
             elevation: 5,
             child: Row(
@@ -73,13 +73,12 @@ class _SubPageQuranState extends State<SubPageQuran> {
                             text: 'LISAN',
                             fontSize: 18.0,
                           ),
-                          Spacer(),
                           Row(
                             children: [
                               Expanded(
                                 child: Container(
-                                  margin: const EdgeInsets.only(top: 10, left: 10),
-                                  padding: const EdgeInsets.only(top: 3, left: 10),
+                                  margin: const EdgeInsets.only(top: 10),
+                                  padding: const EdgeInsets.only(top: 5, left: 10),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
                                     border: Border.all(color: AppColor.blue, width: 1.5),
@@ -95,8 +94,8 @@ class _SubPageQuranState extends State<SubPageQuran> {
                               const SizedBox(width: 10),
                               Expanded(
                                 child: Container(
-                                  margin: const EdgeInsets.only(top: 10, left: 10),
-                                  padding: const EdgeInsets.only(top: 3, left: 10),
+                                  margin: const EdgeInsets.only(top: 10, left: 5),
+                                  padding: const EdgeInsets.only(top: 5, left: 10),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
                                     border: Border.all(color: AppColor.blue, width: 1.5),
@@ -113,8 +112,8 @@ class _SubPageQuranState extends State<SubPageQuran> {
                           ),
                           Expanded(
                               child: Container(
-                                margin: const EdgeInsets.only(top: 10, left: 10),
-                                padding: const EdgeInsets.only(top: 3, left: 10),
+                                margin: const EdgeInsets.only(top: 10),
+                                padding: const EdgeInsets.only(top: 5, left: 10),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
                                   border: Border.all(color: AppColor.blue, width: 1.5),
@@ -150,25 +149,56 @@ class _SubPageQuranState extends State<SubPageQuran> {
                           Row(
                             children: [
                               Expanded(
+                                child: Container(
+                                  margin: const EdgeInsets.only(top: 10),
+                                  padding: const EdgeInsets.only(top: 5, left: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: AppColor.blue, width: 1.5),
+                                  ),
                                   child: TextField(
                                     controller: _contQuran4,
                                     decoration: const InputDecoration(
-                                        hintText: "Isti'adzah dan Basmallah"),
-                                  )),
+                                      hintText: "Isti'adzah dan Basmallah",
+                                    ),
+                                  ),
+                                ),
+                              ),
                               const SizedBox(width: 10),
                               Expanded(
+                                child: Container(
+                                  margin: const EdgeInsets.only(top: 10, left: 5),
+                                  padding: const EdgeInsets.only(top: 5, left: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: AppColor.blue, width: 1.5),
+                                  ),
                                   child: TextField(
                                     controller: _contQuran5,
-                                    decoration:
-                                    const InputDecoration(hintText: "Makharijul Huruf"),
-                                  ))
+                                    decoration: const InputDecoration(
+                                      hintText: 'Makharijul Huruf',
+                                    ),
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                           Expanded(
-                              child: TextField(
-                                controller: _contQuran6,
-                                decoration: const InputDecoration(hintText: "Shifatul Huruf"),
-                              ))
+                              child: Container(
+                                margin: const EdgeInsets.only(top: 10),
+                                padding: const EdgeInsets.only(top: 5, left: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: AppColor.blue, width: 1.5),
+                                ),
+                                child: TextField(
+                                  controller: _contQuran6,
+                                  decoration: const InputDecoration(
+                                    hintText: 'Shifatul Huruf',
+                                  ),
+                                ),
+                              ),
+                          )
                         ],
                       ),
                     )),
@@ -253,6 +283,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
             ),
           ),
         ),
+        const SizedBox(height: 10),
         Container(
           height: 200,
           child: Card(
@@ -312,6 +343,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
             ),
           ),
         ),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
