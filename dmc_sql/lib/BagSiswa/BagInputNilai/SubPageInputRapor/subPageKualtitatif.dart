@@ -179,7 +179,7 @@ class _SubPageKualitatifState extends State<SubPageKualitatif> {
                   widget.nextPage();
                 },
                 child: const CustomButtonril(
-                  title: 'next',
+                  title: 'Next',
                   widths: 73,
                   textColor: Colors.white,
                   fontWeight: FontWeight.normal,

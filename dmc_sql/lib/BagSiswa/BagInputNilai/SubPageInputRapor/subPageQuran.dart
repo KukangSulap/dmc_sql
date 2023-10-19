@@ -51,7 +51,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           height: 235,
           child: Card(
             elevation: 5,
@@ -207,7 +207,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
           ),
         ),
         const SizedBox(height: 10),
-        Container(
+        SizedBox(
           height: 400,
           child: Card(
             elevation: 5,
@@ -222,12 +222,12 @@ class _SubPageQuranState extends State<SubPageQuran> {
                     fontSize: 22.0,
                     color: AppColor.blue,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Row(
                     children: [
                       Expanded(
                           child: Container(
-                            margin: const EdgeInsets.only(top: 10),
+                            margin: const EdgeInsets.only(top: 10, left: 10),
                             padding: const EdgeInsets.only(top: 5, left: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
@@ -243,7 +243,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
                       ),
                       Expanded(
                           child: Container(
-                            margin: const EdgeInsets.only(top: 10),
+                            margin: const EdgeInsets.only(top: 10, left: 10),
                             padding: const EdgeInsets.only(top: 5, left: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
@@ -259,7 +259,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
                       ),
                       Expanded(
                           child: Container(
-                            margin: const EdgeInsets.only(top: 10),
+                            margin: const EdgeInsets.only(top: 10, left: 10),
                             padding: const EdgeInsets.only(top: 5, left: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
@@ -282,10 +282,20 @@ class _SubPageQuranState extends State<SubPageQuran> {
                               }))
                     ],
                   ),
+                  const SizedBox(height: 10,),
                   Align(
                     alignment: Alignment.centerRight,
                     child: ElevatedButton(
-                        onPressed: () {},
+                      style: ElevatedButton.styleFrom( // Set button style
+                        backgroundColor: Colors.transparent, // Set the button color to transparent
+                        elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
+                      ),
+                        onPressed: () {
+                          setState(() {
+                            listNilaiTahfiz.add(
+                                [_contTahfiz1.text, _contTahfiz2.text, _contTahfiz3.text, _selectedItemTahfiz]);
+                          });
+                        },
                         child: const CustomButtonril(
                           title: 'Save',
                           widths: 73,
@@ -296,8 +306,12 @@ class _SubPageQuranState extends State<SubPageQuran> {
                         ),
                     ),
                   ),
-                  const Text("Nilai Al-Quran yang Sudah di Input"),
-                  Container(
+                  const GlobalProjectFont(
+                    text: "Nilai Al-Quran yang Sudah di Input",
+                    fontSize: 18,
+                  ),
+                  const SizedBox(height: 5,),
+                  SizedBox(
                     height: 150,
                     child: ListView.builder(
                         itemCount: listNilaiTahfiz.length,
@@ -328,7 +342,7 @@ class _SubPageQuranState extends State<SubPageQuran> {
           ),
         ),
         const SizedBox(height: 10),
-        Container(
+        SizedBox(
           height: 200,
           child: Card(
             elevation: 5,
@@ -360,19 +374,23 @@ class _SubPageQuranState extends State<SubPageQuran> {
                       ),
                       Expanded(
                           child:
-                          Container(
-                            margin: const EdgeInsets.only(top: 10),
-                            padding: const EdgeInsets.only(top: 5, left: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: AppColor.blue, width: 1.5),
-                            ),
-                            child: TextField(
-                              controller: _conthifdzun,
-                              decoration: const InputDecoration(
-                                hintText: 'Al-Jazary',
+                          Column(
+                            children: [const Text(" "),
+                              Container(
+                                margin: const EdgeInsets.only(top: 10,left: 10),
+                                padding: const EdgeInsets.symmetric(horizontal: 16),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: AppColor.blue, width: 1.5),
+                                ),
+                                child: TextField(
+                                  controller: _conthifdzun,
+                                  decoration: const InputDecoration(
+                                    hintText: 'Al-Jazary',
+                                  ),
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                       ),
                       Expanded(
@@ -456,7 +474,8 @@ class _SubPageQuranState extends State<SubPageQuran> {
                 fontWeight: FontWeight.normal,
                 backgroundColor: AppColor.yellow,
                 height: 40,
-              ),)
+              ),
+            )
           ],
         ),
         const SizedBox(height: 50)

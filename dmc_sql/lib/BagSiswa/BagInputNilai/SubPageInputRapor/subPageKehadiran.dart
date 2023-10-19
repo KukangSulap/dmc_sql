@@ -1,6 +1,7 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
+import '../../../BagKeuangan/keuangan.dart';
 import '../../../Property/app_color.dart';
 import '../../../Property/project_font.dart';
 
@@ -20,10 +21,10 @@ class SubPageKehadiran extends StatefulWidget {
 }
 
 class _SubPageKehadiranState extends State<SubPageKehadiran> {
-  TextEditingController _contHadir1 = TextEditingController();
-  TextEditingController _contHadir2 = TextEditingController();
-  TextEditingController _contHadir3 = TextEditingController();
-  TextEditingController _contHadir4 = TextEditingController();
+  final TextEditingController _contHadir1 = TextEditingController();
+  final TextEditingController _contHadir2 = TextEditingController();
+  final TextEditingController _contHadir3 = TextEditingController();
+  final TextEditingController _contHadir4 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +134,12 @@ class _SubPageKehadiranState extends State<SubPageKehadiran> {
                   color: AppColor.orange,
                 )
             ),
+            SizedBox(height: 10,),
             ElevatedButton(
+              style: ElevatedButton.styleFrom( // Set button style
+                backgroundColor: Colors.transparent, // Set the button color to transparent
+                elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
+              ),
                 onPressed: () {
                   if (widget.insertData[4].length < 3) {
                     widget.insertData[4].addAll([
@@ -169,7 +175,15 @@ class _SubPageKehadiranState extends State<SubPageKehadiran> {
 
                   widget.nextPage();
                 },
-                child: Text("Finish"))
+                child: const CustomButtonril(
+                  title: 'Finish',
+                  widths: 100,
+                  textColor: Colors.white,
+                  fontWeight: FontWeight.normal,
+                  backgroundColor: AppColor.yellow,
+                  height: 40,
+                ),
+            )
           ],
         )
       ],
