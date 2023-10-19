@@ -277,7 +277,7 @@ class _InputPemasukanState extends State<InputPemasukan> {
                         MaterialPageRoute(builder: (context) => const KeuanganPage()),
                       );
                     },
-                    child: const CustomButton(
+                    child: const CustomButtonril(
                       title: 'Back',
                       widths: 140,
                       textColor: Colors.white,
@@ -300,7 +300,7 @@ class _InputPemasukanState extends State<InputPemasukan> {
                         MaterialPageRoute(builder: (context) => const KeuanganPage()),
                       );
                     },
-                    child: const CustomButton(
+                    child: const CustomButtonril(
                       title: 'Finish',
                       widths: 140,
                       textColor: Colors.white,

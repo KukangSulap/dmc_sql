@@ -159,7 +159,7 @@ class _InputLombaPageState extends State<InputLombaPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 250,
                             child: TextField(
                               controller: _namaLombaCont,
@@ -191,7 +191,7 @@ class _InputLombaPageState extends State<InputLombaPage> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      Container(
+                      SizedBox(
                         height: 150,
                         child: ListView.builder(
                           itemCount: listNilaiLomba.length,
@@ -200,8 +200,8 @@ class _InputLombaPageState extends State<InputLombaPage> {
                             String grade = listNilaiLomba[index][1];
 
                             return Container(
-                              margin: EdgeInsets.symmetric(vertical: 3),
-                              padding: EdgeInsets.all( 5),
+                              margin: const EdgeInsets.symmetric(vertical: 3),
+                              padding: const EdgeInsets.all( 5),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 border: Border.all(color: Colors.blueAccent, width: 1.5),
@@ -212,11 +212,11 @@ class _InputLombaPageState extends State<InputLombaPage> {
                                 children: [
                                   Text(
                                     "$namaLomba",
-                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColor.blue),
+                                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColor.blue),
                                   ),
                                   Text(
                                     "$grade",
-                                    style: TextStyle(fontSize: 16, color: AppColor.blue),
+                                    style: const TextStyle(fontSize: 16, color: AppColor.blue),
                                   ),
                                 ],
                               ),
@@ -262,7 +262,7 @@ class _InputLombaPageState extends State<InputLombaPage> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: const CustomButton(
+                      child: const CustomButtonril(
                         title: 'Back',
                         widths: 140,
                         textColor: Colors.white,
@@ -290,15 +290,16 @@ class _InputLombaPageState extends State<InputLombaPage> {
                           print(
                               "nama ${listLomba[i][0]} notes ${listLomba[i][4]}");
                         }
+                        Navigator.pop(context);
                       },
-                        child: const CustomButton(
-                          title: 'Finish',
-                          widths: 140,
-                          textColor: Colors.white,
-                          fontWeight: FontWeight.normal,
-                          backgroundColor: Color(0xff1e6ad0),
-                          height: 50,
-                        ),
+                      child: const CustomButtonril(
+                        title: 'Finish',
+                        widths: 140,
+                        textColor: Colors.white,
+                        fontWeight: FontWeight.normal,
+                        backgroundColor: Color(0xff1e6ad0),
+                        height: 50,
+                      ),
                     ),
                   ],
                 ),

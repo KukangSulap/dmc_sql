@@ -89,12 +89,16 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                        ],
                       ),
                       const SizedBox(height: 16),
-                      TextFormField(
-                        controller: _judulController,
-                        decoration: InputDecoration(
-                          labelText: 'Judul Pengeluaran',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
+                      Container(
+                        padding: const EdgeInsets.only(left: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColor.blue, width: 1.5),
+                        ),
+                        child: TextFormField(
+                          controller: _judulController,
+                          decoration: const InputDecoration(
+                            labelText: 'Judul Pengeluaran',
                           ),
                         ),
                       ),
@@ -105,9 +109,11 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                           ElevatedButton(
                             style: ElevatedButton.styleFrom( // Set button style
                               backgroundColor: Colors.transparent, // Set the button color to transparent
+                              elevation: 0,
+                              shadowColor: Colors. transparent,
                             ),
                             onPressed: () {},
-                            child: const CustomButton(
+                            child: const CustomButtonril(
                               title: 'Save',
                               widths: 140,
                               textColor: Colors.white,
@@ -142,41 +148,49 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                       Row(
                         children: [
                           Expanded(
-                            child: DropdownButtonFormField<String>(
-                              value: _selectedCategory,
-                              onChanged: (value) {
-                                setState(() {
-                                  _selectedCategory = value!;
-                                });
-                              },
-                              items: [
-                                'Reward',
-                                'Outing Class',
-                                'Lesson Plan',
-                                'Media Belajar',
-                                'Fasilitas'
-                              ]
-                                  .map((category) => DropdownMenuItem<String>(
-                                value: category,
-                                child: Text(category),
-                              ))
-                                  .toList(),
-                              decoration: InputDecoration(
-                                labelText: 'Kategori',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: AppColor.blue, width: 1.5),
+                              ),
+                              child: DropdownButtonFormField<String>(
+                                value: _selectedCategory,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _selectedCategory = value!;
+                                  });
+                                },
+                                items: [
+                                  'Reward',
+                                  'Outing Class',
+                                  'Lesson Plan',
+                                  'Media Belajar',
+                                  'Fasilitas'
+                                ]
+                                    .map((category) => DropdownMenuItem<String>(
+                                  value: category,
+                                  child: Text(category),
+                                ))
+                                    .toList(),
+                                decoration: const InputDecoration(
+                                  labelText: 'Kategori',
                                 ),
                               ),
                             ),
                           ),
                           const SizedBox(width: 16),
                           Expanded(
-                            child: TextFormField(
-                              controller: _nameController,
-                              decoration: InputDecoration(
-                                labelText: 'Nama Pengeluaran',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: AppColor.blue, width: 1.5),
+                              ),
+                              child: TextFormField(
+                                controller: _nameController,
+                                decoration: const InputDecoration(
+                                  labelText: 'Nama Pengeluaran',
                                 ),
                               ),
                             ),
@@ -187,13 +201,17 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                       Row(
                         children: [
                           Expanded(
-                            child: TextFormField(
-                              controller: _quantityController,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                labelText: 'Jumlah',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: AppColor.blue, width: 1.5),
+                              ),
+                              child: TextFormField(
+                                controller: _quantityController,
+                                keyboardType: TextInputType.number,
+                                decoration: const InputDecoration(
+                                  labelText: 'Jumlah',
                                 ),
                               ),
                             ),
@@ -238,16 +256,20 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                       Row(
                         children: [
                           Expanded(
-                            child: TextField(
-                              controller: _notesController,
-                              maxLines: 3,
-                              decoration: InputDecoration(
-                                labelText: 'Note',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: AppColor.blue, width: 1.5),
+                              ),
+                              child: TextField(
+                                controller: _notesController,
+                                maxLines: 3,
+                                decoration: const InputDecoration(
+                                  labelText: 'Note',
+                                  filled: true,
+                                  fillColor: Colors.white,
                                 ),
-                                filled: true,
-                                fillColor: Colors.white,
                               ),
                             ),
                           ),
@@ -276,11 +298,12 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                           const Spacer(),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom( // Set button style
-                              backgroundColor: Colors.transparent,
-                              elevation: 0, // Remove button elevation
+                              backgroundColor: Colors.transparent, // Set the button color to transparent
+                              elevation: 0,
+                              shadowColor: Colors. transparent,
                             ),
                             onPressed: _saveData,
-                            child: const CustomButton(
+                            child: const CustomButtonril(
                               title: 'Save',
                               widths: 140,
                               textColor: Colors.white,
@@ -320,22 +343,27 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                       margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.0),
-                        color: const Color.fromARGB(163, 243, 243, 243),
+                        color: Colors.white
                       ),
                       child: ListTile(
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            GlobalProjectFont(
-                              text: 'Name: $name'
-                            ),
-                            GlobalProjectFont(
-                              text: 'Category: $category'
-                            ),
-                            GlobalProjectFont(
-                              text: 'Quantity: $quantity'
-                            ),
-                          ],
+                        title: Container(
+                          decoration: const BoxDecoration(
+                            color: Colors.white
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              GlobalProjectFont(
+                                text: 'Name: $name'
+                              ),
+                              GlobalProjectFont(
+                                text: 'Category: $category'
+                              ),
+                              GlobalProjectFont(
+                                text: 'Quantity: $quantity'
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );
@@ -346,7 +374,8 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom( // Set button style
                         backgroundColor: Colors.transparent, // Set the button color to transparent
-                        elevation: 0, // Remove button elevation
+                        elevation: 0,
+                        shadowColor: Colors. transparent,
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -356,7 +385,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                           ),
                         );
                       },
-                      child: const CustomButton(
+                      child: const CustomButtonril(
                         title: 'Back',
                         widths: 140,
                         textColor: Colors.white,
@@ -369,7 +398,8 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom( // Set button style
                         backgroundColor: Colors.transparent, // Set the button color to transparent
-                        elevation: 0, // Remove button elevation
+                        elevation: 0,
+                        shadowColor: Colors. transparent,
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -379,7 +409,7 @@ class _InputPengeluaranState extends State<InputPengeluaran> {
                           ),
                         );
                       },
-                      child: const CustomButton(
+                      child: const CustomButtonril(
                         title: 'Finish',
                         widths: 140,
                         textColor: Colors.white,

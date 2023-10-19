@@ -26,31 +26,8 @@ class KeuanganPage extends StatefulWidget {
 }
 
 class _KeuanganPageState extends State<KeuanganPage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBarAdmin(page: CurrentPage.keuangan),
-      body: SafeArea(
-        child: SisiKananKeuangan(),
-      ),
-    );
-  }
-}
 
-class SisiKananKeuangan extends StatefulWidget {
-
-  const SisiKananKeuangan({
-    super.key,
-  });
-
-  @override
-  State<SisiKananKeuangan> createState() => _SisiKananKeuanganState();
-}
-
-class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
-
-  List<Dummy>? dataDummy;
+  List<Dummy>? dataDummy = [];
   var isLoaded = false;
 
   @override
@@ -72,25 +49,28 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 3,
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(right: 30, left: 30),
-          child: Column(
-            children: [
-              Container(
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      backgroundColor: AppColor.bg,
+      extendBodyBehindAppBar: true,
+      appBar: AppBarAdmin(page: CurrentPage.keuangan),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(right: 15, left: 15),
+            child: Column(
+              children: [
+                Container(
                   margin: const EdgeInsets.only(top: 10),
-                  padding: const EdgeInsets.all(10),
-                  height: 110,
-                child: Expanded(
+                  padding: const EdgeInsets.only(right: 5, left: 5),
+                  height: 122,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Total uang
                       Expanded(
                         child: Container(
-                          padding: const EdgeInsets.only(top: 5, bottom: 5),
                           decoration: ShapeDecoration(
                             color: AppColor.yellow,
                             shape: RoundedRectangleBorder(
@@ -99,16 +79,17 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children:  [
                               ListTile(
-                                title: Text(
-                                  'Total Uang',
-                                  style: TextStyle(color: Colors.white),
+                                title: GlobalProjectFont(
+                                  text: 'Total Uang',
+                                  fontSize: screenWidth >= 600 ? 18 : 14,
+                                  color: Colors.white,
                                 ),
                                 subtitle: Text(
                                   'Rp 56.000.000',
                                   style: TextStyle(
-                                    fontSize: 22,
+                                    fontSize: screenWidth >= 600 ? 22 : 18,
                                     fontWeight: FontWeight.w800,
                                     color: Colors.white,
                                   ),
@@ -118,8 +99,7 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 8,),
-                      // Pemasukan
+                      const SizedBox(width: 5,),
                       Expanded(
                         child: Container(
                           padding: const EdgeInsets.only(top: 5, bottom: 5),
@@ -131,16 +111,17 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                           ),
                           child:  Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children:  [
                               ListTile(
-                                title: Text(
-                                  'Pemasukan',
-                                  style: TextStyle(color: Colors.white),
+                                title: GlobalProjectFont(
+                                  text: 'Pemasukan',
+                                  fontSize: screenWidth >= 600 ? 18 : 14,
+                                  color: Colors.white,
                                 ),
                                 subtitle: Text(
                                   'Rp 50.000.000',
                                   style: TextStyle(
-                                    fontSize: 22,
+                                    fontSize: screenWidth >= 600 ? 22 : 18,
                                     fontWeight: FontWeight.w800,
                                     color: Colors.white,
                                   ),
@@ -150,8 +131,7 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 8,),
-                      // Keluaran
+                      const SizedBox(width: 5,),
                       Expanded(
                         child: Container(
                           padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -161,18 +141,19 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
-                          child:  Column(
+                          child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               ListTile(
-                                title: Text(
-                                  'Pengeluaran',
-                                  style: TextStyle(color: Colors.white),
+                                title: GlobalProjectFont(
+                                  text: 'Pengeluaran',
+                                  fontSize: screenWidth >= 600 ? 18 : 14,
+                                  color: Colors.white,
                                 ),
                                 subtitle: Text(
                                   'Rp 6.000.000',
                                   style: TextStyle(
-                                    fontSize: 22,
+                                    fontSize: screenWidth >= 600 ? 22 : 18,
                                     fontWeight: FontWeight.w800,
                                     color: Colors.white,
                                   ),
@@ -185,206 +166,243 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
                     ],
                   ),
                 ),
-              ),
-              // ===========================================================  Data Pemasukan  ===================================================================
-              Container(
-                margin: const EdgeInsets.only(top: 8),
-                padding: const EdgeInsets.all(20),
-                height: 400,
-                decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 2,  color: AppColor.blue),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                        children: [
-                          const GlobalProjectFont(
-                            text: 'Data Pemasukan',
-                            fontWeight: FontWeight.w800,
-                            fontSize: 22.0,
-                            color: AppColor.blue,
-                          ),
-                          const Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom( // Set button style
-                              backgroundColor: Colors.transparent, // Set the button color to transparent
-                              elevation: 0,shadowColor: Colors. transparent, // Remove button elevation
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const InputPemasukan(),
-                                ),
-                              );
-                            },
-                            child: const CustomButton(
-                              title: 'Input',
-                              widths: 160,
-                              textColor: Colors.white,
-                              fontWeight: FontWeight.normal,
-                              backgroundColor: AppColor.orange,
-                              height: 40,
-                            ),
-                          ),
-                        ],
-                      ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 10, bottom: 10),
-                      height: 1,
-                      width: double.infinity,
-                      color: Colors.black,
+                // ===========================================================  Data Pemasukan  ===================================================================
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.all(17),
+                  height: 400,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: dataDummy?.length,
-                        itemBuilder: (context, index) {
-                          String itemName = dataDummy![index].title;
-                          // String leftInfo = dataDummy![index].title;
-                          String rightInfo = dataDummy![index].title;
-
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>  DetailPemasukan(dataPemasukan: dataDummy![index],),
-                                ),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                ListTile(
-                                  title: Text(
-                                    itemName,
-                                    style: const TextStyle(fontSize: 20),
-                                  ),
-                                  subtitle: Text(itemName),
-                                  trailing: Text(
-                                    "Rp $rightInfo -",
-                                    style: const TextStyle(
-                                        fontSize: 30, color: Colors.black),
-                                  ),
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                      top: 10, bottom: 10),
-                                  height: 0.5,
-                                  width: double.infinity,
-                                  color: Colors.black,
-                                )
-                              ],
-                            ),
-                          );
-                        },
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    height: 400,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(width: 2,  color: AppColor.blue),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              // ======================================================  Data Keluaran  ==================================================================
-              Container(
-                margin: const EdgeInsets.only(top: 10, bottom: 10),
-                padding: const EdgeInsets.all(20),
-                height: 400,
-                decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 2,  color: AppColor.blue),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Row(
+                    child: Column(
                       children: [
-                        const GlobalProjectFont(
-                          text: 'Data Keluaran',
-                          fontWeight: FontWeight.w800,
-                          fontSize: 22.0,
-                          color: AppColor.blue,
-                        ),
-                        const Spacer(),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom( // Set button style
-                            backgroundColor: Colors.transparent, // Set the button color to transparent
-                            elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => InputPengeluaran(),
+                        Row(
+                          children: [
+                            GlobalProjectFont(
+                              text: 'Data Pemasukan',
+                              fontWeight: FontWeight.w800,
+                              fontSize: screenWidth >= 600 ? 22 : 18,
+                              color: AppColor.blue,
+                            ),
+                            const Spacer(),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom( // Set button style
+                                backgroundColor: Colors.transparent, // Set the button color to transparent
+                                elevation: 0,shadowColor: Colors. transparent, // Remove button elevation
                               ),
-                            );
-                          },
-                          child: const CustomButton(
-                            title: 'Input',
-                            widths: 160,
-                            textColor: Colors.white,
-                            fontWeight: FontWeight.normal,
-                            backgroundColor: AppColor.orange,
-                            height: 40,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const InputPemasukan(),
+                                  ),
+                                );
+                              },
+                              child: CustomButtonril(
+                                title: 'Input',
+                                widths: screenWidth >= 600 ? 160 : 73,
+                                textColor: Colors.white,
+                                fontWeight: FontWeight.normal,
+                                backgroundColor: AppColor.orange,
+                                height: 40,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10, bottom: 10),
+                          height: 1,
+                          width: double.infinity,
+                          color: Colors.black,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: dataDummy?.length,
+                            itemBuilder: (context, index) {
+                              String itemName = dataDummy![index].title;
+                              // String leftInfo = dataDummy![index].title;
+                              String rightInfo = dataDummy![index].title;
+
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>  DetailPemasukan(dataPemasukan: dataDummy![index],),
+                                    ),
+                                  );
+                                },
+                                child: Column(
+                                  children: [
+                                    ListTile(
+                                      title: SizedBox(
+                                        width: screenWidth >= 600 ? 300 : 200,
+                                        child:
+                                        GlobalProjectFont(
+                                          text: itemName,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      subtitle: GlobalProjectFont(
+                                        text: itemName,
+                                      ),
+                                      trailing: SizedBox(
+                                        width: screenWidth >= 600 ? 330 : 120,
+                                        child: GlobalProjectFont(
+                                          text: "Rp $rightInfo -",
+                                          fontSize: screenWidth >= 600 ? 30 : 18,
+                                        ),
+                                      ),
+                                    ),
+                                    // Container(
+                                    //   margin: const EdgeInsets.only(
+                                    //       top: 10, bottom: 10),
+                                    //   height: 0.5,
+                                    //   width: double.infinity,
+                                    //   color: Colors.black,
+                                    // )
+                                  ],
+                                ),
+                              );
+                            },
                           ),
-                        )
+                        ),
                       ],
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 10, bottom: 10),
-                      height: 1,
-                      width: double.infinity,
-                      color: Colors.black,
+                  ),
+                ),
+                // ======================================================  Data Keluaran  ==================================================================
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.all(17),
+                  height: 400,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: dataDummy?.length,
-                        itemBuilder: (context, index) {
-                          String itemName = dataDummy![index].title;
-                          String leftInfo = dataDummy![index].title;
-                          String? rightInfo = dataDummy![index].url;
-                          return GestureDetector(
-                            onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => TemplateDetailPengeluaran(texts: keluaranList[index], imageUrl: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg',),
-                              //   ),
-                              // );
-                            },
-                            child: Column(
-                              children: [
-                                ListTile(
-                                  title: Text(
-                                    itemName,
-                                    style: const TextStyle(fontSize: 20),
-                                  ),
-                                  subtitle: Text(leftInfo),
-                                  trailing: Text(
-                                    "Rp $rightInfo -",
-                                    style: const TextStyle(
-                                        fontSize: 30, color: Colors.black),
-                                  ),
-
-                                ),
-                                Container(
-                                  margin:
-                                      const EdgeInsets.only(top: 10, bottom: 10),
-                                  height: 0.5,
-                                  width: double.infinity,
-                                  color: Colors.black,
-                                )
-                              ],
-                            ),
-                          );
-                        },
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    height: 400,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(width: 2,  color: AppColor.blue),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                  ],
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            const GlobalProjectFont(
+                              text: 'Data Keluaran',
+                              fontWeight: FontWeight.w800,
+                              fontSize: 22.0,
+                              color: AppColor.blue,
+                            ),
+                            const Spacer(),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom( // Set button style
+                                backgroundColor: Colors.transparent, // Set the button color to transparent
+                                elevation: 0, shadowColor: Colors. transparent,// Remove button elevation
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => InputPengeluaran(),
+                                  ),
+                                );
+                              },
+                              child: CustomButtonril(
+                                title: 'Input',
+                                widths: screenWidth >= 600 ? 160 : 73,
+                                textColor: Colors.white,
+                                fontWeight: FontWeight.normal,
+                                backgroundColor: AppColor.orange,
+                                height: 40,
+                              ),
+                            )
+                          ],
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10, bottom: 10),
+                          height: 1,
+                          width: double.infinity,
+                          color: Colors.black,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: dataDummy?.length,
+                            itemBuilder: (context, index) {
+                              String itemName = dataDummy![index].title;
+                              String leftInfo = dataDummy![index].title;
+                              String? rightInfo = dataDummy![index].url;
+                              return GestureDetector(
+                                onTap: () {
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => TemplateDetailPengeluaran(texts: keluaranList[index], imageUrl: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg',),
+                                  //   ),
+                                  // );
+                                },
+                                child: Column(
+                                  children: [
+                                    ListTile(
+                                      title: SizedBox(
+                                        width: screenWidth >= 600 ? 300 : 200,
+                                        child:
+                                        GlobalProjectFont(
+                                          text: itemName,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      subtitle: GlobalProjectFont(
+                                        text: leftInfo,
+                                      ),
+                                      trailing: SizedBox(
+                                        width: screenWidth >= 600 ? 330 : 180,
+                                        child: GlobalProjectFont(
+                                          text: "Rp $rightInfo -",
+                                          fontSize: screenWidth >= 600 ? 30 : 18,
+                                        ),
+                                      ),
+                                    ),
+                                    // Container(
+                                    //   margin:
+                                    //       const EdgeInsets.only(top: 10, bottom: 10),
+                                    //   height: 0.5,
+                                    //   width: double.infinity,
+                                    //   color: Colors.black,
+                                    // )
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -392,8 +410,8 @@ class _SisiKananKeuanganState extends State<SisiKananKeuangan> {
   }
 }
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({
+class CustomButtonril extends StatelessWidget {
+  const CustomButtonril({
     Key? key,
     required this.title,
     required this.widths,
@@ -426,12 +444,10 @@ class CustomButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: null, // No onPressed callback
-        child: Text(
-          title,
-          style: TextStyle(
-            color: textColor,
-            fontWeight: fontWeight,
-          ),
+        child: GlobalProjectFont(
+          text: title,
+          fontWeight: fontWeight,
+          color: textColor,
         ),
       ),
     );

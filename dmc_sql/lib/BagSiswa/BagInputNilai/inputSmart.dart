@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 
 import '../../BagKeuangan/keuangan.dart';
 import '../../Property/app_color.dart';
+import '../../Property/project_font.dart';
 
 const List<String> listGrade = <String>['A', 'B', 'C'];
 
@@ -41,6 +42,8 @@ class _InputSmartPageState extends State<InputSmartPage> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: const AppBarAdmin(page: CurrentPage.siswa),
       backgroundColor: AppColor.bg,
@@ -50,7 +53,9 @@ class _InputSmartPageState extends State<InputSmartPage> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 50.0, right: 200, left: 200),
+                padding: EdgeInsets.only(top: screenWidth >= 600 ? 50 : 5,
+                    right: screenWidth >= 600 ? 200 : 5,
+                    left: screenWidth >= 600 ? 200 : 5),
                 child: Container(
                   padding: const EdgeInsets.all(30.0), // Add some padding to the container
                   decoration: BoxDecoration(
@@ -60,79 +65,100 @@ class _InputSmartPageState extends State<InputSmartPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        "Data Siswa",
-                        style: TextStyle(
-                          fontSize: 18.0, // Increase font size
-                          fontWeight: FontWeight.bold, // Make the text bold
+                      const GlobalProjectFont(
+                        text: 'Data Siswa',
+                        fontWeight: FontWeight.w800,
+                        fontSize: 20.0,
+                        color: AppColor.blue,
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                        padding: const EdgeInsets.only(top: 3, left: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColor.blue, width: 1.5),
+                        ),
+                        child: TextField(
+                          controller: _namaCont,
+                          readOnly: true,
+                          decoration: const InputDecoration(
+                            hintText: 'Nama Siswa',
+                          ),
                         ),
                       ),
                       const SizedBox(height: 8),
-                      TextField(
-                        controller: _namaCont,
-                        readOnly: true,
-                        decoration: const InputDecoration(
-                          hintText: 'Nama Siswa',
-                          border: OutlineInputBorder(), // Add a border to the TextField
+                      Container(
+                        padding: const EdgeInsets.only(top: 3, left: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColor.blue, width: 1.5),
+                        ),
+                        child: TextField(
+                          controller: _nisCont,
+                          readOnly: true,
+                          decoration: const InputDecoration(
+                            hintText: 'Nomor Induk Siswa',
+                          ),
                         ),
                       ),
                       const SizedBox(height: 8),
-                      TextField(
-                        controller: _nisCont,
-                        readOnly: true,
-                        decoration: const InputDecoration(
-                          hintText: 'Nomor Induk Siswa',
-                          border: OutlineInputBorder(), // Add a border to the TextField
+                      Container(
+                        padding: const EdgeInsets.only(top: 3, left: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColor.blue, width: 1.5),
                         ),
-                      ),
-                      const SizedBox(height: 8),
-                      TextField(
-                        onTap: () async {
-                          DateTime? selectedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2012),
-                            lastDate: DateTime(2026),
-                          );
+                        child: TextField(
+                          onTap: () async {
+                            DateTime? selectedDate = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2012),
+                              lastDate: DateTime(2026),
+                            );
 
-                          if (selectedDate != null) {
-                            // Format the selected date and set it as the value of the TextField
-                            final formattedDate =
-                            DateFormat('dd/MMMM/yyyy').format(selectedDate);
-                            setState(() {
-                              _tglCont.text = formattedDate;
-                            });
-                          }
-                        },
-                        readOnly: true,
-                        controller: _tglCont,
-                        decoration: const InputDecoration(
-                          hintText: 'Tanggal Smart',
-                          border: OutlineInputBorder(), // Add a border to the TextField
-                          prefixIcon: Icon(Icons.calendar_today),
+                            if (selectedDate != null) {
+                              // Format the selected date and set it as the value of the TextField
+                              final formattedDate =
+                              DateFormat('dd/MMMM/yyyy').format(selectedDate);
+                              setState(() {
+                                _tglCont.text = formattedDate;
+                              });
+                            }
+                          },
+                          readOnly: true,
+                          controller: _tglCont,
+                          decoration: const InputDecoration(
+                            hintText: 'Tanggal Smart',
+                            prefixIcon: Icon(Icons.calendar_today),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 16),
-                      const Text(
-                        "Nilai Smart",
-                        style: TextStyle(
-                          fontSize: 18.0, // Increase font size
-                          fontWeight: FontWeight.bold, // Make the text bold
-                        ),
+                      const GlobalProjectFont(
+                        text: 'Nilai Smart',
+                        fontWeight: FontWeight.w800,
+                        fontSize: 20.0,
+                        color: AppColor.blue,
                       ),
                       const SizedBox(height: 8),
                       Container(
                         width: double.infinity,
                         child: Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
                               flex: 6,
-                              child: TextField(
-                                controller: _namaSmartCont,
-                                decoration: const InputDecoration(
-                                  hintText: 'Nama Smart',
-                                  border: OutlineInputBorder(), // Add a border to the TextField
+                              child: Container(
+                                padding: const EdgeInsets.only(top: 3, left: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: AppColor.blue, width: 1.5),
+                                ),
+                                child: TextField(
+                                  controller: _namaSmartCont,
+                                  decoration: const InputDecoration(
+                                    hintText: 'Nama Smart',
+                                  ),
                                 ),
                               ),
                             ),
@@ -144,11 +170,17 @@ class _InputSmartPageState extends State<InputSmartPage> {
                               }),
                             ),
                             Expanded(
-                              child: TextField(
-                                controller: _scoreSmartCont,
-                                decoration: const InputDecoration(
-                                  hintText: 'Score',
-                                  border: OutlineInputBorder(), // Add a border to the TextField
+                              child: Container(
+                                padding: const EdgeInsets.only(left: 5, right: 5),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: AppColor.blue, width: 1.5),
+                                ),
+                                child: TextField(
+                                  controller: _scoreSmartCont,
+                                  decoration: const InputDecoration(
+                                    hintText: 'Score',
+                                  ),
                                 ),
                               ),
                             ),
@@ -180,7 +212,7 @@ class _InputSmartPageState extends State<InputSmartPage> {
                               padding: EdgeInsets.all( 5),
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                border: Border.all(color: Colors.blueAccent, width: 1.5),
+                                border: Border.all(color: AppColor.blue, width: 1.5),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Row(
@@ -213,7 +245,7 @@ class _InputSmartPageState extends State<InputSmartPage> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: const CustomButton(
+                      child: const CustomButtonril(
                         title: 'Back',
                         widths: 140,
                         textColor: Colors.white,
@@ -241,8 +273,9 @@ class _InputSmartPageState extends State<InputSmartPage> {
                           print(
                               "nama: ${listSmart[i][0]} dan salah satu nilai ${listSmart[i][3][0][1]}. skor akhir: ${listSmart[i][4]}");
                         }
+                        Navigator.pop(context);
                       },
-                      child: const CustomButton(
+                      child: const CustomButtonril(
                         title: 'Finish',
                         widths: 140,
                         textColor: Colors.white,
@@ -266,11 +299,10 @@ Container DropDowns(
     List<String> list, String _selectedItem, ValueChanged<String?> onChanged) {
   return Container(
     width: 100,
-    margin: const EdgeInsets.only(top: 10, left: 10),
-    padding: const EdgeInsets.symmetric(horizontal: 16),
+    padding: const EdgeInsets.only(left: 5, right: 5),
     decoration: BoxDecoration(
       border: Border.all(
-        color: Colors.black,
+        color: AppColor.blue,
         width: 1.5,
       ),
       borderRadius: BorderRadius.circular(8.0),
