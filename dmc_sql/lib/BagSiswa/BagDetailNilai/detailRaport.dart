@@ -1,6 +1,9 @@
 import 'package:dmc_sql/AppBar/appBarAdmin.dart';
+import 'package:dmc_sql/Property/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+
+import '../../Property/project_font.dart';
 
 List<List<String>> listNilaiKualitatif = [
   ['Pengagungan terhadap ilmu', 'A'],
@@ -92,26 +95,34 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarAdmin(page: CurrentPage.siswa),
+      appBar: const AppBarAdmin(page: CurrentPage.siswa),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
               Row(
                 children: [
-                  const Expanded(flex: 8, child: Text("RAPOR SISWA")),
+                  const Expanded(flex: 8,
+                    child:
+                    GlobalProjectFont(
+                      text: 'RAPOR SISWA',
+                      fontWeight: FontWeight.w800,
+                      fontSize: 32.0,
+                      color: AppColor.blue,
+                    ),
+                  ),
                   Expanded(
                       flex: 2,
                       child: ElevatedButton(
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: Text("Back to Siswa"))),
-                  SizedBox(width: 10),
+                          child: const Text("Back to Siswa"))),
+                  const SizedBox(width: 10),
                   Expanded(
                       child: ElevatedButton(
-                          onPressed: () {}, child: Text("Edit"))),
+                          onPressed: () {}, child: const Text("Edit"))),
                 ],
               ),
               Row(
@@ -127,22 +138,28 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                             Card(
                               elevation: 5,
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                       children: const [
-                                        Text("Data Siswa"),
+                                        GlobalProjectFont(
+                                          text: 'Data Siswa',
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 20.0,
+                                          color: AppColor.blue,
+                                        ),
                                         Text("Semester 1  Kelas A")
                                       ],
                                     ),
-                                    Text("Ahmad Solihun"),
+                                    const SizedBox(height: 10,),
+                                    const Text("Ahmad Solihun"),
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                       children: const [
                                         Text("Nis 1601204013"),
                                         Text("2022/2023")
@@ -157,26 +174,32 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                             Card(
                               elevation: 5,
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text("Nilai Kualitatif"),
-                                    ListTile(
+                                    const GlobalProjectFont(
+                                      text: 'Nilai Kualitatif',
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 20.0,
+                                      color: AppColor.blue,
+                                    ),
+                                    const SizedBox(height: 10,),
+                                    const ListTile(
                                       title: Text("Karakter"),
                                       trailing: Text("Nilai"),
                                     ),
                                     const Divider(thickness: 3),
-                                    Container(
+                                    SizedBox(
                                       height: 150,
                                       child: ListView.builder(
                                           itemCount: listNilaiKualitatif.length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
                                             String nama =
-                                                listNilaiKualitatif[index][0];
+                                            listNilaiKualitatif[index][0];
                                             String nilai =
-                                                listNilaiKualitatif[index][1];
+                                            listNilaiKualitatif[index][1];
 
                                             return Column(
                                               children: [
@@ -198,11 +221,17 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                             Card(
                               elevation: 5,
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Nilai Ibadah"),
+                                    const GlobalProjectFont(
+                                      text: 'Nilai Ibadah',
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 20.0,
+                                      color: AppColor.blue,
+                                    ),
+                                    const SizedBox(height: 10,),
                                     Row(
                                       children: const [
                                         Expanded(
@@ -218,18 +247,18 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                       ],
                                     ),
                                     const Divider(thickness: 3),
-                                    Container(
+                                    SizedBox(
                                       height: 100,
                                       child: ListView.builder(
                                           itemCount: listNilaiIbadah.length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
                                             String nama =
-                                                listNilaiIbadah[index][0];
+                                            listNilaiIbadah[index][0];
                                             String gerakan =
-                                                listNilaiIbadah[index][1];
+                                            listNilaiIbadah[index][1];
                                             String bacaan =
-                                                listNilaiIbadah[index][2];
+                                            listNilaiIbadah[index][2];
 
                                             return Row(
                                               children: [
@@ -238,12 +267,12 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 Expanded(
                                                     child: Align(
                                                         alignment:
-                                                            Alignment.center,
+                                                        Alignment.center,
                                                         child: Text(gerakan))),
                                                 Expanded(
                                                     child: Align(
                                                         alignment:
-                                                            Alignment.center,
+                                                        Alignment.center,
                                                         child: Text(bacaan))),
                                               ],
                                             );
@@ -258,11 +287,17 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                             Card(
                               elevation: 5,
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Nilai Hadits"),
+                                    const GlobalProjectFont(
+                                      text: 'Nilai Hadist',
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 20.0,
+                                      color: AppColor.blue,
+                                    ),
+                                    const SizedBox(height: 10,),
                                     Row(
                                       children: const [
                                         Expanded(
@@ -278,18 +313,18 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                       ],
                                     ),
                                     const Divider(thickness: 3),
-                                    Container(
+                                    SizedBox(
                                       height: 100,
                                       child: ListView.builder(
                                           itemCount: listNilaiHadits.length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
                                             String nama =
-                                                listNilaiHadits[index][0];
+                                            listNilaiHadits[index][0];
                                             String lisan =
-                                                listNilaiHadits[index][1];
+                                            listNilaiHadits[index][1];
                                             String tulis =
-                                                listNilaiHadits[index][2];
+                                            listNilaiHadits[index][2];
 
                                             return Row(
                                               children: [
@@ -298,12 +333,12 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 Expanded(
                                                     child: Align(
                                                         alignment:
-                                                            Alignment.center,
+                                                        Alignment.center,
                                                         child: Text(lisan))),
                                                 Expanded(
                                                     child: Align(
                                                         alignment:
-                                                            Alignment.center,
+                                                        Alignment.center,
                                                         child: Text(tulis))),
                                               ],
                                             );
@@ -318,11 +353,17 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                             Card(
                               elevation: 5,
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Nilai Hadits Arbain"),
+                                    const GlobalProjectFont(
+                                      text: 'Nilai Hadits Arbain',
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 20.0,
+                                      color: AppColor.blue,
+                                    ),
+                                    const SizedBox(height: 10,),
                                     Row(
                                       children: const [
                                         Expanded(
@@ -338,18 +379,18 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                       ],
                                     ),
                                     const Divider(thickness: 3),
-                                    Container(
+                                    SizedBox(
                                       height: 100,
                                       child: ListView.builder(
                                           itemCount: listNilaiHaditsArb.length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
                                             String nama =
-                                                listNilaiHaditsArb[index][0];
+                                            listNilaiHaditsArb[index][0];
                                             String lisan =
-                                                listNilaiHaditsArb[index][1];
+                                            listNilaiHaditsArb[index][1];
                                             String tulis =
-                                                listNilaiHaditsArb[index][2];
+                                            listNilaiHaditsArb[index][2];
 
                                             return Row(
                                               children: [
@@ -358,12 +399,12 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 Expanded(
                                                     child: Align(
                                                         alignment:
-                                                            Alignment.center,
+                                                        Alignment.center,
                                                         child: Text(lisan))),
                                                 Expanded(
                                                     child: Align(
                                                         alignment:
-                                                            Alignment.center,
+                                                        Alignment.center,
                                                         child: Text(tulis))),
                                               ],
                                             );
@@ -378,11 +419,17 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                             Card(
                               elevation: 5,
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text("Nilai Hifdzun Mutun"),
+                                    const GlobalProjectFont(
+                                      text: 'Nilai Hifdzun Mutun',
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 20.0,
+                                      color: AppColor.blue,
+                                    ),
+                                    const SizedBox(height: 10,),
                                     Row(
                                       children: const [
                                         Expanded(
@@ -402,20 +449,20 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                       ],
                                     ),
                                     const Divider(thickness: 3),
-                                    Container(
+                                    SizedBox(
                                       height: 50,
                                       child: ListView.builder(
                                           itemCount: listNilaiHifdzun.length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
                                             String nama =
-                                                listNilaiHifdzun[index][0];
+                                            listNilaiHifdzun[index][0];
                                             String lisan =
-                                                listNilaiHifdzun[index][1];
+                                            listNilaiHifdzun[index][1];
                                             String jumlah =
-                                                listNilaiHifdzun[index][2];
+                                            listNilaiHifdzun[index][2];
                                             String tulis =
-                                                listNilaiHifdzun[index][3];
+                                            listNilaiHifdzun[index][3];
 
                                             return Row(
                                               children: [
@@ -424,17 +471,17 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 Expanded(
                                                     child: Align(
                                                         alignment:
-                                                            Alignment.center,
+                                                        Alignment.center,
                                                         child: Text(lisan))),
                                                 Expanded(
                                                     child: Align(
                                                         alignment:
-                                                            Alignment.center,
+                                                        Alignment.center,
                                                         child: Text(jumlah))),
                                                 Expanded(
                                                     child: Align(
                                                         alignment:
-                                                            Alignment.center,
+                                                        Alignment.center,
                                                         child: Text(tulis))),
                                               ],
                                             );
@@ -458,11 +505,17 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                             Card(
                               elevation: 5,
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Nilai Al-Quran"),
+                                    const GlobalProjectFont(
+                                      text: 'Nilai Al-Quran',
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 20.0,
+                                      color: AppColor.blue,
+                                    ),
+                                    const SizedBox(height: 10,),
                                     Row(
                                       children: const [
                                         Expanded(
@@ -478,18 +531,18 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                       ],
                                     ),
                                     const Divider(thickness: 3),
-                                    Container(
+                                    SizedBox(
                                       height: 50,
                                       child: ListView.builder(
                                           itemCount: listNilaiQuran.length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
                                             String nama =
-                                                listNilaiQuran[index][0];
+                                            listNilaiQuran[index][0];
                                             String lisan =
-                                                listNilaiQuran[index][1];
+                                            listNilaiQuran[index][1];
                                             String tulis =
-                                                listNilaiQuran[index][2];
+                                            listNilaiQuran[index][2];
 
                                             return Row(
                                               children: [
@@ -498,12 +551,12 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 Expanded(
                                                     child: Align(
                                                         alignment:
-                                                            Alignment.center,
+                                                        Alignment.center,
                                                         child: Text(lisan))),
                                                 Expanded(
                                                     child: Align(
                                                         alignment:
-                                                            Alignment.center,
+                                                        Alignment.center,
                                                         child: Text(tulis))),
                                               ],
                                             );
@@ -511,7 +564,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                       children: const [
                                         Text("Capaian"),
                                         Text("AL - QURAN")
@@ -530,7 +583,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       height: 400,
                                       child: ListView.builder(
                                           itemCount: listNilaiJuz.length,
@@ -538,68 +591,74 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                               int index) {
                                             String juz = listNilaiJuz[index][0];
                                             String nilai =
-                                                listNilaiJuz[index][1];
+                                            listNilaiJuz[index][1];
                                             String lancar =
-                                                listNilaiJuz[index][2];
+                                            listNilaiJuz[index][2];
                                             String status =
-                                                listNilaiJuz[index][3];
+                                            listNilaiJuz[index][3];
                                             String teruji =
-                                                listNilaiJuz[index][4];
+                                            listNilaiJuz[index][4];
                                             String persentasi =
-                                                listNilaiJuz[index][5];
+                                            listNilaiJuz[index][5];
 
                                             return Container(
                                               decoration: ShapeDecoration(
                                                   shape: RoundedRectangleBorder(
-                                                      side: BorderSide(
-                                                          width: 1.5),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8))),
-                                              padding: EdgeInsets.all(8.0),
+                                                    side: const BorderSide(color: AppColor.blue, width: 1.5),
+                                                    borderRadius: BorderRadius.circular(8),
+                                                  )
+                                              ),
+                                              padding: const EdgeInsets.all(8.0),
                                               margin: const EdgeInsets.only(
                                                   bottom: 10),
                                               child: Row(
                                                 children: [
-                                                  Expanded(
-                                                      child: Column(
-                                                    children: [
-                                                      Text(juz),
-                                                      Text("NILAI  $nilai")
-                                                    ],
-                                                  )),
+                                                  SizedBox(
+                                                    width: 150,
+                                                    child: Column(
+                                                      children: [
+                                                        GlobalProjectFont(
+                                                          text: juz,
+                                                          fontWeight: FontWeight.w800,
+                                                          fontSize: 32.0,
+                                                          color: AppColor.blue,
+                                                        ),
+                                                        Text("NILAI  $nilai")
+                                                      ],
+                                                    ),
+                                                  ),
                                                   const VerticalDivider(),
                                                   Expanded(
                                                       child: Column(
-                                                    children: [
-                                                      Text("KELANCARAN"),
-                                                      Text(lancar)
-                                                    ],
-                                                  )),
+                                                        children: [
+                                                          const Text("KELANCARAN"),
+                                                          Text(lancar)
+                                                        ],
+                                                      )),
                                                   const VerticalDivider(),
                                                   Expanded(
                                                       child: Column(
-                                                    children: [
-                                                      Text("STATUS"),
-                                                      Text(status)
-                                                    ],
-                                                  )),
+                                                        children: [
+                                                          const Text("STATUS"),
+                                                          Text(status)
+                                                        ],
+                                                      )),
                                                   const VerticalDivider(),
                                                   Expanded(
                                                       child: Column(
-                                                    children: [
-                                                      Text("JUZ YANG TERUJI"),
-                                                      Text(teruji)
-                                                    ],
-                                                  )),
+                                                        children: [
+                                                          const Text("JUZ YANG TERUJI"),
+                                                          Text(teruji)
+                                                        ],
+                                                      )),
                                                   const VerticalDivider(),
                                                   Expanded(
                                                       child: Column(
-                                                    children: [
-                                                      Text("PERSENTASE JUZ"),
-                                                      Text(persentasi)
-                                                    ],
-                                                  )),
+                                                        children: [
+                                                          const Text("PERSENTASE JUZ"),
+                                                          Text(persentasi)
+                                                        ],
+                                                      )),
                                                 ],
                                               ),
                                             );
@@ -607,13 +666,13 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                     ),
                                     Container(
                                       height: 50,
-                                      padding: EdgeInsets.all(8.0),
-                                      margin: EdgeInsets.only(top: 10),
+                                      padding: const EdgeInsets.all(8.0),
+                                      margin: const EdgeInsets.only(top: 10),
                                       decoration: ShapeDecoration(
                                           shape: RoundedRectangleBorder(
-                                              side: BorderSide(width: 1.5),
+                                              side: const BorderSide(width: 1.5),
                                               borderRadius:
-                                                  BorderRadius.circular(8.0))),
+                                              BorderRadius.circular(8.0))),
                                       child: Row(
                                         children: const [
                                           Expanded(
@@ -645,11 +704,17 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                             Card(
                               elevation: 5,
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Nilai Tajwid"),
+                                    const GlobalProjectFont(
+                                      text: 'Nilai Tajwid',
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 20.0,
+                                      color: AppColor.blue,
+                                    ),
+                                    const SizedBox(height: 10,),
                                     Row(
                                       children: const [
                                         Expanded(
@@ -664,36 +729,42 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 child: Text("LISAN"))),
                                       ],
                                     ),
-                                    const Divider(thickness: 3),
-                                    Container(
+                                    const Divider(thickness: 3, color: AppColor.black,),
+                                    SizedBox(
                                       height: 300,
                                       child: ListView.builder(
                                           itemCount: listNilaiTajwid.length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
                                             String nama =
-                                                listNilaiTajwid[index][0];
+                                            listNilaiTajwid[index][0];
                                             String nilai =
-                                                listNilaiTajwid[index][1];
+                                            listNilaiTajwid[index][1];
                                             String lisan =
-                                                listNilaiTajwid[index][2];
+                                            listNilaiTajwid[index][2];
 
-                                            return Row(
+                                            return Column(
                                               children: [
-                                                Expanded(
-                                                    flex: 3, child: Text(nama)),
-                                                Expanded(
-                                                    child: Align(
-                                                        alignment:
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                        flex: 3, child: Text(nama)),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
                                                             Alignment.center,
-                                                        child: Text(nilai))),
-                                                Expanded(
-                                                    child: Align(
-                                                        alignment:
+                                                            child: Text(nilai))),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
                                                             Alignment.center,
-                                                        child: Text(lisan))),
+                                                            child: Text(lisan))),
+                                                  ],
+                                                ),
+                                                Divider()
                                               ],
                                             );
+
                                           }),
                                     )
                                   ],
@@ -712,94 +783,106 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                 children: [
                   Expanded(
                       child: Card(
-                    elevation: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("Kehadiran"),
-                          Container(
-                            height: 50,
-                            child: ListView.builder(
-                                itemCount: listKehadiran.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  String keterangan = listKehadiran[index][0];
-                                  String jumlah = listKehadiran[index][1];
+                        elevation: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const GlobalProjectFont(
+                                text: 'Kehadiran',
+                                fontWeight: FontWeight.w800,
+                                fontSize: 20.0,
+                                color: AppColor.blue,
+                              ),
+                              const SizedBox(height: 10,),
+                              SizedBox(
+                                height: 50,
+                                child: ListView.builder(
+                                    itemCount: listKehadiran.length,
+                                    itemBuilder: (BuildContext context, int index) {
+                                      String keterangan = listKehadiran[index][0];
+                                      String jumlah = listKehadiran[index][1];
 
-                                  return Row(
-                                    mainAxisAlignment:
+                                      return Row(
+                                        mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: [Text(keterangan), Text(jumlah)],
-                                  );
-                                }),
+                                        children: [Text(keterangan), Text(jumlah)],
+                                      );
+                                    }),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: const [Text("Total"), Text("6")],
+                              )
+                            ],
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [Text("Total"), Text("6")],
-                          )
-                        ],
-                      ),
-                    ),
-                  )),
+                        ),
+                      )),
                   Expanded(
                       flex: 2,
                       child: Card(
                         elevation: 5,
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(15.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text("Keterangan Nilai"),
+                              const GlobalProjectFont(
+                                text: 'Keterangan Nilai',
+                                fontWeight: FontWeight.w800,
+                                fontSize: 20.0,
+                                color: AppColor.blue,
+                              ),
+                              const SizedBox(height: 10,),
                               Row(
                                 children: [
                                   Expanded(
                                       child: Container(
-                                    margin: EdgeInsets.all(5),
-                                    height: 50,
-                                    child: ListView.builder(
-                                        itemCount: listKeterangan1.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          String keterangan =
+                                        margin: const EdgeInsets.all(5),
+                                        height: 50,
+                                        child: ListView.builder(
+                                            itemCount: listKeterangan1.length,
+                                            itemBuilder:
+                                                (BuildContext context, int index) {
+                                              String keterangan =
                                               listKeterangan1[index][0];
-                                          String nilai =
+                                              String nilai =
                                               listKeterangan1[index][1];
 
-                                          return Row(
-                                            mainAxisAlignment:
+                                              return Row(
+                                                mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(keterangan),
-                                              Text(nilai)
-                                            ],
-                                          );
-                                        }),
-                                  )),
+                                                children: [
+                                                  Text(keterangan),
+                                                  Text(nilai)
+                                                ],
+                                              );
+                                            }),
+                                      )),
                                   Expanded(
                                       child: Container(
-                                    margin: EdgeInsets.all(5),
-                                    height: 50,
-                                    child: ListView.builder(
-                                        itemCount: listKeterangan2.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          String keterangan =
+                                        margin: const EdgeInsets.all(5),
+                                        height: 50,
+                                        child: ListView.builder(
+                                            itemCount: listKeterangan2.length,
+                                            itemBuilder:
+                                                (BuildContext context, int index) {
+                                              String keterangan =
                                               listKeterangan2[index][0];
-                                          String nilai =
+                                              String nilai =
                                               listKeterangan2[index][1];
 
-                                          return Row(
-                                            mainAxisAlignment:
+                                              return Row(
+                                                mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(keterangan),
-                                              Text(nilai)
-                                            ],
-                                          );
-                                        }),
-                                  )),
+                                                children: [
+                                                  Text(keterangan),
+                                                  Text(nilai)
+                                                ],
+                                              );
+                                            }),
+                                      )),
                                 ],
                               )
                             ],
