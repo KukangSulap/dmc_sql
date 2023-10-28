@@ -118,11 +118,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: const Text("Back to Siswa"))),
-                  const SizedBox(width: 10),
-                  Expanded(
-                      child: ElevatedButton(
-                          onPressed: () {}, child: const Text("Edit"))),
+                          child: const Text("Back to Siswa")))
                 ],
               ),
               Row(
@@ -184,12 +180,11 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                       fontSize: 20.0,
                                       color: AppColor.blue,
                                     ),
-                                    const SizedBox(height: 10,),
                                     const ListTile(
                                       title: Text("Karakter"),
-                                      trailing: Text("Nilai"),
+                                      trailing: Text("Nilai         "),
                                     ),
-                                    const Divider(thickness: 3),
+                                    const Divider(thickness: 2, color: Colors.black,),
                                     SizedBox(
                                       height: 150,
                                       child: ListView.builder(
@@ -198,14 +193,21 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                               int index) {
                                             String nama =
                                             listNilaiKualitatif[index][0];
-                                            String nilai =
+                                            String nilai=
                                             listNilaiKualitatif[index][1];
 
                                             return Column(
                                               children: [
-                                                ListTile(
-                                                  title: Text(nama),
-                                                  trailing: Text(nilai),
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                        flex: 3, child: Text(nama)),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
+                                                            Alignment.center,
+                                                            child: Text(nilai))),
+                                                  ],
                                                 ),
                                                 const Divider()
                                               ],
@@ -246,7 +248,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 child: Text("Bacaan"))),
                                       ],
                                     ),
-                                    const Divider(thickness: 3),
+                                    const Divider(thickness: 2, color: Colors.black,),
                                     SizedBox(
                                       height: 100,
                                       child: ListView.builder(
@@ -260,20 +262,25 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                             String bacaan =
                                             listNilaiIbadah[index][2];
 
-                                            return Row(
+                                            return Column(
                                               children: [
-                                                Expanded(
-                                                    flex: 3, child: Text(nama)),
-                                                Expanded(
-                                                    child: Align(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        child: Text(gerakan))),
-                                                Expanded(
-                                                    child: Align(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        child: Text(bacaan))),
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                        flex: 3, child: Text(nama)),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
+                                                            Alignment.center,
+                                                            child: Text(gerakan))),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
+                                                            Alignment.center,
+                                                            child: Text(bacaan))),
+                                                  ],
+                                                ),
+                                                const Divider()
                                               ],
                                             );
                                           }),
@@ -312,7 +319,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 child: Text("Tulis"))),
                                       ],
                                     ),
-                                    const Divider(thickness: 3),
+                                    const Divider(thickness: 2),
                                     SizedBox(
                                       height: 100,
                                       child: ListView.builder(
@@ -326,20 +333,25 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                             String tulis =
                                             listNilaiHadits[index][2];
 
-                                            return Row(
+                                            return Column(
                                               children: [
-                                                Expanded(
-                                                    flex: 3, child: Text(nama)),
-                                                Expanded(
-                                                    child: Align(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        child: Text(lisan))),
-                                                Expanded(
-                                                    child: Align(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        child: Text(tulis))),
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                        flex: 3, child: Text(nama)),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
+                                                            Alignment.center,
+                                                            child: Text(lisan))),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
+                                                            Alignment.center,
+                                                            child: Text(tulis))),
+                                                  ],
+                                                ),
+                                                const Divider()
                                               ],
                                             );
                                           }),
@@ -378,7 +390,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 child: Text("Tulis"))),
                                       ],
                                     ),
-                                    const Divider(thickness: 3),
+                                    const Divider(thickness: 2, color: Colors.black,),
                                     SizedBox(
                                       height: 100,
                                       child: ListView.builder(
@@ -392,20 +404,25 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                             String tulis =
                                             listNilaiHaditsArb[index][2];
 
-                                            return Row(
+                                            return Column(
                                               children: [
-                                                Expanded(
-                                                    flex: 3, child: Text(nama)),
-                                                Expanded(
-                                                    child: Align(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        child: Text(lisan))),
-                                                Expanded(
-                                                    child: Align(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        child: Text(tulis))),
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                        flex: 3, child: Text(nama)),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
+                                                            Alignment.center,
+                                                            child: Text(lisan))),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
+                                                            Alignment.center,
+                                                            child: Text(tulis))),
+                                                  ],
+                                                ),
+                                                const Divider()
                                               ],
                                             );
                                           }),
@@ -448,7 +465,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 child: Text("TULIS"))),
                                       ],
                                     ),
-                                    const Divider(thickness: 3),
+                                    const Divider(thickness: 2, color: Colors.black,),
                                     SizedBox(
                                       height: 50,
                                       child: ListView.builder(
@@ -464,25 +481,30 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                             String tulis =
                                             listNilaiHifdzun[index][3];
 
-                                            return Row(
+                                            return Column(
                                               children: [
-                                                Expanded(
-                                                    flex: 3, child: Text(nama)),
-                                                Expanded(
-                                                    child: Align(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        child: Text(lisan))),
-                                                Expanded(
-                                                    child: Align(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        child: Text(jumlah))),
-                                                Expanded(
-                                                    child: Align(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        child: Text(tulis))),
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                        flex: 3, child: Text(nama)),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
+                                                            Alignment.center,
+                                                            child: Text(lisan))),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
+                                                            Alignment.center,
+                                                            child: Text(jumlah))),
+                                                    Expanded(
+                                                        child: Align(
+                                                            alignment:
+                                                            Alignment.center,
+                                                            child: Text(tulis))),
+                                                  ],
+                                                ),
+                                                const Divider()
                                               ],
                                             );
                                           }),
@@ -530,7 +552,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 child: Text("TULIS"))),
                                       ],
                                     ),
-                                    const Divider(thickness: 3),
+                                    const Divider(thickness: 2),
                                     SizedBox(
                                       height: 50,
                                       child: ListView.builder(
@@ -566,7 +588,12 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                       mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                       children: const [
-                                        Text("Capaian"),
+                                      GlobalProjectFont(
+                                        text: "CAPAIAN",
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 18.0,
+                                        color: AppColor.blue,
+                                      ),
                                         Text("AL - QURAN")
                                       ],
                                     )
@@ -584,7 +611,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      height: 400,
+                                      height: 510,
                                       child: ListView.builder(
                                           itemCount: listNilaiJuz.length,
                                           itemBuilder: (BuildContext context,
@@ -627,7 +654,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                       ],
                                                     ),
                                                   ),
-                                                  const VerticalDivider(),
+                                                  const VerticalDivider(thickness: 1,color: AppColor.blue,),
                                                   Expanded(
                                                       child: Column(
                                                         children: [
@@ -635,7 +662,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                           Text(lancar)
                                                         ],
                                                       )),
-                                                  const VerticalDivider(),
+                                                  const VerticalDivider(thickness: 1,color: AppColor.blue,),
                                                   Expanded(
                                                       child: Column(
                                                         children: [
@@ -643,7 +670,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                           Text(status)
                                                         ],
                                                       )),
-                                                  const VerticalDivider(),
+                                                  const VerticalDivider(thickness: 1,color: AppColor.blue,),
                                                   Expanded(
                                                       child: Column(
                                                         children: [
@@ -651,7 +678,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                           Text(teruji)
                                                         ],
                                                       )),
-                                                  const VerticalDivider(),
+                                                  const VerticalDivider(thickness: 1,color: AppColor.blue,),
                                                   Expanded(
                                                       child: Column(
                                                         children: [
@@ -670,22 +697,30 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                       margin: const EdgeInsets.only(top: 10),
                                       decoration: ShapeDecoration(
                                           shape: RoundedRectangleBorder(
-                                              side: const BorderSide(width: 1.5),
-                                              borderRadius:
-                                              BorderRadius.circular(8.0))),
+                                            side: const BorderSide(color: AppColor.blue, width: 1.5),
+                                            borderRadius: BorderRadius.circular(8),
+                                          )
+                                      ),
                                       child: Row(
                                         children: const [
                                           Expanded(
                                               child: Align(
                                                   alignment: Alignment.center,
-                                                  child: Text("Capaian"))),
-                                          const VerticalDivider(),
+                                                  child: GlobalProjectFont(
+                                                    text: "CAPAIAN",
+                                                    fontWeight: FontWeight.w800,
+                                                    fontSize: 18.0,
+                                                    color: AppColor.blue,
+                                                  ),
+                                              )
+                                          ),
+                                          const VerticalDivider(thickness: 2,color: AppColor.blue,),
                                           Expanded(
                                               flex: 2,
                                               child: Align(
                                                   alignment: Alignment.center,
                                                   child: Text("JUZ: 2"))),
-                                          const VerticalDivider(),
+                                          const VerticalDivider(thickness: 2,color: AppColor.blue,),
                                           Expanded(
                                               flex: 2,
                                               child: Align(
@@ -729,7 +764,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                 child: Text("LISAN"))),
                                       ],
                                     ),
-                                    const Divider(thickness: 3, color: AppColor.black,),
+                                    const Divider(thickness: 2, color: AppColor.black,),
                                     SizedBox(
                                       height: 300,
                                       child: ListView.builder(
@@ -761,7 +796,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                                             child: Text(lisan))),
                                                   ],
                                                 ),
-                                                Divider()
+                                                const Divider()
                                               ],
                                             );
 
@@ -811,6 +846,7 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                       );
                                     }),
                               ),
+                              const Divider(),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: const [Text("Total"), Text("6")],
@@ -850,16 +886,22 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                               String nilai =
                                               listKeterangan1[index][1];
 
-                                              return Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                              return Column(
                                                 children: [
-                                                  Text(keterangan),
-                                                  Text(nilai)
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                    MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Text(keterangan),
+                                                      Text(nilai)
+                                                    ],
+                                                  ),
+                                                  const Divider()
                                                 ],
                                               );
                                             }),
                                       )),
+                                  const SizedBox(width: 15,),
                                   Expanded(
                                       child: Container(
                                         margin: const EdgeInsets.all(5),
@@ -873,12 +915,17 @@ class _DetailRaportPageState extends State<DetailRaportPage> {
                                               String nilai =
                                               listKeterangan2[index][1];
 
-                                              return Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                              return Column(
                                                 children: [
-                                                  Text(keterangan),
-                                                  Text(nilai)
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                    MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Text(keterangan),
+                                                      Text(nilai)
+                                                    ],
+                                                  ),
+                                                  const Divider()
                                                 ],
                                               );
                                             }),
