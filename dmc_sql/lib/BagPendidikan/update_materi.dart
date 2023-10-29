@@ -3,6 +3,8 @@ import 'package:dmc_sql/Property/app_color.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../AppBar/app_bar_user.dart';
 import '../Property/project_font.dart';
+import '../model/dummy.dart';
+import '../service/connect.dart';
 import 'kurikulum.dart';
 import 'materi_detail.dart';
 
@@ -29,6 +31,24 @@ class _MateriPageState extends State<MateriPage> {
       imageUrl: 'https://i.kym-cdn.com/photos/images/newsfeed/002/652/421/280.jpg',
     ),
   ];
+
+  List<Dummy>? dataDummy = [];
+  var isLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    dataDummy = await RemoteService().getPosts();
+    if (dataDummy != null) {
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
