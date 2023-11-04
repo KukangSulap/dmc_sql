@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import '../model/dummy.dart';
+import '../model/modelPengeluaran.dart';
 import '../service/connect.dart';
 import 'inputPemasukan.dart';
 import 'pemasukanDetail.dart';
@@ -28,6 +29,7 @@ class KeuanganPage extends StatefulWidget {
 class _KeuanganPageState extends State<KeuanganPage> {
 
   List<Dummy>? dataDummy = [];
+  List<ModelPengeluaran>? modelPengeluaran = [];
   var isLoaded = false;
 
   @override
@@ -38,6 +40,7 @@ class _KeuanganPageState extends State<KeuanganPage> {
 
   getData() async {
     dataDummy = await RemoteService().getPosts();
+    modelPengeluaran = await RemoteServiceReal().getPengeluaran();
     if (dataDummy != null) {
       setState(() {
         isLoaded = true;
@@ -347,11 +350,11 @@ class _KeuanganPageState extends State<KeuanganPage> {
                         ),
                         Expanded(
                           child: ListView.builder(
-                            itemCount: dataDummy?.length,
+                            itemCount: modelPengeluaran?.length,
                             itemBuilder: (context, index) {
-                              String itemName = dataDummy![index].title;
-                              String leftInfo = dataDummy![index].title;
-                              String? rightInfo = dataDummy![index].url;
+                              String itemName = modelPengeluaran![index].namaPengeluaran;
+                              String leftInfo = modelPengeluaran![index].kategori;
+                              String rightInfo = modelPengeluaran![index].jumlah;
                               return GestureDetector(
                                 onTap: () {
                                   // Navigator.push(
@@ -384,13 +387,6 @@ class _KeuanganPageState extends State<KeuanganPage> {
                                         ),
                                       ),
                                     ),
-                                    // Container(
-                                    //   margin:
-                                    //       const EdgeInsets.only(top: 10, bottom: 10),
-                                    //   height: 0.5,
-                                    //   width: double.infinity,
-                                    //   color: Colors.black,
-                                    // )
                                   ],
                                 ),
                               );
