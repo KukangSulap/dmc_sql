@@ -35,20 +35,30 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
             const SizedBox(height: 16),
             kelas(
               colors: [
-                Colors.blue,
-                Colors.green,
-                Colors.red,
-                Colors.orange,
-                Colors.purple,
-                Colors.yellow,
+                AppColor.orange,
+                AppColor.green,
+                AppColor.yellow,
+                AppColor.yellow,
+                AppColor.green,
+                AppColor.orange,
               ],
               texts: [
-                'Card 1',
-                'Card 2',
-                'Card 3',
-                'Card 4',
-                'Card 5',
-                'Card 6',
+                'Kelas 1',
+                'Kelas 2',
+                'Kelas 3',
+                'Kelas 4',
+                'Kelas 5',
+                'Kelas 6',
+              ],
+              desc: [
+                'Tilawah: Membelajarkan huruf hijaiyah dan cara membaca dengan benar.\n'
+                    '\nAkhlaqul Karimah: Pengenalan tentang akhlaq dan nilai-nilai Islami sederhana.\n'
+                    '\nIbadah Harian: Pengenalan tentang shalat, wudhu, dan doa-doa harian.',
+                'Kelas 2',
+                'Kelas 3',
+                'Kelas 4',
+                'Kelas 5',
+                'Kelas 6',
               ],
             )
           ],
@@ -163,6 +173,7 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
       {
         required List<Color> colors,
         required List<String> texts,
+        required List<String> desc,
       }
       ) {
     return Container(
@@ -178,14 +189,26 @@ class _KurikulumScreenState extends State<KurikulumScreen> {
         itemBuilder: (context, index) {
           return Card(
             color: colors[index],
-            child: Center(
-              child: Text(
-                texts[index],
-                style: const TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    texts[index],
+                    style: GoogleFonts.mPlusRounded1c(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 36.0,
+                        color: Colors.white),
+                  ),
+                  Text(
+                    desc[index],
+                    style: GoogleFonts.mPlusRounded1c(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18.0,
+                        color: Colors.white),
+                  ),
+                ],
               ),
             ),
           );
